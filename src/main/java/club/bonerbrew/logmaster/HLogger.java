@@ -351,6 +351,223 @@ public final class HLogger {
             }
         }
     }
+    
+
+    public static void error(final Exception message, final long timeStamp, final boolean logToFile) {
+        write_red(Level.SEVERE, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void error(final String message, final long timeStamp, final boolean logToFile) {
+        write_red(Level.SEVERE, timeStamp, logToFile, message);
+    }
+
+    public static void error(final Object message, final long timeStamp, final boolean logToFile) {
+        write_red(Level.SEVERE, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void error(final String message, final long timeStamp) {
+        error(message, timeStamp, true);
+    }
+
+    public static void error(final String message) {
+        error(message, System.currentTimeMillis(), true);
+    }
+
+    public static void error(final Object message, final long timeStamp) {
+        error(message, timeStamp, true);
+    }
+
+    public static void error(final Object message) {
+        error(message, System.currentTimeMillis(), true);
+    }
+
+    public static void error(final Exception exception, final long timeStamp) {
+        error(exception, timeStamp, true);
+    }
+
+    public static void error(final Exception exception) {
+        error(exception, System.currentTimeMillis(), true);
+    }
+
+    public static void severe(final Exception message, final long timeStamp, final boolean logToFile) {
+        write_red(Level.SEVERE, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void severe(final String message, final long timeStamp, final boolean logToFile) {
+        write_red(Level.SEVERE, timeStamp, logToFile, message);
+    }
+
+    public static void severe(final Object message, final long timeStamp, final boolean logToFile) {
+        write_red(Level.SEVERE, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void severe(final String message, final long timeStamp) {
+        severe(message, timeStamp, true);
+    }
+
+    public static void severe(final String message) {
+        severe(message, System.currentTimeMillis(), true);
+    }
+
+    public static void severe(final Object message, final long timeStamp) {
+        severe(message, timeStamp, true);
+    }
+
+    public static void severe(final Object message) {
+        severe(message, System.currentTimeMillis(), true);
+    }
+
+    public static void severe(final Exception exception, final long timeStamp) {
+        severe(exception, timeStamp, true);
+    }
+
+    public static void severe(final Exception exception) {
+        severe(exception, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal(final Exception message, final long timeStamp, final boolean logToFile) {
+        write_red(Level.FATAL, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void fatal(final String message, final long timeStamp, final boolean logToFile) {
+        write_red(Level.FATAL, timeStamp, logToFile, message);
+    }
+
+    public static void fatal(final Object message, final long timeStamp, final boolean logToFile) {
+        write_red(Level.FATAL, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void fatal(final String message, final long timeStamp) {
+        fatal(message, timeStamp, true);
+    }
+
+    public static void fatal(final String message) {
+        fatal(message, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal(final Object message, final long timeStamp) {
+        fatal(message, timeStamp, true);
+    }
+
+    public static void fatal(final Object message) {
+        fatal(message, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal(final Exception exception, final long timeStamp) {
+        fatal(exception, timeStamp, true);
+    }
+
+    public static void fatal(final Exception exception) {
+        fatal(exception, System.currentTimeMillis(), true);
+    }
+
+    public static void warn(final Exception message, final long timeStamp, final boolean logToFile) {
+        write_yellow(Level.WARNING, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void warn(final String message, final long timeStamp, final boolean logToFile) {
+        write_yellow(Level.WARNING, timeStamp, logToFile, message);
+    }
+
+    public static void warn(final Object message, final long timeStamp, final boolean logToFile) {
+        write_yellow(Level.WARNING, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void warn(final String message, final long timeStamp) {
+        warn(message, timeStamp, true);
+    }
+
+    public static void warn(final String message) {
+        warn(message, System.currentTimeMillis(), true);
+    }
+
+    public static void warn(final Object message, final long timeStamp) {
+        warn(message, timeStamp, true);
+    }
+
+    public static void warn(final Object message) {
+        warn(message, System.currentTimeMillis(), true);
+    }
+
+    public static void warn(final Exception exception, final long timeStamp) {
+        warn(exception, timeStamp, true);
+    }
+
+    public static void warn(final Exception exception) {
+        warn(exception, System.currentTimeMillis(), true);
+    }
+
+    public static void info(final Exception message, final long timeStamp, final boolean logToFile) {
+        write_cyan(Level.INFO, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void info(final String message, final long timeStamp, final boolean logToFile) {
+        write_cyan(Level.INFO, timeStamp, logToFile, message);
+    }
+
+    public static void info(final Object message, final long timeStamp, final boolean logToFile) {
+        write_cyan(Level.INFO, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void info(final String message, final long timeStamp) {
+        info(message, timeStamp, true);
+    }
+
+    public static void info(final String message) {
+        info(message, System.currentTimeMillis(), true);
+    }
+
+    public static void info(final Object message, final long timeStamp) {
+        info(message, timeStamp, true);
+    }
+
+    public static void info(final Object message) {
+        info(message, System.currentTimeMillis(), true);
+    }
+
+    public static void info(final Exception exception, final long timeStamp) {
+        info(exception, timeStamp, true);
+    }
+
+    public static void info(final Exception exception) {
+        info(exception, System.currentTimeMillis(), true);
+    }
+
+    public static void debug(final Exception message, final long timeStamp, final boolean logToFile) {
+        write(Level.DEBUG, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void debug(final String message, final long timeStamp, final boolean logToFile) {
+        write(Level.DEBUG, timeStamp, logToFile, message);
+    }
+
+    public static void debug(final Object message, final long timeStamp, final boolean logToFile) {
+        write(Level.DEBUG, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void debug(final String message, final long timeStamp) {
+        debug(message, timeStamp, true);
+    }
+
+    public static void debug(final String message) {
+        debug(message, System.currentTimeMillis(), true);
+    }
+
+    public static void debug(final Object message, final long timeStamp) {
+        debug(message, timeStamp, true);
+    }
+
+    public static void debug(final Object message) {
+        debug(message, System.currentTimeMillis(), true);
+    }
+
+    public static void debug(final Exception exception, final long timeStamp) {
+        debug(exception, timeStamp, true);
+    }
+
+    public static void debug(final Exception exception) {
+        debug(exception, System.currentTimeMillis(), true);
+    }
 
     /*
      * Chalk logger
