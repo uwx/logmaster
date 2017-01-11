@@ -143,7 +143,7 @@ public final class HLogger {
      */
     public static String getCallerCallerClassName() { 
         StackTraceElement[] stElements = new Throwable().getStackTrace();
-        return stElements[3].getClassName();
+        return stElements[4].getClassName();
      }
 
     private static String formatTime(final long timeStamp) {
@@ -426,15 +426,15 @@ public final class HLogger {
     }
 
     public static void fatal(final Exception message, final long timeStamp, final boolean logToFile) {
-        write_red(Level.FATAL, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+        write_bright_red(Level.FATAL, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
     }
 
     public static void fatal(final String message, final long timeStamp, final boolean logToFile) {
-        write_red(Level.FATAL, timeStamp, logToFile, message);
+        write_bright_red(Level.FATAL, timeStamp, logToFile, message);
     }
 
     public static void fatal(final Object message, final long timeStamp, final boolean logToFile) {
-        write_red(Level.FATAL, timeStamp, logToFile, message == null ? "null" : message.toString());
+        write_bright_red(Level.FATAL, timeStamp, logToFile, message == null ? "null" : message.toString());
     }
 
     public static void fatal(final String message, final long timeStamp) {
@@ -462,15 +462,15 @@ public final class HLogger {
     }
 
     public static void warn(final Exception message, final long timeStamp, final boolean logToFile) {
-        write_yellow(Level.WARNING, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+        write_bright_yellow(Level.WARNING, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
     }
 
     public static void warn(final String message, final long timeStamp, final boolean logToFile) {
-        write_yellow(Level.WARNING, timeStamp, logToFile, message);
+        write_bright_yellow(Level.WARNING, timeStamp, logToFile, message);
     }
 
     public static void warn(final Object message, final long timeStamp, final boolean logToFile) {
-        write_yellow(Level.WARNING, timeStamp, logToFile, message == null ? "null" : message.toString());
+        write_bright_yellow(Level.WARNING, timeStamp, logToFile, message == null ? "null" : message.toString());
     }
 
     public static void warn(final String message, final long timeStamp) {
@@ -498,15 +498,15 @@ public final class HLogger {
     }
 
     public static void info(final Exception message, final long timeStamp, final boolean logToFile) {
-        write_cyan(Level.INFO, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+        write_bright_cyan(Level.INFO, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
     }
 
     public static void info(final String message, final long timeStamp, final boolean logToFile) {
-        write_cyan(Level.INFO, timeStamp, logToFile, message);
+        write_bright_cyan(Level.INFO, timeStamp, logToFile, message);
     }
 
     public static void info(final Object message, final long timeStamp, final boolean logToFile) {
-        write_cyan(Level.INFO, timeStamp, logToFile, message == null ? "null" : message.toString());
+        write_bright_cyan(Level.INFO, timeStamp, logToFile, message == null ? "null" : message.toString());
     }
 
     public static void info(final String message, final long timeStamp) {
