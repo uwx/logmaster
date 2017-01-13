@@ -1,8 +1,10 @@
 package club.bonerbrew.logmaster;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -90,6 +92,7 @@ public final class HLogger {
                         true);
             } catch (final IOException e) {
                 e.printStackTrace();
+                fileWriter = new NullWriter();
             }
             fileWriter.println(mainClassName + " --- " + LocalDateTime.now());
 
