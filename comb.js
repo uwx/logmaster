@@ -655,7 +655,12 @@ bigArr.forEach((v) => {
 `);
 });
 
-require('fs').writeFileSync('./combs.txt', output.join(''));
+const fs = require('fs');
+
+fs.writeFileSync('./src/test/java/club/bonerbrew/logmaster/LogTest.java', 
+  fs.readFileSync('./src/test/java/club/bonerbrew/logmaster/LogTest.java', 'utf8')
+    .replace(/\/\/\! \$CHALK_START[^]*\/\/\! \$CHALK_END/, '//! $$CHALK_START\r\n' + output.join('') + '\r\n//! $$CHALK_END')
+);
 
 function opts(o) {
   if (o == 'String') {

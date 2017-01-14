@@ -30,6 +30,8 @@ public class LogTest {
     @After
     public void tearDown() throws Exception {
     }
+    
+    //! $CHALK_START
 
     @Test
     public final void test_log_int_Exception_long_boolean() {
@@ -43,6 +45,16 @@ public class LogTest {
         HLogger.log(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.log(0, new Exception(), 0, true);
         HLogger.log(0, new Exception(), 0, false);
+        HLogger.log(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.log(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.log(0, (Exception) null, System.nanoTime(), true);
+        HLogger.log(0, (Exception) null, System.nanoTime(), false);
+        HLogger.log(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.log(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.log(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.log(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.log(0, (Exception) null, 0, true);
+        HLogger.log(0, (Exception) null, 0, false);
         HLogger.log(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.log(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.log(1, new Exception(), System.nanoTime(), true);
@@ -53,6 +65,16 @@ public class LogTest {
         HLogger.log(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.log(1, new Exception(), 0, true);
         HLogger.log(1, new Exception(), 0, false);
+        HLogger.log(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.log(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.log(1, (Exception) null, System.nanoTime(), true);
+        HLogger.log(1, (Exception) null, System.nanoTime(), false);
+        HLogger.log(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.log(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.log(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.log(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.log(1, (Exception) null, 0, true);
+        HLogger.log(1, (Exception) null, 0, false);
         HLogger.log(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.log(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.log(2, new Exception(), System.nanoTime(), true);
@@ -63,6 +85,16 @@ public class LogTest {
         HLogger.log(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.log(2, new Exception(), 0, true);
         HLogger.log(2, new Exception(), 0, false);
+        HLogger.log(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.log(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.log(2, (Exception) null, System.nanoTime(), true);
+        HLogger.log(2, (Exception) null, System.nanoTime(), false);
+        HLogger.log(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.log(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.log(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.log(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.log(2, (Exception) null, 0, true);
+        HLogger.log(2, (Exception) null, 0, false);
         HLogger.log(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.log(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.log(3, new Exception(), System.nanoTime(), true);
@@ -73,6 +105,16 @@ public class LogTest {
         HLogger.log(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.log(3, new Exception(), 0, true);
         HLogger.log(3, new Exception(), 0, false);
+        HLogger.log(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.log(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.log(3, (Exception) null, System.nanoTime(), true);
+        HLogger.log(3, (Exception) null, System.nanoTime(), false);
+        HLogger.log(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.log(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.log(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.log(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.log(3, (Exception) null, 0, true);
+        HLogger.log(3, (Exception) null, 0, false);
         HLogger.log(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.log(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.log(4, new Exception(), System.nanoTime(), true);
@@ -82,6 +124,16 @@ public class LogTest {
         HLogger.log(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.log(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.log(4, new Exception(), 0, true);
+        HLogger.log(4, new Exception(), 0, false);
+        HLogger.log(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.log(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.log(4, (Exception) null, System.nanoTime(), true);
+        HLogger.log(4, (Exception) null, System.nanoTime(), false);
+        HLogger.log(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.log(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.log(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.log(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.log(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -553,25 +605,50 @@ public class LogTest {
         HLogger.log(0, new Exception(), Long.MAX_VALUE);
         HLogger.log(0, new Exception(), Long.MIN_VALUE);
         HLogger.log(0, new Exception(), 0);
+        HLogger.log(0, (Exception) null, System.currentTimeMillis());
+        HLogger.log(0, (Exception) null, System.nanoTime());
+        HLogger.log(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.log(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.log(0, (Exception) null, 0);
         HLogger.log(1, new Exception(), System.currentTimeMillis());
         HLogger.log(1, new Exception(), System.nanoTime());
         HLogger.log(1, new Exception(), Long.MAX_VALUE);
         HLogger.log(1, new Exception(), Long.MIN_VALUE);
         HLogger.log(1, new Exception(), 0);
+        HLogger.log(1, (Exception) null, System.currentTimeMillis());
+        HLogger.log(1, (Exception) null, System.nanoTime());
+        HLogger.log(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.log(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.log(1, (Exception) null, 0);
         HLogger.log(2, new Exception(), System.currentTimeMillis());
         HLogger.log(2, new Exception(), System.nanoTime());
         HLogger.log(2, new Exception(), Long.MAX_VALUE);
         HLogger.log(2, new Exception(), Long.MIN_VALUE);
         HLogger.log(2, new Exception(), 0);
+        HLogger.log(2, (Exception) null, System.currentTimeMillis());
+        HLogger.log(2, (Exception) null, System.nanoTime());
+        HLogger.log(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.log(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.log(2, (Exception) null, 0);
         HLogger.log(3, new Exception(), System.currentTimeMillis());
         HLogger.log(3, new Exception(), System.nanoTime());
         HLogger.log(3, new Exception(), Long.MAX_VALUE);
         HLogger.log(3, new Exception(), Long.MIN_VALUE);
         HLogger.log(3, new Exception(), 0);
+        HLogger.log(3, (Exception) null, System.currentTimeMillis());
+        HLogger.log(3, (Exception) null, System.nanoTime());
+        HLogger.log(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.log(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.log(3, (Exception) null, 0);
         HLogger.log(4, new Exception(), System.currentTimeMillis());
         HLogger.log(4, new Exception(), System.nanoTime());
         HLogger.log(4, new Exception(), Long.MAX_VALUE);
         HLogger.log(4, new Exception(), Long.MIN_VALUE);
+        HLogger.log(4, new Exception(), 0);
+        HLogger.log(4, (Exception) null, System.currentTimeMillis());
+        HLogger.log(4, (Exception) null, System.nanoTime());
+        HLogger.log(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.log(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -613,9 +690,14 @@ public class LogTest {
     @Test
     public final void test_log_int_Exception() {
         HLogger.log(0, new Exception());
+        HLogger.log(0, (Exception) null);
         HLogger.log(1, new Exception());
+        HLogger.log(1, (Exception) null);
         HLogger.log(2, new Exception());
+        HLogger.log(2, (Exception) null);
         HLogger.log(3, new Exception());
+        HLogger.log(3, (Exception) null);
+        HLogger.log(4, new Exception());
     }
 
     @Test
@@ -674,11 +756,17 @@ public class LogTest {
         HLogger.log(new Exception(), System.nanoTime());
         HLogger.log(new Exception(), Long.MAX_VALUE);
         HLogger.log(new Exception(), Long.MIN_VALUE);
+        HLogger.log(new Exception(), 0);
+        HLogger.log((Exception) null, System.currentTimeMillis());
+        HLogger.log((Exception) null, System.nanoTime());
+        HLogger.log((Exception) null, Long.MAX_VALUE);
+        HLogger.log((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_log_Exception() {
         HLogger.log(new Exception());
+        HLogger.log((Exception) null);
     }
 
     @Test
@@ -692,6 +780,16 @@ public class LogTest {
         HLogger.error(new Exception(), Long.MIN_VALUE, true);
         HLogger.error(new Exception(), Long.MIN_VALUE, false);
         HLogger.error(new Exception(), 0, true);
+        HLogger.error(new Exception(), 0, false);
+        HLogger.error((Exception) null, System.currentTimeMillis(), true);
+        HLogger.error((Exception) null, System.currentTimeMillis(), false);
+        HLogger.error((Exception) null, System.nanoTime(), true);
+        HLogger.error((Exception) null, System.nanoTime(), false);
+        HLogger.error((Exception) null, Long.MAX_VALUE, true);
+        HLogger.error((Exception) null, Long.MAX_VALUE, false);
+        HLogger.error((Exception) null, Long.MIN_VALUE, true);
+        HLogger.error((Exception) null, Long.MIN_VALUE, false);
+        HLogger.error((Exception) null, 0, true);
     }
 
     @Test
@@ -816,11 +914,17 @@ public class LogTest {
         HLogger.error(new Exception(), System.nanoTime());
         HLogger.error(new Exception(), Long.MAX_VALUE);
         HLogger.error(new Exception(), Long.MIN_VALUE);
+        HLogger.error(new Exception(), 0);
+        HLogger.error((Exception) null, System.currentTimeMillis());
+        HLogger.error((Exception) null, System.nanoTime());
+        HLogger.error((Exception) null, Long.MAX_VALUE);
+        HLogger.error((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_error_Exception() {
         HLogger.error(new Exception());
+        HLogger.error((Exception) null);
     }
 
     @Test
@@ -834,6 +938,16 @@ public class LogTest {
         HLogger.severe(new Exception(), Long.MIN_VALUE, true);
         HLogger.severe(new Exception(), Long.MIN_VALUE, false);
         HLogger.severe(new Exception(), 0, true);
+        HLogger.severe(new Exception(), 0, false);
+        HLogger.severe((Exception) null, System.currentTimeMillis(), true);
+        HLogger.severe((Exception) null, System.currentTimeMillis(), false);
+        HLogger.severe((Exception) null, System.nanoTime(), true);
+        HLogger.severe((Exception) null, System.nanoTime(), false);
+        HLogger.severe((Exception) null, Long.MAX_VALUE, true);
+        HLogger.severe((Exception) null, Long.MAX_VALUE, false);
+        HLogger.severe((Exception) null, Long.MIN_VALUE, true);
+        HLogger.severe((Exception) null, Long.MIN_VALUE, false);
+        HLogger.severe((Exception) null, 0, true);
     }
 
     @Test
@@ -958,11 +1072,17 @@ public class LogTest {
         HLogger.severe(new Exception(), System.nanoTime());
         HLogger.severe(new Exception(), Long.MAX_VALUE);
         HLogger.severe(new Exception(), Long.MIN_VALUE);
+        HLogger.severe(new Exception(), 0);
+        HLogger.severe((Exception) null, System.currentTimeMillis());
+        HLogger.severe((Exception) null, System.nanoTime());
+        HLogger.severe((Exception) null, Long.MAX_VALUE);
+        HLogger.severe((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_severe_Exception() {
         HLogger.severe(new Exception());
+        HLogger.severe((Exception) null);
     }
 
     @Test
@@ -976,6 +1096,16 @@ public class LogTest {
         HLogger.fatal(new Exception(), Long.MIN_VALUE, true);
         HLogger.fatal(new Exception(), Long.MIN_VALUE, false);
         HLogger.fatal(new Exception(), 0, true);
+        HLogger.fatal(new Exception(), 0, false);
+        HLogger.fatal((Exception) null, System.currentTimeMillis(), true);
+        HLogger.fatal((Exception) null, System.currentTimeMillis(), false);
+        HLogger.fatal((Exception) null, System.nanoTime(), true);
+        HLogger.fatal((Exception) null, System.nanoTime(), false);
+        HLogger.fatal((Exception) null, Long.MAX_VALUE, true);
+        HLogger.fatal((Exception) null, Long.MAX_VALUE, false);
+        HLogger.fatal((Exception) null, Long.MIN_VALUE, true);
+        HLogger.fatal((Exception) null, Long.MIN_VALUE, false);
+        HLogger.fatal((Exception) null, 0, true);
     }
 
     @Test
@@ -1100,11 +1230,17 @@ public class LogTest {
         HLogger.fatal(new Exception(), System.nanoTime());
         HLogger.fatal(new Exception(), Long.MAX_VALUE);
         HLogger.fatal(new Exception(), Long.MIN_VALUE);
+        HLogger.fatal(new Exception(), 0);
+        HLogger.fatal((Exception) null, System.currentTimeMillis());
+        HLogger.fatal((Exception) null, System.nanoTime());
+        HLogger.fatal((Exception) null, Long.MAX_VALUE);
+        HLogger.fatal((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_fatal_Exception() {
         HLogger.fatal(new Exception());
+        HLogger.fatal((Exception) null);
     }
 
     @Test
@@ -1118,6 +1254,16 @@ public class LogTest {
         HLogger.warn(new Exception(), Long.MIN_VALUE, true);
         HLogger.warn(new Exception(), Long.MIN_VALUE, false);
         HLogger.warn(new Exception(), 0, true);
+        HLogger.warn(new Exception(), 0, false);
+        HLogger.warn((Exception) null, System.currentTimeMillis(), true);
+        HLogger.warn((Exception) null, System.currentTimeMillis(), false);
+        HLogger.warn((Exception) null, System.nanoTime(), true);
+        HLogger.warn((Exception) null, System.nanoTime(), false);
+        HLogger.warn((Exception) null, Long.MAX_VALUE, true);
+        HLogger.warn((Exception) null, Long.MAX_VALUE, false);
+        HLogger.warn((Exception) null, Long.MIN_VALUE, true);
+        HLogger.warn((Exception) null, Long.MIN_VALUE, false);
+        HLogger.warn((Exception) null, 0, true);
     }
 
     @Test
@@ -1242,11 +1388,17 @@ public class LogTest {
         HLogger.warn(new Exception(), System.nanoTime());
         HLogger.warn(new Exception(), Long.MAX_VALUE);
         HLogger.warn(new Exception(), Long.MIN_VALUE);
+        HLogger.warn(new Exception(), 0);
+        HLogger.warn((Exception) null, System.currentTimeMillis());
+        HLogger.warn((Exception) null, System.nanoTime());
+        HLogger.warn((Exception) null, Long.MAX_VALUE);
+        HLogger.warn((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_warn_Exception() {
         HLogger.warn(new Exception());
+        HLogger.warn((Exception) null);
     }
 
     @Test
@@ -1260,6 +1412,16 @@ public class LogTest {
         HLogger.info(new Exception(), Long.MIN_VALUE, true);
         HLogger.info(new Exception(), Long.MIN_VALUE, false);
         HLogger.info(new Exception(), 0, true);
+        HLogger.info(new Exception(), 0, false);
+        HLogger.info((Exception) null, System.currentTimeMillis(), true);
+        HLogger.info((Exception) null, System.currentTimeMillis(), false);
+        HLogger.info((Exception) null, System.nanoTime(), true);
+        HLogger.info((Exception) null, System.nanoTime(), false);
+        HLogger.info((Exception) null, Long.MAX_VALUE, true);
+        HLogger.info((Exception) null, Long.MAX_VALUE, false);
+        HLogger.info((Exception) null, Long.MIN_VALUE, true);
+        HLogger.info((Exception) null, Long.MIN_VALUE, false);
+        HLogger.info((Exception) null, 0, true);
     }
 
     @Test
@@ -1384,11 +1546,17 @@ public class LogTest {
         HLogger.info(new Exception(), System.nanoTime());
         HLogger.info(new Exception(), Long.MAX_VALUE);
         HLogger.info(new Exception(), Long.MIN_VALUE);
+        HLogger.info(new Exception(), 0);
+        HLogger.info((Exception) null, System.currentTimeMillis());
+        HLogger.info((Exception) null, System.nanoTime());
+        HLogger.info((Exception) null, Long.MAX_VALUE);
+        HLogger.info((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_info_Exception() {
         HLogger.info(new Exception());
+        HLogger.info((Exception) null);
     }
 
     @Test
@@ -1402,6 +1570,16 @@ public class LogTest {
         HLogger.debug(new Exception(), Long.MIN_VALUE, true);
         HLogger.debug(new Exception(), Long.MIN_VALUE, false);
         HLogger.debug(new Exception(), 0, true);
+        HLogger.debug(new Exception(), 0, false);
+        HLogger.debug((Exception) null, System.currentTimeMillis(), true);
+        HLogger.debug((Exception) null, System.currentTimeMillis(), false);
+        HLogger.debug((Exception) null, System.nanoTime(), true);
+        HLogger.debug((Exception) null, System.nanoTime(), false);
+        HLogger.debug((Exception) null, Long.MAX_VALUE, true);
+        HLogger.debug((Exception) null, Long.MAX_VALUE, false);
+        HLogger.debug((Exception) null, Long.MIN_VALUE, true);
+        HLogger.debug((Exception) null, Long.MIN_VALUE, false);
+        HLogger.debug((Exception) null, 0, true);
     }
 
     @Test
@@ -1526,11 +1704,17 @@ public class LogTest {
         HLogger.debug(new Exception(), System.nanoTime());
         HLogger.debug(new Exception(), Long.MAX_VALUE);
         HLogger.debug(new Exception(), Long.MIN_VALUE);
+        HLogger.debug(new Exception(), 0);
+        HLogger.debug((Exception) null, System.currentTimeMillis());
+        HLogger.debug((Exception) null, System.nanoTime());
+        HLogger.debug((Exception) null, Long.MAX_VALUE);
+        HLogger.debug((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_debug_Exception() {
         HLogger.debug(new Exception());
+        HLogger.debug((Exception) null);
     }
 
     @Test
@@ -1545,6 +1729,16 @@ public class LogTest {
         HLogger.reset(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.reset(0, new Exception(), 0, true);
         HLogger.reset(0, new Exception(), 0, false);
+        HLogger.reset(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.reset(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.reset(0, (Exception) null, System.nanoTime(), true);
+        HLogger.reset(0, (Exception) null, System.nanoTime(), false);
+        HLogger.reset(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.reset(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.reset(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.reset(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.reset(0, (Exception) null, 0, true);
+        HLogger.reset(0, (Exception) null, 0, false);
         HLogger.reset(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.reset(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.reset(1, new Exception(), System.nanoTime(), true);
@@ -1555,6 +1749,16 @@ public class LogTest {
         HLogger.reset(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.reset(1, new Exception(), 0, true);
         HLogger.reset(1, new Exception(), 0, false);
+        HLogger.reset(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.reset(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.reset(1, (Exception) null, System.nanoTime(), true);
+        HLogger.reset(1, (Exception) null, System.nanoTime(), false);
+        HLogger.reset(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.reset(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.reset(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.reset(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.reset(1, (Exception) null, 0, true);
+        HLogger.reset(1, (Exception) null, 0, false);
         HLogger.reset(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.reset(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.reset(2, new Exception(), System.nanoTime(), true);
@@ -1565,6 +1769,16 @@ public class LogTest {
         HLogger.reset(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.reset(2, new Exception(), 0, true);
         HLogger.reset(2, new Exception(), 0, false);
+        HLogger.reset(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.reset(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.reset(2, (Exception) null, System.nanoTime(), true);
+        HLogger.reset(2, (Exception) null, System.nanoTime(), false);
+        HLogger.reset(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.reset(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.reset(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.reset(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.reset(2, (Exception) null, 0, true);
+        HLogger.reset(2, (Exception) null, 0, false);
         HLogger.reset(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.reset(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.reset(3, new Exception(), System.nanoTime(), true);
@@ -1575,6 +1789,16 @@ public class LogTest {
         HLogger.reset(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.reset(3, new Exception(), 0, true);
         HLogger.reset(3, new Exception(), 0, false);
+        HLogger.reset(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.reset(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.reset(3, (Exception) null, System.nanoTime(), true);
+        HLogger.reset(3, (Exception) null, System.nanoTime(), false);
+        HLogger.reset(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.reset(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.reset(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.reset(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.reset(3, (Exception) null, 0, true);
+        HLogger.reset(3, (Exception) null, 0, false);
         HLogger.reset(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.reset(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.reset(4, new Exception(), System.nanoTime(), true);
@@ -1584,6 +1808,16 @@ public class LogTest {
         HLogger.reset(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.reset(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.reset(4, new Exception(), 0, true);
+        HLogger.reset(4, new Exception(), 0, false);
+        HLogger.reset(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.reset(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.reset(4, (Exception) null, System.nanoTime(), true);
+        HLogger.reset(4, (Exception) null, System.nanoTime(), false);
+        HLogger.reset(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.reset(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.reset(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.reset(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.reset(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -2055,25 +2289,50 @@ public class LogTest {
         HLogger.reset(0, new Exception(), Long.MAX_VALUE);
         HLogger.reset(0, new Exception(), Long.MIN_VALUE);
         HLogger.reset(0, new Exception(), 0);
+        HLogger.reset(0, (Exception) null, System.currentTimeMillis());
+        HLogger.reset(0, (Exception) null, System.nanoTime());
+        HLogger.reset(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.reset(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.reset(0, (Exception) null, 0);
         HLogger.reset(1, new Exception(), System.currentTimeMillis());
         HLogger.reset(1, new Exception(), System.nanoTime());
         HLogger.reset(1, new Exception(), Long.MAX_VALUE);
         HLogger.reset(1, new Exception(), Long.MIN_VALUE);
         HLogger.reset(1, new Exception(), 0);
+        HLogger.reset(1, (Exception) null, System.currentTimeMillis());
+        HLogger.reset(1, (Exception) null, System.nanoTime());
+        HLogger.reset(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.reset(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.reset(1, (Exception) null, 0);
         HLogger.reset(2, new Exception(), System.currentTimeMillis());
         HLogger.reset(2, new Exception(), System.nanoTime());
         HLogger.reset(2, new Exception(), Long.MAX_VALUE);
         HLogger.reset(2, new Exception(), Long.MIN_VALUE);
         HLogger.reset(2, new Exception(), 0);
+        HLogger.reset(2, (Exception) null, System.currentTimeMillis());
+        HLogger.reset(2, (Exception) null, System.nanoTime());
+        HLogger.reset(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.reset(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.reset(2, (Exception) null, 0);
         HLogger.reset(3, new Exception(), System.currentTimeMillis());
         HLogger.reset(3, new Exception(), System.nanoTime());
         HLogger.reset(3, new Exception(), Long.MAX_VALUE);
         HLogger.reset(3, new Exception(), Long.MIN_VALUE);
         HLogger.reset(3, new Exception(), 0);
+        HLogger.reset(3, (Exception) null, System.currentTimeMillis());
+        HLogger.reset(3, (Exception) null, System.nanoTime());
+        HLogger.reset(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.reset(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.reset(3, (Exception) null, 0);
         HLogger.reset(4, new Exception(), System.currentTimeMillis());
         HLogger.reset(4, new Exception(), System.nanoTime());
         HLogger.reset(4, new Exception(), Long.MAX_VALUE);
         HLogger.reset(4, new Exception(), Long.MIN_VALUE);
+        HLogger.reset(4, new Exception(), 0);
+        HLogger.reset(4, (Exception) null, System.currentTimeMillis());
+        HLogger.reset(4, (Exception) null, System.nanoTime());
+        HLogger.reset(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.reset(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -2115,9 +2374,14 @@ public class LogTest {
     @Test
     public final void test_reset_int_Exception() {
         HLogger.reset(0, new Exception());
+        HLogger.reset(0, (Exception) null);
         HLogger.reset(1, new Exception());
+        HLogger.reset(1, (Exception) null);
         HLogger.reset(2, new Exception());
+        HLogger.reset(2, (Exception) null);
         HLogger.reset(3, new Exception());
+        HLogger.reset(3, (Exception) null);
+        HLogger.reset(4, new Exception());
     }
 
     @Test
@@ -2176,11 +2440,17 @@ public class LogTest {
         HLogger.reset(new Exception(), System.nanoTime());
         HLogger.reset(new Exception(), Long.MAX_VALUE);
         HLogger.reset(new Exception(), Long.MIN_VALUE);
+        HLogger.reset(new Exception(), 0);
+        HLogger.reset((Exception) null, System.currentTimeMillis());
+        HLogger.reset((Exception) null, System.nanoTime());
+        HLogger.reset((Exception) null, Long.MAX_VALUE);
+        HLogger.reset((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_reset_Exception() {
         HLogger.reset(new Exception());
+        HLogger.reset((Exception) null);
     }
 
     @Test
@@ -2195,6 +2465,16 @@ public class LogTest {
         HLogger.bold(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bold(0, new Exception(), 0, true);
         HLogger.bold(0, new Exception(), 0, false);
+        HLogger.bold(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bold(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bold(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bold(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bold(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bold(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bold(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bold(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bold(0, (Exception) null, 0, true);
+        HLogger.bold(0, (Exception) null, 0, false);
         HLogger.bold(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bold(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bold(1, new Exception(), System.nanoTime(), true);
@@ -2205,6 +2485,16 @@ public class LogTest {
         HLogger.bold(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bold(1, new Exception(), 0, true);
         HLogger.bold(1, new Exception(), 0, false);
+        HLogger.bold(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bold(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bold(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bold(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bold(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bold(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bold(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bold(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bold(1, (Exception) null, 0, true);
+        HLogger.bold(1, (Exception) null, 0, false);
         HLogger.bold(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bold(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bold(2, new Exception(), System.nanoTime(), true);
@@ -2215,6 +2505,16 @@ public class LogTest {
         HLogger.bold(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bold(2, new Exception(), 0, true);
         HLogger.bold(2, new Exception(), 0, false);
+        HLogger.bold(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bold(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bold(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bold(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bold(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bold(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bold(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bold(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bold(2, (Exception) null, 0, true);
+        HLogger.bold(2, (Exception) null, 0, false);
         HLogger.bold(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bold(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bold(3, new Exception(), System.nanoTime(), true);
@@ -2225,6 +2525,16 @@ public class LogTest {
         HLogger.bold(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bold(3, new Exception(), 0, true);
         HLogger.bold(3, new Exception(), 0, false);
+        HLogger.bold(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bold(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bold(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bold(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bold(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bold(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bold(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bold(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bold(3, (Exception) null, 0, true);
+        HLogger.bold(3, (Exception) null, 0, false);
         HLogger.bold(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bold(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bold(4, new Exception(), System.nanoTime(), true);
@@ -2234,6 +2544,16 @@ public class LogTest {
         HLogger.bold(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bold(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bold(4, new Exception(), 0, true);
+        HLogger.bold(4, new Exception(), 0, false);
+        HLogger.bold(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bold(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bold(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bold(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bold(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bold(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bold(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bold(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bold(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -2705,25 +3025,50 @@ public class LogTest {
         HLogger.bold(0, new Exception(), Long.MAX_VALUE);
         HLogger.bold(0, new Exception(), Long.MIN_VALUE);
         HLogger.bold(0, new Exception(), 0);
+        HLogger.bold(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bold(0, (Exception) null, System.nanoTime());
+        HLogger.bold(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bold(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bold(0, (Exception) null, 0);
         HLogger.bold(1, new Exception(), System.currentTimeMillis());
         HLogger.bold(1, new Exception(), System.nanoTime());
         HLogger.bold(1, new Exception(), Long.MAX_VALUE);
         HLogger.bold(1, new Exception(), Long.MIN_VALUE);
         HLogger.bold(1, new Exception(), 0);
+        HLogger.bold(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bold(1, (Exception) null, System.nanoTime());
+        HLogger.bold(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bold(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bold(1, (Exception) null, 0);
         HLogger.bold(2, new Exception(), System.currentTimeMillis());
         HLogger.bold(2, new Exception(), System.nanoTime());
         HLogger.bold(2, new Exception(), Long.MAX_VALUE);
         HLogger.bold(2, new Exception(), Long.MIN_VALUE);
         HLogger.bold(2, new Exception(), 0);
+        HLogger.bold(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bold(2, (Exception) null, System.nanoTime());
+        HLogger.bold(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bold(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bold(2, (Exception) null, 0);
         HLogger.bold(3, new Exception(), System.currentTimeMillis());
         HLogger.bold(3, new Exception(), System.nanoTime());
         HLogger.bold(3, new Exception(), Long.MAX_VALUE);
         HLogger.bold(3, new Exception(), Long.MIN_VALUE);
         HLogger.bold(3, new Exception(), 0);
+        HLogger.bold(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bold(3, (Exception) null, System.nanoTime());
+        HLogger.bold(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bold(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bold(3, (Exception) null, 0);
         HLogger.bold(4, new Exception(), System.currentTimeMillis());
         HLogger.bold(4, new Exception(), System.nanoTime());
         HLogger.bold(4, new Exception(), Long.MAX_VALUE);
         HLogger.bold(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bold(4, new Exception(), 0);
+        HLogger.bold(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bold(4, (Exception) null, System.nanoTime());
+        HLogger.bold(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bold(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -2765,9 +3110,14 @@ public class LogTest {
     @Test
     public final void test_bold_int_Exception() {
         HLogger.bold(0, new Exception());
+        HLogger.bold(0, (Exception) null);
         HLogger.bold(1, new Exception());
+        HLogger.bold(1, (Exception) null);
         HLogger.bold(2, new Exception());
+        HLogger.bold(2, (Exception) null);
         HLogger.bold(3, new Exception());
+        HLogger.bold(3, (Exception) null);
+        HLogger.bold(4, new Exception());
     }
 
     @Test
@@ -2826,11 +3176,17 @@ public class LogTest {
         HLogger.bold(new Exception(), System.nanoTime());
         HLogger.bold(new Exception(), Long.MAX_VALUE);
         HLogger.bold(new Exception(), Long.MIN_VALUE);
+        HLogger.bold(new Exception(), 0);
+        HLogger.bold((Exception) null, System.currentTimeMillis());
+        HLogger.bold((Exception) null, System.nanoTime());
+        HLogger.bold((Exception) null, Long.MAX_VALUE);
+        HLogger.bold((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bold_Exception() {
         HLogger.bold(new Exception());
+        HLogger.bold((Exception) null);
     }
 
     @Test
@@ -2845,6 +3201,16 @@ public class LogTest {
         HLogger.dim(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.dim(0, new Exception(), 0, true);
         HLogger.dim(0, new Exception(), 0, false);
+        HLogger.dim(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.dim(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.dim(0, (Exception) null, System.nanoTime(), true);
+        HLogger.dim(0, (Exception) null, System.nanoTime(), false);
+        HLogger.dim(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.dim(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.dim(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.dim(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.dim(0, (Exception) null, 0, true);
+        HLogger.dim(0, (Exception) null, 0, false);
         HLogger.dim(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.dim(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.dim(1, new Exception(), System.nanoTime(), true);
@@ -2855,6 +3221,16 @@ public class LogTest {
         HLogger.dim(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.dim(1, new Exception(), 0, true);
         HLogger.dim(1, new Exception(), 0, false);
+        HLogger.dim(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.dim(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.dim(1, (Exception) null, System.nanoTime(), true);
+        HLogger.dim(1, (Exception) null, System.nanoTime(), false);
+        HLogger.dim(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.dim(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.dim(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.dim(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.dim(1, (Exception) null, 0, true);
+        HLogger.dim(1, (Exception) null, 0, false);
         HLogger.dim(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.dim(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.dim(2, new Exception(), System.nanoTime(), true);
@@ -2865,6 +3241,16 @@ public class LogTest {
         HLogger.dim(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.dim(2, new Exception(), 0, true);
         HLogger.dim(2, new Exception(), 0, false);
+        HLogger.dim(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.dim(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.dim(2, (Exception) null, System.nanoTime(), true);
+        HLogger.dim(2, (Exception) null, System.nanoTime(), false);
+        HLogger.dim(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.dim(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.dim(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.dim(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.dim(2, (Exception) null, 0, true);
+        HLogger.dim(2, (Exception) null, 0, false);
         HLogger.dim(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.dim(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.dim(3, new Exception(), System.nanoTime(), true);
@@ -2875,6 +3261,16 @@ public class LogTest {
         HLogger.dim(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.dim(3, new Exception(), 0, true);
         HLogger.dim(3, new Exception(), 0, false);
+        HLogger.dim(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.dim(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.dim(3, (Exception) null, System.nanoTime(), true);
+        HLogger.dim(3, (Exception) null, System.nanoTime(), false);
+        HLogger.dim(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.dim(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.dim(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.dim(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.dim(3, (Exception) null, 0, true);
+        HLogger.dim(3, (Exception) null, 0, false);
         HLogger.dim(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.dim(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.dim(4, new Exception(), System.nanoTime(), true);
@@ -2884,6 +3280,16 @@ public class LogTest {
         HLogger.dim(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.dim(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.dim(4, new Exception(), 0, true);
+        HLogger.dim(4, new Exception(), 0, false);
+        HLogger.dim(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.dim(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.dim(4, (Exception) null, System.nanoTime(), true);
+        HLogger.dim(4, (Exception) null, System.nanoTime(), false);
+        HLogger.dim(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.dim(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.dim(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.dim(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.dim(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -3355,25 +3761,50 @@ public class LogTest {
         HLogger.dim(0, new Exception(), Long.MAX_VALUE);
         HLogger.dim(0, new Exception(), Long.MIN_VALUE);
         HLogger.dim(0, new Exception(), 0);
+        HLogger.dim(0, (Exception) null, System.currentTimeMillis());
+        HLogger.dim(0, (Exception) null, System.nanoTime());
+        HLogger.dim(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.dim(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.dim(0, (Exception) null, 0);
         HLogger.dim(1, new Exception(), System.currentTimeMillis());
         HLogger.dim(1, new Exception(), System.nanoTime());
         HLogger.dim(1, new Exception(), Long.MAX_VALUE);
         HLogger.dim(1, new Exception(), Long.MIN_VALUE);
         HLogger.dim(1, new Exception(), 0);
+        HLogger.dim(1, (Exception) null, System.currentTimeMillis());
+        HLogger.dim(1, (Exception) null, System.nanoTime());
+        HLogger.dim(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.dim(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.dim(1, (Exception) null, 0);
         HLogger.dim(2, new Exception(), System.currentTimeMillis());
         HLogger.dim(2, new Exception(), System.nanoTime());
         HLogger.dim(2, new Exception(), Long.MAX_VALUE);
         HLogger.dim(2, new Exception(), Long.MIN_VALUE);
         HLogger.dim(2, new Exception(), 0);
+        HLogger.dim(2, (Exception) null, System.currentTimeMillis());
+        HLogger.dim(2, (Exception) null, System.nanoTime());
+        HLogger.dim(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.dim(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.dim(2, (Exception) null, 0);
         HLogger.dim(3, new Exception(), System.currentTimeMillis());
         HLogger.dim(3, new Exception(), System.nanoTime());
         HLogger.dim(3, new Exception(), Long.MAX_VALUE);
         HLogger.dim(3, new Exception(), Long.MIN_VALUE);
         HLogger.dim(3, new Exception(), 0);
+        HLogger.dim(3, (Exception) null, System.currentTimeMillis());
+        HLogger.dim(3, (Exception) null, System.nanoTime());
+        HLogger.dim(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.dim(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.dim(3, (Exception) null, 0);
         HLogger.dim(4, new Exception(), System.currentTimeMillis());
         HLogger.dim(4, new Exception(), System.nanoTime());
         HLogger.dim(4, new Exception(), Long.MAX_VALUE);
         HLogger.dim(4, new Exception(), Long.MIN_VALUE);
+        HLogger.dim(4, new Exception(), 0);
+        HLogger.dim(4, (Exception) null, System.currentTimeMillis());
+        HLogger.dim(4, (Exception) null, System.nanoTime());
+        HLogger.dim(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.dim(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -3415,9 +3846,14 @@ public class LogTest {
     @Test
     public final void test_dim_int_Exception() {
         HLogger.dim(0, new Exception());
+        HLogger.dim(0, (Exception) null);
         HLogger.dim(1, new Exception());
+        HLogger.dim(1, (Exception) null);
         HLogger.dim(2, new Exception());
+        HLogger.dim(2, (Exception) null);
         HLogger.dim(3, new Exception());
+        HLogger.dim(3, (Exception) null);
+        HLogger.dim(4, new Exception());
     }
 
     @Test
@@ -3476,11 +3912,17 @@ public class LogTest {
         HLogger.dim(new Exception(), System.nanoTime());
         HLogger.dim(new Exception(), Long.MAX_VALUE);
         HLogger.dim(new Exception(), Long.MIN_VALUE);
+        HLogger.dim(new Exception(), 0);
+        HLogger.dim((Exception) null, System.currentTimeMillis());
+        HLogger.dim((Exception) null, System.nanoTime());
+        HLogger.dim((Exception) null, Long.MAX_VALUE);
+        HLogger.dim((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_dim_Exception() {
         HLogger.dim(new Exception());
+        HLogger.dim((Exception) null);
     }
 
     @Test
@@ -3495,6 +3937,16 @@ public class LogTest {
         HLogger.italic(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.italic(0, new Exception(), 0, true);
         HLogger.italic(0, new Exception(), 0, false);
+        HLogger.italic(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.italic(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.italic(0, (Exception) null, System.nanoTime(), true);
+        HLogger.italic(0, (Exception) null, System.nanoTime(), false);
+        HLogger.italic(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.italic(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.italic(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.italic(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.italic(0, (Exception) null, 0, true);
+        HLogger.italic(0, (Exception) null, 0, false);
         HLogger.italic(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.italic(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.italic(1, new Exception(), System.nanoTime(), true);
@@ -3505,6 +3957,16 @@ public class LogTest {
         HLogger.italic(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.italic(1, new Exception(), 0, true);
         HLogger.italic(1, new Exception(), 0, false);
+        HLogger.italic(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.italic(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.italic(1, (Exception) null, System.nanoTime(), true);
+        HLogger.italic(1, (Exception) null, System.nanoTime(), false);
+        HLogger.italic(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.italic(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.italic(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.italic(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.italic(1, (Exception) null, 0, true);
+        HLogger.italic(1, (Exception) null, 0, false);
         HLogger.italic(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.italic(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.italic(2, new Exception(), System.nanoTime(), true);
@@ -3515,6 +3977,16 @@ public class LogTest {
         HLogger.italic(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.italic(2, new Exception(), 0, true);
         HLogger.italic(2, new Exception(), 0, false);
+        HLogger.italic(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.italic(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.italic(2, (Exception) null, System.nanoTime(), true);
+        HLogger.italic(2, (Exception) null, System.nanoTime(), false);
+        HLogger.italic(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.italic(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.italic(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.italic(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.italic(2, (Exception) null, 0, true);
+        HLogger.italic(2, (Exception) null, 0, false);
         HLogger.italic(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.italic(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.italic(3, new Exception(), System.nanoTime(), true);
@@ -3525,6 +3997,16 @@ public class LogTest {
         HLogger.italic(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.italic(3, new Exception(), 0, true);
         HLogger.italic(3, new Exception(), 0, false);
+        HLogger.italic(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.italic(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.italic(3, (Exception) null, System.nanoTime(), true);
+        HLogger.italic(3, (Exception) null, System.nanoTime(), false);
+        HLogger.italic(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.italic(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.italic(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.italic(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.italic(3, (Exception) null, 0, true);
+        HLogger.italic(3, (Exception) null, 0, false);
         HLogger.italic(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.italic(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.italic(4, new Exception(), System.nanoTime(), true);
@@ -3534,6 +4016,16 @@ public class LogTest {
         HLogger.italic(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.italic(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.italic(4, new Exception(), 0, true);
+        HLogger.italic(4, new Exception(), 0, false);
+        HLogger.italic(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.italic(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.italic(4, (Exception) null, System.nanoTime(), true);
+        HLogger.italic(4, (Exception) null, System.nanoTime(), false);
+        HLogger.italic(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.italic(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.italic(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.italic(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.italic(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -4005,25 +4497,50 @@ public class LogTest {
         HLogger.italic(0, new Exception(), Long.MAX_VALUE);
         HLogger.italic(0, new Exception(), Long.MIN_VALUE);
         HLogger.italic(0, new Exception(), 0);
+        HLogger.italic(0, (Exception) null, System.currentTimeMillis());
+        HLogger.italic(0, (Exception) null, System.nanoTime());
+        HLogger.italic(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.italic(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.italic(0, (Exception) null, 0);
         HLogger.italic(1, new Exception(), System.currentTimeMillis());
         HLogger.italic(1, new Exception(), System.nanoTime());
         HLogger.italic(1, new Exception(), Long.MAX_VALUE);
         HLogger.italic(1, new Exception(), Long.MIN_VALUE);
         HLogger.italic(1, new Exception(), 0);
+        HLogger.italic(1, (Exception) null, System.currentTimeMillis());
+        HLogger.italic(1, (Exception) null, System.nanoTime());
+        HLogger.italic(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.italic(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.italic(1, (Exception) null, 0);
         HLogger.italic(2, new Exception(), System.currentTimeMillis());
         HLogger.italic(2, new Exception(), System.nanoTime());
         HLogger.italic(2, new Exception(), Long.MAX_VALUE);
         HLogger.italic(2, new Exception(), Long.MIN_VALUE);
         HLogger.italic(2, new Exception(), 0);
+        HLogger.italic(2, (Exception) null, System.currentTimeMillis());
+        HLogger.italic(2, (Exception) null, System.nanoTime());
+        HLogger.italic(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.italic(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.italic(2, (Exception) null, 0);
         HLogger.italic(3, new Exception(), System.currentTimeMillis());
         HLogger.italic(3, new Exception(), System.nanoTime());
         HLogger.italic(3, new Exception(), Long.MAX_VALUE);
         HLogger.italic(3, new Exception(), Long.MIN_VALUE);
         HLogger.italic(3, new Exception(), 0);
+        HLogger.italic(3, (Exception) null, System.currentTimeMillis());
+        HLogger.italic(3, (Exception) null, System.nanoTime());
+        HLogger.italic(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.italic(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.italic(3, (Exception) null, 0);
         HLogger.italic(4, new Exception(), System.currentTimeMillis());
         HLogger.italic(4, new Exception(), System.nanoTime());
         HLogger.italic(4, new Exception(), Long.MAX_VALUE);
         HLogger.italic(4, new Exception(), Long.MIN_VALUE);
+        HLogger.italic(4, new Exception(), 0);
+        HLogger.italic(4, (Exception) null, System.currentTimeMillis());
+        HLogger.italic(4, (Exception) null, System.nanoTime());
+        HLogger.italic(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.italic(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -4065,9 +4582,14 @@ public class LogTest {
     @Test
     public final void test_italic_int_Exception() {
         HLogger.italic(0, new Exception());
+        HLogger.italic(0, (Exception) null);
         HLogger.italic(1, new Exception());
+        HLogger.italic(1, (Exception) null);
         HLogger.italic(2, new Exception());
+        HLogger.italic(2, (Exception) null);
         HLogger.italic(3, new Exception());
+        HLogger.italic(3, (Exception) null);
+        HLogger.italic(4, new Exception());
     }
 
     @Test
@@ -4126,11 +4648,17 @@ public class LogTest {
         HLogger.italic(new Exception(), System.nanoTime());
         HLogger.italic(new Exception(), Long.MAX_VALUE);
         HLogger.italic(new Exception(), Long.MIN_VALUE);
+        HLogger.italic(new Exception(), 0);
+        HLogger.italic((Exception) null, System.currentTimeMillis());
+        HLogger.italic((Exception) null, System.nanoTime());
+        HLogger.italic((Exception) null, Long.MAX_VALUE);
+        HLogger.italic((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_italic_Exception() {
         HLogger.italic(new Exception());
+        HLogger.italic((Exception) null);
     }
 
     @Test
@@ -4145,6 +4673,16 @@ public class LogTest {
         HLogger.underline(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.underline(0, new Exception(), 0, true);
         HLogger.underline(0, new Exception(), 0, false);
+        HLogger.underline(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.underline(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.underline(0, (Exception) null, System.nanoTime(), true);
+        HLogger.underline(0, (Exception) null, System.nanoTime(), false);
+        HLogger.underline(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.underline(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.underline(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.underline(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.underline(0, (Exception) null, 0, true);
+        HLogger.underline(0, (Exception) null, 0, false);
         HLogger.underline(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.underline(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.underline(1, new Exception(), System.nanoTime(), true);
@@ -4155,6 +4693,16 @@ public class LogTest {
         HLogger.underline(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.underline(1, new Exception(), 0, true);
         HLogger.underline(1, new Exception(), 0, false);
+        HLogger.underline(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.underline(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.underline(1, (Exception) null, System.nanoTime(), true);
+        HLogger.underline(1, (Exception) null, System.nanoTime(), false);
+        HLogger.underline(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.underline(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.underline(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.underline(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.underline(1, (Exception) null, 0, true);
+        HLogger.underline(1, (Exception) null, 0, false);
         HLogger.underline(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.underline(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.underline(2, new Exception(), System.nanoTime(), true);
@@ -4165,6 +4713,16 @@ public class LogTest {
         HLogger.underline(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.underline(2, new Exception(), 0, true);
         HLogger.underline(2, new Exception(), 0, false);
+        HLogger.underline(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.underline(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.underline(2, (Exception) null, System.nanoTime(), true);
+        HLogger.underline(2, (Exception) null, System.nanoTime(), false);
+        HLogger.underline(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.underline(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.underline(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.underline(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.underline(2, (Exception) null, 0, true);
+        HLogger.underline(2, (Exception) null, 0, false);
         HLogger.underline(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.underline(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.underline(3, new Exception(), System.nanoTime(), true);
@@ -4175,6 +4733,16 @@ public class LogTest {
         HLogger.underline(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.underline(3, new Exception(), 0, true);
         HLogger.underline(3, new Exception(), 0, false);
+        HLogger.underline(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.underline(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.underline(3, (Exception) null, System.nanoTime(), true);
+        HLogger.underline(3, (Exception) null, System.nanoTime(), false);
+        HLogger.underline(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.underline(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.underline(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.underline(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.underline(3, (Exception) null, 0, true);
+        HLogger.underline(3, (Exception) null, 0, false);
         HLogger.underline(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.underline(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.underline(4, new Exception(), System.nanoTime(), true);
@@ -4184,6 +4752,16 @@ public class LogTest {
         HLogger.underline(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.underline(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.underline(4, new Exception(), 0, true);
+        HLogger.underline(4, new Exception(), 0, false);
+        HLogger.underline(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.underline(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.underline(4, (Exception) null, System.nanoTime(), true);
+        HLogger.underline(4, (Exception) null, System.nanoTime(), false);
+        HLogger.underline(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.underline(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.underline(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.underline(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.underline(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -4655,25 +5233,50 @@ public class LogTest {
         HLogger.underline(0, new Exception(), Long.MAX_VALUE);
         HLogger.underline(0, new Exception(), Long.MIN_VALUE);
         HLogger.underline(0, new Exception(), 0);
+        HLogger.underline(0, (Exception) null, System.currentTimeMillis());
+        HLogger.underline(0, (Exception) null, System.nanoTime());
+        HLogger.underline(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.underline(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.underline(0, (Exception) null, 0);
         HLogger.underline(1, new Exception(), System.currentTimeMillis());
         HLogger.underline(1, new Exception(), System.nanoTime());
         HLogger.underline(1, new Exception(), Long.MAX_VALUE);
         HLogger.underline(1, new Exception(), Long.MIN_VALUE);
         HLogger.underline(1, new Exception(), 0);
+        HLogger.underline(1, (Exception) null, System.currentTimeMillis());
+        HLogger.underline(1, (Exception) null, System.nanoTime());
+        HLogger.underline(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.underline(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.underline(1, (Exception) null, 0);
         HLogger.underline(2, new Exception(), System.currentTimeMillis());
         HLogger.underline(2, new Exception(), System.nanoTime());
         HLogger.underline(2, new Exception(), Long.MAX_VALUE);
         HLogger.underline(2, new Exception(), Long.MIN_VALUE);
         HLogger.underline(2, new Exception(), 0);
+        HLogger.underline(2, (Exception) null, System.currentTimeMillis());
+        HLogger.underline(2, (Exception) null, System.nanoTime());
+        HLogger.underline(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.underline(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.underline(2, (Exception) null, 0);
         HLogger.underline(3, new Exception(), System.currentTimeMillis());
         HLogger.underline(3, new Exception(), System.nanoTime());
         HLogger.underline(3, new Exception(), Long.MAX_VALUE);
         HLogger.underline(3, new Exception(), Long.MIN_VALUE);
         HLogger.underline(3, new Exception(), 0);
+        HLogger.underline(3, (Exception) null, System.currentTimeMillis());
+        HLogger.underline(3, (Exception) null, System.nanoTime());
+        HLogger.underline(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.underline(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.underline(3, (Exception) null, 0);
         HLogger.underline(4, new Exception(), System.currentTimeMillis());
         HLogger.underline(4, new Exception(), System.nanoTime());
         HLogger.underline(4, new Exception(), Long.MAX_VALUE);
         HLogger.underline(4, new Exception(), Long.MIN_VALUE);
+        HLogger.underline(4, new Exception(), 0);
+        HLogger.underline(4, (Exception) null, System.currentTimeMillis());
+        HLogger.underline(4, (Exception) null, System.nanoTime());
+        HLogger.underline(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.underline(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -4715,9 +5318,14 @@ public class LogTest {
     @Test
     public final void test_underline_int_Exception() {
         HLogger.underline(0, new Exception());
+        HLogger.underline(0, (Exception) null);
         HLogger.underline(1, new Exception());
+        HLogger.underline(1, (Exception) null);
         HLogger.underline(2, new Exception());
+        HLogger.underline(2, (Exception) null);
         HLogger.underline(3, new Exception());
+        HLogger.underline(3, (Exception) null);
+        HLogger.underline(4, new Exception());
     }
 
     @Test
@@ -4776,11 +5384,17 @@ public class LogTest {
         HLogger.underline(new Exception(), System.nanoTime());
         HLogger.underline(new Exception(), Long.MAX_VALUE);
         HLogger.underline(new Exception(), Long.MIN_VALUE);
+        HLogger.underline(new Exception(), 0);
+        HLogger.underline((Exception) null, System.currentTimeMillis());
+        HLogger.underline((Exception) null, System.nanoTime());
+        HLogger.underline((Exception) null, Long.MAX_VALUE);
+        HLogger.underline((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_underline_Exception() {
         HLogger.underline(new Exception());
+        HLogger.underline((Exception) null);
     }
 
     @Test
@@ -4795,6 +5409,16 @@ public class LogTest {
         HLogger.inverse(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.inverse(0, new Exception(), 0, true);
         HLogger.inverse(0, new Exception(), 0, false);
+        HLogger.inverse(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.inverse(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.inverse(0, (Exception) null, System.nanoTime(), true);
+        HLogger.inverse(0, (Exception) null, System.nanoTime(), false);
+        HLogger.inverse(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.inverse(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.inverse(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.inverse(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.inverse(0, (Exception) null, 0, true);
+        HLogger.inverse(0, (Exception) null, 0, false);
         HLogger.inverse(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.inverse(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.inverse(1, new Exception(), System.nanoTime(), true);
@@ -4805,6 +5429,16 @@ public class LogTest {
         HLogger.inverse(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.inverse(1, new Exception(), 0, true);
         HLogger.inverse(1, new Exception(), 0, false);
+        HLogger.inverse(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.inverse(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.inverse(1, (Exception) null, System.nanoTime(), true);
+        HLogger.inverse(1, (Exception) null, System.nanoTime(), false);
+        HLogger.inverse(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.inverse(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.inverse(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.inverse(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.inverse(1, (Exception) null, 0, true);
+        HLogger.inverse(1, (Exception) null, 0, false);
         HLogger.inverse(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.inverse(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.inverse(2, new Exception(), System.nanoTime(), true);
@@ -4815,6 +5449,16 @@ public class LogTest {
         HLogger.inverse(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.inverse(2, new Exception(), 0, true);
         HLogger.inverse(2, new Exception(), 0, false);
+        HLogger.inverse(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.inverse(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.inverse(2, (Exception) null, System.nanoTime(), true);
+        HLogger.inverse(2, (Exception) null, System.nanoTime(), false);
+        HLogger.inverse(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.inverse(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.inverse(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.inverse(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.inverse(2, (Exception) null, 0, true);
+        HLogger.inverse(2, (Exception) null, 0, false);
         HLogger.inverse(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.inverse(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.inverse(3, new Exception(), System.nanoTime(), true);
@@ -4825,6 +5469,16 @@ public class LogTest {
         HLogger.inverse(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.inverse(3, new Exception(), 0, true);
         HLogger.inverse(3, new Exception(), 0, false);
+        HLogger.inverse(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.inverse(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.inverse(3, (Exception) null, System.nanoTime(), true);
+        HLogger.inverse(3, (Exception) null, System.nanoTime(), false);
+        HLogger.inverse(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.inverse(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.inverse(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.inverse(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.inverse(3, (Exception) null, 0, true);
+        HLogger.inverse(3, (Exception) null, 0, false);
         HLogger.inverse(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.inverse(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.inverse(4, new Exception(), System.nanoTime(), true);
@@ -4834,6 +5488,16 @@ public class LogTest {
         HLogger.inverse(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.inverse(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.inverse(4, new Exception(), 0, true);
+        HLogger.inverse(4, new Exception(), 0, false);
+        HLogger.inverse(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.inverse(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.inverse(4, (Exception) null, System.nanoTime(), true);
+        HLogger.inverse(4, (Exception) null, System.nanoTime(), false);
+        HLogger.inverse(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.inverse(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.inverse(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.inverse(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.inverse(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -5305,25 +5969,50 @@ public class LogTest {
         HLogger.inverse(0, new Exception(), Long.MAX_VALUE);
         HLogger.inverse(0, new Exception(), Long.MIN_VALUE);
         HLogger.inverse(0, new Exception(), 0);
+        HLogger.inverse(0, (Exception) null, System.currentTimeMillis());
+        HLogger.inverse(0, (Exception) null, System.nanoTime());
+        HLogger.inverse(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.inverse(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.inverse(0, (Exception) null, 0);
         HLogger.inverse(1, new Exception(), System.currentTimeMillis());
         HLogger.inverse(1, new Exception(), System.nanoTime());
         HLogger.inverse(1, new Exception(), Long.MAX_VALUE);
         HLogger.inverse(1, new Exception(), Long.MIN_VALUE);
         HLogger.inverse(1, new Exception(), 0);
+        HLogger.inverse(1, (Exception) null, System.currentTimeMillis());
+        HLogger.inverse(1, (Exception) null, System.nanoTime());
+        HLogger.inverse(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.inverse(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.inverse(1, (Exception) null, 0);
         HLogger.inverse(2, new Exception(), System.currentTimeMillis());
         HLogger.inverse(2, new Exception(), System.nanoTime());
         HLogger.inverse(2, new Exception(), Long.MAX_VALUE);
         HLogger.inverse(2, new Exception(), Long.MIN_VALUE);
         HLogger.inverse(2, new Exception(), 0);
+        HLogger.inverse(2, (Exception) null, System.currentTimeMillis());
+        HLogger.inverse(2, (Exception) null, System.nanoTime());
+        HLogger.inverse(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.inverse(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.inverse(2, (Exception) null, 0);
         HLogger.inverse(3, new Exception(), System.currentTimeMillis());
         HLogger.inverse(3, new Exception(), System.nanoTime());
         HLogger.inverse(3, new Exception(), Long.MAX_VALUE);
         HLogger.inverse(3, new Exception(), Long.MIN_VALUE);
         HLogger.inverse(3, new Exception(), 0);
+        HLogger.inverse(3, (Exception) null, System.currentTimeMillis());
+        HLogger.inverse(3, (Exception) null, System.nanoTime());
+        HLogger.inverse(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.inverse(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.inverse(3, (Exception) null, 0);
         HLogger.inverse(4, new Exception(), System.currentTimeMillis());
         HLogger.inverse(4, new Exception(), System.nanoTime());
         HLogger.inverse(4, new Exception(), Long.MAX_VALUE);
         HLogger.inverse(4, new Exception(), Long.MIN_VALUE);
+        HLogger.inverse(4, new Exception(), 0);
+        HLogger.inverse(4, (Exception) null, System.currentTimeMillis());
+        HLogger.inverse(4, (Exception) null, System.nanoTime());
+        HLogger.inverse(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.inverse(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -5365,9 +6054,14 @@ public class LogTest {
     @Test
     public final void test_inverse_int_Exception() {
         HLogger.inverse(0, new Exception());
+        HLogger.inverse(0, (Exception) null);
         HLogger.inverse(1, new Exception());
+        HLogger.inverse(1, (Exception) null);
         HLogger.inverse(2, new Exception());
+        HLogger.inverse(2, (Exception) null);
         HLogger.inverse(3, new Exception());
+        HLogger.inverse(3, (Exception) null);
+        HLogger.inverse(4, new Exception());
     }
 
     @Test
@@ -5426,11 +6120,17 @@ public class LogTest {
         HLogger.inverse(new Exception(), System.nanoTime());
         HLogger.inverse(new Exception(), Long.MAX_VALUE);
         HLogger.inverse(new Exception(), Long.MIN_VALUE);
+        HLogger.inverse(new Exception(), 0);
+        HLogger.inverse((Exception) null, System.currentTimeMillis());
+        HLogger.inverse((Exception) null, System.nanoTime());
+        HLogger.inverse((Exception) null, Long.MAX_VALUE);
+        HLogger.inverse((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_inverse_Exception() {
         HLogger.inverse(new Exception());
+        HLogger.inverse((Exception) null);
     }
 
     @Test
@@ -5445,6 +6145,16 @@ public class LogTest {
         HLogger.hidden(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.hidden(0, new Exception(), 0, true);
         HLogger.hidden(0, new Exception(), 0, false);
+        HLogger.hidden(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.hidden(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.hidden(0, (Exception) null, System.nanoTime(), true);
+        HLogger.hidden(0, (Exception) null, System.nanoTime(), false);
+        HLogger.hidden(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.hidden(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.hidden(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.hidden(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.hidden(0, (Exception) null, 0, true);
+        HLogger.hidden(0, (Exception) null, 0, false);
         HLogger.hidden(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.hidden(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.hidden(1, new Exception(), System.nanoTime(), true);
@@ -5455,6 +6165,16 @@ public class LogTest {
         HLogger.hidden(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.hidden(1, new Exception(), 0, true);
         HLogger.hidden(1, new Exception(), 0, false);
+        HLogger.hidden(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.hidden(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.hidden(1, (Exception) null, System.nanoTime(), true);
+        HLogger.hidden(1, (Exception) null, System.nanoTime(), false);
+        HLogger.hidden(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.hidden(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.hidden(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.hidden(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.hidden(1, (Exception) null, 0, true);
+        HLogger.hidden(1, (Exception) null, 0, false);
         HLogger.hidden(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.hidden(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.hidden(2, new Exception(), System.nanoTime(), true);
@@ -5465,6 +6185,16 @@ public class LogTest {
         HLogger.hidden(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.hidden(2, new Exception(), 0, true);
         HLogger.hidden(2, new Exception(), 0, false);
+        HLogger.hidden(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.hidden(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.hidden(2, (Exception) null, System.nanoTime(), true);
+        HLogger.hidden(2, (Exception) null, System.nanoTime(), false);
+        HLogger.hidden(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.hidden(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.hidden(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.hidden(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.hidden(2, (Exception) null, 0, true);
+        HLogger.hidden(2, (Exception) null, 0, false);
         HLogger.hidden(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.hidden(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.hidden(3, new Exception(), System.nanoTime(), true);
@@ -5475,6 +6205,16 @@ public class LogTest {
         HLogger.hidden(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.hidden(3, new Exception(), 0, true);
         HLogger.hidden(3, new Exception(), 0, false);
+        HLogger.hidden(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.hidden(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.hidden(3, (Exception) null, System.nanoTime(), true);
+        HLogger.hidden(3, (Exception) null, System.nanoTime(), false);
+        HLogger.hidden(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.hidden(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.hidden(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.hidden(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.hidden(3, (Exception) null, 0, true);
+        HLogger.hidden(3, (Exception) null, 0, false);
         HLogger.hidden(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.hidden(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.hidden(4, new Exception(), System.nanoTime(), true);
@@ -5484,6 +6224,16 @@ public class LogTest {
         HLogger.hidden(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.hidden(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.hidden(4, new Exception(), 0, true);
+        HLogger.hidden(4, new Exception(), 0, false);
+        HLogger.hidden(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.hidden(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.hidden(4, (Exception) null, System.nanoTime(), true);
+        HLogger.hidden(4, (Exception) null, System.nanoTime(), false);
+        HLogger.hidden(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.hidden(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.hidden(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.hidden(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.hidden(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -5955,25 +6705,50 @@ public class LogTest {
         HLogger.hidden(0, new Exception(), Long.MAX_VALUE);
         HLogger.hidden(0, new Exception(), Long.MIN_VALUE);
         HLogger.hidden(0, new Exception(), 0);
+        HLogger.hidden(0, (Exception) null, System.currentTimeMillis());
+        HLogger.hidden(0, (Exception) null, System.nanoTime());
+        HLogger.hidden(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.hidden(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.hidden(0, (Exception) null, 0);
         HLogger.hidden(1, new Exception(), System.currentTimeMillis());
         HLogger.hidden(1, new Exception(), System.nanoTime());
         HLogger.hidden(1, new Exception(), Long.MAX_VALUE);
         HLogger.hidden(1, new Exception(), Long.MIN_VALUE);
         HLogger.hidden(1, new Exception(), 0);
+        HLogger.hidden(1, (Exception) null, System.currentTimeMillis());
+        HLogger.hidden(1, (Exception) null, System.nanoTime());
+        HLogger.hidden(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.hidden(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.hidden(1, (Exception) null, 0);
         HLogger.hidden(2, new Exception(), System.currentTimeMillis());
         HLogger.hidden(2, new Exception(), System.nanoTime());
         HLogger.hidden(2, new Exception(), Long.MAX_VALUE);
         HLogger.hidden(2, new Exception(), Long.MIN_VALUE);
         HLogger.hidden(2, new Exception(), 0);
+        HLogger.hidden(2, (Exception) null, System.currentTimeMillis());
+        HLogger.hidden(2, (Exception) null, System.nanoTime());
+        HLogger.hidden(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.hidden(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.hidden(2, (Exception) null, 0);
         HLogger.hidden(3, new Exception(), System.currentTimeMillis());
         HLogger.hidden(3, new Exception(), System.nanoTime());
         HLogger.hidden(3, new Exception(), Long.MAX_VALUE);
         HLogger.hidden(3, new Exception(), Long.MIN_VALUE);
         HLogger.hidden(3, new Exception(), 0);
+        HLogger.hidden(3, (Exception) null, System.currentTimeMillis());
+        HLogger.hidden(3, (Exception) null, System.nanoTime());
+        HLogger.hidden(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.hidden(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.hidden(3, (Exception) null, 0);
         HLogger.hidden(4, new Exception(), System.currentTimeMillis());
         HLogger.hidden(4, new Exception(), System.nanoTime());
         HLogger.hidden(4, new Exception(), Long.MAX_VALUE);
         HLogger.hidden(4, new Exception(), Long.MIN_VALUE);
+        HLogger.hidden(4, new Exception(), 0);
+        HLogger.hidden(4, (Exception) null, System.currentTimeMillis());
+        HLogger.hidden(4, (Exception) null, System.nanoTime());
+        HLogger.hidden(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.hidden(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -6015,9 +6790,14 @@ public class LogTest {
     @Test
     public final void test_hidden_int_Exception() {
         HLogger.hidden(0, new Exception());
+        HLogger.hidden(0, (Exception) null);
         HLogger.hidden(1, new Exception());
+        HLogger.hidden(1, (Exception) null);
         HLogger.hidden(2, new Exception());
+        HLogger.hidden(2, (Exception) null);
         HLogger.hidden(3, new Exception());
+        HLogger.hidden(3, (Exception) null);
+        HLogger.hidden(4, new Exception());
     }
 
     @Test
@@ -6076,11 +6856,17 @@ public class LogTest {
         HLogger.hidden(new Exception(), System.nanoTime());
         HLogger.hidden(new Exception(), Long.MAX_VALUE);
         HLogger.hidden(new Exception(), Long.MIN_VALUE);
+        HLogger.hidden(new Exception(), 0);
+        HLogger.hidden((Exception) null, System.currentTimeMillis());
+        HLogger.hidden((Exception) null, System.nanoTime());
+        HLogger.hidden((Exception) null, Long.MAX_VALUE);
+        HLogger.hidden((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_hidden_Exception() {
         HLogger.hidden(new Exception());
+        HLogger.hidden((Exception) null);
     }
 
     @Test
@@ -6095,6 +6881,16 @@ public class LogTest {
         HLogger.strikethrough(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.strikethrough(0, new Exception(), 0, true);
         HLogger.strikethrough(0, new Exception(), 0, false);
+        HLogger.strikethrough(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.strikethrough(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.strikethrough(0, (Exception) null, System.nanoTime(), true);
+        HLogger.strikethrough(0, (Exception) null, System.nanoTime(), false);
+        HLogger.strikethrough(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.strikethrough(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.strikethrough(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.strikethrough(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.strikethrough(0, (Exception) null, 0, true);
+        HLogger.strikethrough(0, (Exception) null, 0, false);
         HLogger.strikethrough(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.strikethrough(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.strikethrough(1, new Exception(), System.nanoTime(), true);
@@ -6105,6 +6901,16 @@ public class LogTest {
         HLogger.strikethrough(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.strikethrough(1, new Exception(), 0, true);
         HLogger.strikethrough(1, new Exception(), 0, false);
+        HLogger.strikethrough(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.strikethrough(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.strikethrough(1, (Exception) null, System.nanoTime(), true);
+        HLogger.strikethrough(1, (Exception) null, System.nanoTime(), false);
+        HLogger.strikethrough(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.strikethrough(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.strikethrough(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.strikethrough(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.strikethrough(1, (Exception) null, 0, true);
+        HLogger.strikethrough(1, (Exception) null, 0, false);
         HLogger.strikethrough(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.strikethrough(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.strikethrough(2, new Exception(), System.nanoTime(), true);
@@ -6115,6 +6921,16 @@ public class LogTest {
         HLogger.strikethrough(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.strikethrough(2, new Exception(), 0, true);
         HLogger.strikethrough(2, new Exception(), 0, false);
+        HLogger.strikethrough(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.strikethrough(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.strikethrough(2, (Exception) null, System.nanoTime(), true);
+        HLogger.strikethrough(2, (Exception) null, System.nanoTime(), false);
+        HLogger.strikethrough(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.strikethrough(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.strikethrough(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.strikethrough(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.strikethrough(2, (Exception) null, 0, true);
+        HLogger.strikethrough(2, (Exception) null, 0, false);
         HLogger.strikethrough(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.strikethrough(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.strikethrough(3, new Exception(), System.nanoTime(), true);
@@ -6125,6 +6941,16 @@ public class LogTest {
         HLogger.strikethrough(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.strikethrough(3, new Exception(), 0, true);
         HLogger.strikethrough(3, new Exception(), 0, false);
+        HLogger.strikethrough(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.strikethrough(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.strikethrough(3, (Exception) null, System.nanoTime(), true);
+        HLogger.strikethrough(3, (Exception) null, System.nanoTime(), false);
+        HLogger.strikethrough(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.strikethrough(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.strikethrough(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.strikethrough(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.strikethrough(3, (Exception) null, 0, true);
+        HLogger.strikethrough(3, (Exception) null, 0, false);
         HLogger.strikethrough(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.strikethrough(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.strikethrough(4, new Exception(), System.nanoTime(), true);
@@ -6134,6 +6960,16 @@ public class LogTest {
         HLogger.strikethrough(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.strikethrough(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.strikethrough(4, new Exception(), 0, true);
+        HLogger.strikethrough(4, new Exception(), 0, false);
+        HLogger.strikethrough(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.strikethrough(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.strikethrough(4, (Exception) null, System.nanoTime(), true);
+        HLogger.strikethrough(4, (Exception) null, System.nanoTime(), false);
+        HLogger.strikethrough(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.strikethrough(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.strikethrough(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.strikethrough(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.strikethrough(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -6605,25 +7441,50 @@ public class LogTest {
         HLogger.strikethrough(0, new Exception(), Long.MAX_VALUE);
         HLogger.strikethrough(0, new Exception(), Long.MIN_VALUE);
         HLogger.strikethrough(0, new Exception(), 0);
+        HLogger.strikethrough(0, (Exception) null, System.currentTimeMillis());
+        HLogger.strikethrough(0, (Exception) null, System.nanoTime());
+        HLogger.strikethrough(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.strikethrough(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.strikethrough(0, (Exception) null, 0);
         HLogger.strikethrough(1, new Exception(), System.currentTimeMillis());
         HLogger.strikethrough(1, new Exception(), System.nanoTime());
         HLogger.strikethrough(1, new Exception(), Long.MAX_VALUE);
         HLogger.strikethrough(1, new Exception(), Long.MIN_VALUE);
         HLogger.strikethrough(1, new Exception(), 0);
+        HLogger.strikethrough(1, (Exception) null, System.currentTimeMillis());
+        HLogger.strikethrough(1, (Exception) null, System.nanoTime());
+        HLogger.strikethrough(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.strikethrough(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.strikethrough(1, (Exception) null, 0);
         HLogger.strikethrough(2, new Exception(), System.currentTimeMillis());
         HLogger.strikethrough(2, new Exception(), System.nanoTime());
         HLogger.strikethrough(2, new Exception(), Long.MAX_VALUE);
         HLogger.strikethrough(2, new Exception(), Long.MIN_VALUE);
         HLogger.strikethrough(2, new Exception(), 0);
+        HLogger.strikethrough(2, (Exception) null, System.currentTimeMillis());
+        HLogger.strikethrough(2, (Exception) null, System.nanoTime());
+        HLogger.strikethrough(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.strikethrough(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.strikethrough(2, (Exception) null, 0);
         HLogger.strikethrough(3, new Exception(), System.currentTimeMillis());
         HLogger.strikethrough(3, new Exception(), System.nanoTime());
         HLogger.strikethrough(3, new Exception(), Long.MAX_VALUE);
         HLogger.strikethrough(3, new Exception(), Long.MIN_VALUE);
         HLogger.strikethrough(3, new Exception(), 0);
+        HLogger.strikethrough(3, (Exception) null, System.currentTimeMillis());
+        HLogger.strikethrough(3, (Exception) null, System.nanoTime());
+        HLogger.strikethrough(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.strikethrough(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.strikethrough(3, (Exception) null, 0);
         HLogger.strikethrough(4, new Exception(), System.currentTimeMillis());
         HLogger.strikethrough(4, new Exception(), System.nanoTime());
         HLogger.strikethrough(4, new Exception(), Long.MAX_VALUE);
         HLogger.strikethrough(4, new Exception(), Long.MIN_VALUE);
+        HLogger.strikethrough(4, new Exception(), 0);
+        HLogger.strikethrough(4, (Exception) null, System.currentTimeMillis());
+        HLogger.strikethrough(4, (Exception) null, System.nanoTime());
+        HLogger.strikethrough(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.strikethrough(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -6665,9 +7526,14 @@ public class LogTest {
     @Test
     public final void test_strikethrough_int_Exception() {
         HLogger.strikethrough(0, new Exception());
+        HLogger.strikethrough(0, (Exception) null);
         HLogger.strikethrough(1, new Exception());
+        HLogger.strikethrough(1, (Exception) null);
         HLogger.strikethrough(2, new Exception());
+        HLogger.strikethrough(2, (Exception) null);
         HLogger.strikethrough(3, new Exception());
+        HLogger.strikethrough(3, (Exception) null);
+        HLogger.strikethrough(4, new Exception());
     }
 
     @Test
@@ -6726,11 +7592,17 @@ public class LogTest {
         HLogger.strikethrough(new Exception(), System.nanoTime());
         HLogger.strikethrough(new Exception(), Long.MAX_VALUE);
         HLogger.strikethrough(new Exception(), Long.MIN_VALUE);
+        HLogger.strikethrough(new Exception(), 0);
+        HLogger.strikethrough((Exception) null, System.currentTimeMillis());
+        HLogger.strikethrough((Exception) null, System.nanoTime());
+        HLogger.strikethrough((Exception) null, Long.MAX_VALUE);
+        HLogger.strikethrough((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_strikethrough_Exception() {
         HLogger.strikethrough(new Exception());
+        HLogger.strikethrough((Exception) null);
     }
 
     @Test
@@ -6745,6 +7617,16 @@ public class LogTest {
         HLogger.black(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.black(0, new Exception(), 0, true);
         HLogger.black(0, new Exception(), 0, false);
+        HLogger.black(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.black(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.black(0, (Exception) null, System.nanoTime(), true);
+        HLogger.black(0, (Exception) null, System.nanoTime(), false);
+        HLogger.black(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.black(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.black(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.black(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.black(0, (Exception) null, 0, true);
+        HLogger.black(0, (Exception) null, 0, false);
         HLogger.black(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.black(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.black(1, new Exception(), System.nanoTime(), true);
@@ -6755,6 +7637,16 @@ public class LogTest {
         HLogger.black(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.black(1, new Exception(), 0, true);
         HLogger.black(1, new Exception(), 0, false);
+        HLogger.black(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.black(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.black(1, (Exception) null, System.nanoTime(), true);
+        HLogger.black(1, (Exception) null, System.nanoTime(), false);
+        HLogger.black(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.black(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.black(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.black(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.black(1, (Exception) null, 0, true);
+        HLogger.black(1, (Exception) null, 0, false);
         HLogger.black(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.black(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.black(2, new Exception(), System.nanoTime(), true);
@@ -6765,6 +7657,16 @@ public class LogTest {
         HLogger.black(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.black(2, new Exception(), 0, true);
         HLogger.black(2, new Exception(), 0, false);
+        HLogger.black(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.black(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.black(2, (Exception) null, System.nanoTime(), true);
+        HLogger.black(2, (Exception) null, System.nanoTime(), false);
+        HLogger.black(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.black(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.black(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.black(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.black(2, (Exception) null, 0, true);
+        HLogger.black(2, (Exception) null, 0, false);
         HLogger.black(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.black(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.black(3, new Exception(), System.nanoTime(), true);
@@ -6775,6 +7677,16 @@ public class LogTest {
         HLogger.black(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.black(3, new Exception(), 0, true);
         HLogger.black(3, new Exception(), 0, false);
+        HLogger.black(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.black(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.black(3, (Exception) null, System.nanoTime(), true);
+        HLogger.black(3, (Exception) null, System.nanoTime(), false);
+        HLogger.black(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.black(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.black(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.black(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.black(3, (Exception) null, 0, true);
+        HLogger.black(3, (Exception) null, 0, false);
         HLogger.black(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.black(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.black(4, new Exception(), System.nanoTime(), true);
@@ -6784,6 +7696,16 @@ public class LogTest {
         HLogger.black(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.black(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.black(4, new Exception(), 0, true);
+        HLogger.black(4, new Exception(), 0, false);
+        HLogger.black(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.black(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.black(4, (Exception) null, System.nanoTime(), true);
+        HLogger.black(4, (Exception) null, System.nanoTime(), false);
+        HLogger.black(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.black(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.black(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.black(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.black(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -7255,25 +8177,50 @@ public class LogTest {
         HLogger.black(0, new Exception(), Long.MAX_VALUE);
         HLogger.black(0, new Exception(), Long.MIN_VALUE);
         HLogger.black(0, new Exception(), 0);
+        HLogger.black(0, (Exception) null, System.currentTimeMillis());
+        HLogger.black(0, (Exception) null, System.nanoTime());
+        HLogger.black(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.black(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.black(0, (Exception) null, 0);
         HLogger.black(1, new Exception(), System.currentTimeMillis());
         HLogger.black(1, new Exception(), System.nanoTime());
         HLogger.black(1, new Exception(), Long.MAX_VALUE);
         HLogger.black(1, new Exception(), Long.MIN_VALUE);
         HLogger.black(1, new Exception(), 0);
+        HLogger.black(1, (Exception) null, System.currentTimeMillis());
+        HLogger.black(1, (Exception) null, System.nanoTime());
+        HLogger.black(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.black(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.black(1, (Exception) null, 0);
         HLogger.black(2, new Exception(), System.currentTimeMillis());
         HLogger.black(2, new Exception(), System.nanoTime());
         HLogger.black(2, new Exception(), Long.MAX_VALUE);
         HLogger.black(2, new Exception(), Long.MIN_VALUE);
         HLogger.black(2, new Exception(), 0);
+        HLogger.black(2, (Exception) null, System.currentTimeMillis());
+        HLogger.black(2, (Exception) null, System.nanoTime());
+        HLogger.black(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.black(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.black(2, (Exception) null, 0);
         HLogger.black(3, new Exception(), System.currentTimeMillis());
         HLogger.black(3, new Exception(), System.nanoTime());
         HLogger.black(3, new Exception(), Long.MAX_VALUE);
         HLogger.black(3, new Exception(), Long.MIN_VALUE);
         HLogger.black(3, new Exception(), 0);
+        HLogger.black(3, (Exception) null, System.currentTimeMillis());
+        HLogger.black(3, (Exception) null, System.nanoTime());
+        HLogger.black(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.black(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.black(3, (Exception) null, 0);
         HLogger.black(4, new Exception(), System.currentTimeMillis());
         HLogger.black(4, new Exception(), System.nanoTime());
         HLogger.black(4, new Exception(), Long.MAX_VALUE);
         HLogger.black(4, new Exception(), Long.MIN_VALUE);
+        HLogger.black(4, new Exception(), 0);
+        HLogger.black(4, (Exception) null, System.currentTimeMillis());
+        HLogger.black(4, (Exception) null, System.nanoTime());
+        HLogger.black(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.black(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -7315,9 +8262,14 @@ public class LogTest {
     @Test
     public final void test_black_int_Exception() {
         HLogger.black(0, new Exception());
+        HLogger.black(0, (Exception) null);
         HLogger.black(1, new Exception());
+        HLogger.black(1, (Exception) null);
         HLogger.black(2, new Exception());
+        HLogger.black(2, (Exception) null);
         HLogger.black(3, new Exception());
+        HLogger.black(3, (Exception) null);
+        HLogger.black(4, new Exception());
     }
 
     @Test
@@ -7376,11 +8328,17 @@ public class LogTest {
         HLogger.black(new Exception(), System.nanoTime());
         HLogger.black(new Exception(), Long.MAX_VALUE);
         HLogger.black(new Exception(), Long.MIN_VALUE);
+        HLogger.black(new Exception(), 0);
+        HLogger.black((Exception) null, System.currentTimeMillis());
+        HLogger.black((Exception) null, System.nanoTime());
+        HLogger.black((Exception) null, Long.MAX_VALUE);
+        HLogger.black((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_black_Exception() {
         HLogger.black(new Exception());
+        HLogger.black((Exception) null);
     }
 
     @Test
@@ -7395,6 +8353,16 @@ public class LogTest {
         HLogger.red(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.red(0, new Exception(), 0, true);
         HLogger.red(0, new Exception(), 0, false);
+        HLogger.red(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.red(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.red(0, (Exception) null, System.nanoTime(), true);
+        HLogger.red(0, (Exception) null, System.nanoTime(), false);
+        HLogger.red(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.red(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.red(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.red(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.red(0, (Exception) null, 0, true);
+        HLogger.red(0, (Exception) null, 0, false);
         HLogger.red(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.red(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.red(1, new Exception(), System.nanoTime(), true);
@@ -7405,6 +8373,16 @@ public class LogTest {
         HLogger.red(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.red(1, new Exception(), 0, true);
         HLogger.red(1, new Exception(), 0, false);
+        HLogger.red(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.red(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.red(1, (Exception) null, System.nanoTime(), true);
+        HLogger.red(1, (Exception) null, System.nanoTime(), false);
+        HLogger.red(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.red(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.red(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.red(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.red(1, (Exception) null, 0, true);
+        HLogger.red(1, (Exception) null, 0, false);
         HLogger.red(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.red(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.red(2, new Exception(), System.nanoTime(), true);
@@ -7415,6 +8393,16 @@ public class LogTest {
         HLogger.red(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.red(2, new Exception(), 0, true);
         HLogger.red(2, new Exception(), 0, false);
+        HLogger.red(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.red(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.red(2, (Exception) null, System.nanoTime(), true);
+        HLogger.red(2, (Exception) null, System.nanoTime(), false);
+        HLogger.red(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.red(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.red(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.red(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.red(2, (Exception) null, 0, true);
+        HLogger.red(2, (Exception) null, 0, false);
         HLogger.red(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.red(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.red(3, new Exception(), System.nanoTime(), true);
@@ -7425,6 +8413,16 @@ public class LogTest {
         HLogger.red(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.red(3, new Exception(), 0, true);
         HLogger.red(3, new Exception(), 0, false);
+        HLogger.red(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.red(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.red(3, (Exception) null, System.nanoTime(), true);
+        HLogger.red(3, (Exception) null, System.nanoTime(), false);
+        HLogger.red(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.red(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.red(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.red(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.red(3, (Exception) null, 0, true);
+        HLogger.red(3, (Exception) null, 0, false);
         HLogger.red(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.red(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.red(4, new Exception(), System.nanoTime(), true);
@@ -7434,6 +8432,16 @@ public class LogTest {
         HLogger.red(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.red(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.red(4, new Exception(), 0, true);
+        HLogger.red(4, new Exception(), 0, false);
+        HLogger.red(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.red(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.red(4, (Exception) null, System.nanoTime(), true);
+        HLogger.red(4, (Exception) null, System.nanoTime(), false);
+        HLogger.red(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.red(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.red(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.red(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.red(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -7905,25 +8913,50 @@ public class LogTest {
         HLogger.red(0, new Exception(), Long.MAX_VALUE);
         HLogger.red(0, new Exception(), Long.MIN_VALUE);
         HLogger.red(0, new Exception(), 0);
+        HLogger.red(0, (Exception) null, System.currentTimeMillis());
+        HLogger.red(0, (Exception) null, System.nanoTime());
+        HLogger.red(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.red(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.red(0, (Exception) null, 0);
         HLogger.red(1, new Exception(), System.currentTimeMillis());
         HLogger.red(1, new Exception(), System.nanoTime());
         HLogger.red(1, new Exception(), Long.MAX_VALUE);
         HLogger.red(1, new Exception(), Long.MIN_VALUE);
         HLogger.red(1, new Exception(), 0);
+        HLogger.red(1, (Exception) null, System.currentTimeMillis());
+        HLogger.red(1, (Exception) null, System.nanoTime());
+        HLogger.red(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.red(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.red(1, (Exception) null, 0);
         HLogger.red(2, new Exception(), System.currentTimeMillis());
         HLogger.red(2, new Exception(), System.nanoTime());
         HLogger.red(2, new Exception(), Long.MAX_VALUE);
         HLogger.red(2, new Exception(), Long.MIN_VALUE);
         HLogger.red(2, new Exception(), 0);
+        HLogger.red(2, (Exception) null, System.currentTimeMillis());
+        HLogger.red(2, (Exception) null, System.nanoTime());
+        HLogger.red(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.red(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.red(2, (Exception) null, 0);
         HLogger.red(3, new Exception(), System.currentTimeMillis());
         HLogger.red(3, new Exception(), System.nanoTime());
         HLogger.red(3, new Exception(), Long.MAX_VALUE);
         HLogger.red(3, new Exception(), Long.MIN_VALUE);
         HLogger.red(3, new Exception(), 0);
+        HLogger.red(3, (Exception) null, System.currentTimeMillis());
+        HLogger.red(3, (Exception) null, System.nanoTime());
+        HLogger.red(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.red(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.red(3, (Exception) null, 0);
         HLogger.red(4, new Exception(), System.currentTimeMillis());
         HLogger.red(4, new Exception(), System.nanoTime());
         HLogger.red(4, new Exception(), Long.MAX_VALUE);
         HLogger.red(4, new Exception(), Long.MIN_VALUE);
+        HLogger.red(4, new Exception(), 0);
+        HLogger.red(4, (Exception) null, System.currentTimeMillis());
+        HLogger.red(4, (Exception) null, System.nanoTime());
+        HLogger.red(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.red(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -7965,9 +8998,14 @@ public class LogTest {
     @Test
     public final void test_red_int_Exception() {
         HLogger.red(0, new Exception());
+        HLogger.red(0, (Exception) null);
         HLogger.red(1, new Exception());
+        HLogger.red(1, (Exception) null);
         HLogger.red(2, new Exception());
+        HLogger.red(2, (Exception) null);
         HLogger.red(3, new Exception());
+        HLogger.red(3, (Exception) null);
+        HLogger.red(4, new Exception());
     }
 
     @Test
@@ -8026,11 +9064,17 @@ public class LogTest {
         HLogger.red(new Exception(), System.nanoTime());
         HLogger.red(new Exception(), Long.MAX_VALUE);
         HLogger.red(new Exception(), Long.MIN_VALUE);
+        HLogger.red(new Exception(), 0);
+        HLogger.red((Exception) null, System.currentTimeMillis());
+        HLogger.red((Exception) null, System.nanoTime());
+        HLogger.red((Exception) null, Long.MAX_VALUE);
+        HLogger.red((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_red_Exception() {
         HLogger.red(new Exception());
+        HLogger.red((Exception) null);
     }
 
     @Test
@@ -8045,6 +9089,16 @@ public class LogTest {
         HLogger.green(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.green(0, new Exception(), 0, true);
         HLogger.green(0, new Exception(), 0, false);
+        HLogger.green(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.green(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.green(0, (Exception) null, System.nanoTime(), true);
+        HLogger.green(0, (Exception) null, System.nanoTime(), false);
+        HLogger.green(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.green(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.green(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.green(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.green(0, (Exception) null, 0, true);
+        HLogger.green(0, (Exception) null, 0, false);
         HLogger.green(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.green(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.green(1, new Exception(), System.nanoTime(), true);
@@ -8055,6 +9109,16 @@ public class LogTest {
         HLogger.green(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.green(1, new Exception(), 0, true);
         HLogger.green(1, new Exception(), 0, false);
+        HLogger.green(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.green(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.green(1, (Exception) null, System.nanoTime(), true);
+        HLogger.green(1, (Exception) null, System.nanoTime(), false);
+        HLogger.green(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.green(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.green(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.green(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.green(1, (Exception) null, 0, true);
+        HLogger.green(1, (Exception) null, 0, false);
         HLogger.green(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.green(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.green(2, new Exception(), System.nanoTime(), true);
@@ -8065,6 +9129,16 @@ public class LogTest {
         HLogger.green(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.green(2, new Exception(), 0, true);
         HLogger.green(2, new Exception(), 0, false);
+        HLogger.green(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.green(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.green(2, (Exception) null, System.nanoTime(), true);
+        HLogger.green(2, (Exception) null, System.nanoTime(), false);
+        HLogger.green(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.green(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.green(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.green(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.green(2, (Exception) null, 0, true);
+        HLogger.green(2, (Exception) null, 0, false);
         HLogger.green(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.green(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.green(3, new Exception(), System.nanoTime(), true);
@@ -8075,6 +9149,16 @@ public class LogTest {
         HLogger.green(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.green(3, new Exception(), 0, true);
         HLogger.green(3, new Exception(), 0, false);
+        HLogger.green(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.green(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.green(3, (Exception) null, System.nanoTime(), true);
+        HLogger.green(3, (Exception) null, System.nanoTime(), false);
+        HLogger.green(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.green(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.green(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.green(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.green(3, (Exception) null, 0, true);
+        HLogger.green(3, (Exception) null, 0, false);
         HLogger.green(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.green(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.green(4, new Exception(), System.nanoTime(), true);
@@ -8084,6 +9168,16 @@ public class LogTest {
         HLogger.green(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.green(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.green(4, new Exception(), 0, true);
+        HLogger.green(4, new Exception(), 0, false);
+        HLogger.green(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.green(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.green(4, (Exception) null, System.nanoTime(), true);
+        HLogger.green(4, (Exception) null, System.nanoTime(), false);
+        HLogger.green(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.green(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.green(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.green(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.green(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -8555,25 +9649,50 @@ public class LogTest {
         HLogger.green(0, new Exception(), Long.MAX_VALUE);
         HLogger.green(0, new Exception(), Long.MIN_VALUE);
         HLogger.green(0, new Exception(), 0);
+        HLogger.green(0, (Exception) null, System.currentTimeMillis());
+        HLogger.green(0, (Exception) null, System.nanoTime());
+        HLogger.green(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.green(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.green(0, (Exception) null, 0);
         HLogger.green(1, new Exception(), System.currentTimeMillis());
         HLogger.green(1, new Exception(), System.nanoTime());
         HLogger.green(1, new Exception(), Long.MAX_VALUE);
         HLogger.green(1, new Exception(), Long.MIN_VALUE);
         HLogger.green(1, new Exception(), 0);
+        HLogger.green(1, (Exception) null, System.currentTimeMillis());
+        HLogger.green(1, (Exception) null, System.nanoTime());
+        HLogger.green(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.green(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.green(1, (Exception) null, 0);
         HLogger.green(2, new Exception(), System.currentTimeMillis());
         HLogger.green(2, new Exception(), System.nanoTime());
         HLogger.green(2, new Exception(), Long.MAX_VALUE);
         HLogger.green(2, new Exception(), Long.MIN_VALUE);
         HLogger.green(2, new Exception(), 0);
+        HLogger.green(2, (Exception) null, System.currentTimeMillis());
+        HLogger.green(2, (Exception) null, System.nanoTime());
+        HLogger.green(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.green(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.green(2, (Exception) null, 0);
         HLogger.green(3, new Exception(), System.currentTimeMillis());
         HLogger.green(3, new Exception(), System.nanoTime());
         HLogger.green(3, new Exception(), Long.MAX_VALUE);
         HLogger.green(3, new Exception(), Long.MIN_VALUE);
         HLogger.green(3, new Exception(), 0);
+        HLogger.green(3, (Exception) null, System.currentTimeMillis());
+        HLogger.green(3, (Exception) null, System.nanoTime());
+        HLogger.green(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.green(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.green(3, (Exception) null, 0);
         HLogger.green(4, new Exception(), System.currentTimeMillis());
         HLogger.green(4, new Exception(), System.nanoTime());
         HLogger.green(4, new Exception(), Long.MAX_VALUE);
         HLogger.green(4, new Exception(), Long.MIN_VALUE);
+        HLogger.green(4, new Exception(), 0);
+        HLogger.green(4, (Exception) null, System.currentTimeMillis());
+        HLogger.green(4, (Exception) null, System.nanoTime());
+        HLogger.green(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.green(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -8615,9 +9734,14 @@ public class LogTest {
     @Test
     public final void test_green_int_Exception() {
         HLogger.green(0, new Exception());
+        HLogger.green(0, (Exception) null);
         HLogger.green(1, new Exception());
+        HLogger.green(1, (Exception) null);
         HLogger.green(2, new Exception());
+        HLogger.green(2, (Exception) null);
         HLogger.green(3, new Exception());
+        HLogger.green(3, (Exception) null);
+        HLogger.green(4, new Exception());
     }
 
     @Test
@@ -8676,11 +9800,17 @@ public class LogTest {
         HLogger.green(new Exception(), System.nanoTime());
         HLogger.green(new Exception(), Long.MAX_VALUE);
         HLogger.green(new Exception(), Long.MIN_VALUE);
+        HLogger.green(new Exception(), 0);
+        HLogger.green((Exception) null, System.currentTimeMillis());
+        HLogger.green((Exception) null, System.nanoTime());
+        HLogger.green((Exception) null, Long.MAX_VALUE);
+        HLogger.green((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_green_Exception() {
         HLogger.green(new Exception());
+        HLogger.green((Exception) null);
     }
 
     @Test
@@ -8695,6 +9825,16 @@ public class LogTest {
         HLogger.yellow(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.yellow(0, new Exception(), 0, true);
         HLogger.yellow(0, new Exception(), 0, false);
+        HLogger.yellow(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.yellow(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.yellow(0, (Exception) null, System.nanoTime(), true);
+        HLogger.yellow(0, (Exception) null, System.nanoTime(), false);
+        HLogger.yellow(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.yellow(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.yellow(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.yellow(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.yellow(0, (Exception) null, 0, true);
+        HLogger.yellow(0, (Exception) null, 0, false);
         HLogger.yellow(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.yellow(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.yellow(1, new Exception(), System.nanoTime(), true);
@@ -8705,6 +9845,16 @@ public class LogTest {
         HLogger.yellow(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.yellow(1, new Exception(), 0, true);
         HLogger.yellow(1, new Exception(), 0, false);
+        HLogger.yellow(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.yellow(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.yellow(1, (Exception) null, System.nanoTime(), true);
+        HLogger.yellow(1, (Exception) null, System.nanoTime(), false);
+        HLogger.yellow(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.yellow(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.yellow(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.yellow(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.yellow(1, (Exception) null, 0, true);
+        HLogger.yellow(1, (Exception) null, 0, false);
         HLogger.yellow(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.yellow(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.yellow(2, new Exception(), System.nanoTime(), true);
@@ -8715,6 +9865,16 @@ public class LogTest {
         HLogger.yellow(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.yellow(2, new Exception(), 0, true);
         HLogger.yellow(2, new Exception(), 0, false);
+        HLogger.yellow(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.yellow(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.yellow(2, (Exception) null, System.nanoTime(), true);
+        HLogger.yellow(2, (Exception) null, System.nanoTime(), false);
+        HLogger.yellow(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.yellow(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.yellow(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.yellow(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.yellow(2, (Exception) null, 0, true);
+        HLogger.yellow(2, (Exception) null, 0, false);
         HLogger.yellow(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.yellow(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.yellow(3, new Exception(), System.nanoTime(), true);
@@ -8725,6 +9885,16 @@ public class LogTest {
         HLogger.yellow(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.yellow(3, new Exception(), 0, true);
         HLogger.yellow(3, new Exception(), 0, false);
+        HLogger.yellow(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.yellow(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.yellow(3, (Exception) null, System.nanoTime(), true);
+        HLogger.yellow(3, (Exception) null, System.nanoTime(), false);
+        HLogger.yellow(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.yellow(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.yellow(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.yellow(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.yellow(3, (Exception) null, 0, true);
+        HLogger.yellow(3, (Exception) null, 0, false);
         HLogger.yellow(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.yellow(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.yellow(4, new Exception(), System.nanoTime(), true);
@@ -8734,6 +9904,16 @@ public class LogTest {
         HLogger.yellow(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.yellow(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.yellow(4, new Exception(), 0, true);
+        HLogger.yellow(4, new Exception(), 0, false);
+        HLogger.yellow(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.yellow(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.yellow(4, (Exception) null, System.nanoTime(), true);
+        HLogger.yellow(4, (Exception) null, System.nanoTime(), false);
+        HLogger.yellow(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.yellow(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.yellow(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.yellow(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.yellow(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -9205,25 +10385,50 @@ public class LogTest {
         HLogger.yellow(0, new Exception(), Long.MAX_VALUE);
         HLogger.yellow(0, new Exception(), Long.MIN_VALUE);
         HLogger.yellow(0, new Exception(), 0);
+        HLogger.yellow(0, (Exception) null, System.currentTimeMillis());
+        HLogger.yellow(0, (Exception) null, System.nanoTime());
+        HLogger.yellow(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.yellow(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.yellow(0, (Exception) null, 0);
         HLogger.yellow(1, new Exception(), System.currentTimeMillis());
         HLogger.yellow(1, new Exception(), System.nanoTime());
         HLogger.yellow(1, new Exception(), Long.MAX_VALUE);
         HLogger.yellow(1, new Exception(), Long.MIN_VALUE);
         HLogger.yellow(1, new Exception(), 0);
+        HLogger.yellow(1, (Exception) null, System.currentTimeMillis());
+        HLogger.yellow(1, (Exception) null, System.nanoTime());
+        HLogger.yellow(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.yellow(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.yellow(1, (Exception) null, 0);
         HLogger.yellow(2, new Exception(), System.currentTimeMillis());
         HLogger.yellow(2, new Exception(), System.nanoTime());
         HLogger.yellow(2, new Exception(), Long.MAX_VALUE);
         HLogger.yellow(2, new Exception(), Long.MIN_VALUE);
         HLogger.yellow(2, new Exception(), 0);
+        HLogger.yellow(2, (Exception) null, System.currentTimeMillis());
+        HLogger.yellow(2, (Exception) null, System.nanoTime());
+        HLogger.yellow(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.yellow(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.yellow(2, (Exception) null, 0);
         HLogger.yellow(3, new Exception(), System.currentTimeMillis());
         HLogger.yellow(3, new Exception(), System.nanoTime());
         HLogger.yellow(3, new Exception(), Long.MAX_VALUE);
         HLogger.yellow(3, new Exception(), Long.MIN_VALUE);
         HLogger.yellow(3, new Exception(), 0);
+        HLogger.yellow(3, (Exception) null, System.currentTimeMillis());
+        HLogger.yellow(3, (Exception) null, System.nanoTime());
+        HLogger.yellow(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.yellow(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.yellow(3, (Exception) null, 0);
         HLogger.yellow(4, new Exception(), System.currentTimeMillis());
         HLogger.yellow(4, new Exception(), System.nanoTime());
         HLogger.yellow(4, new Exception(), Long.MAX_VALUE);
         HLogger.yellow(4, new Exception(), Long.MIN_VALUE);
+        HLogger.yellow(4, new Exception(), 0);
+        HLogger.yellow(4, (Exception) null, System.currentTimeMillis());
+        HLogger.yellow(4, (Exception) null, System.nanoTime());
+        HLogger.yellow(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.yellow(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -9265,9 +10470,14 @@ public class LogTest {
     @Test
     public final void test_yellow_int_Exception() {
         HLogger.yellow(0, new Exception());
+        HLogger.yellow(0, (Exception) null);
         HLogger.yellow(1, new Exception());
+        HLogger.yellow(1, (Exception) null);
         HLogger.yellow(2, new Exception());
+        HLogger.yellow(2, (Exception) null);
         HLogger.yellow(3, new Exception());
+        HLogger.yellow(3, (Exception) null);
+        HLogger.yellow(4, new Exception());
     }
 
     @Test
@@ -9326,11 +10536,17 @@ public class LogTest {
         HLogger.yellow(new Exception(), System.nanoTime());
         HLogger.yellow(new Exception(), Long.MAX_VALUE);
         HLogger.yellow(new Exception(), Long.MIN_VALUE);
+        HLogger.yellow(new Exception(), 0);
+        HLogger.yellow((Exception) null, System.currentTimeMillis());
+        HLogger.yellow((Exception) null, System.nanoTime());
+        HLogger.yellow((Exception) null, Long.MAX_VALUE);
+        HLogger.yellow((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_yellow_Exception() {
         HLogger.yellow(new Exception());
+        HLogger.yellow((Exception) null);
     }
 
     @Test
@@ -9345,6 +10561,16 @@ public class LogTest {
         HLogger.blue(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.blue(0, new Exception(), 0, true);
         HLogger.blue(0, new Exception(), 0, false);
+        HLogger.blue(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.blue(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.blue(0, (Exception) null, System.nanoTime(), true);
+        HLogger.blue(0, (Exception) null, System.nanoTime(), false);
+        HLogger.blue(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.blue(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.blue(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.blue(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.blue(0, (Exception) null, 0, true);
+        HLogger.blue(0, (Exception) null, 0, false);
         HLogger.blue(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.blue(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.blue(1, new Exception(), System.nanoTime(), true);
@@ -9355,6 +10581,16 @@ public class LogTest {
         HLogger.blue(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.blue(1, new Exception(), 0, true);
         HLogger.blue(1, new Exception(), 0, false);
+        HLogger.blue(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.blue(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.blue(1, (Exception) null, System.nanoTime(), true);
+        HLogger.blue(1, (Exception) null, System.nanoTime(), false);
+        HLogger.blue(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.blue(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.blue(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.blue(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.blue(1, (Exception) null, 0, true);
+        HLogger.blue(1, (Exception) null, 0, false);
         HLogger.blue(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.blue(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.blue(2, new Exception(), System.nanoTime(), true);
@@ -9365,6 +10601,16 @@ public class LogTest {
         HLogger.blue(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.blue(2, new Exception(), 0, true);
         HLogger.blue(2, new Exception(), 0, false);
+        HLogger.blue(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.blue(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.blue(2, (Exception) null, System.nanoTime(), true);
+        HLogger.blue(2, (Exception) null, System.nanoTime(), false);
+        HLogger.blue(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.blue(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.blue(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.blue(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.blue(2, (Exception) null, 0, true);
+        HLogger.blue(2, (Exception) null, 0, false);
         HLogger.blue(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.blue(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.blue(3, new Exception(), System.nanoTime(), true);
@@ -9375,6 +10621,16 @@ public class LogTest {
         HLogger.blue(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.blue(3, new Exception(), 0, true);
         HLogger.blue(3, new Exception(), 0, false);
+        HLogger.blue(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.blue(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.blue(3, (Exception) null, System.nanoTime(), true);
+        HLogger.blue(3, (Exception) null, System.nanoTime(), false);
+        HLogger.blue(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.blue(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.blue(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.blue(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.blue(3, (Exception) null, 0, true);
+        HLogger.blue(3, (Exception) null, 0, false);
         HLogger.blue(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.blue(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.blue(4, new Exception(), System.nanoTime(), true);
@@ -9384,6 +10640,16 @@ public class LogTest {
         HLogger.blue(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.blue(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.blue(4, new Exception(), 0, true);
+        HLogger.blue(4, new Exception(), 0, false);
+        HLogger.blue(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.blue(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.blue(4, (Exception) null, System.nanoTime(), true);
+        HLogger.blue(4, (Exception) null, System.nanoTime(), false);
+        HLogger.blue(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.blue(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.blue(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.blue(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.blue(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -9855,25 +11121,50 @@ public class LogTest {
         HLogger.blue(0, new Exception(), Long.MAX_VALUE);
         HLogger.blue(0, new Exception(), Long.MIN_VALUE);
         HLogger.blue(0, new Exception(), 0);
+        HLogger.blue(0, (Exception) null, System.currentTimeMillis());
+        HLogger.blue(0, (Exception) null, System.nanoTime());
+        HLogger.blue(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.blue(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.blue(0, (Exception) null, 0);
         HLogger.blue(1, new Exception(), System.currentTimeMillis());
         HLogger.blue(1, new Exception(), System.nanoTime());
         HLogger.blue(1, new Exception(), Long.MAX_VALUE);
         HLogger.blue(1, new Exception(), Long.MIN_VALUE);
         HLogger.blue(1, new Exception(), 0);
+        HLogger.blue(1, (Exception) null, System.currentTimeMillis());
+        HLogger.blue(1, (Exception) null, System.nanoTime());
+        HLogger.blue(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.blue(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.blue(1, (Exception) null, 0);
         HLogger.blue(2, new Exception(), System.currentTimeMillis());
         HLogger.blue(2, new Exception(), System.nanoTime());
         HLogger.blue(2, new Exception(), Long.MAX_VALUE);
         HLogger.blue(2, new Exception(), Long.MIN_VALUE);
         HLogger.blue(2, new Exception(), 0);
+        HLogger.blue(2, (Exception) null, System.currentTimeMillis());
+        HLogger.blue(2, (Exception) null, System.nanoTime());
+        HLogger.blue(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.blue(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.blue(2, (Exception) null, 0);
         HLogger.blue(3, new Exception(), System.currentTimeMillis());
         HLogger.blue(3, new Exception(), System.nanoTime());
         HLogger.blue(3, new Exception(), Long.MAX_VALUE);
         HLogger.blue(3, new Exception(), Long.MIN_VALUE);
         HLogger.blue(3, new Exception(), 0);
+        HLogger.blue(3, (Exception) null, System.currentTimeMillis());
+        HLogger.blue(3, (Exception) null, System.nanoTime());
+        HLogger.blue(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.blue(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.blue(3, (Exception) null, 0);
         HLogger.blue(4, new Exception(), System.currentTimeMillis());
         HLogger.blue(4, new Exception(), System.nanoTime());
         HLogger.blue(4, new Exception(), Long.MAX_VALUE);
         HLogger.blue(4, new Exception(), Long.MIN_VALUE);
+        HLogger.blue(4, new Exception(), 0);
+        HLogger.blue(4, (Exception) null, System.currentTimeMillis());
+        HLogger.blue(4, (Exception) null, System.nanoTime());
+        HLogger.blue(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.blue(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -9915,9 +11206,14 @@ public class LogTest {
     @Test
     public final void test_blue_int_Exception() {
         HLogger.blue(0, new Exception());
+        HLogger.blue(0, (Exception) null);
         HLogger.blue(1, new Exception());
+        HLogger.blue(1, (Exception) null);
         HLogger.blue(2, new Exception());
+        HLogger.blue(2, (Exception) null);
         HLogger.blue(3, new Exception());
+        HLogger.blue(3, (Exception) null);
+        HLogger.blue(4, new Exception());
     }
 
     @Test
@@ -9976,11 +11272,17 @@ public class LogTest {
         HLogger.blue(new Exception(), System.nanoTime());
         HLogger.blue(new Exception(), Long.MAX_VALUE);
         HLogger.blue(new Exception(), Long.MIN_VALUE);
+        HLogger.blue(new Exception(), 0);
+        HLogger.blue((Exception) null, System.currentTimeMillis());
+        HLogger.blue((Exception) null, System.nanoTime());
+        HLogger.blue((Exception) null, Long.MAX_VALUE);
+        HLogger.blue((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_blue_Exception() {
         HLogger.blue(new Exception());
+        HLogger.blue((Exception) null);
     }
 
     @Test
@@ -9995,6 +11297,16 @@ public class LogTest {
         HLogger.magenta(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.magenta(0, new Exception(), 0, true);
         HLogger.magenta(0, new Exception(), 0, false);
+        HLogger.magenta(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.magenta(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.magenta(0, (Exception) null, System.nanoTime(), true);
+        HLogger.magenta(0, (Exception) null, System.nanoTime(), false);
+        HLogger.magenta(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.magenta(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.magenta(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.magenta(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.magenta(0, (Exception) null, 0, true);
+        HLogger.magenta(0, (Exception) null, 0, false);
         HLogger.magenta(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.magenta(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.magenta(1, new Exception(), System.nanoTime(), true);
@@ -10005,6 +11317,16 @@ public class LogTest {
         HLogger.magenta(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.magenta(1, new Exception(), 0, true);
         HLogger.magenta(1, new Exception(), 0, false);
+        HLogger.magenta(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.magenta(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.magenta(1, (Exception) null, System.nanoTime(), true);
+        HLogger.magenta(1, (Exception) null, System.nanoTime(), false);
+        HLogger.magenta(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.magenta(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.magenta(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.magenta(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.magenta(1, (Exception) null, 0, true);
+        HLogger.magenta(1, (Exception) null, 0, false);
         HLogger.magenta(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.magenta(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.magenta(2, new Exception(), System.nanoTime(), true);
@@ -10015,6 +11337,16 @@ public class LogTest {
         HLogger.magenta(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.magenta(2, new Exception(), 0, true);
         HLogger.magenta(2, new Exception(), 0, false);
+        HLogger.magenta(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.magenta(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.magenta(2, (Exception) null, System.nanoTime(), true);
+        HLogger.magenta(2, (Exception) null, System.nanoTime(), false);
+        HLogger.magenta(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.magenta(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.magenta(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.magenta(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.magenta(2, (Exception) null, 0, true);
+        HLogger.magenta(2, (Exception) null, 0, false);
         HLogger.magenta(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.magenta(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.magenta(3, new Exception(), System.nanoTime(), true);
@@ -10025,6 +11357,16 @@ public class LogTest {
         HLogger.magenta(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.magenta(3, new Exception(), 0, true);
         HLogger.magenta(3, new Exception(), 0, false);
+        HLogger.magenta(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.magenta(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.magenta(3, (Exception) null, System.nanoTime(), true);
+        HLogger.magenta(3, (Exception) null, System.nanoTime(), false);
+        HLogger.magenta(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.magenta(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.magenta(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.magenta(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.magenta(3, (Exception) null, 0, true);
+        HLogger.magenta(3, (Exception) null, 0, false);
         HLogger.magenta(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.magenta(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.magenta(4, new Exception(), System.nanoTime(), true);
@@ -10034,6 +11376,16 @@ public class LogTest {
         HLogger.magenta(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.magenta(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.magenta(4, new Exception(), 0, true);
+        HLogger.magenta(4, new Exception(), 0, false);
+        HLogger.magenta(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.magenta(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.magenta(4, (Exception) null, System.nanoTime(), true);
+        HLogger.magenta(4, (Exception) null, System.nanoTime(), false);
+        HLogger.magenta(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.magenta(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.magenta(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.magenta(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.magenta(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -10505,25 +11857,50 @@ public class LogTest {
         HLogger.magenta(0, new Exception(), Long.MAX_VALUE);
         HLogger.magenta(0, new Exception(), Long.MIN_VALUE);
         HLogger.magenta(0, new Exception(), 0);
+        HLogger.magenta(0, (Exception) null, System.currentTimeMillis());
+        HLogger.magenta(0, (Exception) null, System.nanoTime());
+        HLogger.magenta(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.magenta(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.magenta(0, (Exception) null, 0);
         HLogger.magenta(1, new Exception(), System.currentTimeMillis());
         HLogger.magenta(1, new Exception(), System.nanoTime());
         HLogger.magenta(1, new Exception(), Long.MAX_VALUE);
         HLogger.magenta(1, new Exception(), Long.MIN_VALUE);
         HLogger.magenta(1, new Exception(), 0);
+        HLogger.magenta(1, (Exception) null, System.currentTimeMillis());
+        HLogger.magenta(1, (Exception) null, System.nanoTime());
+        HLogger.magenta(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.magenta(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.magenta(1, (Exception) null, 0);
         HLogger.magenta(2, new Exception(), System.currentTimeMillis());
         HLogger.magenta(2, new Exception(), System.nanoTime());
         HLogger.magenta(2, new Exception(), Long.MAX_VALUE);
         HLogger.magenta(2, new Exception(), Long.MIN_VALUE);
         HLogger.magenta(2, new Exception(), 0);
+        HLogger.magenta(2, (Exception) null, System.currentTimeMillis());
+        HLogger.magenta(2, (Exception) null, System.nanoTime());
+        HLogger.magenta(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.magenta(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.magenta(2, (Exception) null, 0);
         HLogger.magenta(3, new Exception(), System.currentTimeMillis());
         HLogger.magenta(3, new Exception(), System.nanoTime());
         HLogger.magenta(3, new Exception(), Long.MAX_VALUE);
         HLogger.magenta(3, new Exception(), Long.MIN_VALUE);
         HLogger.magenta(3, new Exception(), 0);
+        HLogger.magenta(3, (Exception) null, System.currentTimeMillis());
+        HLogger.magenta(3, (Exception) null, System.nanoTime());
+        HLogger.magenta(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.magenta(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.magenta(3, (Exception) null, 0);
         HLogger.magenta(4, new Exception(), System.currentTimeMillis());
         HLogger.magenta(4, new Exception(), System.nanoTime());
         HLogger.magenta(4, new Exception(), Long.MAX_VALUE);
         HLogger.magenta(4, new Exception(), Long.MIN_VALUE);
+        HLogger.magenta(4, new Exception(), 0);
+        HLogger.magenta(4, (Exception) null, System.currentTimeMillis());
+        HLogger.magenta(4, (Exception) null, System.nanoTime());
+        HLogger.magenta(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.magenta(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -10565,9 +11942,14 @@ public class LogTest {
     @Test
     public final void test_magenta_int_Exception() {
         HLogger.magenta(0, new Exception());
+        HLogger.magenta(0, (Exception) null);
         HLogger.magenta(1, new Exception());
+        HLogger.magenta(1, (Exception) null);
         HLogger.magenta(2, new Exception());
+        HLogger.magenta(2, (Exception) null);
         HLogger.magenta(3, new Exception());
+        HLogger.magenta(3, (Exception) null);
+        HLogger.magenta(4, new Exception());
     }
 
     @Test
@@ -10626,11 +12008,17 @@ public class LogTest {
         HLogger.magenta(new Exception(), System.nanoTime());
         HLogger.magenta(new Exception(), Long.MAX_VALUE);
         HLogger.magenta(new Exception(), Long.MIN_VALUE);
+        HLogger.magenta(new Exception(), 0);
+        HLogger.magenta((Exception) null, System.currentTimeMillis());
+        HLogger.magenta((Exception) null, System.nanoTime());
+        HLogger.magenta((Exception) null, Long.MAX_VALUE);
+        HLogger.magenta((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_magenta_Exception() {
         HLogger.magenta(new Exception());
+        HLogger.magenta((Exception) null);
     }
 
     @Test
@@ -10645,6 +12033,16 @@ public class LogTest {
         HLogger.cyan(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.cyan(0, new Exception(), 0, true);
         HLogger.cyan(0, new Exception(), 0, false);
+        HLogger.cyan(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.cyan(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.cyan(0, (Exception) null, System.nanoTime(), true);
+        HLogger.cyan(0, (Exception) null, System.nanoTime(), false);
+        HLogger.cyan(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.cyan(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.cyan(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.cyan(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.cyan(0, (Exception) null, 0, true);
+        HLogger.cyan(0, (Exception) null, 0, false);
         HLogger.cyan(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.cyan(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.cyan(1, new Exception(), System.nanoTime(), true);
@@ -10655,6 +12053,16 @@ public class LogTest {
         HLogger.cyan(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.cyan(1, new Exception(), 0, true);
         HLogger.cyan(1, new Exception(), 0, false);
+        HLogger.cyan(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.cyan(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.cyan(1, (Exception) null, System.nanoTime(), true);
+        HLogger.cyan(1, (Exception) null, System.nanoTime(), false);
+        HLogger.cyan(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.cyan(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.cyan(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.cyan(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.cyan(1, (Exception) null, 0, true);
+        HLogger.cyan(1, (Exception) null, 0, false);
         HLogger.cyan(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.cyan(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.cyan(2, new Exception(), System.nanoTime(), true);
@@ -10665,6 +12073,16 @@ public class LogTest {
         HLogger.cyan(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.cyan(2, new Exception(), 0, true);
         HLogger.cyan(2, new Exception(), 0, false);
+        HLogger.cyan(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.cyan(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.cyan(2, (Exception) null, System.nanoTime(), true);
+        HLogger.cyan(2, (Exception) null, System.nanoTime(), false);
+        HLogger.cyan(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.cyan(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.cyan(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.cyan(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.cyan(2, (Exception) null, 0, true);
+        HLogger.cyan(2, (Exception) null, 0, false);
         HLogger.cyan(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.cyan(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.cyan(3, new Exception(), System.nanoTime(), true);
@@ -10675,6 +12093,16 @@ public class LogTest {
         HLogger.cyan(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.cyan(3, new Exception(), 0, true);
         HLogger.cyan(3, new Exception(), 0, false);
+        HLogger.cyan(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.cyan(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.cyan(3, (Exception) null, System.nanoTime(), true);
+        HLogger.cyan(3, (Exception) null, System.nanoTime(), false);
+        HLogger.cyan(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.cyan(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.cyan(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.cyan(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.cyan(3, (Exception) null, 0, true);
+        HLogger.cyan(3, (Exception) null, 0, false);
         HLogger.cyan(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.cyan(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.cyan(4, new Exception(), System.nanoTime(), true);
@@ -10684,6 +12112,16 @@ public class LogTest {
         HLogger.cyan(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.cyan(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.cyan(4, new Exception(), 0, true);
+        HLogger.cyan(4, new Exception(), 0, false);
+        HLogger.cyan(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.cyan(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.cyan(4, (Exception) null, System.nanoTime(), true);
+        HLogger.cyan(4, (Exception) null, System.nanoTime(), false);
+        HLogger.cyan(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.cyan(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.cyan(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.cyan(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.cyan(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -11155,25 +12593,50 @@ public class LogTest {
         HLogger.cyan(0, new Exception(), Long.MAX_VALUE);
         HLogger.cyan(0, new Exception(), Long.MIN_VALUE);
         HLogger.cyan(0, new Exception(), 0);
+        HLogger.cyan(0, (Exception) null, System.currentTimeMillis());
+        HLogger.cyan(0, (Exception) null, System.nanoTime());
+        HLogger.cyan(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.cyan(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.cyan(0, (Exception) null, 0);
         HLogger.cyan(1, new Exception(), System.currentTimeMillis());
         HLogger.cyan(1, new Exception(), System.nanoTime());
         HLogger.cyan(1, new Exception(), Long.MAX_VALUE);
         HLogger.cyan(1, new Exception(), Long.MIN_VALUE);
         HLogger.cyan(1, new Exception(), 0);
+        HLogger.cyan(1, (Exception) null, System.currentTimeMillis());
+        HLogger.cyan(1, (Exception) null, System.nanoTime());
+        HLogger.cyan(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.cyan(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.cyan(1, (Exception) null, 0);
         HLogger.cyan(2, new Exception(), System.currentTimeMillis());
         HLogger.cyan(2, new Exception(), System.nanoTime());
         HLogger.cyan(2, new Exception(), Long.MAX_VALUE);
         HLogger.cyan(2, new Exception(), Long.MIN_VALUE);
         HLogger.cyan(2, new Exception(), 0);
+        HLogger.cyan(2, (Exception) null, System.currentTimeMillis());
+        HLogger.cyan(2, (Exception) null, System.nanoTime());
+        HLogger.cyan(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.cyan(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.cyan(2, (Exception) null, 0);
         HLogger.cyan(3, new Exception(), System.currentTimeMillis());
         HLogger.cyan(3, new Exception(), System.nanoTime());
         HLogger.cyan(3, new Exception(), Long.MAX_VALUE);
         HLogger.cyan(3, new Exception(), Long.MIN_VALUE);
         HLogger.cyan(3, new Exception(), 0);
+        HLogger.cyan(3, (Exception) null, System.currentTimeMillis());
+        HLogger.cyan(3, (Exception) null, System.nanoTime());
+        HLogger.cyan(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.cyan(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.cyan(3, (Exception) null, 0);
         HLogger.cyan(4, new Exception(), System.currentTimeMillis());
         HLogger.cyan(4, new Exception(), System.nanoTime());
         HLogger.cyan(4, new Exception(), Long.MAX_VALUE);
         HLogger.cyan(4, new Exception(), Long.MIN_VALUE);
+        HLogger.cyan(4, new Exception(), 0);
+        HLogger.cyan(4, (Exception) null, System.currentTimeMillis());
+        HLogger.cyan(4, (Exception) null, System.nanoTime());
+        HLogger.cyan(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.cyan(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -11215,9 +12678,14 @@ public class LogTest {
     @Test
     public final void test_cyan_int_Exception() {
         HLogger.cyan(0, new Exception());
+        HLogger.cyan(0, (Exception) null);
         HLogger.cyan(1, new Exception());
+        HLogger.cyan(1, (Exception) null);
         HLogger.cyan(2, new Exception());
+        HLogger.cyan(2, (Exception) null);
         HLogger.cyan(3, new Exception());
+        HLogger.cyan(3, (Exception) null);
+        HLogger.cyan(4, new Exception());
     }
 
     @Test
@@ -11276,11 +12744,17 @@ public class LogTest {
         HLogger.cyan(new Exception(), System.nanoTime());
         HLogger.cyan(new Exception(), Long.MAX_VALUE);
         HLogger.cyan(new Exception(), Long.MIN_VALUE);
+        HLogger.cyan(new Exception(), 0);
+        HLogger.cyan((Exception) null, System.currentTimeMillis());
+        HLogger.cyan((Exception) null, System.nanoTime());
+        HLogger.cyan((Exception) null, Long.MAX_VALUE);
+        HLogger.cyan((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_cyan_Exception() {
         HLogger.cyan(new Exception());
+        HLogger.cyan((Exception) null);
     }
 
     @Test
@@ -11295,6 +12769,16 @@ public class LogTest {
         HLogger.white(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.white(0, new Exception(), 0, true);
         HLogger.white(0, new Exception(), 0, false);
+        HLogger.white(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.white(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.white(0, (Exception) null, System.nanoTime(), true);
+        HLogger.white(0, (Exception) null, System.nanoTime(), false);
+        HLogger.white(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.white(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.white(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.white(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.white(0, (Exception) null, 0, true);
+        HLogger.white(0, (Exception) null, 0, false);
         HLogger.white(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.white(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.white(1, new Exception(), System.nanoTime(), true);
@@ -11305,6 +12789,16 @@ public class LogTest {
         HLogger.white(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.white(1, new Exception(), 0, true);
         HLogger.white(1, new Exception(), 0, false);
+        HLogger.white(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.white(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.white(1, (Exception) null, System.nanoTime(), true);
+        HLogger.white(1, (Exception) null, System.nanoTime(), false);
+        HLogger.white(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.white(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.white(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.white(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.white(1, (Exception) null, 0, true);
+        HLogger.white(1, (Exception) null, 0, false);
         HLogger.white(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.white(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.white(2, new Exception(), System.nanoTime(), true);
@@ -11315,6 +12809,16 @@ public class LogTest {
         HLogger.white(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.white(2, new Exception(), 0, true);
         HLogger.white(2, new Exception(), 0, false);
+        HLogger.white(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.white(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.white(2, (Exception) null, System.nanoTime(), true);
+        HLogger.white(2, (Exception) null, System.nanoTime(), false);
+        HLogger.white(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.white(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.white(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.white(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.white(2, (Exception) null, 0, true);
+        HLogger.white(2, (Exception) null, 0, false);
         HLogger.white(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.white(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.white(3, new Exception(), System.nanoTime(), true);
@@ -11325,6 +12829,16 @@ public class LogTest {
         HLogger.white(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.white(3, new Exception(), 0, true);
         HLogger.white(3, new Exception(), 0, false);
+        HLogger.white(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.white(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.white(3, (Exception) null, System.nanoTime(), true);
+        HLogger.white(3, (Exception) null, System.nanoTime(), false);
+        HLogger.white(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.white(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.white(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.white(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.white(3, (Exception) null, 0, true);
+        HLogger.white(3, (Exception) null, 0, false);
         HLogger.white(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.white(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.white(4, new Exception(), System.nanoTime(), true);
@@ -11334,6 +12848,16 @@ public class LogTest {
         HLogger.white(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.white(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.white(4, new Exception(), 0, true);
+        HLogger.white(4, new Exception(), 0, false);
+        HLogger.white(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.white(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.white(4, (Exception) null, System.nanoTime(), true);
+        HLogger.white(4, (Exception) null, System.nanoTime(), false);
+        HLogger.white(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.white(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.white(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.white(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.white(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -11805,25 +13329,50 @@ public class LogTest {
         HLogger.white(0, new Exception(), Long.MAX_VALUE);
         HLogger.white(0, new Exception(), Long.MIN_VALUE);
         HLogger.white(0, new Exception(), 0);
+        HLogger.white(0, (Exception) null, System.currentTimeMillis());
+        HLogger.white(0, (Exception) null, System.nanoTime());
+        HLogger.white(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.white(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.white(0, (Exception) null, 0);
         HLogger.white(1, new Exception(), System.currentTimeMillis());
         HLogger.white(1, new Exception(), System.nanoTime());
         HLogger.white(1, new Exception(), Long.MAX_VALUE);
         HLogger.white(1, new Exception(), Long.MIN_VALUE);
         HLogger.white(1, new Exception(), 0);
+        HLogger.white(1, (Exception) null, System.currentTimeMillis());
+        HLogger.white(1, (Exception) null, System.nanoTime());
+        HLogger.white(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.white(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.white(1, (Exception) null, 0);
         HLogger.white(2, new Exception(), System.currentTimeMillis());
         HLogger.white(2, new Exception(), System.nanoTime());
         HLogger.white(2, new Exception(), Long.MAX_VALUE);
         HLogger.white(2, new Exception(), Long.MIN_VALUE);
         HLogger.white(2, new Exception(), 0);
+        HLogger.white(2, (Exception) null, System.currentTimeMillis());
+        HLogger.white(2, (Exception) null, System.nanoTime());
+        HLogger.white(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.white(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.white(2, (Exception) null, 0);
         HLogger.white(3, new Exception(), System.currentTimeMillis());
         HLogger.white(3, new Exception(), System.nanoTime());
         HLogger.white(3, new Exception(), Long.MAX_VALUE);
         HLogger.white(3, new Exception(), Long.MIN_VALUE);
         HLogger.white(3, new Exception(), 0);
+        HLogger.white(3, (Exception) null, System.currentTimeMillis());
+        HLogger.white(3, (Exception) null, System.nanoTime());
+        HLogger.white(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.white(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.white(3, (Exception) null, 0);
         HLogger.white(4, new Exception(), System.currentTimeMillis());
         HLogger.white(4, new Exception(), System.nanoTime());
         HLogger.white(4, new Exception(), Long.MAX_VALUE);
         HLogger.white(4, new Exception(), Long.MIN_VALUE);
+        HLogger.white(4, new Exception(), 0);
+        HLogger.white(4, (Exception) null, System.currentTimeMillis());
+        HLogger.white(4, (Exception) null, System.nanoTime());
+        HLogger.white(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.white(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -11865,9 +13414,14 @@ public class LogTest {
     @Test
     public final void test_white_int_Exception() {
         HLogger.white(0, new Exception());
+        HLogger.white(0, (Exception) null);
         HLogger.white(1, new Exception());
+        HLogger.white(1, (Exception) null);
         HLogger.white(2, new Exception());
+        HLogger.white(2, (Exception) null);
         HLogger.white(3, new Exception());
+        HLogger.white(3, (Exception) null);
+        HLogger.white(4, new Exception());
     }
 
     @Test
@@ -11926,11 +13480,17 @@ public class LogTest {
         HLogger.white(new Exception(), System.nanoTime());
         HLogger.white(new Exception(), Long.MAX_VALUE);
         HLogger.white(new Exception(), Long.MIN_VALUE);
+        HLogger.white(new Exception(), 0);
+        HLogger.white((Exception) null, System.currentTimeMillis());
+        HLogger.white((Exception) null, System.nanoTime());
+        HLogger.white((Exception) null, Long.MAX_VALUE);
+        HLogger.white((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_white_Exception() {
         HLogger.white(new Exception());
+        HLogger.white((Exception) null);
     }
 
     @Test
@@ -11945,6 +13505,16 @@ public class LogTest {
         HLogger.gray(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.gray(0, new Exception(), 0, true);
         HLogger.gray(0, new Exception(), 0, false);
+        HLogger.gray(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.gray(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.gray(0, (Exception) null, System.nanoTime(), true);
+        HLogger.gray(0, (Exception) null, System.nanoTime(), false);
+        HLogger.gray(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.gray(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.gray(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.gray(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.gray(0, (Exception) null, 0, true);
+        HLogger.gray(0, (Exception) null, 0, false);
         HLogger.gray(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.gray(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.gray(1, new Exception(), System.nanoTime(), true);
@@ -11955,6 +13525,16 @@ public class LogTest {
         HLogger.gray(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.gray(1, new Exception(), 0, true);
         HLogger.gray(1, new Exception(), 0, false);
+        HLogger.gray(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.gray(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.gray(1, (Exception) null, System.nanoTime(), true);
+        HLogger.gray(1, (Exception) null, System.nanoTime(), false);
+        HLogger.gray(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.gray(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.gray(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.gray(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.gray(1, (Exception) null, 0, true);
+        HLogger.gray(1, (Exception) null, 0, false);
         HLogger.gray(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.gray(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.gray(2, new Exception(), System.nanoTime(), true);
@@ -11965,6 +13545,16 @@ public class LogTest {
         HLogger.gray(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.gray(2, new Exception(), 0, true);
         HLogger.gray(2, new Exception(), 0, false);
+        HLogger.gray(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.gray(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.gray(2, (Exception) null, System.nanoTime(), true);
+        HLogger.gray(2, (Exception) null, System.nanoTime(), false);
+        HLogger.gray(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.gray(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.gray(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.gray(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.gray(2, (Exception) null, 0, true);
+        HLogger.gray(2, (Exception) null, 0, false);
         HLogger.gray(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.gray(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.gray(3, new Exception(), System.nanoTime(), true);
@@ -11975,6 +13565,16 @@ public class LogTest {
         HLogger.gray(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.gray(3, new Exception(), 0, true);
         HLogger.gray(3, new Exception(), 0, false);
+        HLogger.gray(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.gray(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.gray(3, (Exception) null, System.nanoTime(), true);
+        HLogger.gray(3, (Exception) null, System.nanoTime(), false);
+        HLogger.gray(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.gray(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.gray(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.gray(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.gray(3, (Exception) null, 0, true);
+        HLogger.gray(3, (Exception) null, 0, false);
         HLogger.gray(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.gray(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.gray(4, new Exception(), System.nanoTime(), true);
@@ -11984,6 +13584,16 @@ public class LogTest {
         HLogger.gray(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.gray(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.gray(4, new Exception(), 0, true);
+        HLogger.gray(4, new Exception(), 0, false);
+        HLogger.gray(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.gray(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.gray(4, (Exception) null, System.nanoTime(), true);
+        HLogger.gray(4, (Exception) null, System.nanoTime(), false);
+        HLogger.gray(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.gray(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.gray(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.gray(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.gray(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -12455,25 +14065,50 @@ public class LogTest {
         HLogger.gray(0, new Exception(), Long.MAX_VALUE);
         HLogger.gray(0, new Exception(), Long.MIN_VALUE);
         HLogger.gray(0, new Exception(), 0);
+        HLogger.gray(0, (Exception) null, System.currentTimeMillis());
+        HLogger.gray(0, (Exception) null, System.nanoTime());
+        HLogger.gray(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.gray(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.gray(0, (Exception) null, 0);
         HLogger.gray(1, new Exception(), System.currentTimeMillis());
         HLogger.gray(1, new Exception(), System.nanoTime());
         HLogger.gray(1, new Exception(), Long.MAX_VALUE);
         HLogger.gray(1, new Exception(), Long.MIN_VALUE);
         HLogger.gray(1, new Exception(), 0);
+        HLogger.gray(1, (Exception) null, System.currentTimeMillis());
+        HLogger.gray(1, (Exception) null, System.nanoTime());
+        HLogger.gray(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.gray(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.gray(1, (Exception) null, 0);
         HLogger.gray(2, new Exception(), System.currentTimeMillis());
         HLogger.gray(2, new Exception(), System.nanoTime());
         HLogger.gray(2, new Exception(), Long.MAX_VALUE);
         HLogger.gray(2, new Exception(), Long.MIN_VALUE);
         HLogger.gray(2, new Exception(), 0);
+        HLogger.gray(2, (Exception) null, System.currentTimeMillis());
+        HLogger.gray(2, (Exception) null, System.nanoTime());
+        HLogger.gray(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.gray(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.gray(2, (Exception) null, 0);
         HLogger.gray(3, new Exception(), System.currentTimeMillis());
         HLogger.gray(3, new Exception(), System.nanoTime());
         HLogger.gray(3, new Exception(), Long.MAX_VALUE);
         HLogger.gray(3, new Exception(), Long.MIN_VALUE);
         HLogger.gray(3, new Exception(), 0);
+        HLogger.gray(3, (Exception) null, System.currentTimeMillis());
+        HLogger.gray(3, (Exception) null, System.nanoTime());
+        HLogger.gray(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.gray(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.gray(3, (Exception) null, 0);
         HLogger.gray(4, new Exception(), System.currentTimeMillis());
         HLogger.gray(4, new Exception(), System.nanoTime());
         HLogger.gray(4, new Exception(), Long.MAX_VALUE);
         HLogger.gray(4, new Exception(), Long.MIN_VALUE);
+        HLogger.gray(4, new Exception(), 0);
+        HLogger.gray(4, (Exception) null, System.currentTimeMillis());
+        HLogger.gray(4, (Exception) null, System.nanoTime());
+        HLogger.gray(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.gray(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -12515,9 +14150,14 @@ public class LogTest {
     @Test
     public final void test_gray_int_Exception() {
         HLogger.gray(0, new Exception());
+        HLogger.gray(0, (Exception) null);
         HLogger.gray(1, new Exception());
+        HLogger.gray(1, (Exception) null);
         HLogger.gray(2, new Exception());
+        HLogger.gray(2, (Exception) null);
         HLogger.gray(3, new Exception());
+        HLogger.gray(3, (Exception) null);
+        HLogger.gray(4, new Exception());
     }
 
     @Test
@@ -12576,11 +14216,17 @@ public class LogTest {
         HLogger.gray(new Exception(), System.nanoTime());
         HLogger.gray(new Exception(), Long.MAX_VALUE);
         HLogger.gray(new Exception(), Long.MIN_VALUE);
+        HLogger.gray(new Exception(), 0);
+        HLogger.gray((Exception) null, System.currentTimeMillis());
+        HLogger.gray((Exception) null, System.nanoTime());
+        HLogger.gray((Exception) null, Long.MAX_VALUE);
+        HLogger.gray((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_gray_Exception() {
         HLogger.gray(new Exception());
+        HLogger.gray((Exception) null);
     }
 
     @Test
@@ -12595,6 +14241,16 @@ public class LogTest {
         HLogger.grey(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.grey(0, new Exception(), 0, true);
         HLogger.grey(0, new Exception(), 0, false);
+        HLogger.grey(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.grey(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.grey(0, (Exception) null, System.nanoTime(), true);
+        HLogger.grey(0, (Exception) null, System.nanoTime(), false);
+        HLogger.grey(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.grey(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.grey(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.grey(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.grey(0, (Exception) null, 0, true);
+        HLogger.grey(0, (Exception) null, 0, false);
         HLogger.grey(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.grey(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.grey(1, new Exception(), System.nanoTime(), true);
@@ -12605,6 +14261,16 @@ public class LogTest {
         HLogger.grey(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.grey(1, new Exception(), 0, true);
         HLogger.grey(1, new Exception(), 0, false);
+        HLogger.grey(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.grey(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.grey(1, (Exception) null, System.nanoTime(), true);
+        HLogger.grey(1, (Exception) null, System.nanoTime(), false);
+        HLogger.grey(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.grey(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.grey(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.grey(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.grey(1, (Exception) null, 0, true);
+        HLogger.grey(1, (Exception) null, 0, false);
         HLogger.grey(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.grey(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.grey(2, new Exception(), System.nanoTime(), true);
@@ -12615,6 +14281,16 @@ public class LogTest {
         HLogger.grey(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.grey(2, new Exception(), 0, true);
         HLogger.grey(2, new Exception(), 0, false);
+        HLogger.grey(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.grey(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.grey(2, (Exception) null, System.nanoTime(), true);
+        HLogger.grey(2, (Exception) null, System.nanoTime(), false);
+        HLogger.grey(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.grey(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.grey(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.grey(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.grey(2, (Exception) null, 0, true);
+        HLogger.grey(2, (Exception) null, 0, false);
         HLogger.grey(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.grey(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.grey(3, new Exception(), System.nanoTime(), true);
@@ -12625,6 +14301,16 @@ public class LogTest {
         HLogger.grey(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.grey(3, new Exception(), 0, true);
         HLogger.grey(3, new Exception(), 0, false);
+        HLogger.grey(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.grey(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.grey(3, (Exception) null, System.nanoTime(), true);
+        HLogger.grey(3, (Exception) null, System.nanoTime(), false);
+        HLogger.grey(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.grey(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.grey(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.grey(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.grey(3, (Exception) null, 0, true);
+        HLogger.grey(3, (Exception) null, 0, false);
         HLogger.grey(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.grey(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.grey(4, new Exception(), System.nanoTime(), true);
@@ -12634,6 +14320,16 @@ public class LogTest {
         HLogger.grey(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.grey(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.grey(4, new Exception(), 0, true);
+        HLogger.grey(4, new Exception(), 0, false);
+        HLogger.grey(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.grey(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.grey(4, (Exception) null, System.nanoTime(), true);
+        HLogger.grey(4, (Exception) null, System.nanoTime(), false);
+        HLogger.grey(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.grey(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.grey(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.grey(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.grey(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -13105,25 +14801,50 @@ public class LogTest {
         HLogger.grey(0, new Exception(), Long.MAX_VALUE);
         HLogger.grey(0, new Exception(), Long.MIN_VALUE);
         HLogger.grey(0, new Exception(), 0);
+        HLogger.grey(0, (Exception) null, System.currentTimeMillis());
+        HLogger.grey(0, (Exception) null, System.nanoTime());
+        HLogger.grey(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.grey(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.grey(0, (Exception) null, 0);
         HLogger.grey(1, new Exception(), System.currentTimeMillis());
         HLogger.grey(1, new Exception(), System.nanoTime());
         HLogger.grey(1, new Exception(), Long.MAX_VALUE);
         HLogger.grey(1, new Exception(), Long.MIN_VALUE);
         HLogger.grey(1, new Exception(), 0);
+        HLogger.grey(1, (Exception) null, System.currentTimeMillis());
+        HLogger.grey(1, (Exception) null, System.nanoTime());
+        HLogger.grey(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.grey(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.grey(1, (Exception) null, 0);
         HLogger.grey(2, new Exception(), System.currentTimeMillis());
         HLogger.grey(2, new Exception(), System.nanoTime());
         HLogger.grey(2, new Exception(), Long.MAX_VALUE);
         HLogger.grey(2, new Exception(), Long.MIN_VALUE);
         HLogger.grey(2, new Exception(), 0);
+        HLogger.grey(2, (Exception) null, System.currentTimeMillis());
+        HLogger.grey(2, (Exception) null, System.nanoTime());
+        HLogger.grey(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.grey(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.grey(2, (Exception) null, 0);
         HLogger.grey(3, new Exception(), System.currentTimeMillis());
         HLogger.grey(3, new Exception(), System.nanoTime());
         HLogger.grey(3, new Exception(), Long.MAX_VALUE);
         HLogger.grey(3, new Exception(), Long.MIN_VALUE);
         HLogger.grey(3, new Exception(), 0);
+        HLogger.grey(3, (Exception) null, System.currentTimeMillis());
+        HLogger.grey(3, (Exception) null, System.nanoTime());
+        HLogger.grey(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.grey(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.grey(3, (Exception) null, 0);
         HLogger.grey(4, new Exception(), System.currentTimeMillis());
         HLogger.grey(4, new Exception(), System.nanoTime());
         HLogger.grey(4, new Exception(), Long.MAX_VALUE);
         HLogger.grey(4, new Exception(), Long.MIN_VALUE);
+        HLogger.grey(4, new Exception(), 0);
+        HLogger.grey(4, (Exception) null, System.currentTimeMillis());
+        HLogger.grey(4, (Exception) null, System.nanoTime());
+        HLogger.grey(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.grey(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -13165,9 +14886,14 @@ public class LogTest {
     @Test
     public final void test_grey_int_Exception() {
         HLogger.grey(0, new Exception());
+        HLogger.grey(0, (Exception) null);
         HLogger.grey(1, new Exception());
+        HLogger.grey(1, (Exception) null);
         HLogger.grey(2, new Exception());
+        HLogger.grey(2, (Exception) null);
         HLogger.grey(3, new Exception());
+        HLogger.grey(3, (Exception) null);
+        HLogger.grey(4, new Exception());
     }
 
     @Test
@@ -13226,11 +14952,17 @@ public class LogTest {
         HLogger.grey(new Exception(), System.nanoTime());
         HLogger.grey(new Exception(), Long.MAX_VALUE);
         HLogger.grey(new Exception(), Long.MIN_VALUE);
+        HLogger.grey(new Exception(), 0);
+        HLogger.grey((Exception) null, System.currentTimeMillis());
+        HLogger.grey((Exception) null, System.nanoTime());
+        HLogger.grey((Exception) null, Long.MAX_VALUE);
+        HLogger.grey((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_grey_Exception() {
         HLogger.grey(new Exception());
+        HLogger.grey((Exception) null);
     }
 
     @Test
@@ -13245,6 +14977,16 @@ public class LogTest {
         HLogger.bright_red(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_red(0, new Exception(), 0, true);
         HLogger.bright_red(0, new Exception(), 0, false);
+        HLogger.bright_red(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_red(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_red(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_red(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_red(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_red(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_red(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_red(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_red(0, (Exception) null, 0, true);
+        HLogger.bright_red(0, (Exception) null, 0, false);
         HLogger.bright_red(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_red(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_red(1, new Exception(), System.nanoTime(), true);
@@ -13255,6 +14997,16 @@ public class LogTest {
         HLogger.bright_red(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_red(1, new Exception(), 0, true);
         HLogger.bright_red(1, new Exception(), 0, false);
+        HLogger.bright_red(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_red(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_red(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_red(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_red(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_red(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_red(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_red(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_red(1, (Exception) null, 0, true);
+        HLogger.bright_red(1, (Exception) null, 0, false);
         HLogger.bright_red(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_red(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_red(2, new Exception(), System.nanoTime(), true);
@@ -13265,6 +15017,16 @@ public class LogTest {
         HLogger.bright_red(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_red(2, new Exception(), 0, true);
         HLogger.bright_red(2, new Exception(), 0, false);
+        HLogger.bright_red(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_red(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_red(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_red(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_red(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_red(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_red(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_red(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_red(2, (Exception) null, 0, true);
+        HLogger.bright_red(2, (Exception) null, 0, false);
         HLogger.bright_red(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_red(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_red(3, new Exception(), System.nanoTime(), true);
@@ -13275,6 +15037,16 @@ public class LogTest {
         HLogger.bright_red(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_red(3, new Exception(), 0, true);
         HLogger.bright_red(3, new Exception(), 0, false);
+        HLogger.bright_red(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_red(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_red(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_red(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_red(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_red(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_red(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_red(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_red(3, (Exception) null, 0, true);
+        HLogger.bright_red(3, (Exception) null, 0, false);
         HLogger.bright_red(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_red(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_red(4, new Exception(), System.nanoTime(), true);
@@ -13284,6 +15056,16 @@ public class LogTest {
         HLogger.bright_red(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bright_red(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_red(4, new Exception(), 0, true);
+        HLogger.bright_red(4, new Exception(), 0, false);
+        HLogger.bright_red(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_red(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_red(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_red(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_red(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_red(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_red(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_red(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_red(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -13755,25 +15537,50 @@ public class LogTest {
         HLogger.bright_red(0, new Exception(), Long.MAX_VALUE);
         HLogger.bright_red(0, new Exception(), Long.MIN_VALUE);
         HLogger.bright_red(0, new Exception(), 0);
+        HLogger.bright_red(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_red(0, (Exception) null, System.nanoTime());
+        HLogger.bright_red(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_red(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_red(0, (Exception) null, 0);
         HLogger.bright_red(1, new Exception(), System.currentTimeMillis());
         HLogger.bright_red(1, new Exception(), System.nanoTime());
         HLogger.bright_red(1, new Exception(), Long.MAX_VALUE);
         HLogger.bright_red(1, new Exception(), Long.MIN_VALUE);
         HLogger.bright_red(1, new Exception(), 0);
+        HLogger.bright_red(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_red(1, (Exception) null, System.nanoTime());
+        HLogger.bright_red(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_red(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_red(1, (Exception) null, 0);
         HLogger.bright_red(2, new Exception(), System.currentTimeMillis());
         HLogger.bright_red(2, new Exception(), System.nanoTime());
         HLogger.bright_red(2, new Exception(), Long.MAX_VALUE);
         HLogger.bright_red(2, new Exception(), Long.MIN_VALUE);
         HLogger.bright_red(2, new Exception(), 0);
+        HLogger.bright_red(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_red(2, (Exception) null, System.nanoTime());
+        HLogger.bright_red(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_red(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_red(2, (Exception) null, 0);
         HLogger.bright_red(3, new Exception(), System.currentTimeMillis());
         HLogger.bright_red(3, new Exception(), System.nanoTime());
         HLogger.bright_red(3, new Exception(), Long.MAX_VALUE);
         HLogger.bright_red(3, new Exception(), Long.MIN_VALUE);
         HLogger.bright_red(3, new Exception(), 0);
+        HLogger.bright_red(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_red(3, (Exception) null, System.nanoTime());
+        HLogger.bright_red(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_red(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_red(3, (Exception) null, 0);
         HLogger.bright_red(4, new Exception(), System.currentTimeMillis());
         HLogger.bright_red(4, new Exception(), System.nanoTime());
         HLogger.bright_red(4, new Exception(), Long.MAX_VALUE);
         HLogger.bright_red(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bright_red(4, new Exception(), 0);
+        HLogger.bright_red(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_red(4, (Exception) null, System.nanoTime());
+        HLogger.bright_red(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_red(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -13815,9 +15622,14 @@ public class LogTest {
     @Test
     public final void test_bright_red_int_Exception() {
         HLogger.bright_red(0, new Exception());
+        HLogger.bright_red(0, (Exception) null);
         HLogger.bright_red(1, new Exception());
+        HLogger.bright_red(1, (Exception) null);
         HLogger.bright_red(2, new Exception());
+        HLogger.bright_red(2, (Exception) null);
         HLogger.bright_red(3, new Exception());
+        HLogger.bright_red(3, (Exception) null);
+        HLogger.bright_red(4, new Exception());
     }
 
     @Test
@@ -13876,11 +15688,17 @@ public class LogTest {
         HLogger.bright_red(new Exception(), System.nanoTime());
         HLogger.bright_red(new Exception(), Long.MAX_VALUE);
         HLogger.bright_red(new Exception(), Long.MIN_VALUE);
+        HLogger.bright_red(new Exception(), 0);
+        HLogger.bright_red((Exception) null, System.currentTimeMillis());
+        HLogger.bright_red((Exception) null, System.nanoTime());
+        HLogger.bright_red((Exception) null, Long.MAX_VALUE);
+        HLogger.bright_red((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bright_red_Exception() {
         HLogger.bright_red(new Exception());
+        HLogger.bright_red((Exception) null);
     }
 
     @Test
@@ -13895,6 +15713,16 @@ public class LogTest {
         HLogger.bright_green(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_green(0, new Exception(), 0, true);
         HLogger.bright_green(0, new Exception(), 0, false);
+        HLogger.bright_green(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_green(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_green(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_green(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_green(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_green(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_green(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_green(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_green(0, (Exception) null, 0, true);
+        HLogger.bright_green(0, (Exception) null, 0, false);
         HLogger.bright_green(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_green(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_green(1, new Exception(), System.nanoTime(), true);
@@ -13905,6 +15733,16 @@ public class LogTest {
         HLogger.bright_green(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_green(1, new Exception(), 0, true);
         HLogger.bright_green(1, new Exception(), 0, false);
+        HLogger.bright_green(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_green(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_green(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_green(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_green(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_green(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_green(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_green(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_green(1, (Exception) null, 0, true);
+        HLogger.bright_green(1, (Exception) null, 0, false);
         HLogger.bright_green(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_green(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_green(2, new Exception(), System.nanoTime(), true);
@@ -13915,6 +15753,16 @@ public class LogTest {
         HLogger.bright_green(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_green(2, new Exception(), 0, true);
         HLogger.bright_green(2, new Exception(), 0, false);
+        HLogger.bright_green(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_green(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_green(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_green(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_green(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_green(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_green(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_green(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_green(2, (Exception) null, 0, true);
+        HLogger.bright_green(2, (Exception) null, 0, false);
         HLogger.bright_green(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_green(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_green(3, new Exception(), System.nanoTime(), true);
@@ -13925,6 +15773,16 @@ public class LogTest {
         HLogger.bright_green(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_green(3, new Exception(), 0, true);
         HLogger.bright_green(3, new Exception(), 0, false);
+        HLogger.bright_green(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_green(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_green(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_green(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_green(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_green(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_green(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_green(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_green(3, (Exception) null, 0, true);
+        HLogger.bright_green(3, (Exception) null, 0, false);
         HLogger.bright_green(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_green(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_green(4, new Exception(), System.nanoTime(), true);
@@ -13934,6 +15792,16 @@ public class LogTest {
         HLogger.bright_green(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bright_green(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_green(4, new Exception(), 0, true);
+        HLogger.bright_green(4, new Exception(), 0, false);
+        HLogger.bright_green(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_green(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_green(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_green(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_green(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_green(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_green(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_green(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_green(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -14405,25 +16273,50 @@ public class LogTest {
         HLogger.bright_green(0, new Exception(), Long.MAX_VALUE);
         HLogger.bright_green(0, new Exception(), Long.MIN_VALUE);
         HLogger.bright_green(0, new Exception(), 0);
+        HLogger.bright_green(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_green(0, (Exception) null, System.nanoTime());
+        HLogger.bright_green(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_green(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_green(0, (Exception) null, 0);
         HLogger.bright_green(1, new Exception(), System.currentTimeMillis());
         HLogger.bright_green(1, new Exception(), System.nanoTime());
         HLogger.bright_green(1, new Exception(), Long.MAX_VALUE);
         HLogger.bright_green(1, new Exception(), Long.MIN_VALUE);
         HLogger.bright_green(1, new Exception(), 0);
+        HLogger.bright_green(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_green(1, (Exception) null, System.nanoTime());
+        HLogger.bright_green(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_green(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_green(1, (Exception) null, 0);
         HLogger.bright_green(2, new Exception(), System.currentTimeMillis());
         HLogger.bright_green(2, new Exception(), System.nanoTime());
         HLogger.bright_green(2, new Exception(), Long.MAX_VALUE);
         HLogger.bright_green(2, new Exception(), Long.MIN_VALUE);
         HLogger.bright_green(2, new Exception(), 0);
+        HLogger.bright_green(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_green(2, (Exception) null, System.nanoTime());
+        HLogger.bright_green(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_green(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_green(2, (Exception) null, 0);
         HLogger.bright_green(3, new Exception(), System.currentTimeMillis());
         HLogger.bright_green(3, new Exception(), System.nanoTime());
         HLogger.bright_green(3, new Exception(), Long.MAX_VALUE);
         HLogger.bright_green(3, new Exception(), Long.MIN_VALUE);
         HLogger.bright_green(3, new Exception(), 0);
+        HLogger.bright_green(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_green(3, (Exception) null, System.nanoTime());
+        HLogger.bright_green(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_green(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_green(3, (Exception) null, 0);
         HLogger.bright_green(4, new Exception(), System.currentTimeMillis());
         HLogger.bright_green(4, new Exception(), System.nanoTime());
         HLogger.bright_green(4, new Exception(), Long.MAX_VALUE);
         HLogger.bright_green(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bright_green(4, new Exception(), 0);
+        HLogger.bright_green(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_green(4, (Exception) null, System.nanoTime());
+        HLogger.bright_green(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_green(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -14465,9 +16358,14 @@ public class LogTest {
     @Test
     public final void test_bright_green_int_Exception() {
         HLogger.bright_green(0, new Exception());
+        HLogger.bright_green(0, (Exception) null);
         HLogger.bright_green(1, new Exception());
+        HLogger.bright_green(1, (Exception) null);
         HLogger.bright_green(2, new Exception());
+        HLogger.bright_green(2, (Exception) null);
         HLogger.bright_green(3, new Exception());
+        HLogger.bright_green(3, (Exception) null);
+        HLogger.bright_green(4, new Exception());
     }
 
     @Test
@@ -14526,11 +16424,17 @@ public class LogTest {
         HLogger.bright_green(new Exception(), System.nanoTime());
         HLogger.bright_green(new Exception(), Long.MAX_VALUE);
         HLogger.bright_green(new Exception(), Long.MIN_VALUE);
+        HLogger.bright_green(new Exception(), 0);
+        HLogger.bright_green((Exception) null, System.currentTimeMillis());
+        HLogger.bright_green((Exception) null, System.nanoTime());
+        HLogger.bright_green((Exception) null, Long.MAX_VALUE);
+        HLogger.bright_green((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bright_green_Exception() {
         HLogger.bright_green(new Exception());
+        HLogger.bright_green((Exception) null);
     }
 
     @Test
@@ -14545,6 +16449,16 @@ public class LogTest {
         HLogger.bright_yellow(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_yellow(0, new Exception(), 0, true);
         HLogger.bright_yellow(0, new Exception(), 0, false);
+        HLogger.bright_yellow(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_yellow(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_yellow(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_yellow(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_yellow(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_yellow(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_yellow(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_yellow(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_yellow(0, (Exception) null, 0, true);
+        HLogger.bright_yellow(0, (Exception) null, 0, false);
         HLogger.bright_yellow(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_yellow(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_yellow(1, new Exception(), System.nanoTime(), true);
@@ -14555,6 +16469,16 @@ public class LogTest {
         HLogger.bright_yellow(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_yellow(1, new Exception(), 0, true);
         HLogger.bright_yellow(1, new Exception(), 0, false);
+        HLogger.bright_yellow(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_yellow(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_yellow(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_yellow(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_yellow(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_yellow(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_yellow(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_yellow(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_yellow(1, (Exception) null, 0, true);
+        HLogger.bright_yellow(1, (Exception) null, 0, false);
         HLogger.bright_yellow(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_yellow(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_yellow(2, new Exception(), System.nanoTime(), true);
@@ -14565,6 +16489,16 @@ public class LogTest {
         HLogger.bright_yellow(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_yellow(2, new Exception(), 0, true);
         HLogger.bright_yellow(2, new Exception(), 0, false);
+        HLogger.bright_yellow(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_yellow(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_yellow(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_yellow(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_yellow(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_yellow(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_yellow(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_yellow(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_yellow(2, (Exception) null, 0, true);
+        HLogger.bright_yellow(2, (Exception) null, 0, false);
         HLogger.bright_yellow(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_yellow(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_yellow(3, new Exception(), System.nanoTime(), true);
@@ -14575,6 +16509,16 @@ public class LogTest {
         HLogger.bright_yellow(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_yellow(3, new Exception(), 0, true);
         HLogger.bright_yellow(3, new Exception(), 0, false);
+        HLogger.bright_yellow(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_yellow(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_yellow(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_yellow(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_yellow(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_yellow(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_yellow(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_yellow(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_yellow(3, (Exception) null, 0, true);
+        HLogger.bright_yellow(3, (Exception) null, 0, false);
         HLogger.bright_yellow(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_yellow(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_yellow(4, new Exception(), System.nanoTime(), true);
@@ -14584,6 +16528,16 @@ public class LogTest {
         HLogger.bright_yellow(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bright_yellow(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_yellow(4, new Exception(), 0, true);
+        HLogger.bright_yellow(4, new Exception(), 0, false);
+        HLogger.bright_yellow(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_yellow(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_yellow(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_yellow(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_yellow(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_yellow(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_yellow(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_yellow(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_yellow(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -15055,25 +17009,50 @@ public class LogTest {
         HLogger.bright_yellow(0, new Exception(), Long.MAX_VALUE);
         HLogger.bright_yellow(0, new Exception(), Long.MIN_VALUE);
         HLogger.bright_yellow(0, new Exception(), 0);
+        HLogger.bright_yellow(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_yellow(0, (Exception) null, System.nanoTime());
+        HLogger.bright_yellow(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_yellow(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_yellow(0, (Exception) null, 0);
         HLogger.bright_yellow(1, new Exception(), System.currentTimeMillis());
         HLogger.bright_yellow(1, new Exception(), System.nanoTime());
         HLogger.bright_yellow(1, new Exception(), Long.MAX_VALUE);
         HLogger.bright_yellow(1, new Exception(), Long.MIN_VALUE);
         HLogger.bright_yellow(1, new Exception(), 0);
+        HLogger.bright_yellow(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_yellow(1, (Exception) null, System.nanoTime());
+        HLogger.bright_yellow(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_yellow(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_yellow(1, (Exception) null, 0);
         HLogger.bright_yellow(2, new Exception(), System.currentTimeMillis());
         HLogger.bright_yellow(2, new Exception(), System.nanoTime());
         HLogger.bright_yellow(2, new Exception(), Long.MAX_VALUE);
         HLogger.bright_yellow(2, new Exception(), Long.MIN_VALUE);
         HLogger.bright_yellow(2, new Exception(), 0);
+        HLogger.bright_yellow(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_yellow(2, (Exception) null, System.nanoTime());
+        HLogger.bright_yellow(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_yellow(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_yellow(2, (Exception) null, 0);
         HLogger.bright_yellow(3, new Exception(), System.currentTimeMillis());
         HLogger.bright_yellow(3, new Exception(), System.nanoTime());
         HLogger.bright_yellow(3, new Exception(), Long.MAX_VALUE);
         HLogger.bright_yellow(3, new Exception(), Long.MIN_VALUE);
         HLogger.bright_yellow(3, new Exception(), 0);
+        HLogger.bright_yellow(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_yellow(3, (Exception) null, System.nanoTime());
+        HLogger.bright_yellow(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_yellow(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_yellow(3, (Exception) null, 0);
         HLogger.bright_yellow(4, new Exception(), System.currentTimeMillis());
         HLogger.bright_yellow(4, new Exception(), System.nanoTime());
         HLogger.bright_yellow(4, new Exception(), Long.MAX_VALUE);
         HLogger.bright_yellow(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bright_yellow(4, new Exception(), 0);
+        HLogger.bright_yellow(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_yellow(4, (Exception) null, System.nanoTime());
+        HLogger.bright_yellow(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_yellow(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -15115,9 +17094,14 @@ public class LogTest {
     @Test
     public final void test_bright_yellow_int_Exception() {
         HLogger.bright_yellow(0, new Exception());
+        HLogger.bright_yellow(0, (Exception) null);
         HLogger.bright_yellow(1, new Exception());
+        HLogger.bright_yellow(1, (Exception) null);
         HLogger.bright_yellow(2, new Exception());
+        HLogger.bright_yellow(2, (Exception) null);
         HLogger.bright_yellow(3, new Exception());
+        HLogger.bright_yellow(3, (Exception) null);
+        HLogger.bright_yellow(4, new Exception());
     }
 
     @Test
@@ -15176,11 +17160,17 @@ public class LogTest {
         HLogger.bright_yellow(new Exception(), System.nanoTime());
         HLogger.bright_yellow(new Exception(), Long.MAX_VALUE);
         HLogger.bright_yellow(new Exception(), Long.MIN_VALUE);
+        HLogger.bright_yellow(new Exception(), 0);
+        HLogger.bright_yellow((Exception) null, System.currentTimeMillis());
+        HLogger.bright_yellow((Exception) null, System.nanoTime());
+        HLogger.bright_yellow((Exception) null, Long.MAX_VALUE);
+        HLogger.bright_yellow((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bright_yellow_Exception() {
         HLogger.bright_yellow(new Exception());
+        HLogger.bright_yellow((Exception) null);
     }
 
     @Test
@@ -15195,6 +17185,16 @@ public class LogTest {
         HLogger.bright_blue(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_blue(0, new Exception(), 0, true);
         HLogger.bright_blue(0, new Exception(), 0, false);
+        HLogger.bright_blue(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_blue(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_blue(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_blue(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_blue(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_blue(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_blue(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_blue(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_blue(0, (Exception) null, 0, true);
+        HLogger.bright_blue(0, (Exception) null, 0, false);
         HLogger.bright_blue(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_blue(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_blue(1, new Exception(), System.nanoTime(), true);
@@ -15205,6 +17205,16 @@ public class LogTest {
         HLogger.bright_blue(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_blue(1, new Exception(), 0, true);
         HLogger.bright_blue(1, new Exception(), 0, false);
+        HLogger.bright_blue(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_blue(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_blue(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_blue(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_blue(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_blue(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_blue(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_blue(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_blue(1, (Exception) null, 0, true);
+        HLogger.bright_blue(1, (Exception) null, 0, false);
         HLogger.bright_blue(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_blue(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_blue(2, new Exception(), System.nanoTime(), true);
@@ -15215,6 +17225,16 @@ public class LogTest {
         HLogger.bright_blue(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_blue(2, new Exception(), 0, true);
         HLogger.bright_blue(2, new Exception(), 0, false);
+        HLogger.bright_blue(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_blue(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_blue(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_blue(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_blue(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_blue(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_blue(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_blue(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_blue(2, (Exception) null, 0, true);
+        HLogger.bright_blue(2, (Exception) null, 0, false);
         HLogger.bright_blue(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_blue(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_blue(3, new Exception(), System.nanoTime(), true);
@@ -15225,6 +17245,16 @@ public class LogTest {
         HLogger.bright_blue(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_blue(3, new Exception(), 0, true);
         HLogger.bright_blue(3, new Exception(), 0, false);
+        HLogger.bright_blue(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_blue(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_blue(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_blue(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_blue(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_blue(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_blue(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_blue(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_blue(3, (Exception) null, 0, true);
+        HLogger.bright_blue(3, (Exception) null, 0, false);
         HLogger.bright_blue(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_blue(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_blue(4, new Exception(), System.nanoTime(), true);
@@ -15234,6 +17264,16 @@ public class LogTest {
         HLogger.bright_blue(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bright_blue(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_blue(4, new Exception(), 0, true);
+        HLogger.bright_blue(4, new Exception(), 0, false);
+        HLogger.bright_blue(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_blue(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_blue(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_blue(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_blue(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_blue(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_blue(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_blue(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_blue(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -15705,25 +17745,50 @@ public class LogTest {
         HLogger.bright_blue(0, new Exception(), Long.MAX_VALUE);
         HLogger.bright_blue(0, new Exception(), Long.MIN_VALUE);
         HLogger.bright_blue(0, new Exception(), 0);
+        HLogger.bright_blue(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_blue(0, (Exception) null, System.nanoTime());
+        HLogger.bright_blue(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_blue(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_blue(0, (Exception) null, 0);
         HLogger.bright_blue(1, new Exception(), System.currentTimeMillis());
         HLogger.bright_blue(1, new Exception(), System.nanoTime());
         HLogger.bright_blue(1, new Exception(), Long.MAX_VALUE);
         HLogger.bright_blue(1, new Exception(), Long.MIN_VALUE);
         HLogger.bright_blue(1, new Exception(), 0);
+        HLogger.bright_blue(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_blue(1, (Exception) null, System.nanoTime());
+        HLogger.bright_blue(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_blue(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_blue(1, (Exception) null, 0);
         HLogger.bright_blue(2, new Exception(), System.currentTimeMillis());
         HLogger.bright_blue(2, new Exception(), System.nanoTime());
         HLogger.bright_blue(2, new Exception(), Long.MAX_VALUE);
         HLogger.bright_blue(2, new Exception(), Long.MIN_VALUE);
         HLogger.bright_blue(2, new Exception(), 0);
+        HLogger.bright_blue(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_blue(2, (Exception) null, System.nanoTime());
+        HLogger.bright_blue(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_blue(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_blue(2, (Exception) null, 0);
         HLogger.bright_blue(3, new Exception(), System.currentTimeMillis());
         HLogger.bright_blue(3, new Exception(), System.nanoTime());
         HLogger.bright_blue(3, new Exception(), Long.MAX_VALUE);
         HLogger.bright_blue(3, new Exception(), Long.MIN_VALUE);
         HLogger.bright_blue(3, new Exception(), 0);
+        HLogger.bright_blue(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_blue(3, (Exception) null, System.nanoTime());
+        HLogger.bright_blue(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_blue(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_blue(3, (Exception) null, 0);
         HLogger.bright_blue(4, new Exception(), System.currentTimeMillis());
         HLogger.bright_blue(4, new Exception(), System.nanoTime());
         HLogger.bright_blue(4, new Exception(), Long.MAX_VALUE);
         HLogger.bright_blue(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bright_blue(4, new Exception(), 0);
+        HLogger.bright_blue(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_blue(4, (Exception) null, System.nanoTime());
+        HLogger.bright_blue(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_blue(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -15765,9 +17830,14 @@ public class LogTest {
     @Test
     public final void test_bright_blue_int_Exception() {
         HLogger.bright_blue(0, new Exception());
+        HLogger.bright_blue(0, (Exception) null);
         HLogger.bright_blue(1, new Exception());
+        HLogger.bright_blue(1, (Exception) null);
         HLogger.bright_blue(2, new Exception());
+        HLogger.bright_blue(2, (Exception) null);
         HLogger.bright_blue(3, new Exception());
+        HLogger.bright_blue(3, (Exception) null);
+        HLogger.bright_blue(4, new Exception());
     }
 
     @Test
@@ -15826,11 +17896,17 @@ public class LogTest {
         HLogger.bright_blue(new Exception(), System.nanoTime());
         HLogger.bright_blue(new Exception(), Long.MAX_VALUE);
         HLogger.bright_blue(new Exception(), Long.MIN_VALUE);
+        HLogger.bright_blue(new Exception(), 0);
+        HLogger.bright_blue((Exception) null, System.currentTimeMillis());
+        HLogger.bright_blue((Exception) null, System.nanoTime());
+        HLogger.bright_blue((Exception) null, Long.MAX_VALUE);
+        HLogger.bright_blue((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bright_blue_Exception() {
         HLogger.bright_blue(new Exception());
+        HLogger.bright_blue((Exception) null);
     }
 
     @Test
@@ -15845,6 +17921,16 @@ public class LogTest {
         HLogger.bright_magenta(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_magenta(0, new Exception(), 0, true);
         HLogger.bright_magenta(0, new Exception(), 0, false);
+        HLogger.bright_magenta(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_magenta(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_magenta(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_magenta(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_magenta(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_magenta(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_magenta(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_magenta(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_magenta(0, (Exception) null, 0, true);
+        HLogger.bright_magenta(0, (Exception) null, 0, false);
         HLogger.bright_magenta(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_magenta(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_magenta(1, new Exception(), System.nanoTime(), true);
@@ -15855,6 +17941,16 @@ public class LogTest {
         HLogger.bright_magenta(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_magenta(1, new Exception(), 0, true);
         HLogger.bright_magenta(1, new Exception(), 0, false);
+        HLogger.bright_magenta(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_magenta(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_magenta(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_magenta(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_magenta(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_magenta(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_magenta(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_magenta(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_magenta(1, (Exception) null, 0, true);
+        HLogger.bright_magenta(1, (Exception) null, 0, false);
         HLogger.bright_magenta(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_magenta(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_magenta(2, new Exception(), System.nanoTime(), true);
@@ -15865,6 +17961,16 @@ public class LogTest {
         HLogger.bright_magenta(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_magenta(2, new Exception(), 0, true);
         HLogger.bright_magenta(2, new Exception(), 0, false);
+        HLogger.bright_magenta(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_magenta(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_magenta(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_magenta(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_magenta(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_magenta(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_magenta(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_magenta(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_magenta(2, (Exception) null, 0, true);
+        HLogger.bright_magenta(2, (Exception) null, 0, false);
         HLogger.bright_magenta(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_magenta(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_magenta(3, new Exception(), System.nanoTime(), true);
@@ -15875,6 +17981,16 @@ public class LogTest {
         HLogger.bright_magenta(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_magenta(3, new Exception(), 0, true);
         HLogger.bright_magenta(3, new Exception(), 0, false);
+        HLogger.bright_magenta(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_magenta(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_magenta(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_magenta(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_magenta(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_magenta(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_magenta(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_magenta(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_magenta(3, (Exception) null, 0, true);
+        HLogger.bright_magenta(3, (Exception) null, 0, false);
         HLogger.bright_magenta(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_magenta(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_magenta(4, new Exception(), System.nanoTime(), true);
@@ -15884,6 +18000,16 @@ public class LogTest {
         HLogger.bright_magenta(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bright_magenta(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_magenta(4, new Exception(), 0, true);
+        HLogger.bright_magenta(4, new Exception(), 0, false);
+        HLogger.bright_magenta(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_magenta(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_magenta(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_magenta(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_magenta(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_magenta(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_magenta(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_magenta(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_magenta(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -16355,25 +18481,50 @@ public class LogTest {
         HLogger.bright_magenta(0, new Exception(), Long.MAX_VALUE);
         HLogger.bright_magenta(0, new Exception(), Long.MIN_VALUE);
         HLogger.bright_magenta(0, new Exception(), 0);
+        HLogger.bright_magenta(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_magenta(0, (Exception) null, System.nanoTime());
+        HLogger.bright_magenta(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_magenta(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_magenta(0, (Exception) null, 0);
         HLogger.bright_magenta(1, new Exception(), System.currentTimeMillis());
         HLogger.bright_magenta(1, new Exception(), System.nanoTime());
         HLogger.bright_magenta(1, new Exception(), Long.MAX_VALUE);
         HLogger.bright_magenta(1, new Exception(), Long.MIN_VALUE);
         HLogger.bright_magenta(1, new Exception(), 0);
+        HLogger.bright_magenta(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_magenta(1, (Exception) null, System.nanoTime());
+        HLogger.bright_magenta(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_magenta(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_magenta(1, (Exception) null, 0);
         HLogger.bright_magenta(2, new Exception(), System.currentTimeMillis());
         HLogger.bright_magenta(2, new Exception(), System.nanoTime());
         HLogger.bright_magenta(2, new Exception(), Long.MAX_VALUE);
         HLogger.bright_magenta(2, new Exception(), Long.MIN_VALUE);
         HLogger.bright_magenta(2, new Exception(), 0);
+        HLogger.bright_magenta(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_magenta(2, (Exception) null, System.nanoTime());
+        HLogger.bright_magenta(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_magenta(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_magenta(2, (Exception) null, 0);
         HLogger.bright_magenta(3, new Exception(), System.currentTimeMillis());
         HLogger.bright_magenta(3, new Exception(), System.nanoTime());
         HLogger.bright_magenta(3, new Exception(), Long.MAX_VALUE);
         HLogger.bright_magenta(3, new Exception(), Long.MIN_VALUE);
         HLogger.bright_magenta(3, new Exception(), 0);
+        HLogger.bright_magenta(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_magenta(3, (Exception) null, System.nanoTime());
+        HLogger.bright_magenta(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_magenta(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_magenta(3, (Exception) null, 0);
         HLogger.bright_magenta(4, new Exception(), System.currentTimeMillis());
         HLogger.bright_magenta(4, new Exception(), System.nanoTime());
         HLogger.bright_magenta(4, new Exception(), Long.MAX_VALUE);
         HLogger.bright_magenta(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bright_magenta(4, new Exception(), 0);
+        HLogger.bright_magenta(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_magenta(4, (Exception) null, System.nanoTime());
+        HLogger.bright_magenta(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_magenta(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -16415,9 +18566,14 @@ public class LogTest {
     @Test
     public final void test_bright_magenta_int_Exception() {
         HLogger.bright_magenta(0, new Exception());
+        HLogger.bright_magenta(0, (Exception) null);
         HLogger.bright_magenta(1, new Exception());
+        HLogger.bright_magenta(1, (Exception) null);
         HLogger.bright_magenta(2, new Exception());
+        HLogger.bright_magenta(2, (Exception) null);
         HLogger.bright_magenta(3, new Exception());
+        HLogger.bright_magenta(3, (Exception) null);
+        HLogger.bright_magenta(4, new Exception());
     }
 
     @Test
@@ -16476,11 +18632,17 @@ public class LogTest {
         HLogger.bright_magenta(new Exception(), System.nanoTime());
         HLogger.bright_magenta(new Exception(), Long.MAX_VALUE);
         HLogger.bright_magenta(new Exception(), Long.MIN_VALUE);
+        HLogger.bright_magenta(new Exception(), 0);
+        HLogger.bright_magenta((Exception) null, System.currentTimeMillis());
+        HLogger.bright_magenta((Exception) null, System.nanoTime());
+        HLogger.bright_magenta((Exception) null, Long.MAX_VALUE);
+        HLogger.bright_magenta((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bright_magenta_Exception() {
         HLogger.bright_magenta(new Exception());
+        HLogger.bright_magenta((Exception) null);
     }
 
     @Test
@@ -16495,6 +18657,16 @@ public class LogTest {
         HLogger.bright_cyan(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_cyan(0, new Exception(), 0, true);
         HLogger.bright_cyan(0, new Exception(), 0, false);
+        HLogger.bright_cyan(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_cyan(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_cyan(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_cyan(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_cyan(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_cyan(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_cyan(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_cyan(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_cyan(0, (Exception) null, 0, true);
+        HLogger.bright_cyan(0, (Exception) null, 0, false);
         HLogger.bright_cyan(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_cyan(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_cyan(1, new Exception(), System.nanoTime(), true);
@@ -16505,6 +18677,16 @@ public class LogTest {
         HLogger.bright_cyan(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_cyan(1, new Exception(), 0, true);
         HLogger.bright_cyan(1, new Exception(), 0, false);
+        HLogger.bright_cyan(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_cyan(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_cyan(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_cyan(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_cyan(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_cyan(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_cyan(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_cyan(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_cyan(1, (Exception) null, 0, true);
+        HLogger.bright_cyan(1, (Exception) null, 0, false);
         HLogger.bright_cyan(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_cyan(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_cyan(2, new Exception(), System.nanoTime(), true);
@@ -16515,6 +18697,16 @@ public class LogTest {
         HLogger.bright_cyan(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_cyan(2, new Exception(), 0, true);
         HLogger.bright_cyan(2, new Exception(), 0, false);
+        HLogger.bright_cyan(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_cyan(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_cyan(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_cyan(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_cyan(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_cyan(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_cyan(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_cyan(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_cyan(2, (Exception) null, 0, true);
+        HLogger.bright_cyan(2, (Exception) null, 0, false);
         HLogger.bright_cyan(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_cyan(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_cyan(3, new Exception(), System.nanoTime(), true);
@@ -16525,6 +18717,16 @@ public class LogTest {
         HLogger.bright_cyan(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_cyan(3, new Exception(), 0, true);
         HLogger.bright_cyan(3, new Exception(), 0, false);
+        HLogger.bright_cyan(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_cyan(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_cyan(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_cyan(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_cyan(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_cyan(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_cyan(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_cyan(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_cyan(3, (Exception) null, 0, true);
+        HLogger.bright_cyan(3, (Exception) null, 0, false);
         HLogger.bright_cyan(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_cyan(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_cyan(4, new Exception(), System.nanoTime(), true);
@@ -16534,6 +18736,16 @@ public class LogTest {
         HLogger.bright_cyan(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bright_cyan(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_cyan(4, new Exception(), 0, true);
+        HLogger.bright_cyan(4, new Exception(), 0, false);
+        HLogger.bright_cyan(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_cyan(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_cyan(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_cyan(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_cyan(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_cyan(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_cyan(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_cyan(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_cyan(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -17005,25 +19217,50 @@ public class LogTest {
         HLogger.bright_cyan(0, new Exception(), Long.MAX_VALUE);
         HLogger.bright_cyan(0, new Exception(), Long.MIN_VALUE);
         HLogger.bright_cyan(0, new Exception(), 0);
+        HLogger.bright_cyan(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_cyan(0, (Exception) null, System.nanoTime());
+        HLogger.bright_cyan(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_cyan(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_cyan(0, (Exception) null, 0);
         HLogger.bright_cyan(1, new Exception(), System.currentTimeMillis());
         HLogger.bright_cyan(1, new Exception(), System.nanoTime());
         HLogger.bright_cyan(1, new Exception(), Long.MAX_VALUE);
         HLogger.bright_cyan(1, new Exception(), Long.MIN_VALUE);
         HLogger.bright_cyan(1, new Exception(), 0);
+        HLogger.bright_cyan(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_cyan(1, (Exception) null, System.nanoTime());
+        HLogger.bright_cyan(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_cyan(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_cyan(1, (Exception) null, 0);
         HLogger.bright_cyan(2, new Exception(), System.currentTimeMillis());
         HLogger.bright_cyan(2, new Exception(), System.nanoTime());
         HLogger.bright_cyan(2, new Exception(), Long.MAX_VALUE);
         HLogger.bright_cyan(2, new Exception(), Long.MIN_VALUE);
         HLogger.bright_cyan(2, new Exception(), 0);
+        HLogger.bright_cyan(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_cyan(2, (Exception) null, System.nanoTime());
+        HLogger.bright_cyan(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_cyan(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_cyan(2, (Exception) null, 0);
         HLogger.bright_cyan(3, new Exception(), System.currentTimeMillis());
         HLogger.bright_cyan(3, new Exception(), System.nanoTime());
         HLogger.bright_cyan(3, new Exception(), Long.MAX_VALUE);
         HLogger.bright_cyan(3, new Exception(), Long.MIN_VALUE);
         HLogger.bright_cyan(3, new Exception(), 0);
+        HLogger.bright_cyan(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_cyan(3, (Exception) null, System.nanoTime());
+        HLogger.bright_cyan(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_cyan(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_cyan(3, (Exception) null, 0);
         HLogger.bright_cyan(4, new Exception(), System.currentTimeMillis());
         HLogger.bright_cyan(4, new Exception(), System.nanoTime());
         HLogger.bright_cyan(4, new Exception(), Long.MAX_VALUE);
         HLogger.bright_cyan(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bright_cyan(4, new Exception(), 0);
+        HLogger.bright_cyan(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_cyan(4, (Exception) null, System.nanoTime());
+        HLogger.bright_cyan(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_cyan(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -17065,9 +19302,14 @@ public class LogTest {
     @Test
     public final void test_bright_cyan_int_Exception() {
         HLogger.bright_cyan(0, new Exception());
+        HLogger.bright_cyan(0, (Exception) null);
         HLogger.bright_cyan(1, new Exception());
+        HLogger.bright_cyan(1, (Exception) null);
         HLogger.bright_cyan(2, new Exception());
+        HLogger.bright_cyan(2, (Exception) null);
         HLogger.bright_cyan(3, new Exception());
+        HLogger.bright_cyan(3, (Exception) null);
+        HLogger.bright_cyan(4, new Exception());
     }
 
     @Test
@@ -17126,11 +19368,17 @@ public class LogTest {
         HLogger.bright_cyan(new Exception(), System.nanoTime());
         HLogger.bright_cyan(new Exception(), Long.MAX_VALUE);
         HLogger.bright_cyan(new Exception(), Long.MIN_VALUE);
+        HLogger.bright_cyan(new Exception(), 0);
+        HLogger.bright_cyan((Exception) null, System.currentTimeMillis());
+        HLogger.bright_cyan((Exception) null, System.nanoTime());
+        HLogger.bright_cyan((Exception) null, Long.MAX_VALUE);
+        HLogger.bright_cyan((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bright_cyan_Exception() {
         HLogger.bright_cyan(new Exception());
+        HLogger.bright_cyan((Exception) null);
     }
 
     @Test
@@ -17145,6 +19393,16 @@ public class LogTest {
         HLogger.bright_white(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_white(0, new Exception(), 0, true);
         HLogger.bright_white(0, new Exception(), 0, false);
+        HLogger.bright_white(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_white(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_white(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_white(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_white(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_white(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_white(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_white(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_white(0, (Exception) null, 0, true);
+        HLogger.bright_white(0, (Exception) null, 0, false);
         HLogger.bright_white(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_white(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_white(1, new Exception(), System.nanoTime(), true);
@@ -17155,6 +19413,16 @@ public class LogTest {
         HLogger.bright_white(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_white(1, new Exception(), 0, true);
         HLogger.bright_white(1, new Exception(), 0, false);
+        HLogger.bright_white(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_white(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_white(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_white(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_white(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_white(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_white(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_white(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_white(1, (Exception) null, 0, true);
+        HLogger.bright_white(1, (Exception) null, 0, false);
         HLogger.bright_white(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_white(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_white(2, new Exception(), System.nanoTime(), true);
@@ -17165,6 +19433,16 @@ public class LogTest {
         HLogger.bright_white(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_white(2, new Exception(), 0, true);
         HLogger.bright_white(2, new Exception(), 0, false);
+        HLogger.bright_white(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_white(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_white(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_white(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_white(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_white(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_white(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_white(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_white(2, (Exception) null, 0, true);
+        HLogger.bright_white(2, (Exception) null, 0, false);
         HLogger.bright_white(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_white(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_white(3, new Exception(), System.nanoTime(), true);
@@ -17175,6 +19453,16 @@ public class LogTest {
         HLogger.bright_white(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_white(3, new Exception(), 0, true);
         HLogger.bright_white(3, new Exception(), 0, false);
+        HLogger.bright_white(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_white(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_white(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_white(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_white(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_white(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_white(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_white(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_white(3, (Exception) null, 0, true);
+        HLogger.bright_white(3, (Exception) null, 0, false);
         HLogger.bright_white(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_white(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_white(4, new Exception(), System.nanoTime(), true);
@@ -17184,6 +19472,16 @@ public class LogTest {
         HLogger.bright_white(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bright_white(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_white(4, new Exception(), 0, true);
+        HLogger.bright_white(4, new Exception(), 0, false);
+        HLogger.bright_white(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_white(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_white(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_white(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_white(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_white(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_white(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_white(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_white(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -17655,25 +19953,50 @@ public class LogTest {
         HLogger.bright_white(0, new Exception(), Long.MAX_VALUE);
         HLogger.bright_white(0, new Exception(), Long.MIN_VALUE);
         HLogger.bright_white(0, new Exception(), 0);
+        HLogger.bright_white(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_white(0, (Exception) null, System.nanoTime());
+        HLogger.bright_white(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_white(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_white(0, (Exception) null, 0);
         HLogger.bright_white(1, new Exception(), System.currentTimeMillis());
         HLogger.bright_white(1, new Exception(), System.nanoTime());
         HLogger.bright_white(1, new Exception(), Long.MAX_VALUE);
         HLogger.bright_white(1, new Exception(), Long.MIN_VALUE);
         HLogger.bright_white(1, new Exception(), 0);
+        HLogger.bright_white(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_white(1, (Exception) null, System.nanoTime());
+        HLogger.bright_white(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_white(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_white(1, (Exception) null, 0);
         HLogger.bright_white(2, new Exception(), System.currentTimeMillis());
         HLogger.bright_white(2, new Exception(), System.nanoTime());
         HLogger.bright_white(2, new Exception(), Long.MAX_VALUE);
         HLogger.bright_white(2, new Exception(), Long.MIN_VALUE);
         HLogger.bright_white(2, new Exception(), 0);
+        HLogger.bright_white(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_white(2, (Exception) null, System.nanoTime());
+        HLogger.bright_white(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_white(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_white(2, (Exception) null, 0);
         HLogger.bright_white(3, new Exception(), System.currentTimeMillis());
         HLogger.bright_white(3, new Exception(), System.nanoTime());
         HLogger.bright_white(3, new Exception(), Long.MAX_VALUE);
         HLogger.bright_white(3, new Exception(), Long.MIN_VALUE);
         HLogger.bright_white(3, new Exception(), 0);
+        HLogger.bright_white(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_white(3, (Exception) null, System.nanoTime());
+        HLogger.bright_white(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_white(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_white(3, (Exception) null, 0);
         HLogger.bright_white(4, new Exception(), System.currentTimeMillis());
         HLogger.bright_white(4, new Exception(), System.nanoTime());
         HLogger.bright_white(4, new Exception(), Long.MAX_VALUE);
         HLogger.bright_white(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bright_white(4, new Exception(), 0);
+        HLogger.bright_white(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_white(4, (Exception) null, System.nanoTime());
+        HLogger.bright_white(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_white(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -17715,9 +20038,14 @@ public class LogTest {
     @Test
     public final void test_bright_white_int_Exception() {
         HLogger.bright_white(0, new Exception());
+        HLogger.bright_white(0, (Exception) null);
         HLogger.bright_white(1, new Exception());
+        HLogger.bright_white(1, (Exception) null);
         HLogger.bright_white(2, new Exception());
+        HLogger.bright_white(2, (Exception) null);
         HLogger.bright_white(3, new Exception());
+        HLogger.bright_white(3, (Exception) null);
+        HLogger.bright_white(4, new Exception());
     }
 
     @Test
@@ -17776,11 +20104,17 @@ public class LogTest {
         HLogger.bright_white(new Exception(), System.nanoTime());
         HLogger.bright_white(new Exception(), Long.MAX_VALUE);
         HLogger.bright_white(new Exception(), Long.MIN_VALUE);
+        HLogger.bright_white(new Exception(), 0);
+        HLogger.bright_white((Exception) null, System.currentTimeMillis());
+        HLogger.bright_white((Exception) null, System.nanoTime());
+        HLogger.bright_white((Exception) null, Long.MAX_VALUE);
+        HLogger.bright_white((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bright_white_Exception() {
         HLogger.bright_white(new Exception());
+        HLogger.bright_white((Exception) null);
     }
 
     @Test
@@ -17795,6 +20129,16 @@ public class LogTest {
         HLogger.bright_gray(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_gray(0, new Exception(), 0, true);
         HLogger.bright_gray(0, new Exception(), 0, false);
+        HLogger.bright_gray(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_gray(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_gray(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_gray(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_gray(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_gray(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_gray(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_gray(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_gray(0, (Exception) null, 0, true);
+        HLogger.bright_gray(0, (Exception) null, 0, false);
         HLogger.bright_gray(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_gray(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_gray(1, new Exception(), System.nanoTime(), true);
@@ -17805,6 +20149,16 @@ public class LogTest {
         HLogger.bright_gray(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_gray(1, new Exception(), 0, true);
         HLogger.bright_gray(1, new Exception(), 0, false);
+        HLogger.bright_gray(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_gray(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_gray(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_gray(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_gray(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_gray(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_gray(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_gray(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_gray(1, (Exception) null, 0, true);
+        HLogger.bright_gray(1, (Exception) null, 0, false);
         HLogger.bright_gray(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_gray(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_gray(2, new Exception(), System.nanoTime(), true);
@@ -17815,6 +20169,16 @@ public class LogTest {
         HLogger.bright_gray(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_gray(2, new Exception(), 0, true);
         HLogger.bright_gray(2, new Exception(), 0, false);
+        HLogger.bright_gray(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_gray(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_gray(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_gray(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_gray(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_gray(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_gray(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_gray(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_gray(2, (Exception) null, 0, true);
+        HLogger.bright_gray(2, (Exception) null, 0, false);
         HLogger.bright_gray(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_gray(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_gray(3, new Exception(), System.nanoTime(), true);
@@ -17825,6 +20189,16 @@ public class LogTest {
         HLogger.bright_gray(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_gray(3, new Exception(), 0, true);
         HLogger.bright_gray(3, new Exception(), 0, false);
+        HLogger.bright_gray(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_gray(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_gray(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_gray(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_gray(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_gray(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_gray(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_gray(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_gray(3, (Exception) null, 0, true);
+        HLogger.bright_gray(3, (Exception) null, 0, false);
         HLogger.bright_gray(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_gray(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_gray(4, new Exception(), System.nanoTime(), true);
@@ -17834,6 +20208,16 @@ public class LogTest {
         HLogger.bright_gray(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bright_gray(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_gray(4, new Exception(), 0, true);
+        HLogger.bright_gray(4, new Exception(), 0, false);
+        HLogger.bright_gray(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_gray(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_gray(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_gray(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_gray(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_gray(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_gray(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_gray(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_gray(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -18305,25 +20689,50 @@ public class LogTest {
         HLogger.bright_gray(0, new Exception(), Long.MAX_VALUE);
         HLogger.bright_gray(0, new Exception(), Long.MIN_VALUE);
         HLogger.bright_gray(0, new Exception(), 0);
+        HLogger.bright_gray(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_gray(0, (Exception) null, System.nanoTime());
+        HLogger.bright_gray(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_gray(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_gray(0, (Exception) null, 0);
         HLogger.bright_gray(1, new Exception(), System.currentTimeMillis());
         HLogger.bright_gray(1, new Exception(), System.nanoTime());
         HLogger.bright_gray(1, new Exception(), Long.MAX_VALUE);
         HLogger.bright_gray(1, new Exception(), Long.MIN_VALUE);
         HLogger.bright_gray(1, new Exception(), 0);
+        HLogger.bright_gray(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_gray(1, (Exception) null, System.nanoTime());
+        HLogger.bright_gray(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_gray(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_gray(1, (Exception) null, 0);
         HLogger.bright_gray(2, new Exception(), System.currentTimeMillis());
         HLogger.bright_gray(2, new Exception(), System.nanoTime());
         HLogger.bright_gray(2, new Exception(), Long.MAX_VALUE);
         HLogger.bright_gray(2, new Exception(), Long.MIN_VALUE);
         HLogger.bright_gray(2, new Exception(), 0);
+        HLogger.bright_gray(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_gray(2, (Exception) null, System.nanoTime());
+        HLogger.bright_gray(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_gray(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_gray(2, (Exception) null, 0);
         HLogger.bright_gray(3, new Exception(), System.currentTimeMillis());
         HLogger.bright_gray(3, new Exception(), System.nanoTime());
         HLogger.bright_gray(3, new Exception(), Long.MAX_VALUE);
         HLogger.bright_gray(3, new Exception(), Long.MIN_VALUE);
         HLogger.bright_gray(3, new Exception(), 0);
+        HLogger.bright_gray(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_gray(3, (Exception) null, System.nanoTime());
+        HLogger.bright_gray(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_gray(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_gray(3, (Exception) null, 0);
         HLogger.bright_gray(4, new Exception(), System.currentTimeMillis());
         HLogger.bright_gray(4, new Exception(), System.nanoTime());
         HLogger.bright_gray(4, new Exception(), Long.MAX_VALUE);
         HLogger.bright_gray(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bright_gray(4, new Exception(), 0);
+        HLogger.bright_gray(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_gray(4, (Exception) null, System.nanoTime());
+        HLogger.bright_gray(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_gray(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -18365,9 +20774,14 @@ public class LogTest {
     @Test
     public final void test_bright_gray_int_Exception() {
         HLogger.bright_gray(0, new Exception());
+        HLogger.bright_gray(0, (Exception) null);
         HLogger.bright_gray(1, new Exception());
+        HLogger.bright_gray(1, (Exception) null);
         HLogger.bright_gray(2, new Exception());
+        HLogger.bright_gray(2, (Exception) null);
         HLogger.bright_gray(3, new Exception());
+        HLogger.bright_gray(3, (Exception) null);
+        HLogger.bright_gray(4, new Exception());
     }
 
     @Test
@@ -18426,11 +20840,17 @@ public class LogTest {
         HLogger.bright_gray(new Exception(), System.nanoTime());
         HLogger.bright_gray(new Exception(), Long.MAX_VALUE);
         HLogger.bright_gray(new Exception(), Long.MIN_VALUE);
+        HLogger.bright_gray(new Exception(), 0);
+        HLogger.bright_gray((Exception) null, System.currentTimeMillis());
+        HLogger.bright_gray((Exception) null, System.nanoTime());
+        HLogger.bright_gray((Exception) null, Long.MAX_VALUE);
+        HLogger.bright_gray((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bright_gray_Exception() {
         HLogger.bright_gray(new Exception());
+        HLogger.bright_gray((Exception) null);
     }
 
     @Test
@@ -18445,6 +20865,16 @@ public class LogTest {
         HLogger.bright_grey(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_grey(0, new Exception(), 0, true);
         HLogger.bright_grey(0, new Exception(), 0, false);
+        HLogger.bright_grey(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_grey(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_grey(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_grey(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_grey(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_grey(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_grey(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_grey(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_grey(0, (Exception) null, 0, true);
+        HLogger.bright_grey(0, (Exception) null, 0, false);
         HLogger.bright_grey(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_grey(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_grey(1, new Exception(), System.nanoTime(), true);
@@ -18455,6 +20885,16 @@ public class LogTest {
         HLogger.bright_grey(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_grey(1, new Exception(), 0, true);
         HLogger.bright_grey(1, new Exception(), 0, false);
+        HLogger.bright_grey(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_grey(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_grey(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_grey(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_grey(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_grey(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_grey(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_grey(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_grey(1, (Exception) null, 0, true);
+        HLogger.bright_grey(1, (Exception) null, 0, false);
         HLogger.bright_grey(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_grey(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_grey(2, new Exception(), System.nanoTime(), true);
@@ -18465,6 +20905,16 @@ public class LogTest {
         HLogger.bright_grey(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_grey(2, new Exception(), 0, true);
         HLogger.bright_grey(2, new Exception(), 0, false);
+        HLogger.bright_grey(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_grey(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_grey(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_grey(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_grey(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_grey(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_grey(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_grey(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_grey(2, (Exception) null, 0, true);
+        HLogger.bright_grey(2, (Exception) null, 0, false);
         HLogger.bright_grey(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_grey(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_grey(3, new Exception(), System.nanoTime(), true);
@@ -18475,6 +20925,16 @@ public class LogTest {
         HLogger.bright_grey(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_grey(3, new Exception(), 0, true);
         HLogger.bright_grey(3, new Exception(), 0, false);
+        HLogger.bright_grey(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_grey(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_grey(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_grey(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_grey(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_grey(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_grey(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_grey(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_grey(3, (Exception) null, 0, true);
+        HLogger.bright_grey(3, (Exception) null, 0, false);
         HLogger.bright_grey(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bright_grey(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bright_grey(4, new Exception(), System.nanoTime(), true);
@@ -18484,6 +20944,16 @@ public class LogTest {
         HLogger.bright_grey(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bright_grey(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bright_grey(4, new Exception(), 0, true);
+        HLogger.bright_grey(4, new Exception(), 0, false);
+        HLogger.bright_grey(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bright_grey(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bright_grey(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bright_grey(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bright_grey(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bright_grey(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bright_grey(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bright_grey(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bright_grey(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -18955,25 +21425,50 @@ public class LogTest {
         HLogger.bright_grey(0, new Exception(), Long.MAX_VALUE);
         HLogger.bright_grey(0, new Exception(), Long.MIN_VALUE);
         HLogger.bright_grey(0, new Exception(), 0);
+        HLogger.bright_grey(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_grey(0, (Exception) null, System.nanoTime());
+        HLogger.bright_grey(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_grey(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_grey(0, (Exception) null, 0);
         HLogger.bright_grey(1, new Exception(), System.currentTimeMillis());
         HLogger.bright_grey(1, new Exception(), System.nanoTime());
         HLogger.bright_grey(1, new Exception(), Long.MAX_VALUE);
         HLogger.bright_grey(1, new Exception(), Long.MIN_VALUE);
         HLogger.bright_grey(1, new Exception(), 0);
+        HLogger.bright_grey(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_grey(1, (Exception) null, System.nanoTime());
+        HLogger.bright_grey(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_grey(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_grey(1, (Exception) null, 0);
         HLogger.bright_grey(2, new Exception(), System.currentTimeMillis());
         HLogger.bright_grey(2, new Exception(), System.nanoTime());
         HLogger.bright_grey(2, new Exception(), Long.MAX_VALUE);
         HLogger.bright_grey(2, new Exception(), Long.MIN_VALUE);
         HLogger.bright_grey(2, new Exception(), 0);
+        HLogger.bright_grey(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_grey(2, (Exception) null, System.nanoTime());
+        HLogger.bright_grey(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_grey(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_grey(2, (Exception) null, 0);
         HLogger.bright_grey(3, new Exception(), System.currentTimeMillis());
         HLogger.bright_grey(3, new Exception(), System.nanoTime());
         HLogger.bright_grey(3, new Exception(), Long.MAX_VALUE);
         HLogger.bright_grey(3, new Exception(), Long.MIN_VALUE);
         HLogger.bright_grey(3, new Exception(), 0);
+        HLogger.bright_grey(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_grey(3, (Exception) null, System.nanoTime());
+        HLogger.bright_grey(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_grey(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bright_grey(3, (Exception) null, 0);
         HLogger.bright_grey(4, new Exception(), System.currentTimeMillis());
         HLogger.bright_grey(4, new Exception(), System.nanoTime());
         HLogger.bright_grey(4, new Exception(), Long.MAX_VALUE);
         HLogger.bright_grey(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bright_grey(4, new Exception(), 0);
+        HLogger.bright_grey(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bright_grey(4, (Exception) null, System.nanoTime());
+        HLogger.bright_grey(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bright_grey(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -19015,9 +21510,14 @@ public class LogTest {
     @Test
     public final void test_bright_grey_int_Exception() {
         HLogger.bright_grey(0, new Exception());
+        HLogger.bright_grey(0, (Exception) null);
         HLogger.bright_grey(1, new Exception());
+        HLogger.bright_grey(1, (Exception) null);
         HLogger.bright_grey(2, new Exception());
+        HLogger.bright_grey(2, (Exception) null);
         HLogger.bright_grey(3, new Exception());
+        HLogger.bright_grey(3, (Exception) null);
+        HLogger.bright_grey(4, new Exception());
     }
 
     @Test
@@ -19076,11 +21576,17 @@ public class LogTest {
         HLogger.bright_grey(new Exception(), System.nanoTime());
         HLogger.bright_grey(new Exception(), Long.MAX_VALUE);
         HLogger.bright_grey(new Exception(), Long.MIN_VALUE);
+        HLogger.bright_grey(new Exception(), 0);
+        HLogger.bright_grey((Exception) null, System.currentTimeMillis());
+        HLogger.bright_grey((Exception) null, System.nanoTime());
+        HLogger.bright_grey((Exception) null, Long.MAX_VALUE);
+        HLogger.bright_grey((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bright_grey_Exception() {
         HLogger.bright_grey(new Exception());
+        HLogger.bright_grey((Exception) null);
     }
 
     @Test
@@ -19095,6 +21601,16 @@ public class LogTest {
         HLogger.bgBlack(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgBlack(0, new Exception(), 0, true);
         HLogger.bgBlack(0, new Exception(), 0, false);
+        HLogger.bgBlack(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgBlack(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgBlack(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bgBlack(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bgBlack(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgBlack(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgBlack(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgBlack(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgBlack(0, (Exception) null, 0, true);
+        HLogger.bgBlack(0, (Exception) null, 0, false);
         HLogger.bgBlack(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgBlack(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgBlack(1, new Exception(), System.nanoTime(), true);
@@ -19105,6 +21621,16 @@ public class LogTest {
         HLogger.bgBlack(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgBlack(1, new Exception(), 0, true);
         HLogger.bgBlack(1, new Exception(), 0, false);
+        HLogger.bgBlack(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgBlack(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgBlack(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bgBlack(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bgBlack(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgBlack(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgBlack(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgBlack(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgBlack(1, (Exception) null, 0, true);
+        HLogger.bgBlack(1, (Exception) null, 0, false);
         HLogger.bgBlack(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgBlack(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgBlack(2, new Exception(), System.nanoTime(), true);
@@ -19115,6 +21641,16 @@ public class LogTest {
         HLogger.bgBlack(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgBlack(2, new Exception(), 0, true);
         HLogger.bgBlack(2, new Exception(), 0, false);
+        HLogger.bgBlack(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgBlack(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgBlack(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bgBlack(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bgBlack(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgBlack(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgBlack(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgBlack(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgBlack(2, (Exception) null, 0, true);
+        HLogger.bgBlack(2, (Exception) null, 0, false);
         HLogger.bgBlack(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgBlack(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgBlack(3, new Exception(), System.nanoTime(), true);
@@ -19125,6 +21661,16 @@ public class LogTest {
         HLogger.bgBlack(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgBlack(3, new Exception(), 0, true);
         HLogger.bgBlack(3, new Exception(), 0, false);
+        HLogger.bgBlack(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgBlack(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgBlack(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bgBlack(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bgBlack(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgBlack(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgBlack(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgBlack(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgBlack(3, (Exception) null, 0, true);
+        HLogger.bgBlack(3, (Exception) null, 0, false);
         HLogger.bgBlack(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgBlack(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgBlack(4, new Exception(), System.nanoTime(), true);
@@ -19134,6 +21680,16 @@ public class LogTest {
         HLogger.bgBlack(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bgBlack(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgBlack(4, new Exception(), 0, true);
+        HLogger.bgBlack(4, new Exception(), 0, false);
+        HLogger.bgBlack(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgBlack(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgBlack(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bgBlack(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bgBlack(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgBlack(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgBlack(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgBlack(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgBlack(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -19605,25 +22161,50 @@ public class LogTest {
         HLogger.bgBlack(0, new Exception(), Long.MAX_VALUE);
         HLogger.bgBlack(0, new Exception(), Long.MIN_VALUE);
         HLogger.bgBlack(0, new Exception(), 0);
+        HLogger.bgBlack(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bgBlack(0, (Exception) null, System.nanoTime());
+        HLogger.bgBlack(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlack(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgBlack(0, (Exception) null, 0);
         HLogger.bgBlack(1, new Exception(), System.currentTimeMillis());
         HLogger.bgBlack(1, new Exception(), System.nanoTime());
         HLogger.bgBlack(1, new Exception(), Long.MAX_VALUE);
         HLogger.bgBlack(1, new Exception(), Long.MIN_VALUE);
         HLogger.bgBlack(1, new Exception(), 0);
+        HLogger.bgBlack(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bgBlack(1, (Exception) null, System.nanoTime());
+        HLogger.bgBlack(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlack(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgBlack(1, (Exception) null, 0);
         HLogger.bgBlack(2, new Exception(), System.currentTimeMillis());
         HLogger.bgBlack(2, new Exception(), System.nanoTime());
         HLogger.bgBlack(2, new Exception(), Long.MAX_VALUE);
         HLogger.bgBlack(2, new Exception(), Long.MIN_VALUE);
         HLogger.bgBlack(2, new Exception(), 0);
+        HLogger.bgBlack(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bgBlack(2, (Exception) null, System.nanoTime());
+        HLogger.bgBlack(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlack(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgBlack(2, (Exception) null, 0);
         HLogger.bgBlack(3, new Exception(), System.currentTimeMillis());
         HLogger.bgBlack(3, new Exception(), System.nanoTime());
         HLogger.bgBlack(3, new Exception(), Long.MAX_VALUE);
         HLogger.bgBlack(3, new Exception(), Long.MIN_VALUE);
         HLogger.bgBlack(3, new Exception(), 0);
+        HLogger.bgBlack(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bgBlack(3, (Exception) null, System.nanoTime());
+        HLogger.bgBlack(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlack(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgBlack(3, (Exception) null, 0);
         HLogger.bgBlack(4, new Exception(), System.currentTimeMillis());
         HLogger.bgBlack(4, new Exception(), System.nanoTime());
         HLogger.bgBlack(4, new Exception(), Long.MAX_VALUE);
         HLogger.bgBlack(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bgBlack(4, new Exception(), 0);
+        HLogger.bgBlack(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bgBlack(4, (Exception) null, System.nanoTime());
+        HLogger.bgBlack(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlack(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -19665,9 +22246,14 @@ public class LogTest {
     @Test
     public final void test_bgBlack_int_Exception() {
         HLogger.bgBlack(0, new Exception());
+        HLogger.bgBlack(0, (Exception) null);
         HLogger.bgBlack(1, new Exception());
+        HLogger.bgBlack(1, (Exception) null);
         HLogger.bgBlack(2, new Exception());
+        HLogger.bgBlack(2, (Exception) null);
         HLogger.bgBlack(3, new Exception());
+        HLogger.bgBlack(3, (Exception) null);
+        HLogger.bgBlack(4, new Exception());
     }
 
     @Test
@@ -19726,11 +22312,17 @@ public class LogTest {
         HLogger.bgBlack(new Exception(), System.nanoTime());
         HLogger.bgBlack(new Exception(), Long.MAX_VALUE);
         HLogger.bgBlack(new Exception(), Long.MIN_VALUE);
+        HLogger.bgBlack(new Exception(), 0);
+        HLogger.bgBlack((Exception) null, System.currentTimeMillis());
+        HLogger.bgBlack((Exception) null, System.nanoTime());
+        HLogger.bgBlack((Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlack((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bgBlack_Exception() {
         HLogger.bgBlack(new Exception());
+        HLogger.bgBlack((Exception) null);
     }
 
     @Test
@@ -19745,6 +22337,16 @@ public class LogTest {
         HLogger.bgRed(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgRed(0, new Exception(), 0, true);
         HLogger.bgRed(0, new Exception(), 0, false);
+        HLogger.bgRed(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgRed(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgRed(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bgRed(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bgRed(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgRed(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgRed(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgRed(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgRed(0, (Exception) null, 0, true);
+        HLogger.bgRed(0, (Exception) null, 0, false);
         HLogger.bgRed(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgRed(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgRed(1, new Exception(), System.nanoTime(), true);
@@ -19755,6 +22357,16 @@ public class LogTest {
         HLogger.bgRed(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgRed(1, new Exception(), 0, true);
         HLogger.bgRed(1, new Exception(), 0, false);
+        HLogger.bgRed(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgRed(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgRed(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bgRed(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bgRed(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgRed(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgRed(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgRed(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgRed(1, (Exception) null, 0, true);
+        HLogger.bgRed(1, (Exception) null, 0, false);
         HLogger.bgRed(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgRed(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgRed(2, new Exception(), System.nanoTime(), true);
@@ -19765,6 +22377,16 @@ public class LogTest {
         HLogger.bgRed(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgRed(2, new Exception(), 0, true);
         HLogger.bgRed(2, new Exception(), 0, false);
+        HLogger.bgRed(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgRed(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgRed(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bgRed(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bgRed(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgRed(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgRed(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgRed(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgRed(2, (Exception) null, 0, true);
+        HLogger.bgRed(2, (Exception) null, 0, false);
         HLogger.bgRed(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgRed(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgRed(3, new Exception(), System.nanoTime(), true);
@@ -19775,6 +22397,16 @@ public class LogTest {
         HLogger.bgRed(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgRed(3, new Exception(), 0, true);
         HLogger.bgRed(3, new Exception(), 0, false);
+        HLogger.bgRed(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgRed(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgRed(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bgRed(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bgRed(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgRed(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgRed(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgRed(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgRed(3, (Exception) null, 0, true);
+        HLogger.bgRed(3, (Exception) null, 0, false);
         HLogger.bgRed(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgRed(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgRed(4, new Exception(), System.nanoTime(), true);
@@ -19784,6 +22416,16 @@ public class LogTest {
         HLogger.bgRed(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bgRed(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgRed(4, new Exception(), 0, true);
+        HLogger.bgRed(4, new Exception(), 0, false);
+        HLogger.bgRed(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgRed(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgRed(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bgRed(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bgRed(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgRed(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgRed(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgRed(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgRed(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -20255,25 +22897,50 @@ public class LogTest {
         HLogger.bgRed(0, new Exception(), Long.MAX_VALUE);
         HLogger.bgRed(0, new Exception(), Long.MIN_VALUE);
         HLogger.bgRed(0, new Exception(), 0);
+        HLogger.bgRed(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bgRed(0, (Exception) null, System.nanoTime());
+        HLogger.bgRed(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgRed(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgRed(0, (Exception) null, 0);
         HLogger.bgRed(1, new Exception(), System.currentTimeMillis());
         HLogger.bgRed(1, new Exception(), System.nanoTime());
         HLogger.bgRed(1, new Exception(), Long.MAX_VALUE);
         HLogger.bgRed(1, new Exception(), Long.MIN_VALUE);
         HLogger.bgRed(1, new Exception(), 0);
+        HLogger.bgRed(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bgRed(1, (Exception) null, System.nanoTime());
+        HLogger.bgRed(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgRed(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgRed(1, (Exception) null, 0);
         HLogger.bgRed(2, new Exception(), System.currentTimeMillis());
         HLogger.bgRed(2, new Exception(), System.nanoTime());
         HLogger.bgRed(2, new Exception(), Long.MAX_VALUE);
         HLogger.bgRed(2, new Exception(), Long.MIN_VALUE);
         HLogger.bgRed(2, new Exception(), 0);
+        HLogger.bgRed(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bgRed(2, (Exception) null, System.nanoTime());
+        HLogger.bgRed(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgRed(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgRed(2, (Exception) null, 0);
         HLogger.bgRed(3, new Exception(), System.currentTimeMillis());
         HLogger.bgRed(3, new Exception(), System.nanoTime());
         HLogger.bgRed(3, new Exception(), Long.MAX_VALUE);
         HLogger.bgRed(3, new Exception(), Long.MIN_VALUE);
         HLogger.bgRed(3, new Exception(), 0);
+        HLogger.bgRed(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bgRed(3, (Exception) null, System.nanoTime());
+        HLogger.bgRed(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgRed(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgRed(3, (Exception) null, 0);
         HLogger.bgRed(4, new Exception(), System.currentTimeMillis());
         HLogger.bgRed(4, new Exception(), System.nanoTime());
         HLogger.bgRed(4, new Exception(), Long.MAX_VALUE);
         HLogger.bgRed(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bgRed(4, new Exception(), 0);
+        HLogger.bgRed(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bgRed(4, (Exception) null, System.nanoTime());
+        HLogger.bgRed(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgRed(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -20315,9 +22982,14 @@ public class LogTest {
     @Test
     public final void test_bgRed_int_Exception() {
         HLogger.bgRed(0, new Exception());
+        HLogger.bgRed(0, (Exception) null);
         HLogger.bgRed(1, new Exception());
+        HLogger.bgRed(1, (Exception) null);
         HLogger.bgRed(2, new Exception());
+        HLogger.bgRed(2, (Exception) null);
         HLogger.bgRed(3, new Exception());
+        HLogger.bgRed(3, (Exception) null);
+        HLogger.bgRed(4, new Exception());
     }
 
     @Test
@@ -20376,11 +23048,17 @@ public class LogTest {
         HLogger.bgRed(new Exception(), System.nanoTime());
         HLogger.bgRed(new Exception(), Long.MAX_VALUE);
         HLogger.bgRed(new Exception(), Long.MIN_VALUE);
+        HLogger.bgRed(new Exception(), 0);
+        HLogger.bgRed((Exception) null, System.currentTimeMillis());
+        HLogger.bgRed((Exception) null, System.nanoTime());
+        HLogger.bgRed((Exception) null, Long.MAX_VALUE);
+        HLogger.bgRed((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bgRed_Exception() {
         HLogger.bgRed(new Exception());
+        HLogger.bgRed((Exception) null);
     }
 
     @Test
@@ -20395,6 +23073,16 @@ public class LogTest {
         HLogger.bgGreen(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgGreen(0, new Exception(), 0, true);
         HLogger.bgGreen(0, new Exception(), 0, false);
+        HLogger.bgGreen(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgGreen(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgGreen(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bgGreen(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bgGreen(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgGreen(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgGreen(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgGreen(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgGreen(0, (Exception) null, 0, true);
+        HLogger.bgGreen(0, (Exception) null, 0, false);
         HLogger.bgGreen(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgGreen(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgGreen(1, new Exception(), System.nanoTime(), true);
@@ -20405,6 +23093,16 @@ public class LogTest {
         HLogger.bgGreen(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgGreen(1, new Exception(), 0, true);
         HLogger.bgGreen(1, new Exception(), 0, false);
+        HLogger.bgGreen(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgGreen(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgGreen(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bgGreen(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bgGreen(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgGreen(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgGreen(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgGreen(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgGreen(1, (Exception) null, 0, true);
+        HLogger.bgGreen(1, (Exception) null, 0, false);
         HLogger.bgGreen(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgGreen(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgGreen(2, new Exception(), System.nanoTime(), true);
@@ -20415,6 +23113,16 @@ public class LogTest {
         HLogger.bgGreen(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgGreen(2, new Exception(), 0, true);
         HLogger.bgGreen(2, new Exception(), 0, false);
+        HLogger.bgGreen(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgGreen(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgGreen(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bgGreen(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bgGreen(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgGreen(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgGreen(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgGreen(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgGreen(2, (Exception) null, 0, true);
+        HLogger.bgGreen(2, (Exception) null, 0, false);
         HLogger.bgGreen(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgGreen(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgGreen(3, new Exception(), System.nanoTime(), true);
@@ -20425,6 +23133,16 @@ public class LogTest {
         HLogger.bgGreen(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgGreen(3, new Exception(), 0, true);
         HLogger.bgGreen(3, new Exception(), 0, false);
+        HLogger.bgGreen(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgGreen(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgGreen(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bgGreen(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bgGreen(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgGreen(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgGreen(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgGreen(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgGreen(3, (Exception) null, 0, true);
+        HLogger.bgGreen(3, (Exception) null, 0, false);
         HLogger.bgGreen(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgGreen(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgGreen(4, new Exception(), System.nanoTime(), true);
@@ -20434,6 +23152,16 @@ public class LogTest {
         HLogger.bgGreen(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bgGreen(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgGreen(4, new Exception(), 0, true);
+        HLogger.bgGreen(4, new Exception(), 0, false);
+        HLogger.bgGreen(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgGreen(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgGreen(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bgGreen(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bgGreen(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgGreen(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgGreen(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgGreen(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgGreen(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -20905,25 +23633,50 @@ public class LogTest {
         HLogger.bgGreen(0, new Exception(), Long.MAX_VALUE);
         HLogger.bgGreen(0, new Exception(), Long.MIN_VALUE);
         HLogger.bgGreen(0, new Exception(), 0);
+        HLogger.bgGreen(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bgGreen(0, (Exception) null, System.nanoTime());
+        HLogger.bgGreen(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgGreen(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgGreen(0, (Exception) null, 0);
         HLogger.bgGreen(1, new Exception(), System.currentTimeMillis());
         HLogger.bgGreen(1, new Exception(), System.nanoTime());
         HLogger.bgGreen(1, new Exception(), Long.MAX_VALUE);
         HLogger.bgGreen(1, new Exception(), Long.MIN_VALUE);
         HLogger.bgGreen(1, new Exception(), 0);
+        HLogger.bgGreen(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bgGreen(1, (Exception) null, System.nanoTime());
+        HLogger.bgGreen(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgGreen(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgGreen(1, (Exception) null, 0);
         HLogger.bgGreen(2, new Exception(), System.currentTimeMillis());
         HLogger.bgGreen(2, new Exception(), System.nanoTime());
         HLogger.bgGreen(2, new Exception(), Long.MAX_VALUE);
         HLogger.bgGreen(2, new Exception(), Long.MIN_VALUE);
         HLogger.bgGreen(2, new Exception(), 0);
+        HLogger.bgGreen(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bgGreen(2, (Exception) null, System.nanoTime());
+        HLogger.bgGreen(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgGreen(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgGreen(2, (Exception) null, 0);
         HLogger.bgGreen(3, new Exception(), System.currentTimeMillis());
         HLogger.bgGreen(3, new Exception(), System.nanoTime());
         HLogger.bgGreen(3, new Exception(), Long.MAX_VALUE);
         HLogger.bgGreen(3, new Exception(), Long.MIN_VALUE);
         HLogger.bgGreen(3, new Exception(), 0);
+        HLogger.bgGreen(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bgGreen(3, (Exception) null, System.nanoTime());
+        HLogger.bgGreen(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgGreen(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgGreen(3, (Exception) null, 0);
         HLogger.bgGreen(4, new Exception(), System.currentTimeMillis());
         HLogger.bgGreen(4, new Exception(), System.nanoTime());
         HLogger.bgGreen(4, new Exception(), Long.MAX_VALUE);
         HLogger.bgGreen(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bgGreen(4, new Exception(), 0);
+        HLogger.bgGreen(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bgGreen(4, (Exception) null, System.nanoTime());
+        HLogger.bgGreen(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgGreen(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -20965,9 +23718,14 @@ public class LogTest {
     @Test
     public final void test_bgGreen_int_Exception() {
         HLogger.bgGreen(0, new Exception());
+        HLogger.bgGreen(0, (Exception) null);
         HLogger.bgGreen(1, new Exception());
+        HLogger.bgGreen(1, (Exception) null);
         HLogger.bgGreen(2, new Exception());
+        HLogger.bgGreen(2, (Exception) null);
         HLogger.bgGreen(3, new Exception());
+        HLogger.bgGreen(3, (Exception) null);
+        HLogger.bgGreen(4, new Exception());
     }
 
     @Test
@@ -21026,11 +23784,17 @@ public class LogTest {
         HLogger.bgGreen(new Exception(), System.nanoTime());
         HLogger.bgGreen(new Exception(), Long.MAX_VALUE);
         HLogger.bgGreen(new Exception(), Long.MIN_VALUE);
+        HLogger.bgGreen(new Exception(), 0);
+        HLogger.bgGreen((Exception) null, System.currentTimeMillis());
+        HLogger.bgGreen((Exception) null, System.nanoTime());
+        HLogger.bgGreen((Exception) null, Long.MAX_VALUE);
+        HLogger.bgGreen((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bgGreen_Exception() {
         HLogger.bgGreen(new Exception());
+        HLogger.bgGreen((Exception) null);
     }
 
     @Test
@@ -21045,6 +23809,16 @@ public class LogTest {
         HLogger.bgYellow(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgYellow(0, new Exception(), 0, true);
         HLogger.bgYellow(0, new Exception(), 0, false);
+        HLogger.bgYellow(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgYellow(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgYellow(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bgYellow(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bgYellow(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgYellow(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgYellow(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgYellow(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgYellow(0, (Exception) null, 0, true);
+        HLogger.bgYellow(0, (Exception) null, 0, false);
         HLogger.bgYellow(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgYellow(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgYellow(1, new Exception(), System.nanoTime(), true);
@@ -21055,6 +23829,16 @@ public class LogTest {
         HLogger.bgYellow(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgYellow(1, new Exception(), 0, true);
         HLogger.bgYellow(1, new Exception(), 0, false);
+        HLogger.bgYellow(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgYellow(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgYellow(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bgYellow(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bgYellow(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgYellow(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgYellow(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgYellow(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgYellow(1, (Exception) null, 0, true);
+        HLogger.bgYellow(1, (Exception) null, 0, false);
         HLogger.bgYellow(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgYellow(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgYellow(2, new Exception(), System.nanoTime(), true);
@@ -21065,6 +23849,16 @@ public class LogTest {
         HLogger.bgYellow(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgYellow(2, new Exception(), 0, true);
         HLogger.bgYellow(2, new Exception(), 0, false);
+        HLogger.bgYellow(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgYellow(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgYellow(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bgYellow(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bgYellow(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgYellow(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgYellow(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgYellow(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgYellow(2, (Exception) null, 0, true);
+        HLogger.bgYellow(2, (Exception) null, 0, false);
         HLogger.bgYellow(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgYellow(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgYellow(3, new Exception(), System.nanoTime(), true);
@@ -21075,6 +23869,16 @@ public class LogTest {
         HLogger.bgYellow(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgYellow(3, new Exception(), 0, true);
         HLogger.bgYellow(3, new Exception(), 0, false);
+        HLogger.bgYellow(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgYellow(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgYellow(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bgYellow(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bgYellow(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgYellow(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgYellow(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgYellow(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgYellow(3, (Exception) null, 0, true);
+        HLogger.bgYellow(3, (Exception) null, 0, false);
         HLogger.bgYellow(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgYellow(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgYellow(4, new Exception(), System.nanoTime(), true);
@@ -21084,6 +23888,16 @@ public class LogTest {
         HLogger.bgYellow(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bgYellow(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgYellow(4, new Exception(), 0, true);
+        HLogger.bgYellow(4, new Exception(), 0, false);
+        HLogger.bgYellow(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgYellow(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgYellow(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bgYellow(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bgYellow(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgYellow(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgYellow(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgYellow(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgYellow(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -21555,25 +24369,50 @@ public class LogTest {
         HLogger.bgYellow(0, new Exception(), Long.MAX_VALUE);
         HLogger.bgYellow(0, new Exception(), Long.MIN_VALUE);
         HLogger.bgYellow(0, new Exception(), 0);
+        HLogger.bgYellow(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bgYellow(0, (Exception) null, System.nanoTime());
+        HLogger.bgYellow(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgYellow(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgYellow(0, (Exception) null, 0);
         HLogger.bgYellow(1, new Exception(), System.currentTimeMillis());
         HLogger.bgYellow(1, new Exception(), System.nanoTime());
         HLogger.bgYellow(1, new Exception(), Long.MAX_VALUE);
         HLogger.bgYellow(1, new Exception(), Long.MIN_VALUE);
         HLogger.bgYellow(1, new Exception(), 0);
+        HLogger.bgYellow(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bgYellow(1, (Exception) null, System.nanoTime());
+        HLogger.bgYellow(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgYellow(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgYellow(1, (Exception) null, 0);
         HLogger.bgYellow(2, new Exception(), System.currentTimeMillis());
         HLogger.bgYellow(2, new Exception(), System.nanoTime());
         HLogger.bgYellow(2, new Exception(), Long.MAX_VALUE);
         HLogger.bgYellow(2, new Exception(), Long.MIN_VALUE);
         HLogger.bgYellow(2, new Exception(), 0);
+        HLogger.bgYellow(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bgYellow(2, (Exception) null, System.nanoTime());
+        HLogger.bgYellow(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgYellow(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgYellow(2, (Exception) null, 0);
         HLogger.bgYellow(3, new Exception(), System.currentTimeMillis());
         HLogger.bgYellow(3, new Exception(), System.nanoTime());
         HLogger.bgYellow(3, new Exception(), Long.MAX_VALUE);
         HLogger.bgYellow(3, new Exception(), Long.MIN_VALUE);
         HLogger.bgYellow(3, new Exception(), 0);
+        HLogger.bgYellow(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bgYellow(3, (Exception) null, System.nanoTime());
+        HLogger.bgYellow(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgYellow(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgYellow(3, (Exception) null, 0);
         HLogger.bgYellow(4, new Exception(), System.currentTimeMillis());
         HLogger.bgYellow(4, new Exception(), System.nanoTime());
         HLogger.bgYellow(4, new Exception(), Long.MAX_VALUE);
         HLogger.bgYellow(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bgYellow(4, new Exception(), 0);
+        HLogger.bgYellow(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bgYellow(4, (Exception) null, System.nanoTime());
+        HLogger.bgYellow(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgYellow(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -21615,9 +24454,14 @@ public class LogTest {
     @Test
     public final void test_bgYellow_int_Exception() {
         HLogger.bgYellow(0, new Exception());
+        HLogger.bgYellow(0, (Exception) null);
         HLogger.bgYellow(1, new Exception());
+        HLogger.bgYellow(1, (Exception) null);
         HLogger.bgYellow(2, new Exception());
+        HLogger.bgYellow(2, (Exception) null);
         HLogger.bgYellow(3, new Exception());
+        HLogger.bgYellow(3, (Exception) null);
+        HLogger.bgYellow(4, new Exception());
     }
 
     @Test
@@ -21676,11 +24520,17 @@ public class LogTest {
         HLogger.bgYellow(new Exception(), System.nanoTime());
         HLogger.bgYellow(new Exception(), Long.MAX_VALUE);
         HLogger.bgYellow(new Exception(), Long.MIN_VALUE);
+        HLogger.bgYellow(new Exception(), 0);
+        HLogger.bgYellow((Exception) null, System.currentTimeMillis());
+        HLogger.bgYellow((Exception) null, System.nanoTime());
+        HLogger.bgYellow((Exception) null, Long.MAX_VALUE);
+        HLogger.bgYellow((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bgYellow_Exception() {
         HLogger.bgYellow(new Exception());
+        HLogger.bgYellow((Exception) null);
     }
 
     @Test
@@ -21695,6 +24545,16 @@ public class LogTest {
         HLogger.bgBlue(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgBlue(0, new Exception(), 0, true);
         HLogger.bgBlue(0, new Exception(), 0, false);
+        HLogger.bgBlue(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgBlue(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgBlue(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bgBlue(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bgBlue(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgBlue(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgBlue(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgBlue(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgBlue(0, (Exception) null, 0, true);
+        HLogger.bgBlue(0, (Exception) null, 0, false);
         HLogger.bgBlue(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgBlue(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgBlue(1, new Exception(), System.nanoTime(), true);
@@ -21705,6 +24565,16 @@ public class LogTest {
         HLogger.bgBlue(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgBlue(1, new Exception(), 0, true);
         HLogger.bgBlue(1, new Exception(), 0, false);
+        HLogger.bgBlue(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgBlue(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgBlue(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bgBlue(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bgBlue(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgBlue(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgBlue(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgBlue(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgBlue(1, (Exception) null, 0, true);
+        HLogger.bgBlue(1, (Exception) null, 0, false);
         HLogger.bgBlue(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgBlue(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgBlue(2, new Exception(), System.nanoTime(), true);
@@ -21715,6 +24585,16 @@ public class LogTest {
         HLogger.bgBlue(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgBlue(2, new Exception(), 0, true);
         HLogger.bgBlue(2, new Exception(), 0, false);
+        HLogger.bgBlue(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgBlue(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgBlue(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bgBlue(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bgBlue(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgBlue(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgBlue(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgBlue(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgBlue(2, (Exception) null, 0, true);
+        HLogger.bgBlue(2, (Exception) null, 0, false);
         HLogger.bgBlue(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgBlue(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgBlue(3, new Exception(), System.nanoTime(), true);
@@ -21725,6 +24605,16 @@ public class LogTest {
         HLogger.bgBlue(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgBlue(3, new Exception(), 0, true);
         HLogger.bgBlue(3, new Exception(), 0, false);
+        HLogger.bgBlue(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgBlue(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgBlue(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bgBlue(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bgBlue(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgBlue(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgBlue(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgBlue(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgBlue(3, (Exception) null, 0, true);
+        HLogger.bgBlue(3, (Exception) null, 0, false);
         HLogger.bgBlue(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgBlue(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgBlue(4, new Exception(), System.nanoTime(), true);
@@ -21734,6 +24624,16 @@ public class LogTest {
         HLogger.bgBlue(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bgBlue(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgBlue(4, new Exception(), 0, true);
+        HLogger.bgBlue(4, new Exception(), 0, false);
+        HLogger.bgBlue(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgBlue(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgBlue(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bgBlue(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bgBlue(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgBlue(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgBlue(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgBlue(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgBlue(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -22205,25 +25105,50 @@ public class LogTest {
         HLogger.bgBlue(0, new Exception(), Long.MAX_VALUE);
         HLogger.bgBlue(0, new Exception(), Long.MIN_VALUE);
         HLogger.bgBlue(0, new Exception(), 0);
+        HLogger.bgBlue(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bgBlue(0, (Exception) null, System.nanoTime());
+        HLogger.bgBlue(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlue(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgBlue(0, (Exception) null, 0);
         HLogger.bgBlue(1, new Exception(), System.currentTimeMillis());
         HLogger.bgBlue(1, new Exception(), System.nanoTime());
         HLogger.bgBlue(1, new Exception(), Long.MAX_VALUE);
         HLogger.bgBlue(1, new Exception(), Long.MIN_VALUE);
         HLogger.bgBlue(1, new Exception(), 0);
+        HLogger.bgBlue(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bgBlue(1, (Exception) null, System.nanoTime());
+        HLogger.bgBlue(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlue(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgBlue(1, (Exception) null, 0);
         HLogger.bgBlue(2, new Exception(), System.currentTimeMillis());
         HLogger.bgBlue(2, new Exception(), System.nanoTime());
         HLogger.bgBlue(2, new Exception(), Long.MAX_VALUE);
         HLogger.bgBlue(2, new Exception(), Long.MIN_VALUE);
         HLogger.bgBlue(2, new Exception(), 0);
+        HLogger.bgBlue(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bgBlue(2, (Exception) null, System.nanoTime());
+        HLogger.bgBlue(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlue(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgBlue(2, (Exception) null, 0);
         HLogger.bgBlue(3, new Exception(), System.currentTimeMillis());
         HLogger.bgBlue(3, new Exception(), System.nanoTime());
         HLogger.bgBlue(3, new Exception(), Long.MAX_VALUE);
         HLogger.bgBlue(3, new Exception(), Long.MIN_VALUE);
         HLogger.bgBlue(3, new Exception(), 0);
+        HLogger.bgBlue(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bgBlue(3, (Exception) null, System.nanoTime());
+        HLogger.bgBlue(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlue(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgBlue(3, (Exception) null, 0);
         HLogger.bgBlue(4, new Exception(), System.currentTimeMillis());
         HLogger.bgBlue(4, new Exception(), System.nanoTime());
         HLogger.bgBlue(4, new Exception(), Long.MAX_VALUE);
         HLogger.bgBlue(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bgBlue(4, new Exception(), 0);
+        HLogger.bgBlue(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bgBlue(4, (Exception) null, System.nanoTime());
+        HLogger.bgBlue(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlue(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -22265,9 +25190,14 @@ public class LogTest {
     @Test
     public final void test_bgBlue_int_Exception() {
         HLogger.bgBlue(0, new Exception());
+        HLogger.bgBlue(0, (Exception) null);
         HLogger.bgBlue(1, new Exception());
+        HLogger.bgBlue(1, (Exception) null);
         HLogger.bgBlue(2, new Exception());
+        HLogger.bgBlue(2, (Exception) null);
         HLogger.bgBlue(3, new Exception());
+        HLogger.bgBlue(3, (Exception) null);
+        HLogger.bgBlue(4, new Exception());
     }
 
     @Test
@@ -22326,11 +25256,17 @@ public class LogTest {
         HLogger.bgBlue(new Exception(), System.nanoTime());
         HLogger.bgBlue(new Exception(), Long.MAX_VALUE);
         HLogger.bgBlue(new Exception(), Long.MIN_VALUE);
+        HLogger.bgBlue(new Exception(), 0);
+        HLogger.bgBlue((Exception) null, System.currentTimeMillis());
+        HLogger.bgBlue((Exception) null, System.nanoTime());
+        HLogger.bgBlue((Exception) null, Long.MAX_VALUE);
+        HLogger.bgBlue((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bgBlue_Exception() {
         HLogger.bgBlue(new Exception());
+        HLogger.bgBlue((Exception) null);
     }
 
     @Test
@@ -22345,6 +25281,16 @@ public class LogTest {
         HLogger.bgMagenta(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgMagenta(0, new Exception(), 0, true);
         HLogger.bgMagenta(0, new Exception(), 0, false);
+        HLogger.bgMagenta(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgMagenta(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgMagenta(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bgMagenta(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bgMagenta(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgMagenta(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgMagenta(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgMagenta(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgMagenta(0, (Exception) null, 0, true);
+        HLogger.bgMagenta(0, (Exception) null, 0, false);
         HLogger.bgMagenta(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgMagenta(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgMagenta(1, new Exception(), System.nanoTime(), true);
@@ -22355,6 +25301,16 @@ public class LogTest {
         HLogger.bgMagenta(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgMagenta(1, new Exception(), 0, true);
         HLogger.bgMagenta(1, new Exception(), 0, false);
+        HLogger.bgMagenta(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgMagenta(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgMagenta(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bgMagenta(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bgMagenta(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgMagenta(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgMagenta(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgMagenta(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgMagenta(1, (Exception) null, 0, true);
+        HLogger.bgMagenta(1, (Exception) null, 0, false);
         HLogger.bgMagenta(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgMagenta(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgMagenta(2, new Exception(), System.nanoTime(), true);
@@ -22365,6 +25321,16 @@ public class LogTest {
         HLogger.bgMagenta(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgMagenta(2, new Exception(), 0, true);
         HLogger.bgMagenta(2, new Exception(), 0, false);
+        HLogger.bgMagenta(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgMagenta(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgMagenta(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bgMagenta(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bgMagenta(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgMagenta(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgMagenta(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgMagenta(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgMagenta(2, (Exception) null, 0, true);
+        HLogger.bgMagenta(2, (Exception) null, 0, false);
         HLogger.bgMagenta(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgMagenta(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgMagenta(3, new Exception(), System.nanoTime(), true);
@@ -22375,6 +25341,16 @@ public class LogTest {
         HLogger.bgMagenta(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgMagenta(3, new Exception(), 0, true);
         HLogger.bgMagenta(3, new Exception(), 0, false);
+        HLogger.bgMagenta(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgMagenta(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgMagenta(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bgMagenta(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bgMagenta(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgMagenta(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgMagenta(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgMagenta(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgMagenta(3, (Exception) null, 0, true);
+        HLogger.bgMagenta(3, (Exception) null, 0, false);
         HLogger.bgMagenta(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgMagenta(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgMagenta(4, new Exception(), System.nanoTime(), true);
@@ -22384,6 +25360,16 @@ public class LogTest {
         HLogger.bgMagenta(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bgMagenta(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgMagenta(4, new Exception(), 0, true);
+        HLogger.bgMagenta(4, new Exception(), 0, false);
+        HLogger.bgMagenta(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgMagenta(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgMagenta(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bgMagenta(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bgMagenta(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgMagenta(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgMagenta(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgMagenta(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgMagenta(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -22855,25 +25841,50 @@ public class LogTest {
         HLogger.bgMagenta(0, new Exception(), Long.MAX_VALUE);
         HLogger.bgMagenta(0, new Exception(), Long.MIN_VALUE);
         HLogger.bgMagenta(0, new Exception(), 0);
+        HLogger.bgMagenta(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bgMagenta(0, (Exception) null, System.nanoTime());
+        HLogger.bgMagenta(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgMagenta(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgMagenta(0, (Exception) null, 0);
         HLogger.bgMagenta(1, new Exception(), System.currentTimeMillis());
         HLogger.bgMagenta(1, new Exception(), System.nanoTime());
         HLogger.bgMagenta(1, new Exception(), Long.MAX_VALUE);
         HLogger.bgMagenta(1, new Exception(), Long.MIN_VALUE);
         HLogger.bgMagenta(1, new Exception(), 0);
+        HLogger.bgMagenta(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bgMagenta(1, (Exception) null, System.nanoTime());
+        HLogger.bgMagenta(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgMagenta(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgMagenta(1, (Exception) null, 0);
         HLogger.bgMagenta(2, new Exception(), System.currentTimeMillis());
         HLogger.bgMagenta(2, new Exception(), System.nanoTime());
         HLogger.bgMagenta(2, new Exception(), Long.MAX_VALUE);
         HLogger.bgMagenta(2, new Exception(), Long.MIN_VALUE);
         HLogger.bgMagenta(2, new Exception(), 0);
+        HLogger.bgMagenta(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bgMagenta(2, (Exception) null, System.nanoTime());
+        HLogger.bgMagenta(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgMagenta(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgMagenta(2, (Exception) null, 0);
         HLogger.bgMagenta(3, new Exception(), System.currentTimeMillis());
         HLogger.bgMagenta(3, new Exception(), System.nanoTime());
         HLogger.bgMagenta(3, new Exception(), Long.MAX_VALUE);
         HLogger.bgMagenta(3, new Exception(), Long.MIN_VALUE);
         HLogger.bgMagenta(3, new Exception(), 0);
+        HLogger.bgMagenta(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bgMagenta(3, (Exception) null, System.nanoTime());
+        HLogger.bgMagenta(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgMagenta(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgMagenta(3, (Exception) null, 0);
         HLogger.bgMagenta(4, new Exception(), System.currentTimeMillis());
         HLogger.bgMagenta(4, new Exception(), System.nanoTime());
         HLogger.bgMagenta(4, new Exception(), Long.MAX_VALUE);
         HLogger.bgMagenta(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bgMagenta(4, new Exception(), 0);
+        HLogger.bgMagenta(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bgMagenta(4, (Exception) null, System.nanoTime());
+        HLogger.bgMagenta(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgMagenta(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -22915,9 +25926,14 @@ public class LogTest {
     @Test
     public final void test_bgMagenta_int_Exception() {
         HLogger.bgMagenta(0, new Exception());
+        HLogger.bgMagenta(0, (Exception) null);
         HLogger.bgMagenta(1, new Exception());
+        HLogger.bgMagenta(1, (Exception) null);
         HLogger.bgMagenta(2, new Exception());
+        HLogger.bgMagenta(2, (Exception) null);
         HLogger.bgMagenta(3, new Exception());
+        HLogger.bgMagenta(3, (Exception) null);
+        HLogger.bgMagenta(4, new Exception());
     }
 
     @Test
@@ -22976,11 +25992,17 @@ public class LogTest {
         HLogger.bgMagenta(new Exception(), System.nanoTime());
         HLogger.bgMagenta(new Exception(), Long.MAX_VALUE);
         HLogger.bgMagenta(new Exception(), Long.MIN_VALUE);
+        HLogger.bgMagenta(new Exception(), 0);
+        HLogger.bgMagenta((Exception) null, System.currentTimeMillis());
+        HLogger.bgMagenta((Exception) null, System.nanoTime());
+        HLogger.bgMagenta((Exception) null, Long.MAX_VALUE);
+        HLogger.bgMagenta((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bgMagenta_Exception() {
         HLogger.bgMagenta(new Exception());
+        HLogger.bgMagenta((Exception) null);
     }
 
     @Test
@@ -22995,6 +26017,16 @@ public class LogTest {
         HLogger.bgCyan(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgCyan(0, new Exception(), 0, true);
         HLogger.bgCyan(0, new Exception(), 0, false);
+        HLogger.bgCyan(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgCyan(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgCyan(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bgCyan(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bgCyan(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgCyan(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgCyan(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgCyan(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgCyan(0, (Exception) null, 0, true);
+        HLogger.bgCyan(0, (Exception) null, 0, false);
         HLogger.bgCyan(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgCyan(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgCyan(1, new Exception(), System.nanoTime(), true);
@@ -23005,6 +26037,16 @@ public class LogTest {
         HLogger.bgCyan(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgCyan(1, new Exception(), 0, true);
         HLogger.bgCyan(1, new Exception(), 0, false);
+        HLogger.bgCyan(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgCyan(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgCyan(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bgCyan(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bgCyan(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgCyan(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgCyan(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgCyan(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgCyan(1, (Exception) null, 0, true);
+        HLogger.bgCyan(1, (Exception) null, 0, false);
         HLogger.bgCyan(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgCyan(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgCyan(2, new Exception(), System.nanoTime(), true);
@@ -23015,6 +26057,16 @@ public class LogTest {
         HLogger.bgCyan(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgCyan(2, new Exception(), 0, true);
         HLogger.bgCyan(2, new Exception(), 0, false);
+        HLogger.bgCyan(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgCyan(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgCyan(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bgCyan(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bgCyan(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgCyan(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgCyan(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgCyan(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgCyan(2, (Exception) null, 0, true);
+        HLogger.bgCyan(2, (Exception) null, 0, false);
         HLogger.bgCyan(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgCyan(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgCyan(3, new Exception(), System.nanoTime(), true);
@@ -23025,6 +26077,16 @@ public class LogTest {
         HLogger.bgCyan(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgCyan(3, new Exception(), 0, true);
         HLogger.bgCyan(3, new Exception(), 0, false);
+        HLogger.bgCyan(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgCyan(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgCyan(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bgCyan(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bgCyan(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgCyan(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgCyan(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgCyan(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgCyan(3, (Exception) null, 0, true);
+        HLogger.bgCyan(3, (Exception) null, 0, false);
         HLogger.bgCyan(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgCyan(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgCyan(4, new Exception(), System.nanoTime(), true);
@@ -23034,6 +26096,16 @@ public class LogTest {
         HLogger.bgCyan(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bgCyan(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgCyan(4, new Exception(), 0, true);
+        HLogger.bgCyan(4, new Exception(), 0, false);
+        HLogger.bgCyan(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgCyan(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgCyan(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bgCyan(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bgCyan(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgCyan(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgCyan(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgCyan(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgCyan(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -23505,25 +26577,50 @@ public class LogTest {
         HLogger.bgCyan(0, new Exception(), Long.MAX_VALUE);
         HLogger.bgCyan(0, new Exception(), Long.MIN_VALUE);
         HLogger.bgCyan(0, new Exception(), 0);
+        HLogger.bgCyan(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bgCyan(0, (Exception) null, System.nanoTime());
+        HLogger.bgCyan(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgCyan(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgCyan(0, (Exception) null, 0);
         HLogger.bgCyan(1, new Exception(), System.currentTimeMillis());
         HLogger.bgCyan(1, new Exception(), System.nanoTime());
         HLogger.bgCyan(1, new Exception(), Long.MAX_VALUE);
         HLogger.bgCyan(1, new Exception(), Long.MIN_VALUE);
         HLogger.bgCyan(1, new Exception(), 0);
+        HLogger.bgCyan(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bgCyan(1, (Exception) null, System.nanoTime());
+        HLogger.bgCyan(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgCyan(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgCyan(1, (Exception) null, 0);
         HLogger.bgCyan(2, new Exception(), System.currentTimeMillis());
         HLogger.bgCyan(2, new Exception(), System.nanoTime());
         HLogger.bgCyan(2, new Exception(), Long.MAX_VALUE);
         HLogger.bgCyan(2, new Exception(), Long.MIN_VALUE);
         HLogger.bgCyan(2, new Exception(), 0);
+        HLogger.bgCyan(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bgCyan(2, (Exception) null, System.nanoTime());
+        HLogger.bgCyan(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgCyan(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgCyan(2, (Exception) null, 0);
         HLogger.bgCyan(3, new Exception(), System.currentTimeMillis());
         HLogger.bgCyan(3, new Exception(), System.nanoTime());
         HLogger.bgCyan(3, new Exception(), Long.MAX_VALUE);
         HLogger.bgCyan(3, new Exception(), Long.MIN_VALUE);
         HLogger.bgCyan(3, new Exception(), 0);
+        HLogger.bgCyan(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bgCyan(3, (Exception) null, System.nanoTime());
+        HLogger.bgCyan(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgCyan(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgCyan(3, (Exception) null, 0);
         HLogger.bgCyan(4, new Exception(), System.currentTimeMillis());
         HLogger.bgCyan(4, new Exception(), System.nanoTime());
         HLogger.bgCyan(4, new Exception(), Long.MAX_VALUE);
         HLogger.bgCyan(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bgCyan(4, new Exception(), 0);
+        HLogger.bgCyan(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bgCyan(4, (Exception) null, System.nanoTime());
+        HLogger.bgCyan(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgCyan(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -23565,9 +26662,14 @@ public class LogTest {
     @Test
     public final void test_bgCyan_int_Exception() {
         HLogger.bgCyan(0, new Exception());
+        HLogger.bgCyan(0, (Exception) null);
         HLogger.bgCyan(1, new Exception());
+        HLogger.bgCyan(1, (Exception) null);
         HLogger.bgCyan(2, new Exception());
+        HLogger.bgCyan(2, (Exception) null);
         HLogger.bgCyan(3, new Exception());
+        HLogger.bgCyan(3, (Exception) null);
+        HLogger.bgCyan(4, new Exception());
     }
 
     @Test
@@ -23626,11 +26728,17 @@ public class LogTest {
         HLogger.bgCyan(new Exception(), System.nanoTime());
         HLogger.bgCyan(new Exception(), Long.MAX_VALUE);
         HLogger.bgCyan(new Exception(), Long.MIN_VALUE);
+        HLogger.bgCyan(new Exception(), 0);
+        HLogger.bgCyan((Exception) null, System.currentTimeMillis());
+        HLogger.bgCyan((Exception) null, System.nanoTime());
+        HLogger.bgCyan((Exception) null, Long.MAX_VALUE);
+        HLogger.bgCyan((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bgCyan_Exception() {
         HLogger.bgCyan(new Exception());
+        HLogger.bgCyan((Exception) null);
     }
 
     @Test
@@ -23645,6 +26753,16 @@ public class LogTest {
         HLogger.bgWhite(0, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgWhite(0, new Exception(), 0, true);
         HLogger.bgWhite(0, new Exception(), 0, false);
+        HLogger.bgWhite(0, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgWhite(0, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgWhite(0, (Exception) null, System.nanoTime(), true);
+        HLogger.bgWhite(0, (Exception) null, System.nanoTime(), false);
+        HLogger.bgWhite(0, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgWhite(0, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgWhite(0, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgWhite(0, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgWhite(0, (Exception) null, 0, true);
+        HLogger.bgWhite(0, (Exception) null, 0, false);
         HLogger.bgWhite(1, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgWhite(1, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgWhite(1, new Exception(), System.nanoTime(), true);
@@ -23655,6 +26773,16 @@ public class LogTest {
         HLogger.bgWhite(1, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgWhite(1, new Exception(), 0, true);
         HLogger.bgWhite(1, new Exception(), 0, false);
+        HLogger.bgWhite(1, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgWhite(1, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgWhite(1, (Exception) null, System.nanoTime(), true);
+        HLogger.bgWhite(1, (Exception) null, System.nanoTime(), false);
+        HLogger.bgWhite(1, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgWhite(1, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgWhite(1, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgWhite(1, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgWhite(1, (Exception) null, 0, true);
+        HLogger.bgWhite(1, (Exception) null, 0, false);
         HLogger.bgWhite(2, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgWhite(2, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgWhite(2, new Exception(), System.nanoTime(), true);
@@ -23665,6 +26793,16 @@ public class LogTest {
         HLogger.bgWhite(2, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgWhite(2, new Exception(), 0, true);
         HLogger.bgWhite(2, new Exception(), 0, false);
+        HLogger.bgWhite(2, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgWhite(2, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgWhite(2, (Exception) null, System.nanoTime(), true);
+        HLogger.bgWhite(2, (Exception) null, System.nanoTime(), false);
+        HLogger.bgWhite(2, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgWhite(2, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgWhite(2, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgWhite(2, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgWhite(2, (Exception) null, 0, true);
+        HLogger.bgWhite(2, (Exception) null, 0, false);
         HLogger.bgWhite(3, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgWhite(3, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgWhite(3, new Exception(), System.nanoTime(), true);
@@ -23675,6 +26813,16 @@ public class LogTest {
         HLogger.bgWhite(3, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgWhite(3, new Exception(), 0, true);
         HLogger.bgWhite(3, new Exception(), 0, false);
+        HLogger.bgWhite(3, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgWhite(3, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgWhite(3, (Exception) null, System.nanoTime(), true);
+        HLogger.bgWhite(3, (Exception) null, System.nanoTime(), false);
+        HLogger.bgWhite(3, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgWhite(3, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgWhite(3, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgWhite(3, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgWhite(3, (Exception) null, 0, true);
+        HLogger.bgWhite(3, (Exception) null, 0, false);
         HLogger.bgWhite(4, new Exception(), System.currentTimeMillis(), true);
         HLogger.bgWhite(4, new Exception(), System.currentTimeMillis(), false);
         HLogger.bgWhite(4, new Exception(), System.nanoTime(), true);
@@ -23684,6 +26832,16 @@ public class LogTest {
         HLogger.bgWhite(4, new Exception(), Long.MIN_VALUE, true);
         HLogger.bgWhite(4, new Exception(), Long.MIN_VALUE, false);
         HLogger.bgWhite(4, new Exception(), 0, true);
+        HLogger.bgWhite(4, new Exception(), 0, false);
+        HLogger.bgWhite(4, (Exception) null, System.currentTimeMillis(), true);
+        HLogger.bgWhite(4, (Exception) null, System.currentTimeMillis(), false);
+        HLogger.bgWhite(4, (Exception) null, System.nanoTime(), true);
+        HLogger.bgWhite(4, (Exception) null, System.nanoTime(), false);
+        HLogger.bgWhite(4, (Exception) null, Long.MAX_VALUE, true);
+        HLogger.bgWhite(4, (Exception) null, Long.MAX_VALUE, false);
+        HLogger.bgWhite(4, (Exception) null, Long.MIN_VALUE, true);
+        HLogger.bgWhite(4, (Exception) null, Long.MIN_VALUE, false);
+        HLogger.bgWhite(4, (Exception) null, 0, true);
     }
 
     @Test
@@ -24155,25 +27313,50 @@ public class LogTest {
         HLogger.bgWhite(0, new Exception(), Long.MAX_VALUE);
         HLogger.bgWhite(0, new Exception(), Long.MIN_VALUE);
         HLogger.bgWhite(0, new Exception(), 0);
+        HLogger.bgWhite(0, (Exception) null, System.currentTimeMillis());
+        HLogger.bgWhite(0, (Exception) null, System.nanoTime());
+        HLogger.bgWhite(0, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgWhite(0, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgWhite(0, (Exception) null, 0);
         HLogger.bgWhite(1, new Exception(), System.currentTimeMillis());
         HLogger.bgWhite(1, new Exception(), System.nanoTime());
         HLogger.bgWhite(1, new Exception(), Long.MAX_VALUE);
         HLogger.bgWhite(1, new Exception(), Long.MIN_VALUE);
         HLogger.bgWhite(1, new Exception(), 0);
+        HLogger.bgWhite(1, (Exception) null, System.currentTimeMillis());
+        HLogger.bgWhite(1, (Exception) null, System.nanoTime());
+        HLogger.bgWhite(1, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgWhite(1, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgWhite(1, (Exception) null, 0);
         HLogger.bgWhite(2, new Exception(), System.currentTimeMillis());
         HLogger.bgWhite(2, new Exception(), System.nanoTime());
         HLogger.bgWhite(2, new Exception(), Long.MAX_VALUE);
         HLogger.bgWhite(2, new Exception(), Long.MIN_VALUE);
         HLogger.bgWhite(2, new Exception(), 0);
+        HLogger.bgWhite(2, (Exception) null, System.currentTimeMillis());
+        HLogger.bgWhite(2, (Exception) null, System.nanoTime());
+        HLogger.bgWhite(2, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgWhite(2, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgWhite(2, (Exception) null, 0);
         HLogger.bgWhite(3, new Exception(), System.currentTimeMillis());
         HLogger.bgWhite(3, new Exception(), System.nanoTime());
         HLogger.bgWhite(3, new Exception(), Long.MAX_VALUE);
         HLogger.bgWhite(3, new Exception(), Long.MIN_VALUE);
         HLogger.bgWhite(3, new Exception(), 0);
+        HLogger.bgWhite(3, (Exception) null, System.currentTimeMillis());
+        HLogger.bgWhite(3, (Exception) null, System.nanoTime());
+        HLogger.bgWhite(3, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgWhite(3, (Exception) null, Long.MIN_VALUE);
+        HLogger.bgWhite(3, (Exception) null, 0);
         HLogger.bgWhite(4, new Exception(), System.currentTimeMillis());
         HLogger.bgWhite(4, new Exception(), System.nanoTime());
         HLogger.bgWhite(4, new Exception(), Long.MAX_VALUE);
         HLogger.bgWhite(4, new Exception(), Long.MIN_VALUE);
+        HLogger.bgWhite(4, new Exception(), 0);
+        HLogger.bgWhite(4, (Exception) null, System.currentTimeMillis());
+        HLogger.bgWhite(4, (Exception) null, System.nanoTime());
+        HLogger.bgWhite(4, (Exception) null, Long.MAX_VALUE);
+        HLogger.bgWhite(4, (Exception) null, Long.MIN_VALUE);
     }
 
     @Test
@@ -24215,9 +27398,14 @@ public class LogTest {
     @Test
     public final void test_bgWhite_int_Exception() {
         HLogger.bgWhite(0, new Exception());
+        HLogger.bgWhite(0, (Exception) null);
         HLogger.bgWhite(1, new Exception());
+        HLogger.bgWhite(1, (Exception) null);
         HLogger.bgWhite(2, new Exception());
+        HLogger.bgWhite(2, (Exception) null);
         HLogger.bgWhite(3, new Exception());
+        HLogger.bgWhite(3, (Exception) null);
+        HLogger.bgWhite(4, new Exception());
     }
 
     @Test
@@ -24276,11 +27464,18 @@ public class LogTest {
         HLogger.bgWhite(new Exception(), System.nanoTime());
         HLogger.bgWhite(new Exception(), Long.MAX_VALUE);
         HLogger.bgWhite(new Exception(), Long.MIN_VALUE);
+        HLogger.bgWhite(new Exception(), 0);
+        HLogger.bgWhite((Exception) null, System.currentTimeMillis());
+        HLogger.bgWhite((Exception) null, System.nanoTime());
+        HLogger.bgWhite((Exception) null, Long.MAX_VALUE);
+        HLogger.bgWhite((Exception) null, Long.MIN_VALUE);
     }
 
     @Test
     public final void test_bgWhite_Exception() {
         HLogger.bgWhite(new Exception());
+        HLogger.bgWhite((Exception) null);
     }
 
+//! $CHALK_END
 }
