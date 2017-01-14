@@ -111,7 +111,7 @@ Object.keys(escapes).forEach(k => {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
