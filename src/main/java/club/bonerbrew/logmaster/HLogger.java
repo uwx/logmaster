@@ -81,19 +81,21 @@ public final class HLogger {
             final File logDir = new File("./logs");
             if (!logDir.exists()) {
                 logDir.mkdir();
-            } else {
-                if (!logDir.isDirectory()) {
-                    logDir.delete();
-                    logDir.mkdir();
-                }
+            } else if (!logDir.isDirectory()) {
+                logDir.delete();
+                logDir.mkdir();
             }
 
+            // create log folder if previously failed
+            File pFile = logFile.getParentFile();
+            if (!pFile.exists()) {
+                pFile.mkdirs();
+            }
             // create log file if not exists
             if (!logFile.exists()) {
                 try {
                     logFile.createNewFile();
-                } catch (final IOException e) {
-                    e.printStackTrace();
+                } catch (final IOException ignored) {
                 }
             }
 
@@ -104,8 +106,7 @@ public final class HLogger {
                         true),
                         // saves a constant call to .flush()
                         true);
-            } catch (final IOException e) {
-                e.printStackTrace();
+            } catch (final IOException ignored) {
                 fileWriter = new NullWriter();
             }
             fileWriter.println(mainClassName + " --- " + LocalDateTime.now());
