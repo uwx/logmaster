@@ -1,10 +1,8 @@
 package club.bonerbrew.logmaster;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -671,7 +669,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -749,7 +747,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -827,7 +825,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -905,7 +903,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -983,7 +981,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1061,7 +1059,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1139,7 +1137,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1217,7 +1215,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1295,7 +1293,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1373,7 +1371,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1451,7 +1449,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1529,7 +1527,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1607,7 +1605,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1685,7 +1683,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1763,7 +1761,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1841,7 +1839,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1919,7 +1917,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -1997,7 +1995,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2075,7 +2073,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2153,7 +2151,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2231,7 +2229,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2309,7 +2307,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2387,7 +2385,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2465,7 +2463,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2543,7 +2541,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2621,7 +2619,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2699,7 +2697,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2777,7 +2775,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2855,7 +2853,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -2933,7 +2931,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -3011,7 +3009,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -3089,7 +3087,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -3167,7 +3165,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -3245,7 +3243,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
@@ -3323,7 +3321,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
