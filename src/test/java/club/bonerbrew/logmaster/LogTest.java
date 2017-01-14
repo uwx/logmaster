@@ -1,7 +1,5 @@
 package club.bonerbrew.logmaster;
 
-import static org.junit.Assert.*;
-
 import java.io.PrintStream;
 
 import org.junit.After;
