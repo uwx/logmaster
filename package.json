@@ -4,7 +4,7 @@
   "description": "",
   "main": "generate.js",
   "scripts": {
-    "start": "node generate",
+    "start": "node generate && node comb",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
