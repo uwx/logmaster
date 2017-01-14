@@ -27,31 +27,34 @@ public final class HLogger {
     ///** formatter used for String.format */
     //private static final Formatter FORMATTER = new Formatter();
 
+    /**
+     * time which the program started running
+     */
     private static final long initialTime = System.currentTimeMillis();
+
+    /**
+     * Set to false to suppress all output, including stderr
+     */
+    static boolean stdOut = true;
+    /**
+     * Set to false to suppress stderr output
+     */
+    static boolean stdErr = true;
+
+    /**
+     * Set to false to disable logging to file in the /logs/ folder
+     */
+    static boolean outputToFile = true;
+
+    /**
+     * Set to false to suppress {@link Level#DEBUG} messages
+     */
+    static boolean outputFine = true;
 
     /**
      * file to log to
      */
-    private static final File logFile;
-
-    /**
-     * print to stdout?
-     */
-    private static final boolean stdOut = true;
-    /**
-     * print to stderr?
-     */
-    public static final boolean stdErr = true;
-
-    /**
-     * write to file?
-     */
-    private static final boolean outputToFile = true;
-
-    /**
-     * print DEBUG to stdout
-     */
-    private static final boolean outputFine = true;
+    private static File logFile;
 
     /**
      * fileWriter to output log data to if trailfile is true
@@ -59,6 +62,17 @@ public final class HLogger {
     private static PrintWriter fileWriter;
 
     static {
+        applySettings(null);
+    }
+
+    public static void applySettings(LogmasterSettings set) {
+        if (set != null) {
+            stdOut = set.stdOut;
+            stdErr = set.stdErr;
+            outputToFile = set.outputToFile;
+            outputFine = set.outputFine;
+        }
+        
         if (outputToFile) {
             final String mainClassName = getMainClassName();
             logFile = new File("./logs/" + mainClassName + '-' + LocalDate.now().toString() + ".log");
@@ -117,12 +131,13 @@ public final class HLogger {
                 : s; // not decimal, give whole number
     }
 
-    private static String getMainClassName() {
-        { // Oracle JVM only
+    private static String _getMainClassName() {
+        try { // Oracle JVM only
             final String s = System.getProperty("sun.java.command");
             if (s != null) {
                 return s;
             }
+        } catch (final Exception ignored) {
         }
 
         try { // Oracle JVM as well
@@ -138,6 +153,15 @@ public final class HLogger {
         final StackTraceElement[] stack = new Throwable().getStackTrace(); // new Throwable or new Exception? any difference?
         final StackTraceElement main = stack[stack.length - 1];
         return main.getClassName();
+    }
+
+    private static String getMainClassName() {
+        final String s = _getMainClassName();
+        int id = s.indexOf(' ');
+        if (id > -1) {
+            return s.substring(0, id);
+        }
+        return s;
     }
 
     /**
@@ -346,7 +370,7 @@ public final class HLogger {
         }
         if (stdOut) {
             if (level >= Level.SEVERE) {
-                System.err.print(fString);
+                if (stdErr) System.err.print(fString);
             } else if (level != Level.DEBUG) {
                 System.out.print(fString);
             } else if (outputFine) {
