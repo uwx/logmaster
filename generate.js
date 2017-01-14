@@ -157,7 +157,7 @@ Object.keys(escapes).forEach(k => {
 output.push(`
     }`);
 
-console.log(output.join('\n'));
+//console.log(output.join('\n'));
 const fs = require('fs');
 
 fs.writeFileSync('./src/main/java/club/bonerbrew/logmaster/HLogger.java', 
