@@ -101,6 +101,8 @@ const writes = {
   warn: 'bright_yellow',
   info: 'bright_cyan',
   debug: '',
+  trace: '',
+
 };
 
 const output = [];
@@ -249,11 +251,172 @@ Object.keys(writes).forEach(k => {
     public static void ${k}(final Object... msgs) {
         ${k}(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void ${k}_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        ${k}_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        ${k}_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        ${k}_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Object message) {
+        ${k}_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final String message) {
+        ${k}_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Exception message) {
+        ${k}_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final String message, final long timeStamp) {
+        ${k}_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final String message) {
+        ${k}_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final Object message, final long timeStamp) {
+        ${k}_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final Object message) {
+        ${k}_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        ${k}_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final Exception exception) {
+        ${k}_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void ${k}_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        ${k}_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        ${k}_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        ${k}_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        ${k}_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        ${k}_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final String msg1, String msg2) {
+        ${k}_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        ${k}_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final Object msg1, Object msg2) {
+        ${k}_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void ${k}_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        ${k}_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        ${k}_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final Object... msgs) {
+        ${k}_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final int level, final String... msgs) {
+        ${k}_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        ${k}_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final String... msgs) {
+        ${k}_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        ${k}_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void ${k}_ext(final String callerClassName, final Object... msgs) {
+        ${k}_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 `);
   if (k === writes[k]) {
     output.push(`
     private static void write_${k}(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.${k}_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.${k}_close + '\\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_${k}_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.${k}_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.${k}_close + '\\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
