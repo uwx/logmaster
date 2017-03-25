@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * @author Eli / Rafael / Some fuckin discord bot author
  */
-@SuppressWarnings({"WeakerAccess", "ResultOfMethodCallIgnored", "FieldCanBeLocal", "unused"})
+@SuppressWarnings({"WeakerAccess", "ResultOfMethodCallIgnored", "FieldCanBeLocal", "unused", "SameParameterValue"})
 public final class HLogger {
 
     private static final float minutesInHour = 60f;
