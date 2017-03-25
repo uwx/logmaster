@@ -317,6 +317,22 @@ public final class HLogger {
         }
     }
 
+    private static void write__ext(final String callerClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + callerClassName + "] " + message + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+
     /*
      * Chalk logger
      */
@@ -465,10 +481,171 @@ public final class HLogger {
     public static void reset(final Object... msgs) {
         reset(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void reset_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_reset_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_reset_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_reset_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        reset_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        reset_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        reset_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Object message) {
+        reset_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final String message) {
+        reset_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Exception message) {
+        reset_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final String message, final long timeStamp) {
+        reset_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final String message) {
+        reset_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final Object message, final long timeStamp) {
+        reset_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final Object message) {
+        reset_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        reset_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final Exception exception) {
+        reset_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void reset_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_reset_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_reset_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        reset_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        reset_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        reset_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        reset_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        reset_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final String msg1, String msg2) {
+        reset_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        reset_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final Object msg1, Object msg2) {
+        reset_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void reset_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_reset_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_reset_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        reset_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        reset_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final Object... msgs) {
+        reset_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final int level, final String... msgs) {
+        reset_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        reset_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final String... msgs) {
+        reset_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void reset_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        reset_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void reset_ext(final String callerClassName, final Object... msgs) {
+        reset_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_reset(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.reset_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.reset_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_reset_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.reset_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.reset_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -626,10 +803,171 @@ public final class HLogger {
     public static void bold(final Object... msgs) {
         bold(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bold_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bold_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bold_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bold_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bold_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bold_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bold_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Object message) {
+        bold_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final String message) {
+        bold_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Exception message) {
+        bold_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final String message, final long timeStamp) {
+        bold_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final String message) {
+        bold_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bold_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final Object message) {
+        bold_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bold_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final Exception exception) {
+        bold_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bold_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bold_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bold_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bold_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bold_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bold_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bold_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bold_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final String msg1, String msg2) {
+        bold_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bold_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bold_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bold_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bold_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bold_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bold_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bold_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final Object... msgs) {
+        bold_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final int level, final String... msgs) {
+        bold_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bold_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final String... msgs) {
+        bold_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bold_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bold_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bold_ext(final String callerClassName, final Object... msgs) {
+        bold_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bold(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bold_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bold_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bold_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bold_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bold_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -787,10 +1125,171 @@ public final class HLogger {
     public static void dim(final Object... msgs) {
         dim(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void dim_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_dim_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_dim_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_dim_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        dim_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        dim_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        dim_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Object message) {
+        dim_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final String message) {
+        dim_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Exception message) {
+        dim_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final String message, final long timeStamp) {
+        dim_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final String message) {
+        dim_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final Object message, final long timeStamp) {
+        dim_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final Object message) {
+        dim_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        dim_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final Exception exception) {
+        dim_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void dim_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_dim_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_dim_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        dim_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        dim_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        dim_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        dim_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        dim_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final String msg1, String msg2) {
+        dim_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        dim_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final Object msg1, Object msg2) {
+        dim_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void dim_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_dim_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_dim_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        dim_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        dim_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final Object... msgs) {
+        dim_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final int level, final String... msgs) {
+        dim_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        dim_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final String... msgs) {
+        dim_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void dim_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        dim_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void dim_ext(final String callerClassName, final Object... msgs) {
+        dim_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_dim(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.dim_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.dim_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_dim_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.dim_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.dim_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -948,10 +1447,171 @@ public final class HLogger {
     public static void italic(final Object... msgs) {
         italic(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void italic_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_italic_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_italic_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_italic_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        italic_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        italic_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        italic_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Object message) {
+        italic_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final String message) {
+        italic_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Exception message) {
+        italic_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final String message, final long timeStamp) {
+        italic_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final String message) {
+        italic_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final Object message, final long timeStamp) {
+        italic_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final Object message) {
+        italic_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        italic_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final Exception exception) {
+        italic_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void italic_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_italic_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_italic_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        italic_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        italic_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        italic_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        italic_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        italic_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final String msg1, String msg2) {
+        italic_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        italic_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final Object msg1, Object msg2) {
+        italic_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void italic_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_italic_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_italic_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        italic_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        italic_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final Object... msgs) {
+        italic_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final int level, final String... msgs) {
+        italic_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        italic_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final String... msgs) {
+        italic_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void italic_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        italic_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void italic_ext(final String callerClassName, final Object... msgs) {
+        italic_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_italic(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.italic_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.italic_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_italic_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.italic_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.italic_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -1109,10 +1769,171 @@ public final class HLogger {
     public static void underline(final Object... msgs) {
         underline(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void underline_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_underline_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_underline_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_underline_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        underline_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        underline_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        underline_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Object message) {
+        underline_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final String message) {
+        underline_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Exception message) {
+        underline_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final String message, final long timeStamp) {
+        underline_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final String message) {
+        underline_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final Object message, final long timeStamp) {
+        underline_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final Object message) {
+        underline_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        underline_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final Exception exception) {
+        underline_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void underline_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_underline_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_underline_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        underline_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        underline_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        underline_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        underline_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        underline_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final String msg1, String msg2) {
+        underline_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        underline_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final Object msg1, Object msg2) {
+        underline_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void underline_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_underline_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_underline_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        underline_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        underline_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final Object... msgs) {
+        underline_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final int level, final String... msgs) {
+        underline_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        underline_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final String... msgs) {
+        underline_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void underline_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        underline_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void underline_ext(final String callerClassName, final Object... msgs) {
+        underline_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_underline(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.underline_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.underline_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_underline_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.underline_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.underline_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -1270,10 +2091,171 @@ public final class HLogger {
     public static void inverse(final Object... msgs) {
         inverse(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void inverse_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_inverse_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_inverse_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_inverse_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        inverse_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        inverse_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        inverse_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Object message) {
+        inverse_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final String message) {
+        inverse_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Exception message) {
+        inverse_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final String message, final long timeStamp) {
+        inverse_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final String message) {
+        inverse_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final Object message, final long timeStamp) {
+        inverse_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final Object message) {
+        inverse_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        inverse_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final Exception exception) {
+        inverse_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void inverse_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_inverse_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_inverse_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        inverse_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        inverse_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        inverse_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        inverse_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        inverse_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final String msg1, String msg2) {
+        inverse_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        inverse_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final Object msg1, Object msg2) {
+        inverse_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void inverse_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_inverse_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_inverse_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        inverse_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        inverse_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final Object... msgs) {
+        inverse_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final int level, final String... msgs) {
+        inverse_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        inverse_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final String... msgs) {
+        inverse_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        inverse_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void inverse_ext(final String callerClassName, final Object... msgs) {
+        inverse_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_inverse(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.inverse_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.inverse_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_inverse_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.inverse_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.inverse_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -1431,10 +2413,171 @@ public final class HLogger {
     public static void hidden(final Object... msgs) {
         hidden(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void hidden_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_hidden_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_hidden_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_hidden_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        hidden_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        hidden_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        hidden_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Object message) {
+        hidden_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final String message) {
+        hidden_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Exception message) {
+        hidden_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final String message, final long timeStamp) {
+        hidden_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final String message) {
+        hidden_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final Object message, final long timeStamp) {
+        hidden_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final Object message) {
+        hidden_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        hidden_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final Exception exception) {
+        hidden_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void hidden_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_hidden_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_hidden_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        hidden_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        hidden_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        hidden_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        hidden_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        hidden_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final String msg1, String msg2) {
+        hidden_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        hidden_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final Object msg1, Object msg2) {
+        hidden_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void hidden_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_hidden_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_hidden_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        hidden_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        hidden_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final Object... msgs) {
+        hidden_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final int level, final String... msgs) {
+        hidden_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        hidden_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final String... msgs) {
+        hidden_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        hidden_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void hidden_ext(final String callerClassName, final Object... msgs) {
+        hidden_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_hidden(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.hidden_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.hidden_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_hidden_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.hidden_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.hidden_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -1592,10 +2735,171 @@ public final class HLogger {
     public static void strikethrough(final Object... msgs) {
         strikethrough(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void strikethrough_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        strikethrough_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        strikethrough_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        strikethrough_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Object message) {
+        strikethrough_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final String message) {
+        strikethrough_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Exception message) {
+        strikethrough_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final String message, final long timeStamp) {
+        strikethrough_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final String message) {
+        strikethrough_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final Object message, final long timeStamp) {
+        strikethrough_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final Object message) {
+        strikethrough_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        strikethrough_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final Exception exception) {
+        strikethrough_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void strikethrough_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        strikethrough_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        strikethrough_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        strikethrough_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        strikethrough_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        strikethrough_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final String msg1, String msg2) {
+        strikethrough_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        strikethrough_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final Object msg1, Object msg2) {
+        strikethrough_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void strikethrough_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        strikethrough_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        strikethrough_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final Object... msgs) {
+        strikethrough_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final int level, final String... msgs) {
+        strikethrough_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        strikethrough_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final String... msgs) {
+        strikethrough_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        strikethrough_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void strikethrough_ext(final String callerClassName, final Object... msgs) {
+        strikethrough_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_strikethrough(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.strikethrough_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.strikethrough_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_strikethrough_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.strikethrough_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.strikethrough_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -1753,10 +3057,171 @@ public final class HLogger {
     public static void black(final Object... msgs) {
         black(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void black_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_black_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_black_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_black_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        black_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        black_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        black_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Object message) {
+        black_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final String message) {
+        black_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Exception message) {
+        black_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final String message, final long timeStamp) {
+        black_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final String message) {
+        black_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final Object message, final long timeStamp) {
+        black_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final Object message) {
+        black_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        black_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final Exception exception) {
+        black_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void black_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_black_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_black_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        black_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        black_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        black_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        black_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        black_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final String msg1, String msg2) {
+        black_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        black_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final Object msg1, Object msg2) {
+        black_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void black_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_black_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_black_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        black_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        black_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final Object... msgs) {
+        black_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final int level, final String... msgs) {
+        black_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        black_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final String... msgs) {
+        black_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void black_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        black_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void black_ext(final String callerClassName, final Object... msgs) {
+        black_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_black(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.black_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.black_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_black_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.black_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.black_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -1914,10 +3379,171 @@ public final class HLogger {
     public static void red(final Object... msgs) {
         red(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void red_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        red_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        red_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        red_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Object message) {
+        red_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final String message) {
+        red_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Exception message) {
+        red_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final String message, final long timeStamp) {
+        red_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final String message) {
+        red_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final Object message, final long timeStamp) {
+        red_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final Object message) {
+        red_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        red_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final Exception exception) {
+        red_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void red_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        red_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        red_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        red_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        red_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final String msg1, String msg2) {
+        red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final Object msg1, Object msg2) {
+        red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void red_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        red_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        red_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final Object... msgs) {
+        red_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final int level, final String... msgs) {
+        red_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final String... msgs) {
+        red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void red_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void red_ext(final String callerClassName, final Object... msgs) {
+        red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_red(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.red_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.red_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_red_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.red_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.red_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -2075,10 +3701,171 @@ public final class HLogger {
     public static void green(final Object... msgs) {
         green(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void green_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_green_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_green_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_green_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        green_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        green_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        green_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Object message) {
+        green_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final String message) {
+        green_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Exception message) {
+        green_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final String message, final long timeStamp) {
+        green_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final String message) {
+        green_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final Object message, final long timeStamp) {
+        green_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final Object message) {
+        green_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        green_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final Exception exception) {
+        green_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void green_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_green_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_green_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        green_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        green_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        green_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        green_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final String msg1, String msg2) {
+        green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final Object msg1, Object msg2) {
+        green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void green_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_green_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_green_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        green_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        green_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final Object... msgs) {
+        green_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final int level, final String... msgs) {
+        green_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final String... msgs) {
+        green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void green_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void green_ext(final String callerClassName, final Object... msgs) {
+        green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_green(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.green_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.green_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_green_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.green_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.green_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -2236,10 +4023,171 @@ public final class HLogger {
     public static void yellow(final Object... msgs) {
         yellow(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void yellow_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_yellow_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_yellow_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_yellow_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        yellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        yellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        yellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Object message) {
+        yellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final String message) {
+        yellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Exception message) {
+        yellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final String message, final long timeStamp) {
+        yellow_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final String message) {
+        yellow_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final Object message, final long timeStamp) {
+        yellow_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final Object message) {
+        yellow_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        yellow_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final Exception exception) {
+        yellow_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void yellow_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_yellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_yellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        yellow_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        yellow_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        yellow_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        yellow_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final String msg1, String msg2) {
+        yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final Object msg1, Object msg2) {
+        yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void yellow_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_yellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_yellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        yellow_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        yellow_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final Object... msgs) {
+        yellow_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final int level, final String... msgs) {
+        yellow_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final String... msgs) {
+        yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void yellow_ext(final String callerClassName, final Object... msgs) {
+        yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_yellow(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.yellow_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.yellow_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_yellow_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.yellow_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.yellow_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -2397,10 +4345,171 @@ public final class HLogger {
     public static void blue(final Object... msgs) {
         blue(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void blue_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_blue_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_blue_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_blue_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        blue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        blue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        blue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Object message) {
+        blue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final String message) {
+        blue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Exception message) {
+        blue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final String message, final long timeStamp) {
+        blue_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final String message) {
+        blue_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final Object message, final long timeStamp) {
+        blue_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final Object message) {
+        blue_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        blue_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final Exception exception) {
+        blue_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void blue_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_blue_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_blue_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        blue_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        blue_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        blue_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        blue_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final String msg1, String msg2) {
+        blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final Object msg1, Object msg2) {
+        blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void blue_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_blue_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_blue_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        blue_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        blue_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final Object... msgs) {
+        blue_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final int level, final String... msgs) {
+        blue_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final String... msgs) {
+        blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void blue_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void blue_ext(final String callerClassName, final Object... msgs) {
+        blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_blue(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.blue_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.blue_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_blue_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.blue_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.blue_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -2558,10 +4667,171 @@ public final class HLogger {
     public static void magenta(final Object... msgs) {
         magenta(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void magenta_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_magenta_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_magenta_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_magenta_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        magenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        magenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        magenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Object message) {
+        magenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final String message) {
+        magenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Exception message) {
+        magenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final String message, final long timeStamp) {
+        magenta_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final String message) {
+        magenta_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final Object message, final long timeStamp) {
+        magenta_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final Object message) {
+        magenta_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        magenta_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final Exception exception) {
+        magenta_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void magenta_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_magenta_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_magenta_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        magenta_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        magenta_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        magenta_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        magenta_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final String msg1, String msg2) {
+        magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final Object msg1, Object msg2) {
+        magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void magenta_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_magenta_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_magenta_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        magenta_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        magenta_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final Object... msgs) {
+        magenta_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final int level, final String... msgs) {
+        magenta_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final String... msgs) {
+        magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void magenta_ext(final String callerClassName, final Object... msgs) {
+        magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_magenta(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.magenta_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.magenta_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_magenta_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.magenta_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.magenta_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -2719,10 +4989,171 @@ public final class HLogger {
     public static void cyan(final Object... msgs) {
         cyan(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void cyan_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_cyan_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_cyan_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_cyan_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        cyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        cyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        cyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Object message) {
+        cyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final String message) {
+        cyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Exception message) {
+        cyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final String message, final long timeStamp) {
+        cyan_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final String message) {
+        cyan_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final Object message, final long timeStamp) {
+        cyan_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final Object message) {
+        cyan_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        cyan_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final Exception exception) {
+        cyan_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void cyan_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_cyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_cyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        cyan_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        cyan_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        cyan_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        cyan_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final String msg1, String msg2) {
+        cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final Object msg1, Object msg2) {
+        cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void cyan_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_cyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_cyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        cyan_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        cyan_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final Object... msgs) {
+        cyan_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final int level, final String... msgs) {
+        cyan_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final String... msgs) {
+        cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void cyan_ext(final String callerClassName, final Object... msgs) {
+        cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_cyan(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.cyan_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.cyan_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_cyan_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.cyan_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.cyan_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -2880,10 +5311,171 @@ public final class HLogger {
     public static void white(final Object... msgs) {
         white(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void white_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_white_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_white_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_white_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        white_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        white_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        white_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Object message) {
+        white_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final String message) {
+        white_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Exception message) {
+        white_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final String message, final long timeStamp) {
+        white_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final String message) {
+        white_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final Object message, final long timeStamp) {
+        white_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final Object message) {
+        white_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        white_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final Exception exception) {
+        white_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void white_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_white_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_white_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        white_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        white_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        white_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        white_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final String msg1, String msg2) {
+        white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final Object msg1, Object msg2) {
+        white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void white_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_white_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_white_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        white_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        white_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final Object... msgs) {
+        white_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final int level, final String... msgs) {
+        white_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final String... msgs) {
+        white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void white_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void white_ext(final String callerClassName, final Object... msgs) {
+        white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_white(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.white_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.white_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_white_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.white_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.white_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -3041,10 +5633,171 @@ public final class HLogger {
     public static void gray(final Object... msgs) {
         gray(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void gray_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_gray_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_gray_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_gray_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        gray_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        gray_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        gray_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Object message) {
+        gray_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final String message) {
+        gray_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Exception message) {
+        gray_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final String message, final long timeStamp) {
+        gray_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final String message) {
+        gray_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final Object message, final long timeStamp) {
+        gray_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final Object message) {
+        gray_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        gray_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final Exception exception) {
+        gray_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void gray_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_gray_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_gray_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        gray_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        gray_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        gray_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        gray_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        gray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final String msg1, String msg2) {
+        gray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        gray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final Object msg1, Object msg2) {
+        gray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void gray_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_gray_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_gray_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        gray_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        gray_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final Object... msgs) {
+        gray_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final int level, final String... msgs) {
+        gray_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        gray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final String... msgs) {
+        gray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void gray_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        gray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void gray_ext(final String callerClassName, final Object... msgs) {
+        gray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_gray(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.gray_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.gray_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_gray_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.gray_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.gray_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -3202,10 +5955,171 @@ public final class HLogger {
     public static void grey(final Object... msgs) {
         grey(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void grey_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_grey_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_grey_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_grey_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        grey_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        grey_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        grey_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Object message) {
+        grey_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final String message) {
+        grey_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Exception message) {
+        grey_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final String message, final long timeStamp) {
+        grey_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final String message) {
+        grey_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final Object message, final long timeStamp) {
+        grey_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final Object message) {
+        grey_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        grey_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final Exception exception) {
+        grey_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void grey_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_grey_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_grey_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        grey_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        grey_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        grey_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        grey_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        grey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final String msg1, String msg2) {
+        grey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        grey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final Object msg1, Object msg2) {
+        grey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void grey_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_grey_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_grey_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        grey_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        grey_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final Object... msgs) {
+        grey_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final int level, final String... msgs) {
+        grey_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        grey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final String... msgs) {
+        grey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void grey_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        grey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void grey_ext(final String callerClassName, final Object... msgs) {
+        grey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_grey(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.grey_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.grey_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_grey_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.grey_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.grey_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -3363,10 +6277,171 @@ public final class HLogger {
     public static void bright_red(final Object... msgs) {
         bright_red(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bright_red_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bright_red_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bright_red_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bright_red_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Object message) {
+        bright_red_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final String message) {
+        bright_red_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Exception message) {
+        bright_red_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final String message, final long timeStamp) {
+        bright_red_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final String message) {
+        bright_red_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bright_red_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final Object message) {
+        bright_red_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bright_red_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final Exception exception) {
+        bright_red_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bright_red_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bright_red_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bright_red_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bright_red_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bright_red_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bright_red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final String msg1, String msg2) {
+        bright_red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bright_red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bright_red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bright_red_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bright_red_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bright_red_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final Object... msgs) {
+        bright_red_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final int level, final String... msgs) {
+        bright_red_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bright_red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final String... msgs) {
+        bright_red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bright_red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_red_ext(final String callerClassName, final Object... msgs) {
+        bright_red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bright_red(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bright_red_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bright_red_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bright_red_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bright_red_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bright_red_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -3524,10 +6599,171 @@ public final class HLogger {
     public static void bright_green(final Object... msgs) {
         bright_green(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bright_green_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bright_green_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bright_green_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bright_green_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Object message) {
+        bright_green_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final String message) {
+        bright_green_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Exception message) {
+        bright_green_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final String message, final long timeStamp) {
+        bright_green_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final String message) {
+        bright_green_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bright_green_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final Object message) {
+        bright_green_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bright_green_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final Exception exception) {
+        bright_green_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bright_green_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bright_green_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bright_green_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bright_green_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bright_green_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bright_green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final String msg1, String msg2) {
+        bright_green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bright_green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bright_green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bright_green_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bright_green_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bright_green_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final Object... msgs) {
+        bright_green_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final int level, final String... msgs) {
+        bright_green_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bright_green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final String... msgs) {
+        bright_green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bright_green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_green_ext(final String callerClassName, final Object... msgs) {
+        bright_green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bright_green(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bright_green_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bright_green_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bright_green_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bright_green_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bright_green_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -3685,10 +6921,171 @@ public final class HLogger {
     public static void bright_yellow(final Object... msgs) {
         bright_yellow(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bright_yellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bright_yellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bright_yellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Object message) {
+        bright_yellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final String message) {
+        bright_yellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Exception message) {
+        bright_yellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final String message, final long timeStamp) {
+        bright_yellow_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final String message) {
+        bright_yellow_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bright_yellow_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final Object message) {
+        bright_yellow_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bright_yellow_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final Exception exception) {
+        bright_yellow_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bright_yellow_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bright_yellow_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bright_yellow_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bright_yellow_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bright_yellow_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bright_yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final String msg1, String msg2) {
+        bright_yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bright_yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bright_yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bright_yellow_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bright_yellow_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bright_yellow_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final Object... msgs) {
+        bright_yellow_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final int level, final String... msgs) {
+        bright_yellow_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bright_yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final String... msgs) {
+        bright_yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bright_yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_yellow_ext(final String callerClassName, final Object... msgs) {
+        bright_yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bright_yellow(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bright_yellow_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bright_yellow_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bright_yellow_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bright_yellow_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bright_yellow_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -3846,10 +7243,171 @@ public final class HLogger {
     public static void bright_blue(final Object... msgs) {
         bright_blue(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bright_blue_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bright_blue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bright_blue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bright_blue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Object message) {
+        bright_blue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final String message) {
+        bright_blue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Exception message) {
+        bright_blue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final String message, final long timeStamp) {
+        bright_blue_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final String message) {
+        bright_blue_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bright_blue_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final Object message) {
+        bright_blue_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bright_blue_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final Exception exception) {
+        bright_blue_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bright_blue_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bright_blue_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bright_blue_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bright_blue_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bright_blue_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bright_blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final String msg1, String msg2) {
+        bright_blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bright_blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bright_blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bright_blue_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bright_blue_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bright_blue_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final Object... msgs) {
+        bright_blue_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final int level, final String... msgs) {
+        bright_blue_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bright_blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final String... msgs) {
+        bright_blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bright_blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_blue_ext(final String callerClassName, final Object... msgs) {
+        bright_blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bright_blue(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bright_blue_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bright_blue_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bright_blue_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bright_blue_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bright_blue_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -4007,10 +7565,171 @@ public final class HLogger {
     public static void bright_magenta(final Object... msgs) {
         bright_magenta(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bright_magenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bright_magenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bright_magenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Object message) {
+        bright_magenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final String message) {
+        bright_magenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Exception message) {
+        bright_magenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final String message, final long timeStamp) {
+        bright_magenta_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final String message) {
+        bright_magenta_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bright_magenta_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final Object message) {
+        bright_magenta_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bright_magenta_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final Exception exception) {
+        bright_magenta_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bright_magenta_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bright_magenta_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bright_magenta_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bright_magenta_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bright_magenta_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bright_magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final String msg1, String msg2) {
+        bright_magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bright_magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bright_magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bright_magenta_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bright_magenta_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bright_magenta_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final Object... msgs) {
+        bright_magenta_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final int level, final String... msgs) {
+        bright_magenta_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bright_magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final String... msgs) {
+        bright_magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bright_magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_magenta_ext(final String callerClassName, final Object... msgs) {
+        bright_magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bright_magenta(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bright_magenta_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bright_magenta_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bright_magenta_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bright_magenta_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bright_magenta_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -4168,10 +7887,171 @@ public final class HLogger {
     public static void bright_cyan(final Object... msgs) {
         bright_cyan(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bright_cyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bright_cyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bright_cyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Object message) {
+        bright_cyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final String message) {
+        bright_cyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Exception message) {
+        bright_cyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final String message, final long timeStamp) {
+        bright_cyan_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final String message) {
+        bright_cyan_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bright_cyan_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final Object message) {
+        bright_cyan_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bright_cyan_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final Exception exception) {
+        bright_cyan_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bright_cyan_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bright_cyan_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bright_cyan_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bright_cyan_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bright_cyan_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bright_cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final String msg1, String msg2) {
+        bright_cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bright_cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bright_cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bright_cyan_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bright_cyan_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bright_cyan_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final Object... msgs) {
+        bright_cyan_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final int level, final String... msgs) {
+        bright_cyan_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bright_cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final String... msgs) {
+        bright_cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bright_cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_cyan_ext(final String callerClassName, final Object... msgs) {
+        bright_cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bright_cyan(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bright_cyan_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bright_cyan_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bright_cyan_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bright_cyan_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bright_cyan_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -4329,10 +8209,171 @@ public final class HLogger {
     public static void bright_white(final Object... msgs) {
         bright_white(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bright_white_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bright_white_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bright_white_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bright_white_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Object message) {
+        bright_white_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final String message) {
+        bright_white_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Exception message) {
+        bright_white_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final String message, final long timeStamp) {
+        bright_white_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final String message) {
+        bright_white_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bright_white_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final Object message) {
+        bright_white_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bright_white_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final Exception exception) {
+        bright_white_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bright_white_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bright_white_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bright_white_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bright_white_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bright_white_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bright_white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final String msg1, String msg2) {
+        bright_white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bright_white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bright_white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bright_white_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bright_white_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bright_white_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final Object... msgs) {
+        bright_white_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final int level, final String... msgs) {
+        bright_white_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bright_white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final String... msgs) {
+        bright_white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bright_white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_white_ext(final String callerClassName, final Object... msgs) {
+        bright_white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bright_white(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bright_white_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bright_white_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bright_white_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bright_white_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bright_white_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -4490,10 +8531,171 @@ public final class HLogger {
     public static void bright_gray(final Object... msgs) {
         bright_gray(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bright_gray_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bright_gray_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bright_gray_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bright_gray_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Object message) {
+        bright_gray_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final String message) {
+        bright_gray_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Exception message) {
+        bright_gray_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final String message, final long timeStamp) {
+        bright_gray_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final String message) {
+        bright_gray_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bright_gray_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final Object message) {
+        bright_gray_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bright_gray_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final Exception exception) {
+        bright_gray_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bright_gray_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bright_gray_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bright_gray_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bright_gray_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bright_gray_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bright_gray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final String msg1, String msg2) {
+        bright_gray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bright_gray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bright_gray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bright_gray_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bright_gray_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bright_gray_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final Object... msgs) {
+        bright_gray_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final int level, final String... msgs) {
+        bright_gray_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bright_gray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final String... msgs) {
+        bright_gray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bright_gray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_gray_ext(final String callerClassName, final Object... msgs) {
+        bright_gray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bright_gray(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bright_gray_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bright_gray_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bright_gray_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bright_gray_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bright_gray_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -4651,10 +8853,171 @@ public final class HLogger {
     public static void bright_grey(final Object... msgs) {
         bright_grey(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bright_grey_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bright_grey_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bright_grey_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bright_grey_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Object message) {
+        bright_grey_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final String message) {
+        bright_grey_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Exception message) {
+        bright_grey_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final String message, final long timeStamp) {
+        bright_grey_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final String message) {
+        bright_grey_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bright_grey_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final Object message) {
+        bright_grey_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bright_grey_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final Exception exception) {
+        bright_grey_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bright_grey_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bright_grey_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bright_grey_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bright_grey_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bright_grey_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bright_grey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final String msg1, String msg2) {
+        bright_grey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bright_grey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bright_grey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bright_grey_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bright_grey_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bright_grey_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final Object... msgs) {
+        bright_grey_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final int level, final String... msgs) {
+        bright_grey_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bright_grey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final String... msgs) {
+        bright_grey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bright_grey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bright_grey_ext(final String callerClassName, final Object... msgs) {
+        bright_grey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bright_grey(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bright_grey_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bright_grey_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bright_grey_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bright_grey_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bright_grey_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -4812,10 +9175,171 @@ public final class HLogger {
     public static void bgBlack(final Object... msgs) {
         bgBlack(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bgBlack_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bgBlack_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bgBlack_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bgBlack_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Object message) {
+        bgBlack_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final String message) {
+        bgBlack_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Exception message) {
+        bgBlack_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final String message, final long timeStamp) {
+        bgBlack_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final String message) {
+        bgBlack_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bgBlack_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final Object message) {
+        bgBlack_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bgBlack_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final Exception exception) {
+        bgBlack_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bgBlack_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bgBlack_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bgBlack_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bgBlack_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bgBlack_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bgBlack_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final String msg1, String msg2) {
+        bgBlack_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bgBlack_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bgBlack_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bgBlack_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bgBlack_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bgBlack_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final Object... msgs) {
+        bgBlack_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final int level, final String... msgs) {
+        bgBlack_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bgBlack_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final String... msgs) {
+        bgBlack_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bgBlack_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgBlack_ext(final String callerClassName, final Object... msgs) {
+        bgBlack_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bgBlack(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bgBlack_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bgBlack_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bgBlack_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bgBlack_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bgBlack_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -4973,10 +9497,171 @@ public final class HLogger {
     public static void bgRed(final Object... msgs) {
         bgRed(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bgRed_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bgRed_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bgRed_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bgRed_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Object message) {
+        bgRed_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final String message) {
+        bgRed_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Exception message) {
+        bgRed_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final String message, final long timeStamp) {
+        bgRed_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final String message) {
+        bgRed_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bgRed_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final Object message) {
+        bgRed_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bgRed_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final Exception exception) {
+        bgRed_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bgRed_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bgRed_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bgRed_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bgRed_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bgRed_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bgRed_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final String msg1, String msg2) {
+        bgRed_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bgRed_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bgRed_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bgRed_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bgRed_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bgRed_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final Object... msgs) {
+        bgRed_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final int level, final String... msgs) {
+        bgRed_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bgRed_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final String... msgs) {
+        bgRed_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bgRed_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgRed_ext(final String callerClassName, final Object... msgs) {
+        bgRed_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bgRed(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bgRed_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bgRed_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bgRed_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bgRed_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bgRed_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -5134,10 +9819,171 @@ public final class HLogger {
     public static void bgGreen(final Object... msgs) {
         bgGreen(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bgGreen_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bgGreen_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bgGreen_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bgGreen_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Object message) {
+        bgGreen_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final String message) {
+        bgGreen_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Exception message) {
+        bgGreen_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final String message, final long timeStamp) {
+        bgGreen_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final String message) {
+        bgGreen_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bgGreen_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final Object message) {
+        bgGreen_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bgGreen_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final Exception exception) {
+        bgGreen_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bgGreen_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bgGreen_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bgGreen_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bgGreen_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bgGreen_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bgGreen_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final String msg1, String msg2) {
+        bgGreen_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bgGreen_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bgGreen_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bgGreen_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bgGreen_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bgGreen_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final Object... msgs) {
+        bgGreen_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final int level, final String... msgs) {
+        bgGreen_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bgGreen_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final String... msgs) {
+        bgGreen_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bgGreen_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgGreen_ext(final String callerClassName, final Object... msgs) {
+        bgGreen_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bgGreen(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bgGreen_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bgGreen_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bgGreen_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bgGreen_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bgGreen_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -5295,10 +10141,171 @@ public final class HLogger {
     public static void bgYellow(final Object... msgs) {
         bgYellow(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bgYellow_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bgYellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bgYellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bgYellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Object message) {
+        bgYellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final String message) {
+        bgYellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Exception message) {
+        bgYellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final String message, final long timeStamp) {
+        bgYellow_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final String message) {
+        bgYellow_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bgYellow_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final Object message) {
+        bgYellow_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bgYellow_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final Exception exception) {
+        bgYellow_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bgYellow_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bgYellow_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bgYellow_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bgYellow_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bgYellow_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bgYellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final String msg1, String msg2) {
+        bgYellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bgYellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bgYellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bgYellow_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bgYellow_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bgYellow_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final Object... msgs) {
+        bgYellow_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final int level, final String... msgs) {
+        bgYellow_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bgYellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final String... msgs) {
+        bgYellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bgYellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgYellow_ext(final String callerClassName, final Object... msgs) {
+        bgYellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bgYellow(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bgYellow_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bgYellow_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bgYellow_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bgYellow_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bgYellow_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -5456,10 +10463,171 @@ public final class HLogger {
     public static void bgBlue(final Object... msgs) {
         bgBlue(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bgBlue_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bgBlue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bgBlue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bgBlue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Object message) {
+        bgBlue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final String message) {
+        bgBlue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Exception message) {
+        bgBlue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final String message, final long timeStamp) {
+        bgBlue_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final String message) {
+        bgBlue_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bgBlue_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final Object message) {
+        bgBlue_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bgBlue_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final Exception exception) {
+        bgBlue_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bgBlue_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bgBlue_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bgBlue_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bgBlue_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bgBlue_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bgBlue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final String msg1, String msg2) {
+        bgBlue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bgBlue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bgBlue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bgBlue_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bgBlue_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bgBlue_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final Object... msgs) {
+        bgBlue_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final int level, final String... msgs) {
+        bgBlue_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bgBlue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final String... msgs) {
+        bgBlue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bgBlue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgBlue_ext(final String callerClassName, final Object... msgs) {
+        bgBlue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bgBlue(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bgBlue_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bgBlue_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bgBlue_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bgBlue_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bgBlue_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -5617,10 +10785,171 @@ public final class HLogger {
     public static void bgMagenta(final Object... msgs) {
         bgMagenta(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bgMagenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bgMagenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bgMagenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Object message) {
+        bgMagenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final String message) {
+        bgMagenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Exception message) {
+        bgMagenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final String message, final long timeStamp) {
+        bgMagenta_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final String message) {
+        bgMagenta_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bgMagenta_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final Object message) {
+        bgMagenta_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bgMagenta_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final Exception exception) {
+        bgMagenta_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bgMagenta_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bgMagenta_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bgMagenta_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bgMagenta_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bgMagenta_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bgMagenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final String msg1, String msg2) {
+        bgMagenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bgMagenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bgMagenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bgMagenta_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bgMagenta_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bgMagenta_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final Object... msgs) {
+        bgMagenta_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final int level, final String... msgs) {
+        bgMagenta_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bgMagenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final String... msgs) {
+        bgMagenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bgMagenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgMagenta_ext(final String callerClassName, final Object... msgs) {
+        bgMagenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bgMagenta(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bgMagenta_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bgMagenta_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bgMagenta_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bgMagenta_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bgMagenta_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -5778,10 +11107,171 @@ public final class HLogger {
     public static void bgCyan(final Object... msgs) {
         bgCyan(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bgCyan_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bgCyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bgCyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bgCyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Object message) {
+        bgCyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final String message) {
+        bgCyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Exception message) {
+        bgCyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final String message, final long timeStamp) {
+        bgCyan_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final String message) {
+        bgCyan_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bgCyan_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final Object message) {
+        bgCyan_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bgCyan_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final Exception exception) {
+        bgCyan_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bgCyan_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bgCyan_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bgCyan_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bgCyan_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bgCyan_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bgCyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final String msg1, String msg2) {
+        bgCyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bgCyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bgCyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bgCyan_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bgCyan_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bgCyan_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final Object... msgs) {
+        bgCyan_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final int level, final String... msgs) {
+        bgCyan_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bgCyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final String... msgs) {
+        bgCyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bgCyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgCyan_ext(final String callerClassName, final Object... msgs) {
+        bgCyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bgCyan(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bgCyan_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bgCyan_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bgCyan_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bgCyan_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bgCyan_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -5939,10 +11429,171 @@ public final class HLogger {
     public static void bgWhite(final Object... msgs) {
         bgWhite(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void bgWhite_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        bgWhite_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        bgWhite_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        bgWhite_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Object message) {
+        bgWhite_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final String message) {
+        bgWhite_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Exception message) {
+        bgWhite_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final String message, final long timeStamp) {
+        bgWhite_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final String message) {
+        bgWhite_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final Object message, final long timeStamp) {
+        bgWhite_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final Object message) {
+        bgWhite_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        bgWhite_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final Exception exception) {
+        bgWhite_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void bgWhite_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        bgWhite_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        bgWhite_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        bgWhite_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        bgWhite_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        bgWhite_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final String msg1, String msg2) {
+        bgWhite_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        bgWhite_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final Object msg1, Object msg2) {
+        bgWhite_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void bgWhite_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        bgWhite_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        bgWhite_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final Object... msgs) {
+        bgWhite_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final int level, final String... msgs) {
+        bgWhite_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        bgWhite_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final String... msgs) {
+        bgWhite_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        bgWhite_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void bgWhite_ext(final String callerClassName, final Object... msgs) {
+        bgWhite_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     private static void write_bgWhite(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.bgWhite_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.bgWhite_close + '\n';
+        if (outputToFile && logToFile) {
+            fileWriter.print(fString);
+        }
+        if (stdOut) {
+            if (level >= Level.SEVERE) {
+                if (stdErr) System.err.print(fString);
+            } else if (level != Level.DEBUG) {
+                System.out.print(fString);
+            } else if (outputFine) {
+                System.out.print(fString);
+            }
+        }
+    }
+    
+    private static void write_bgWhite_ext(final String sourceClassName, final int level, final long timeStamp, final boolean logToFile, final String message) {
+        final String fString = Chalk.bgWhite_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + sourceClassName + "] " + message + Chalk.bgWhite_close + '\n';
         if (outputToFile && logToFile) {
             fileWriter.print(fString);
         }
@@ -6100,6 +11751,151 @@ public final class HLogger {
     public static void strike(final Object... msgs) {
         strike(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void strike_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        strike_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        strike_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        strike_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Object message) {
+        strike_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final String message) {
+        strike_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Exception message) {
+        strike_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final String message, final long timeStamp) {
+        strike_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final String message) {
+        strike_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final Object message, final long timeStamp) {
+        strike_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final Object message) {
+        strike_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        strike_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final Exception exception) {
+        strike_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void strike_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        strike_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        strike_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        strike_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        strike_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        strike_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final String msg1, String msg2) {
+        strike_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        strike_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final Object msg1, Object msg2) {
+        strike_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void strike_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_strikethrough_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        strike_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        strike_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final Object... msgs) {
+        strike_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final int level, final String... msgs) {
+        strike_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        strike_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final String... msgs) {
+        strike_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void strike_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        strike_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void strike_ext(final String callerClassName, final Object... msgs) {
+        strike_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -6243,6 +12039,151 @@ public final class HLogger {
 
     public static void brightRed(final Object... msgs) {
         brightRed(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void brightRed_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        brightRed_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        brightRed_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        brightRed_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Object message) {
+        brightRed_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final String message) {
+        brightRed_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Exception message) {
+        brightRed_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final String message, final long timeStamp) {
+        brightRed_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final String message) {
+        brightRed_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final Object message, final long timeStamp) {
+        brightRed_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final Object message) {
+        brightRed_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        brightRed_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final Exception exception) {
+        brightRed_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void brightRed_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        brightRed_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        brightRed_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        brightRed_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        brightRed_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        brightRed_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final String msg1, String msg2) {
+        brightRed_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        brightRed_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final Object msg1, Object msg2) {
+        brightRed_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void brightRed_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        brightRed_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        brightRed_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final Object... msgs) {
+        brightRed_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final int level, final String... msgs) {
+        brightRed_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        brightRed_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final String... msgs) {
+        brightRed_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        brightRed_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightRed_ext(final String callerClassName, final Object... msgs) {
+        brightRed_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -6388,6 +12329,151 @@ public final class HLogger {
     public static void brightGreen(final Object... msgs) {
         brightGreen(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void brightGreen_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        brightGreen_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        brightGreen_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        brightGreen_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Object message) {
+        brightGreen_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final String message) {
+        brightGreen_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Exception message) {
+        brightGreen_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final String message, final long timeStamp) {
+        brightGreen_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final String message) {
+        brightGreen_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final Object message, final long timeStamp) {
+        brightGreen_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final Object message) {
+        brightGreen_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        brightGreen_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final Exception exception) {
+        brightGreen_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void brightGreen_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        brightGreen_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        brightGreen_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        brightGreen_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        brightGreen_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        brightGreen_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final String msg1, String msg2) {
+        brightGreen_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        brightGreen_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final Object msg1, Object msg2) {
+        brightGreen_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void brightGreen_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_green_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        brightGreen_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        brightGreen_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final Object... msgs) {
+        brightGreen_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final int level, final String... msgs) {
+        brightGreen_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        brightGreen_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final String... msgs) {
+        brightGreen_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        brightGreen_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGreen_ext(final String callerClassName, final Object... msgs) {
+        brightGreen_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -6531,6 +12617,151 @@ public final class HLogger {
 
     public static void brightYellow(final Object... msgs) {
         brightYellow(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void brightYellow_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        brightYellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        brightYellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        brightYellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Object message) {
+        brightYellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final String message) {
+        brightYellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Exception message) {
+        brightYellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final String message, final long timeStamp) {
+        brightYellow_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final String message) {
+        brightYellow_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final Object message, final long timeStamp) {
+        brightYellow_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final Object message) {
+        brightYellow_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        brightYellow_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final Exception exception) {
+        brightYellow_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void brightYellow_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        brightYellow_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        brightYellow_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        brightYellow_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        brightYellow_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        brightYellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final String msg1, String msg2) {
+        brightYellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        brightYellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final Object msg1, Object msg2) {
+        brightYellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void brightYellow_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        brightYellow_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        brightYellow_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final Object... msgs) {
+        brightYellow_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final int level, final String... msgs) {
+        brightYellow_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        brightYellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final String... msgs) {
+        brightYellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        brightYellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightYellow_ext(final String callerClassName, final Object... msgs) {
+        brightYellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -6676,6 +12907,151 @@ public final class HLogger {
     public static void brightBlue(final Object... msgs) {
         brightBlue(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void brightBlue_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        brightBlue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        brightBlue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        brightBlue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Object message) {
+        brightBlue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final String message) {
+        brightBlue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Exception message) {
+        brightBlue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final String message, final long timeStamp) {
+        brightBlue_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final String message) {
+        brightBlue_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final Object message, final long timeStamp) {
+        brightBlue_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final Object message) {
+        brightBlue_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        brightBlue_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final Exception exception) {
+        brightBlue_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void brightBlue_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        brightBlue_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        brightBlue_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        brightBlue_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        brightBlue_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        brightBlue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final String msg1, String msg2) {
+        brightBlue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        brightBlue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final Object msg1, Object msg2) {
+        brightBlue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void brightBlue_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_blue_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        brightBlue_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        brightBlue_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final Object... msgs) {
+        brightBlue_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final int level, final String... msgs) {
+        brightBlue_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        brightBlue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final String... msgs) {
+        brightBlue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        brightBlue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightBlue_ext(final String callerClassName, final Object... msgs) {
+        brightBlue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -6819,6 +13195,151 @@ public final class HLogger {
 
     public static void brightMagenta(final Object... msgs) {
         brightMagenta(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        brightMagenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        brightMagenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        brightMagenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Object message) {
+        brightMagenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final String message) {
+        brightMagenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Exception message) {
+        brightMagenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final String message, final long timeStamp) {
+        brightMagenta_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final String message) {
+        brightMagenta_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final Object message, final long timeStamp) {
+        brightMagenta_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final Object message) {
+        brightMagenta_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        brightMagenta_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final Exception exception) {
+        brightMagenta_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void brightMagenta_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        brightMagenta_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        brightMagenta_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        brightMagenta_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        brightMagenta_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        brightMagenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final String msg1, String msg2) {
+        brightMagenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        brightMagenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final Object msg1, Object msg2) {
+        brightMagenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void brightMagenta_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_magenta_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        brightMagenta_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        brightMagenta_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final Object... msgs) {
+        brightMagenta_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final int level, final String... msgs) {
+        brightMagenta_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        brightMagenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final String... msgs) {
+        brightMagenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        brightMagenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightMagenta_ext(final String callerClassName, final Object... msgs) {
+        brightMagenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -6964,6 +13485,151 @@ public final class HLogger {
     public static void brightCyan(final Object... msgs) {
         brightCyan(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void brightCyan_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        brightCyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        brightCyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        brightCyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Object message) {
+        brightCyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final String message) {
+        brightCyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Exception message) {
+        brightCyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final String message, final long timeStamp) {
+        brightCyan_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final String message) {
+        brightCyan_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final Object message, final long timeStamp) {
+        brightCyan_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final Object message) {
+        brightCyan_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        brightCyan_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final Exception exception) {
+        brightCyan_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void brightCyan_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        brightCyan_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        brightCyan_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        brightCyan_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        brightCyan_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        brightCyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final String msg1, String msg2) {
+        brightCyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        brightCyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final Object msg1, Object msg2) {
+        brightCyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void brightCyan_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        brightCyan_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        brightCyan_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final Object... msgs) {
+        brightCyan_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final int level, final String... msgs) {
+        brightCyan_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        brightCyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final String... msgs) {
+        brightCyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        brightCyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightCyan_ext(final String callerClassName, final Object... msgs) {
+        brightCyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -7107,6 +13773,151 @@ public final class HLogger {
 
     public static void brightWhite(final Object... msgs) {
         brightWhite(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void brightWhite_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        brightWhite_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        brightWhite_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        brightWhite_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Object message) {
+        brightWhite_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final String message) {
+        brightWhite_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Exception message) {
+        brightWhite_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final String message, final long timeStamp) {
+        brightWhite_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final String message) {
+        brightWhite_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final Object message, final long timeStamp) {
+        brightWhite_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final Object message) {
+        brightWhite_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        brightWhite_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final Exception exception) {
+        brightWhite_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void brightWhite_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        brightWhite_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        brightWhite_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        brightWhite_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        brightWhite_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        brightWhite_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final String msg1, String msg2) {
+        brightWhite_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        brightWhite_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final Object msg1, Object msg2) {
+        brightWhite_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void brightWhite_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_white_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        brightWhite_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        brightWhite_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final Object... msgs) {
+        brightWhite_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final int level, final String... msgs) {
+        brightWhite_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        brightWhite_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final String... msgs) {
+        brightWhite_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        brightWhite_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightWhite_ext(final String callerClassName, final Object... msgs) {
+        brightWhite_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -7252,6 +14063,151 @@ public final class HLogger {
     public static void brightGray(final Object... msgs) {
         brightGray(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void brightGray_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        brightGray_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        brightGray_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        brightGray_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Object message) {
+        brightGray_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final String message) {
+        brightGray_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Exception message) {
+        brightGray_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final String message, final long timeStamp) {
+        brightGray_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final String message) {
+        brightGray_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final Object message, final long timeStamp) {
+        brightGray_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final Object message) {
+        brightGray_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        brightGray_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final Exception exception) {
+        brightGray_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void brightGray_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        brightGray_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        brightGray_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        brightGray_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        brightGray_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        brightGray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final String msg1, String msg2) {
+        brightGray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        brightGray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final Object msg1, Object msg2) {
+        brightGray_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void brightGray_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_gray_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        brightGray_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        brightGray_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final Object... msgs) {
+        brightGray_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final int level, final String... msgs) {
+        brightGray_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        brightGray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final String... msgs) {
+        brightGray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        brightGray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGray_ext(final String callerClassName, final Object... msgs) {
+        brightGray_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -7395,6 +14351,151 @@ public final class HLogger {
 
     public static void brightGrey(final Object... msgs) {
         brightGrey(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void brightGrey_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        brightGrey_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        brightGrey_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        brightGrey_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Object message) {
+        brightGrey_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final String message) {
+        brightGrey_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Exception message) {
+        brightGrey_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final String message, final long timeStamp) {
+        brightGrey_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final String message) {
+        brightGrey_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final Object message, final long timeStamp) {
+        brightGrey_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final Object message) {
+        brightGrey_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        brightGrey_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final Exception exception) {
+        brightGrey_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void brightGrey_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        brightGrey_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        brightGrey_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        brightGrey_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        brightGrey_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        brightGrey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final String msg1, String msg2) {
+        brightGrey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        brightGrey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final Object msg1, Object msg2) {
+        brightGrey_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void brightGrey_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_grey_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        brightGrey_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        brightGrey_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final Object... msgs) {
+        brightGrey_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final int level, final String... msgs) {
+        brightGrey_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        brightGrey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final String... msgs) {
+        brightGrey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        brightGrey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void brightGrey_ext(final String callerClassName, final Object... msgs) {
+        brightGrey_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -7540,6 +14641,151 @@ public final class HLogger {
     public static void background_black(final Object... msgs) {
         background_black(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void background_black_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        background_black_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        background_black_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        background_black_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Object message) {
+        background_black_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final String message) {
+        background_black_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Exception message) {
+        background_black_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final String message, final long timeStamp) {
+        background_black_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final String message) {
+        background_black_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final Object message, final long timeStamp) {
+        background_black_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final Object message) {
+        background_black_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        background_black_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final Exception exception) {
+        background_black_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void background_black_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        background_black_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        background_black_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        background_black_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        background_black_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        background_black_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final String msg1, String msg2) {
+        background_black_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        background_black_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final Object msg1, Object msg2) {
+        background_black_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void background_black_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgBlack_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        background_black_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        background_black_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final Object... msgs) {
+        background_black_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final int level, final String... msgs) {
+        background_black_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        background_black_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final String... msgs) {
+        background_black_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        background_black_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_black_ext(final String callerClassName, final Object... msgs) {
+        background_black_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -7683,6 +14929,151 @@ public final class HLogger {
 
     public static void background_red(final Object... msgs) {
         background_red(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void background_red_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        background_red_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        background_red_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        background_red_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Object message) {
+        background_red_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final String message) {
+        background_red_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Exception message) {
+        background_red_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final String message, final long timeStamp) {
+        background_red_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final String message) {
+        background_red_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final Object message, final long timeStamp) {
+        background_red_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final Object message) {
+        background_red_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        background_red_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final Exception exception) {
+        background_red_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void background_red_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        background_red_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        background_red_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        background_red_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        background_red_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        background_red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final String msg1, String msg2) {
+        background_red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        background_red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final Object msg1, Object msg2) {
+        background_red_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void background_red_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgRed_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        background_red_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        background_red_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final Object... msgs) {
+        background_red_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final int level, final String... msgs) {
+        background_red_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        background_red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final String... msgs) {
+        background_red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        background_red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_red_ext(final String callerClassName, final Object... msgs) {
+        background_red_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -7828,6 +15219,151 @@ public final class HLogger {
     public static void background_green(final Object... msgs) {
         background_green(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void background_green_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        background_green_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        background_green_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        background_green_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Object message) {
+        background_green_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final String message) {
+        background_green_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Exception message) {
+        background_green_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final String message, final long timeStamp) {
+        background_green_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final String message) {
+        background_green_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final Object message, final long timeStamp) {
+        background_green_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final Object message) {
+        background_green_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        background_green_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final Exception exception) {
+        background_green_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void background_green_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        background_green_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        background_green_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        background_green_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        background_green_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        background_green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final String msg1, String msg2) {
+        background_green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        background_green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final Object msg1, Object msg2) {
+        background_green_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void background_green_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgGreen_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        background_green_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        background_green_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final Object... msgs) {
+        background_green_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final int level, final String... msgs) {
+        background_green_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        background_green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final String... msgs) {
+        background_green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        background_green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_green_ext(final String callerClassName, final Object... msgs) {
+        background_green_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -7971,6 +15507,151 @@ public final class HLogger {
 
     public static void background_yellow(final Object... msgs) {
         background_yellow(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void background_yellow_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        background_yellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        background_yellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        background_yellow_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Object message) {
+        background_yellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final String message) {
+        background_yellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Exception message) {
+        background_yellow_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final String message, final long timeStamp) {
+        background_yellow_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final String message) {
+        background_yellow_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final Object message, final long timeStamp) {
+        background_yellow_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final Object message) {
+        background_yellow_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        background_yellow_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final Exception exception) {
+        background_yellow_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void background_yellow_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        background_yellow_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        background_yellow_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        background_yellow_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        background_yellow_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        background_yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final String msg1, String msg2) {
+        background_yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        background_yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final Object msg1, Object msg2) {
+        background_yellow_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void background_yellow_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgYellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        background_yellow_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        background_yellow_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final Object... msgs) {
+        background_yellow_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final int level, final String... msgs) {
+        background_yellow_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        background_yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final String... msgs) {
+        background_yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        background_yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_yellow_ext(final String callerClassName, final Object... msgs) {
+        background_yellow_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -8116,6 +15797,151 @@ public final class HLogger {
     public static void background_blue(final Object... msgs) {
         background_blue(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void background_blue_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        background_blue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        background_blue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        background_blue_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Object message) {
+        background_blue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final String message) {
+        background_blue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Exception message) {
+        background_blue_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final String message, final long timeStamp) {
+        background_blue_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final String message) {
+        background_blue_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final Object message, final long timeStamp) {
+        background_blue_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final Object message) {
+        background_blue_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        background_blue_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final Exception exception) {
+        background_blue_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void background_blue_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        background_blue_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        background_blue_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        background_blue_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        background_blue_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        background_blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final String msg1, String msg2) {
+        background_blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        background_blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final Object msg1, Object msg2) {
+        background_blue_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void background_blue_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgBlue_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        background_blue_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        background_blue_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final Object... msgs) {
+        background_blue_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final int level, final String... msgs) {
+        background_blue_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        background_blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final String... msgs) {
+        background_blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        background_blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_blue_ext(final String callerClassName, final Object... msgs) {
+        background_blue_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -8259,6 +16085,151 @@ public final class HLogger {
 
     public static void background_magenta(final Object... msgs) {
         background_magenta(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void background_magenta_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        background_magenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        background_magenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        background_magenta_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Object message) {
+        background_magenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final String message) {
+        background_magenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Exception message) {
+        background_magenta_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final String message, final long timeStamp) {
+        background_magenta_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final String message) {
+        background_magenta_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final Object message, final long timeStamp) {
+        background_magenta_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final Object message) {
+        background_magenta_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        background_magenta_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final Exception exception) {
+        background_magenta_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void background_magenta_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        background_magenta_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        background_magenta_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        background_magenta_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        background_magenta_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        background_magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final String msg1, String msg2) {
+        background_magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        background_magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final Object msg1, Object msg2) {
+        background_magenta_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void background_magenta_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgMagenta_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        background_magenta_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        background_magenta_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final Object... msgs) {
+        background_magenta_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final int level, final String... msgs) {
+        background_magenta_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        background_magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final String... msgs) {
+        background_magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        background_magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_magenta_ext(final String callerClassName, final Object... msgs) {
+        background_magenta_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -8404,6 +16375,151 @@ public final class HLogger {
     public static void background_cyan(final Object... msgs) {
         background_cyan(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void background_cyan_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        background_cyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        background_cyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        background_cyan_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Object message) {
+        background_cyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final String message) {
+        background_cyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Exception message) {
+        background_cyan_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final String message, final long timeStamp) {
+        background_cyan_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final String message) {
+        background_cyan_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final Object message, final long timeStamp) {
+        background_cyan_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final Object message) {
+        background_cyan_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        background_cyan_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final Exception exception) {
+        background_cyan_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void background_cyan_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        background_cyan_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        background_cyan_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        background_cyan_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        background_cyan_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        background_cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final String msg1, String msg2) {
+        background_cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        background_cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final Object msg1, Object msg2) {
+        background_cyan_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void background_cyan_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgCyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        background_cyan_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        background_cyan_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final Object... msgs) {
+        background_cyan_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final int level, final String... msgs) {
+        background_cyan_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        background_cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final String... msgs) {
+        background_cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        background_cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_cyan_ext(final String callerClassName, final Object... msgs) {
+        background_cyan_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -8547,6 +16663,151 @@ public final class HLogger {
 
     public static void background_white(final Object... msgs) {
         background_white(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void background_white_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        background_white_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        background_white_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        background_white_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Object message) {
+        background_white_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final String message) {
+        background_white_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Exception message) {
+        background_white_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final String message, final long timeStamp) {
+        background_white_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final String message) {
+        background_white_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final Object message, final long timeStamp) {
+        background_white_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final Object message) {
+        background_white_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        background_white_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final Exception exception) {
+        background_white_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void background_white_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        background_white_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        background_white_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        background_white_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        background_white_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        background_white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final String msg1, String msg2) {
+        background_white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        background_white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final Object msg1, Object msg2) {
+        background_white_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void background_white_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bgWhite_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        background_white_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        background_white_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final Object... msgs) {
+        background_white_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final int level, final String... msgs) {
+        background_white_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        background_white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final String... msgs) {
+        background_white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        background_white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void background_white_ext(final String callerClassName, final Object... msgs) {
+        background_white_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -8692,6 +16953,151 @@ public final class HLogger {
     public static void log(final Object... msgs) {
         log(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void log_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        log_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        log_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        log_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Object message) {
+        log_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final String message) {
+        log_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Exception message) {
+        log_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final String message, final long timeStamp) {
+        log_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final String message) {
+        log_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final Object message, final long timeStamp) {
+        log_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final Object message) {
+        log_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        log_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final Exception exception) {
+        log_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void log_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        log_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        log_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        log_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        log_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        log_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final String msg1, String msg2) {
+        log_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        log_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final Object msg1, Object msg2) {
+        log_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void log_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        log_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        log_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final Object... msgs) {
+        log_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final int level, final String... msgs) {
+        log_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        log_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final String... msgs) {
+        log_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void log_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        log_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void log_ext(final String callerClassName, final Object... msgs) {
+        log_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -8835,6 +17241,151 @@ public final class HLogger {
 
     public static void error(final Object... msgs) {
         error(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void error_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        error_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        error_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        error_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Object message) {
+        error_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final String message) {
+        error_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Exception message) {
+        error_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final String message, final long timeStamp) {
+        error_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final String message) {
+        error_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final Object message, final long timeStamp) {
+        error_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final Object message) {
+        error_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        error_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final Exception exception) {
+        error_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void error_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        error_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        error_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        error_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        error_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        error_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final String msg1, String msg2) {
+        error_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        error_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final Object msg1, Object msg2) {
+        error_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void error_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        error_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        error_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final Object... msgs) {
+        error_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final int level, final String... msgs) {
+        error_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        error_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final String... msgs) {
+        error_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void error_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        error_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void error_ext(final String callerClassName, final Object... msgs) {
+        error_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -8980,6 +17531,151 @@ public final class HLogger {
     public static void severe(final Object... msgs) {
         severe(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void severe_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        severe_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        severe_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        severe_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Object message) {
+        severe_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final String message) {
+        severe_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Exception message) {
+        severe_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final String message, final long timeStamp) {
+        severe_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final String message) {
+        severe_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final Object message, final long timeStamp) {
+        severe_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final Object message) {
+        severe_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        severe_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final Exception exception) {
+        severe_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void severe_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        severe_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        severe_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        severe_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        severe_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        severe_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final String msg1, String msg2) {
+        severe_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        severe_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final Object msg1, Object msg2) {
+        severe_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void severe_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        severe_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        severe_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final Object... msgs) {
+        severe_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final int level, final String... msgs) {
+        severe_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        severe_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final String... msgs) {
+        severe_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void severe_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        severe_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void severe_ext(final String callerClassName, final Object... msgs) {
+        severe_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -9123,6 +17819,151 @@ public final class HLogger {
 
     public static void fatal(final Object... msgs) {
         fatal(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void fatal_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        fatal_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        fatal_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        fatal_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Object message) {
+        fatal_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final String message) {
+        fatal_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Exception message) {
+        fatal_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final String message, final long timeStamp) {
+        fatal_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final String message) {
+        fatal_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final Object message, final long timeStamp) {
+        fatal_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final Object message) {
+        fatal_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        fatal_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final Exception exception) {
+        fatal_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void fatal_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        fatal_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        fatal_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        fatal_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        fatal_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        fatal_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final String msg1, String msg2) {
+        fatal_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        fatal_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final Object msg1, Object msg2) {
+        fatal_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void fatal_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_red_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        fatal_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        fatal_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final Object... msgs) {
+        fatal_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final int level, final String... msgs) {
+        fatal_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        fatal_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final String... msgs) {
+        fatal_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        fatal_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void fatal_ext(final String callerClassName, final Object... msgs) {
+        fatal_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
@@ -9268,6 +18109,151 @@ public final class HLogger {
     public static void warn(final Object... msgs) {
         warn(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void warn_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        warn_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        warn_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        warn_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Object message) {
+        warn_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final String message) {
+        warn_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Exception message) {
+        warn_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final String message, final long timeStamp) {
+        warn_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final String message) {
+        warn_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final Object message, final long timeStamp) {
+        warn_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final Object message) {
+        warn_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        warn_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final Exception exception) {
+        warn_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void warn_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        warn_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        warn_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        warn_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        warn_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        warn_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final String msg1, String msg2) {
+        warn_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        warn_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final Object msg1, Object msg2) {
+        warn_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void warn_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_yellow_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        warn_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        warn_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final Object... msgs) {
+        warn_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final int level, final String... msgs) {
+        warn_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        warn_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final String... msgs) {
+        warn_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void warn_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        warn_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void warn_ext(final String callerClassName, final Object... msgs) {
+        warn_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -9412,6 +18398,151 @@ public final class HLogger {
     public static void info(final Object... msgs) {
         info(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void info_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        info_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        info_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        info_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Object message) {
+        info_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final String message) {
+        info_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Exception message) {
+        info_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final String message, final long timeStamp) {
+        info_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final String message) {
+        info_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final Object message, final long timeStamp) {
+        info_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final Object message) {
+        info_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        info_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final Exception exception) {
+        info_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void info_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        info_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        info_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        info_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        info_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        info_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final String msg1, String msg2) {
+        info_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        info_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final Object msg1, Object msg2) {
+        info_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void info_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_bright_cyan_ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        info_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        info_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final Object... msgs) {
+        info_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final int level, final String... msgs) {
+        info_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        info_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final String... msgs) {
+        info_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void info_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        info_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void info_ext(final String callerClassName, final Object... msgs) {
+        info_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
 
 
     // 1-arg methods
@@ -9555,6 +18686,440 @@ public final class HLogger {
 
     public static void debug(final Object... msgs) {
         debug(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void debug_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        debug_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        debug_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        debug_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Object message) {
+        debug_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final String message) {
+        debug_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Exception message) {
+        debug_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final String message, final long timeStamp) {
+        debug_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final String message) {
+        debug_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final Object message, final long timeStamp) {
+        debug_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final Object message) {
+        debug_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        debug_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final Exception exception) {
+        debug_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void debug_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        debug_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        debug_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        debug_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        debug_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        debug_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final String msg1, String msg2) {
+        debug_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        debug_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final Object msg1, Object msg2) {
+        debug_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void debug_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        debug_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        debug_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final Object... msgs) {
+        debug_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final int level, final String... msgs) {
+        debug_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        debug_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final String... msgs) {
+        debug_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void debug_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        debug_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void debug_ext(final String callerClassName, final Object... msgs) {
+        debug_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+
+    // 1-arg methods
+    public static void trace(final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write_(level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void trace(final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write_(level, timeStamp, logToFile, message);
+    }
+
+    public static void trace(final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write_(level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void trace(final int level, final Object message, final long timeStamp) {
+        trace(level, message, timeStamp, true);
+    }
+
+    public static void trace(final int level, final String message, final long timeStamp) {
+        trace(level, message, timeStamp, true);
+    }
+
+    public static void trace(final int level, final Exception message, final long timeStamp) {
+        trace(level, message, timeStamp, true);
+    }
+
+    public static void trace(final int level, final Object message) {
+        trace(level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final int level, final String message) {
+        trace(level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final int level, final Exception message) {
+        trace(level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final String message, final long timeStamp) {
+        trace(Level.INFO, message, timeStamp, true);
+    }
+
+    public static void trace(final String message) {
+        trace(Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final Object message, final long timeStamp) {
+        trace(Level.INFO, message, timeStamp, true);
+    }
+
+    public static void trace(final Object message) {
+        trace(Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final Exception exception, final long timeStamp) {
+        trace(Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void trace(final Exception exception) {
+        trace(Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void trace(final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_(level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void trace(final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_(level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void trace(final int level, final Object msg1, Object msg2, final long timeStamp) {
+        trace(level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void trace(final int level, final String msg1, String msg2, final long timeStamp) {
+        trace(level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void trace(final int level, final Object msg1, Object msg2) {
+        trace(level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final int level, final String msg1, String msg2) {
+        trace(level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final String msg1, String msg2, final long timeStamp) {
+        trace(Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void trace(final String msg1, String msg2) {
+        trace(Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final Object msg1, Object msg2, final long timeStamp) {
+        trace(Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void trace(final Object msg1, Object msg2) {
+        trace(Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void trace(final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_(level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void trace(final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_(level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void trace(final int level, final Object[] msgs, final long timeStamp) {
+        trace(level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void trace(final int level, final String[] msgs, final long timeStamp) {
+        trace(level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void trace(final int level, final Object... msgs) {
+        trace(level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final int level, final String... msgs) {
+        trace(level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final String[] msgs, final long timeStamp) {
+        trace(Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void trace(final String... msgs) {
+        trace(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void trace(final Object[] msgs, final long timeStamp) {
+        trace(Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void trace(final Object... msgs) {
+        trace(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+    
+    // ext methods
+    
+    // 1-arg methods
+    public static void trace_ext(final String callerClassName, final int level, final Exception message, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final String message, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, message);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Object message, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, message == null ? "null" : message.toString());
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Object message, final long timeStamp) {
+        trace_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final String message, final long timeStamp) {
+        trace_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Exception message, final long timeStamp) {
+        trace_ext(callerClassName, level, message, timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Object message) {
+        trace_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final String message) {
+        trace_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Exception message) {
+        trace_ext(callerClassName, level, message, System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final String message, final long timeStamp) {
+        trace_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final String message) {
+        trace_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final Object message, final long timeStamp) {
+        trace_ext(callerClassName, Level.INFO, message, timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final Object message) {
+        trace_ext(callerClassName, Level.INFO, message, System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final Exception exception, final long timeStamp) {
+        trace_ext(callerClassName, Level.INFO, exception, timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final Exception exception) {
+        trace_ext(callerClassName, Level.SEVERE, exception, System.currentTimeMillis(), true);
+    }
+    
+    // 2-arg methods
+    public static void trace_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Object msg1, Object msg2, final long timeStamp) {
+        trace_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final String msg1, String msg2, final long timeStamp) {
+        trace_ext(callerClassName, level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Object msg1, Object msg2) {
+        trace_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final String msg1, String msg2) {
+        trace_ext(callerClassName, level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final String msg1, String msg2, final long timeStamp) {
+        trace_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final String msg1, String msg2) {
+        trace_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final Object msg1, Object msg2, final long timeStamp) {
+        trace_ext(callerClassName, Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final Object msg1, Object msg2) {
+        trace_ext(callerClassName, Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void trace_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write__ext(callerClassName, level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Object[] msgs, final long timeStamp) {
+        trace_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final String[] msgs, final long timeStamp) {
+        trace_ext(callerClassName, level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final Object... msgs) {
+        trace_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final int level, final String... msgs) {
+        trace_ext(callerClassName, level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final String[] msgs, final long timeStamp) {
+        trace_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final String... msgs) {
+        trace_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void trace_ext(final String callerClassName, final Object[] msgs, final long timeStamp) {
+        trace_ext(callerClassName, Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void trace_ext(final String callerClassName, final Object... msgs) {
+        trace_ext(callerClassName, Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
     }
 
 
