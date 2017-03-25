@@ -39,21 +39,85 @@ bgCyan: [ "\\u001b[46m", "\\u001b[49m" ],
 bgWhite: [ "\\u001b[47m", "\\u001b[49m" ],        
 };
 
+const writes = {
+  reset: 'reset',
+  bold: 'bold',
+  dim: 'dim',
+  italic: 'italic',
+  underline: 'underline',
+  inverse: 'inverse',
+  hidden: 'hidden',
+  strikethrough: 'strikethrough',
+  black: 'black',
+  red: 'red',
+  green: 'green',
+  yellow: 'yellow',
+  blue: 'blue',
+  magenta: 'magenta',
+  cyan: 'cyan',
+  white: 'white',
+  gray: 'gray',
+  grey: 'grey',
+  bright_red: 'bright_red',
+  bright_green: 'bright_green',
+  bright_yellow: 'bright_yellow',
+  bright_blue: 'bright_blue',
+  bright_magenta: 'bright_magenta',
+  bright_cyan: 'bright_cyan',
+  bright_white: 'bright_white',
+  bright_gray: 'bright_gray',
+  bright_grey: 'bright_grey',
+  bgBlack: 'bgBlack',
+  bgRed: 'bgRed',
+  bgGreen: 'bgGreen',
+  bgYellow: 'bgYellow',
+  bgBlue: 'bgBlue',
+  bgMagenta: 'bgMagenta',
+  bgCyan: 'bgCyan',
+  bgWhite: 'bgWhite',
+
+  strike: 'strikethrough',
+  brightRed: 'bright_red',
+  brightGreen: 'bright_green',
+  brightYellow: 'bright_yellow',
+  brightBlue: 'bright_blue',
+  brightMagenta: 'bright_magenta',
+  brightCyan: 'bright_cyan',
+  brightWhite: 'bright_white',
+  brightGray: 'bright_gray',
+  brightGrey: 'bright_grey',
+  background_black: 'bgBlack',
+  background_red: 'bgRed',
+  background_green: 'bgGreen',
+  background_yellow: 'bgYellow',
+  background_blue: 'bgBlue',
+  background_magenta: 'bgMagenta',
+  background_cyan: 'bgCyan',
+  background_white: 'bgWhite',
+  log: '',
+  error: 'red',
+  severe: 'red',
+  fatal: 'bright_red',
+  warn: 'bright_yellow',
+  info: 'bright_cyan',
+  debug: '',
+};
+
 const output = [];
 
-Object.keys(escapes).forEach(k => {
+Object.keys(writes).forEach(k => {
   output.push(`
-
+    // 1-arg methods
     public static void ${k}(final int level, final Exception message, final long timeStamp, final boolean logToFile) {
-        write_${k}(level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
+        write_${writes[k]}(level, timeStamp, logToFile, ThrowableUtils.getStackTrace(message));
     }
 
     public static void ${k}(final int level, final String message, final long timeStamp, final boolean logToFile) {
-        write_${k}(level, timeStamp, logToFile, message);
+        write_${writes[k]}(level, timeStamp, logToFile, message);
     }
 
     public static void ${k}(final int level, final Object message, final long timeStamp, final boolean logToFile) {
-        write_${k}(level, timeStamp, logToFile, message == null ? "null" : message.toString());
+        write_${writes[k]}(level, timeStamp, logToFile, message == null ? "null" : message.toString());
     }
 
     public static void ${k}(final int level, final Object message, final long timeStamp) {
@@ -104,6 +168,90 @@ Object.keys(escapes).forEach(k => {
         ${k}(Level.SEVERE, exception, System.currentTimeMillis(), true);
     }
     
+    // 2-arg methods
+    public static void ${k}(final int level, final String msg1, String msg2, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}(level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void ${k}(final int level, final Object msg1, Object msg2, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}(level, timeStamp, logToFile, msg1 + " " + msg2);
+    }
+
+    public static void ${k}(final int level, final Object msg1, Object msg2, final long timeStamp) {
+        ${k}(level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void ${k}(final int level, final String msg1, String msg2, final long timeStamp) {
+        ${k}(level, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void ${k}(final int level, final Object msg1, Object msg2) {
+        ${k}(level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}(final int level, final String msg1, String msg2) {
+        ${k}(level, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}(final String msg1, String msg2, final long timeStamp) {
+        ${k}(Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void ${k}(final String msg1, String msg2) {
+        ${k}(Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}(final Object msg1, Object msg2, final long timeStamp) {
+        ${k}(Level.INFO, msg1 + " " + msg2, timeStamp, true);
+    }
+
+    public static void ${k}(final Object msg1, Object msg2) {
+        ${k}(Level.INFO, msg1 + " " + msg2, System.currentTimeMillis(), true);
+    }
+    
+    // vararg methods
+    public static void ${k}(final int level, final String[] msgs, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}(level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void ${k}(final int level, final Object[] msgs, final long timeStamp, final boolean logToFile) {
+        write_${writes[k]}(level, timeStamp, logToFile, Arrays.toString(msgs));
+    }
+
+    public static void ${k}(final int level, final Object[] msgs, final long timeStamp) {
+        ${k}(level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void ${k}(final int level, final String[] msgs, final long timeStamp) {
+        ${k}(level, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void ${k}(final int level, final Object... msgs) {
+        ${k}(level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}(final int level, final String... msgs) {
+        ${k}(level, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}(final String[] msgs, final long timeStamp) {
+        ${k}(Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void ${k}(final String... msgs) {
+        ${k}(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+
+    public static void ${k}(final Object[] msgs, final long timeStamp) {
+        ${k}(Level.INFO, Arrays.toString(msgs), timeStamp, true);
+    }
+
+    public static void ${k}(final Object... msgs) {
+        ${k}(Level.INFO, Arrays.toString(msgs), System.currentTimeMillis(), true);
+    }
+`);
+  if (k === writes[k]) {
+    output.push(`
     private static void write_${k}(final int level, final long timeStamp, final boolean logToFile, final String message) {
         final String fString = Chalk.${k}_open + '[' + formatTime(timeStamp) + "] [" + Level.name[level] + "] [" + getCallerCallerClassName() + "] " + message + Chalk.${k}_close + '\\n';
         if (outputToFile && logToFile) {
@@ -119,7 +267,8 @@ Object.keys(escapes).forEach(k => {
             }
         }
     }
-`);
+    `);
+  }
 });
 
 output.push(`
