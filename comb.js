@@ -599,12 +599,14 @@ const bigArr = [
 // success tests
 // 
 
-let output = [];
-bigArr.forEach((v) => {
-  const methodName = v[0];
+const fs = require('fs');
+
+bigArr.forEach((v, _i) => {
+  let output = [];
+  //const methodName = v[0];
   const options = v[1].slice();//slice makes a copy
   
-  if (options.length == 1) {//if length == 1 combs doesnt work so we do it manually
+  if (options.length === 1) {//if length == 1 combs doesnt work so we do it manually
     const b = opts(options[0]);
     output.push(`
     @Test
@@ -653,27 +655,64 @@ bigArr.forEach((v) => {
   output.push(`
     }
 `);
+
+
+  fs.writeFileSync('./src/test/java/fallk/logmaster/LogTest' + _i + '.java',
+    `
+    package fallk.logmaster;
+
+import java.io.PrintStream;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class LogTest${_i} {
+
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownAfterClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+        LogmasterSettings.c().outputToFile(false).apply();
+        System.setOut(new PrintStream(new NullOutputStream()));
+        System.setErr(new PrintStream(new NullOutputStream()));
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+    
+    //! $CHALK_START
+    
+    ${output.join('')}
+    
+    //! $CHALK_END
+}
+    `
+  );
+
 });
 
-const fs = require('fs');
-
-fs.writeFileSync('./src/test/java/fallk/logmaster/LogTest.java', 
-  fs.readFileSync('./src/test/java/fallk/logmaster/LogTest.java', 'utf8')
-    .replace(/\/\/\! \$CHALK_START[^]*\/\/\! \$CHALK_END/, '//! $$CHALK_START\r\n' + output.join('') + '\r\n//! $$CHALK_END')
-);
-
 function opts(o) {
-  if (o == 'String') {
+  if (o === 'String') {
     return ['"Test string"', '(String) null'];
-  } else if (o == 'long') {
+  } else if (o === 'long') {
     return ['System.currentTimeMillis()', 'System.nanoTime()', 'Long.MAX_VALUE', 'Long.MIN_VALUE', '0'];
-  } else if (o == 'Exception') {
+  } else if (o === 'Exception') {
     return ['new Exception()', '(Exception) null'];
-  } else if (o == 'int') {
+  } else if (o === 'int') {
     return ['0', '1', '2', '3', '4'];
-  } else if (o == 'boolean') {
+  } else if (o === 'boolean') {
     return ['true', 'false'];
-  } else if (o == 'Object') {
+  } else if (o === 'Object') {
     return ['new Object()', 'new Dummy()', 'new Dummy2()', '(Object) null'];
   }
 }
