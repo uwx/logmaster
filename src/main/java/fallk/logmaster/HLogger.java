@@ -232,6 +232,7 @@ public final class HLogger {
          * @return the full stack trace
          */
         public static String getStackTrace(final Throwable e) {
+            if (e == null) return "[ No stack trace available ]";
             final StringBuilder s = new StringBuilder(e.toString().length());
             // Print our stack trace
             s.append(e);
