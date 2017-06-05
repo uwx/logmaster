@@ -1,4 +1,4 @@
-package club.bonerbrew.logmaster;
+package fallk.logmaster;
 
 import java.io.PrintWriter;
 import java.io.Serializable;

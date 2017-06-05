@@ -3,3 +3,12 @@ node
 node_modules
 /combs.txt
 /npm-debug.log
+
+/target/
+node_modules
+club
+maven-metadata.xml
+maven-metadata_2.xml
+/maven-metadata.xml.md5
+/maven-metadata.xml.sha1
+*.xml___jb_tmp___

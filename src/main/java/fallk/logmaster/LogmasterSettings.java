@@ -1,4 +1,4 @@
-package club.bonerbrew.logmaster;
+package fallk.logmaster;
 
 public class LogmasterSettings {
     /**

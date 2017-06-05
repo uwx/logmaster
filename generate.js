@@ -472,7 +472,7 @@ output.push(`
 //console.log(output.join('\n'));
 const fs = require('fs');
 
-fs.writeFileSync('./src/main/java/club/bonerbrew/logmaster/HLogger.java', 
-  fs.readFileSync('./src/main/java/club/bonerbrew/logmaster/HLogger.java', 'utf8')
+fs.writeFileSync('./src/main/java/fallk/logmaster/HLogger.java', 
+  fs.readFileSync('./src/main/java/fallk/logmaster/HLogger.java', 'utf8')
     .replace(/\/\/\! \$CHALK_START[^]*\/\/\! \$CHALK_END/, '//! $$CHALK_START\r\n' + output.join('\r\n') + '\r\n//! $$CHALK_END')
 );

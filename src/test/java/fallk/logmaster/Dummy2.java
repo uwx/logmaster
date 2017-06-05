@@ -1,9 +1,9 @@
-package club.bonerbrew.logmaster;
+package fallk.logmaster;
 
 import java.io.Serializable;
 
 @SuppressWarnings("all")
-public class Dummy implements Serializable, Cloneable, Comparable<Dummy> {
+public class Dummy2 implements Serializable, Cloneable, Comparable<Dummy2> {
 
     /**
      * 
@@ -15,11 +15,11 @@ public class Dummy implements Serializable, Cloneable, Comparable<Dummy> {
     private byte b = 120;
     private float f = 55555;
     private String s = "string!";
-    private Dummy d = null;
+    private Dummy2 d = null;
     private String b2 = null;
 
     @Override
-    public int compareTo(Dummy o) {
+    public int compareTo(Dummy2 o) {
         return 0;
     }
 
@@ -45,7 +45,7 @@ public class Dummy implements Serializable, Cloneable, Comparable<Dummy> {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Dummy other = (Dummy) obj;
+        Dummy2 other = (Dummy2) obj;
         if (b != other.b)
             return false;
         if (b2 == null) {
@@ -74,7 +74,7 @@ public class Dummy implements Serializable, Cloneable, Comparable<Dummy> {
 
     @Override
     public String toString() {
-        return "Dummy [i=" + i + ", l=" + l + ", b=" + b + ", f=" + f + ", s=" + s + ", d=" + d + ", b2=" + b2 + "]";
+        return null;
     }
 
 }

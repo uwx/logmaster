@@ -1,20 +1,11 @@
 {
   "name": "logmaster",
-  "version": "1.0.0",
-  "description": "",
-  "main": "generate.js",
-  "scripts": {
-    "start": "node generate && node comb",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rafa1231518/logmaster.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rafa1231518/logmaster/issues"
-  },
-  "homepage": "https://github.com/rafa1231518/logmaster#readme"
+  "version": "0.0.1",
+  "dependencies": {
+    "deep-assign": "^2.0.0",
+    "js-beautify": "^1.6.14",
+    "mz": "^2.6.0",
+    "vkbeautify": "^0.99.2",
+    "xml2js": "^0.4.17"
+  }
 }

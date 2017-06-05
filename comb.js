@@ -657,8 +657,8 @@ bigArr.forEach((v) => {
 
 const fs = require('fs');
 
-fs.writeFileSync('./src/test/java/club/bonerbrew/logmaster/LogTest.java', 
-  fs.readFileSync('./src/test/java/club/bonerbrew/logmaster/LogTest.java', 'utf8')
+fs.writeFileSync('./src/test/java/fallk/logmaster/LogTest.java', 
+  fs.readFileSync('./src/test/java/fallk/logmaster/LogTest.java', 'utf8')
     .replace(/\/\/\! \$CHALK_START[^]*\/\/\! \$CHALK_END/, '//! $$CHALK_START\r\n' + output.join('') + '\r\n//! $$CHALK_END')
 );
 
