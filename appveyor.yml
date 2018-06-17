@@ -39,7 +39,7 @@ environment:
     #- JAVA_HOME: C:\Program Files\Java\jdk1.7.0
     - JAVA_HOME: C:\Program Files\Java\jdk1.8.0
   access_token:
-    secure: wShbQfYcfaf2ZgU8dFgLTVJglCyGiK9/BHWcEbVZ4sU8SqxokPc4pFfl1ZY4qtlO
+    secure: qNMRA5boyCslJ9JgiqjpLdHd0NvhQVWcjJx3ZMrcgrDz6DNFJnDsV7w9IZuhqwYZ
     
 branches:
   only:
@@ -87,7 +87,7 @@ after_deploy:
   - git config --global user.name "Appveyor CI"
   # clone gh-pages branch to separate folder
   - cmd: mkdir %USERPROFILE%\gh-pages
-  - git clone --quiet --branch=gh-pages https://github.com/fallk/logmaster %USERPROFILE%\gh-pages
+  - git clone --quiet --branch=gh-pages https://github.com/uwx/logmaster %USERPROFILE%\gh-pages
   # update the xml
   - cmd: set USERDIR=%USERPROFILE%\gh-pages
   - node _testhash
@@ -118,7 +118,7 @@ deploy:
   
   provider: GitHub
   auth_token:
-    secure: wShbQfYcfaf2ZgU8dFgLTVJglCyGiK9/BHWcEbVZ4sU8SqxokPc4pFfl1ZY4qtlO # your encrypted token from GitHub
+    secure: qNMRA5boyCslJ9JgiqjpLdHd0NvhQVWcjJx3ZMrcgrDz6DNFJnDsV7w9IZuhqwYZ # your encrypted token from GitHub
   artifact: /.*/
   draft: false
   prerelease: false
