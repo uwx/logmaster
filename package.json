@@ -2,7 +2,7 @@
   "name": "logmaster",
   "version": "0.0.1",
   "dependencies": {
-    "js-beautify": "^1.6.14",
+    "js-beautify": "^1.8.9",
     "mz": "^2.6.0",
     "vkbeautify": "^0.99.2",
     "xml2js": "^0.4.17"
