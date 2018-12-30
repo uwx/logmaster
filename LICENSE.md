@@ -1,4 +1,4 @@
-Copyright (c) 2016-2017 uwx (fallk)
+Copyright (c) 2016-2018 uwx (fallk)
 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
