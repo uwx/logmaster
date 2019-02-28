@@ -3,15 +3,16 @@
   <groupId>fallk</groupId>
   <artifactId>logmaster</artifactId>
   <versioning>
-    <release>rev7</release>
+    <release>rev8</release>
     <versions>
+      <version>rev8</version>
       <version>rev7</version>
       <version>rev6</version>
       <version>rev5</version>
       <version>rev4</version>
       <version>rev3</version>
     </versions>
-    <lastUpdated>20181230032808</lastUpdated>
-    <latest>rev7</latest>
+    <lastUpdated>20190228184909</lastUpdated>
+    <latest>rev8</latest>
   </versioning>
 </metadata>
