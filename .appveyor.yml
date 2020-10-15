@@ -40,6 +40,7 @@ environment:
     - JAVA_HOME: C:\Program Files\Java\jdk1.8.0
   access_token:
     secure: qNMRA5boyCslJ9JgiqjpLdHd0NvhQVWcjJx3ZMrcgrDz6DNFJnDsV7w9IZuhqwYZ
+  maven_version: 3.6.3
     
 branches:
   only:
@@ -54,12 +55,12 @@ install:
   - ps: |
       Add-Type -AssemblyName System.IO.Compression.FileSystem
       if (!(Test-Path -Path "C:\maven" )) {
-        (new-object System.Net.WebClient).DownloadFile('http://www.us.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip', 'C:\maven-bin.zip')
+        (new-object System.Net.WebClient).DownloadFile("https://downloads.apache.org/maven/maven-3/$Env:maven_version/binaries/apache-maven-$Env:maven_version-bin.zip", 'C:\maven-bin.zip')
         [System.IO.Compression.ZipFile]::ExtractToDirectory("C:\maven-bin.zip", "C:\maven")
       }
-  - cmd: SET PATH=C:\maven\apache-maven-3.6.0\bin;%JAVA_HOME%\bin;%PATH:C:\Ruby193\bin;=%
+  - cmd: SET PATH=C:\maven\apache-maven-%maven_version%\bin;%JAVA_HOME%\bin;%PATH:C:\Ruby193\bin;=%
   - cmd: SET MAVEN_OPTS=-Xmx4g
-  - cmd: SET M2_HOME=C:\maven\apache-maven-3.6.0
+  - cmd: SET M2_HOME=C:\maven\apache-maven-%maven_version%
   - cmd: SET JAVA_OPTS=-Xmx4g
   - cmd: mvn --version
   - cmd: java -version
