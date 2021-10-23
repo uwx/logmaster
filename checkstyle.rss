@@ -23,10 +23,10 @@ under the License.
     <link>http://maven.apache.org</link>
     <description>logmaster - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2020</copyright>
+    <copyright>&#169;2021</copyright>
     <item>
-      <title>File: 4,
-             Errors: 15128,
+      <title>File: 5,
+             Errors: 1634,
              Warnings: 0,
              Infos: 0
       </title>
@@ -69,7 +69,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  14980
+                  1412
                 </td>
               </tr>
                           <tr>
@@ -84,6 +84,20 @@ under the License.
                 </td>
                 <td>
                   39
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#fallk.logmaster.LogmasterUtils.java">fallk/logmaster/LogmasterUtils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  74
                 </td>
               </tr>
                           <tr>
