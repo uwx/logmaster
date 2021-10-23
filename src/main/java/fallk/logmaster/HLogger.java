@@ -165,7 +165,7 @@ public final class HLogger {
      */
     public static StackTraceElement getCallerCallerInfo() {
         StackTraceElement[] stElements = new Throwable().getStackTrace();
-        return stElements[4];
+        return stElements[3];
     }
 
     public static final class Level {
