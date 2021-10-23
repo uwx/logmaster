@@ -34,26 +34,26 @@ public class LogTest185 {
     
     
     @Test
-    public final void test_strikethrough_Object_long() {
-        HLogger.strikethrough(new Object(), System.currentTimeMillis());
-        HLogger.strikethrough(new Object(), System.nanoTime());
-        HLogger.strikethrough(new Object(), Long.MAX_VALUE);
-        HLogger.strikethrough(new Object(), Long.MIN_VALUE);
-        HLogger.strikethrough(new Object(), 0);
-        HLogger.strikethrough(new Dummy(), System.currentTimeMillis());
-        HLogger.strikethrough(new Dummy(), System.nanoTime());
-        HLogger.strikethrough(new Dummy(), Long.MAX_VALUE);
-        HLogger.strikethrough(new Dummy(), Long.MIN_VALUE);
-        HLogger.strikethrough(new Dummy(), 0);
-        HLogger.strikethrough(new Dummy2(), System.currentTimeMillis());
-        HLogger.strikethrough(new Dummy2(), System.nanoTime());
-        HLogger.strikethrough(new Dummy2(), Long.MAX_VALUE);
-        HLogger.strikethrough(new Dummy2(), Long.MIN_VALUE);
-        HLogger.strikethrough(new Dummy2(), 0);
-        HLogger.strikethrough((Object) null, System.currentTimeMillis());
-        HLogger.strikethrough((Object) null, System.nanoTime());
-        HLogger.strikethrough((Object) null, Long.MAX_VALUE);
-        HLogger.strikethrough((Object) null, Long.MIN_VALUE);
+    public final void test_white_Object_long() {
+        HLogger.white(new Object(), System.currentTimeMillis());
+        HLogger.white(new Object(), System.nanoTime());
+        HLogger.white(new Object(), Long.MAX_VALUE);
+        HLogger.white(new Object(), Long.MIN_VALUE);
+        HLogger.white(new Object(), 0);
+        HLogger.white(new Dummy(), System.currentTimeMillis());
+        HLogger.white(new Dummy(), System.nanoTime());
+        HLogger.white(new Dummy(), Long.MAX_VALUE);
+        HLogger.white(new Dummy(), Long.MIN_VALUE);
+        HLogger.white(new Dummy(), 0);
+        HLogger.white(new Dummy2(), System.currentTimeMillis());
+        HLogger.white(new Dummy2(), System.nanoTime());
+        HLogger.white(new Dummy2(), Long.MAX_VALUE);
+        HLogger.white(new Dummy2(), Long.MIN_VALUE);
+        HLogger.white(new Dummy2(), 0);
+        HLogger.white((Object) null, System.currentTimeMillis());
+        HLogger.white((Object) null, System.nanoTime());
+        HLogger.white((Object) null, Long.MAX_VALUE);
+        HLogger.white((Object) null, Long.MIN_VALUE);
     }
 
     

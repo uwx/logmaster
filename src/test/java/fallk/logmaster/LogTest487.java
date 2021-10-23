@@ -34,16 +34,16 @@ public class LogTest487 {
     
     
     @Test
-    public final void test_bgBlack_Exception_long() {
-        HLogger.bgBlack(new Exception(), System.currentTimeMillis());
-        HLogger.bgBlack(new Exception(), System.nanoTime());
-        HLogger.bgBlack(new Exception(), Long.MAX_VALUE);
-        HLogger.bgBlack(new Exception(), Long.MIN_VALUE);
-        HLogger.bgBlack(new Exception(), 0);
-        HLogger.bgBlack((Exception) null, System.currentTimeMillis());
-        HLogger.bgBlack((Exception) null, System.nanoTime());
-        HLogger.bgBlack((Exception) null, Long.MAX_VALUE);
-        HLogger.bgBlack((Exception) null, Long.MIN_VALUE);
+    public final void test_bgWhite_Exception_long() {
+        HLogger.bgWhite(new Exception(), System.currentTimeMillis());
+        HLogger.bgWhite(new Exception(), System.nanoTime());
+        HLogger.bgWhite(new Exception(), Long.MAX_VALUE);
+        HLogger.bgWhite(new Exception(), Long.MIN_VALUE);
+        HLogger.bgWhite(new Exception(), 0);
+        HLogger.bgWhite((Exception) null, System.currentTimeMillis());
+        HLogger.bgWhite((Exception) null, System.nanoTime());
+        HLogger.bgWhite((Exception) null, Long.MAX_VALUE);
+        HLogger.bgWhite((Exception) null, Long.MIN_VALUE);
     }
 
     

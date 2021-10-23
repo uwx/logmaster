@@ -34,16 +34,16 @@ public class LogTest76 {
     
     
     @Test
-    public final void test_reset_int_String() {
-        HLogger.reset(0, "Test string");
-        HLogger.reset(0, (String) null);
-        HLogger.reset(1, "Test string");
-        HLogger.reset(1, (String) null);
-        HLogger.reset(2, "Test string");
-        HLogger.reset(2, (String) null);
-        HLogger.reset(3, "Test string");
-        HLogger.reset(3, (String) null);
-        HLogger.reset(4, "Test string");
+    public final void test_black_int_String() {
+        HLogger.black(0, "Test string");
+        HLogger.black(0, (String) null);
+        HLogger.black(1, "Test string");
+        HLogger.black(1, (String) null);
+        HLogger.black(2, "Test string");
+        HLogger.black(2, (String) null);
+        HLogger.black(3, "Test string");
+        HLogger.black(3, (String) null);
+        HLogger.black(4, "Test string");
     }
 
     

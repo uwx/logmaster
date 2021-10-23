@@ -34,26 +34,26 @@ public class LogTest150 {
     
     
     @Test
-    public final void test_inverse_int_Object() {
-        HLogger.inverse(0, new Object());
-        HLogger.inverse(0, new Dummy());
-        HLogger.inverse(0, new Dummy2());
-        HLogger.inverse(0, (Object) null);
-        HLogger.inverse(1, new Object());
-        HLogger.inverse(1, new Dummy());
-        HLogger.inverse(1, new Dummy2());
-        HLogger.inverse(1, (Object) null);
-        HLogger.inverse(2, new Object());
-        HLogger.inverse(2, new Dummy());
-        HLogger.inverse(2, new Dummy2());
-        HLogger.inverse(2, (Object) null);
-        HLogger.inverse(3, new Object());
-        HLogger.inverse(3, new Dummy());
-        HLogger.inverse(3, new Dummy2());
-        HLogger.inverse(3, (Object) null);
-        HLogger.inverse(4, new Object());
-        HLogger.inverse(4, new Dummy());
-        HLogger.inverse(4, new Dummy2());
+    public final void test_magenta_int_Object() {
+        HLogger.magenta(0, new Object());
+        HLogger.magenta(0, new Dummy());
+        HLogger.magenta(0, new Dummy2());
+        HLogger.magenta(0, (Object) null);
+        HLogger.magenta(1, new Object());
+        HLogger.magenta(1, new Dummy());
+        HLogger.magenta(1, new Dummy2());
+        HLogger.magenta(1, (Object) null);
+        HLogger.magenta(2, new Object());
+        HLogger.magenta(2, new Dummy());
+        HLogger.magenta(2, new Dummy2());
+        HLogger.magenta(2, (Object) null);
+        HLogger.magenta(3, new Object());
+        HLogger.magenta(3, new Dummy());
+        HLogger.magenta(3, new Dummy2());
+        HLogger.magenta(3, (Object) null);
+        HLogger.magenta(4, new Object());
+        HLogger.magenta(4, new Dummy());
+        HLogger.magenta(4, new Dummy2());
     }
 
     

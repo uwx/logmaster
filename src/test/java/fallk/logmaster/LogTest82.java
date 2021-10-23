@@ -34,16 +34,16 @@ public class LogTest82 {
     
     
     @Test
-    public final void test_reset_Exception_long() {
-        HLogger.reset(new Exception(), System.currentTimeMillis());
-        HLogger.reset(new Exception(), System.nanoTime());
-        HLogger.reset(new Exception(), Long.MAX_VALUE);
-        HLogger.reset(new Exception(), Long.MIN_VALUE);
-        HLogger.reset(new Exception(), 0);
-        HLogger.reset((Exception) null, System.currentTimeMillis());
-        HLogger.reset((Exception) null, System.nanoTime());
-        HLogger.reset((Exception) null, Long.MAX_VALUE);
-        HLogger.reset((Exception) null, Long.MIN_VALUE);
+    public final void test_black_Exception_long() {
+        HLogger.black(new Exception(), System.currentTimeMillis());
+        HLogger.black(new Exception(), System.nanoTime());
+        HLogger.black(new Exception(), Long.MAX_VALUE);
+        HLogger.black(new Exception(), Long.MIN_VALUE);
+        HLogger.black(new Exception(), 0);
+        HLogger.black((Exception) null, System.currentTimeMillis());
+        HLogger.black((Exception) null, System.nanoTime());
+        HLogger.black((Exception) null, Long.MAX_VALUE);
+        HLogger.black((Exception) null, Long.MIN_VALUE);
     }
 
     

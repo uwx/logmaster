@@ -34,16 +34,16 @@ public class LogTest168 {
     
     
     @Test
-    public final void test_hidden_String_long() {
-        HLogger.hidden("Test string", System.currentTimeMillis());
-        HLogger.hidden("Test string", System.nanoTime());
-        HLogger.hidden("Test string", Long.MAX_VALUE);
-        HLogger.hidden("Test string", Long.MIN_VALUE);
-        HLogger.hidden("Test string", 0);
-        HLogger.hidden((String) null, System.currentTimeMillis());
-        HLogger.hidden((String) null, System.nanoTime());
-        HLogger.hidden((String) null, Long.MAX_VALUE);
-        HLogger.hidden((String) null, Long.MIN_VALUE);
+    public final void test_cyan_String_long() {
+        HLogger.cyan("Test string", System.currentTimeMillis());
+        HLogger.cyan("Test string", System.nanoTime());
+        HLogger.cyan("Test string", Long.MAX_VALUE);
+        HLogger.cyan("Test string", Long.MIN_VALUE);
+        HLogger.cyan("Test string", 0);
+        HLogger.cyan((String) null, System.currentTimeMillis());
+        HLogger.cyan((String) null, System.nanoTime());
+        HLogger.cyan((String) null, Long.MAX_VALUE);
+        HLogger.cyan((String) null, Long.MIN_VALUE);
     }
 
     

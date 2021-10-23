@@ -34,16 +34,16 @@ public class LogTest137 {
     
     
     @Test
-    public final void test_underline_int_Exception() {
-        HLogger.underline(0, new Exception());
-        HLogger.underline(0, (Exception) null);
-        HLogger.underline(1, new Exception());
-        HLogger.underline(1, (Exception) null);
-        HLogger.underline(2, new Exception());
-        HLogger.underline(2, (Exception) null);
-        HLogger.underline(3, new Exception());
-        HLogger.underline(3, (Exception) null);
-        HLogger.underline(4, new Exception());
+    public final void test_blue_int_Exception() {
+        HLogger.blue(0, new Exception());
+        HLogger.blue(0, (Exception) null);
+        HLogger.blue(1, new Exception());
+        HLogger.blue(1, (Exception) null);
+        HLogger.blue(2, new Exception());
+        HLogger.blue(2, (Exception) null);
+        HLogger.blue(3, new Exception());
+        HLogger.blue(3, (Exception) null);
+        HLogger.blue(4, new Exception());
     }
 
     

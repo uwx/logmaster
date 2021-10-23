@@ -34,26 +34,26 @@ public class LogTest455 {
     
     
     @Test
-    public final void test_bright_gray_Object_long() {
-        HLogger.bright_gray(new Object(), System.currentTimeMillis());
-        HLogger.bright_gray(new Object(), System.nanoTime());
-        HLogger.bright_gray(new Object(), Long.MAX_VALUE);
-        HLogger.bright_gray(new Object(), Long.MIN_VALUE);
-        HLogger.bright_gray(new Object(), 0);
-        HLogger.bright_gray(new Dummy(), System.currentTimeMillis());
-        HLogger.bright_gray(new Dummy(), System.nanoTime());
-        HLogger.bright_gray(new Dummy(), Long.MAX_VALUE);
-        HLogger.bright_gray(new Dummy(), Long.MIN_VALUE);
-        HLogger.bright_gray(new Dummy(), 0);
-        HLogger.bright_gray(new Dummy2(), System.currentTimeMillis());
-        HLogger.bright_gray(new Dummy2(), System.nanoTime());
-        HLogger.bright_gray(new Dummy2(), Long.MAX_VALUE);
-        HLogger.bright_gray(new Dummy2(), Long.MIN_VALUE);
-        HLogger.bright_gray(new Dummy2(), 0);
-        HLogger.bright_gray((Object) null, System.currentTimeMillis());
-        HLogger.bright_gray((Object) null, System.nanoTime());
-        HLogger.bright_gray((Object) null, Long.MAX_VALUE);
-        HLogger.bright_gray((Object) null, Long.MIN_VALUE);
+    public final void test_bgMagenta_Object_long() {
+        HLogger.bgMagenta(new Object(), System.currentTimeMillis());
+        HLogger.bgMagenta(new Object(), System.nanoTime());
+        HLogger.bgMagenta(new Object(), Long.MAX_VALUE);
+        HLogger.bgMagenta(new Object(), Long.MIN_VALUE);
+        HLogger.bgMagenta(new Object(), 0);
+        HLogger.bgMagenta(new Dummy(), System.currentTimeMillis());
+        HLogger.bgMagenta(new Dummy(), System.nanoTime());
+        HLogger.bgMagenta(new Dummy(), Long.MAX_VALUE);
+        HLogger.bgMagenta(new Dummy(), Long.MIN_VALUE);
+        HLogger.bgMagenta(new Dummy(), 0);
+        HLogger.bgMagenta(new Dummy2(), System.currentTimeMillis());
+        HLogger.bgMagenta(new Dummy2(), System.nanoTime());
+        HLogger.bgMagenta(new Dummy2(), Long.MAX_VALUE);
+        HLogger.bgMagenta(new Dummy2(), Long.MIN_VALUE);
+        HLogger.bgMagenta(new Dummy2(), 0);
+        HLogger.bgMagenta((Object) null, System.currentTimeMillis());
+        HLogger.bgMagenta((Object) null, System.nanoTime());
+        HLogger.bgMagenta((Object) null, Long.MAX_VALUE);
+        HLogger.bgMagenta((Object) null, Long.MIN_VALUE);
     }
 
     

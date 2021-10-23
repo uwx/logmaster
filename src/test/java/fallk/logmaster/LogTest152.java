@@ -34,16 +34,16 @@ public class LogTest152 {
     
     
     @Test
-    public final void test_inverse_int_Exception() {
-        HLogger.inverse(0, new Exception());
-        HLogger.inverse(0, (Exception) null);
-        HLogger.inverse(1, new Exception());
-        HLogger.inverse(1, (Exception) null);
-        HLogger.inverse(2, new Exception());
-        HLogger.inverse(2, (Exception) null);
-        HLogger.inverse(3, new Exception());
-        HLogger.inverse(3, (Exception) null);
-        HLogger.inverse(4, new Exception());
+    public final void test_magenta_int_Exception() {
+        HLogger.magenta(0, new Exception());
+        HLogger.magenta(0, (Exception) null);
+        HLogger.magenta(1, new Exception());
+        HLogger.magenta(1, (Exception) null);
+        HLogger.magenta(2, new Exception());
+        HLogger.magenta(2, (Exception) null);
+        HLogger.magenta(3, new Exception());
+        HLogger.magenta(3, (Exception) null);
+        HLogger.magenta(4, new Exception());
     }
 
     

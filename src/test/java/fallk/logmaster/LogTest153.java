@@ -34,16 +34,16 @@ public class LogTest153 {
     
     
     @Test
-    public final void test_inverse_String_long() {
-        HLogger.inverse("Test string", System.currentTimeMillis());
-        HLogger.inverse("Test string", System.nanoTime());
-        HLogger.inverse("Test string", Long.MAX_VALUE);
-        HLogger.inverse("Test string", Long.MIN_VALUE);
-        HLogger.inverse("Test string", 0);
-        HLogger.inverse((String) null, System.currentTimeMillis());
-        HLogger.inverse((String) null, System.nanoTime());
-        HLogger.inverse((String) null, Long.MAX_VALUE);
-        HLogger.inverse((String) null, Long.MIN_VALUE);
+    public final void test_magenta_String_long() {
+        HLogger.magenta("Test string", System.currentTimeMillis());
+        HLogger.magenta("Test string", System.nanoTime());
+        HLogger.magenta("Test string", Long.MAX_VALUE);
+        HLogger.magenta("Test string", Long.MIN_VALUE);
+        HLogger.magenta("Test string", 0);
+        HLogger.magenta((String) null, System.currentTimeMillis());
+        HLogger.magenta((String) null, System.nanoTime());
+        HLogger.magenta((String) null, Long.MAX_VALUE);
+        HLogger.magenta((String) null, Long.MIN_VALUE);
     }
 
     

@@ -34,16 +34,16 @@ public class LogTest307 {
     
     
     @Test
-    public final void test_white_Exception_long() {
-        HLogger.white(new Exception(), System.currentTimeMillis());
-        HLogger.white(new Exception(), System.nanoTime());
-        HLogger.white(new Exception(), Long.MAX_VALUE);
-        HLogger.white(new Exception(), Long.MIN_VALUE);
-        HLogger.white(new Exception(), 0);
-        HLogger.white((Exception) null, System.currentTimeMillis());
-        HLogger.white((Exception) null, System.nanoTime());
-        HLogger.white((Exception) null, Long.MAX_VALUE);
-        HLogger.white((Exception) null, Long.MIN_VALUE);
+    public final void test_brightCyan_Exception_long() {
+        HLogger.brightCyan(new Exception(), System.currentTimeMillis());
+        HLogger.brightCyan(new Exception(), System.nanoTime());
+        HLogger.brightCyan(new Exception(), Long.MAX_VALUE);
+        HLogger.brightCyan(new Exception(), Long.MIN_VALUE);
+        HLogger.brightCyan(new Exception(), 0);
+        HLogger.brightCyan((Exception) null, System.currentTimeMillis());
+        HLogger.brightCyan((Exception) null, System.nanoTime());
+        HLogger.brightCyan((Exception) null, Long.MAX_VALUE);
+        HLogger.brightCyan((Exception) null, Long.MIN_VALUE);
     }
 
     

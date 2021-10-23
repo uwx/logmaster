@@ -34,26 +34,26 @@ public class LogTest135 {
     
     
     @Test
-    public final void test_underline_int_Object() {
-        HLogger.underline(0, new Object());
-        HLogger.underline(0, new Dummy());
-        HLogger.underline(0, new Dummy2());
-        HLogger.underline(0, (Object) null);
-        HLogger.underline(1, new Object());
-        HLogger.underline(1, new Dummy());
-        HLogger.underline(1, new Dummy2());
-        HLogger.underline(1, (Object) null);
-        HLogger.underline(2, new Object());
-        HLogger.underline(2, new Dummy());
-        HLogger.underline(2, new Dummy2());
-        HLogger.underline(2, (Object) null);
-        HLogger.underline(3, new Object());
-        HLogger.underline(3, new Dummy());
-        HLogger.underline(3, new Dummy2());
-        HLogger.underline(3, (Object) null);
-        HLogger.underline(4, new Object());
-        HLogger.underline(4, new Dummy());
-        HLogger.underline(4, new Dummy2());
+    public final void test_blue_int_Object() {
+        HLogger.blue(0, new Object());
+        HLogger.blue(0, new Dummy());
+        HLogger.blue(0, new Dummy2());
+        HLogger.blue(0, (Object) null);
+        HLogger.blue(1, new Object());
+        HLogger.blue(1, new Dummy());
+        HLogger.blue(1, new Dummy2());
+        HLogger.blue(1, (Object) null);
+        HLogger.blue(2, new Object());
+        HLogger.blue(2, new Dummy());
+        HLogger.blue(2, new Dummy2());
+        HLogger.blue(2, (Object) null);
+        HLogger.blue(3, new Object());
+        HLogger.blue(3, new Dummy());
+        HLogger.blue(3, new Dummy2());
+        HLogger.blue(3, (Object) null);
+        HLogger.blue(4, new Object());
+        HLogger.blue(4, new Dummy());
+        HLogger.blue(4, new Dummy2());
     }
 
     

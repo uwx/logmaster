@@ -34,26 +34,26 @@ public class LogTest120 {
     
     
     @Test
-    public final void test_italic_int_Object() {
-        HLogger.italic(0, new Object());
-        HLogger.italic(0, new Dummy());
-        HLogger.italic(0, new Dummy2());
-        HLogger.italic(0, (Object) null);
-        HLogger.italic(1, new Object());
-        HLogger.italic(1, new Dummy());
-        HLogger.italic(1, new Dummy2());
-        HLogger.italic(1, (Object) null);
-        HLogger.italic(2, new Object());
-        HLogger.italic(2, new Dummy());
-        HLogger.italic(2, new Dummy2());
-        HLogger.italic(2, (Object) null);
-        HLogger.italic(3, new Object());
-        HLogger.italic(3, new Dummy());
-        HLogger.italic(3, new Dummy2());
-        HLogger.italic(3, (Object) null);
-        HLogger.italic(4, new Object());
-        HLogger.italic(4, new Dummy());
-        HLogger.italic(4, new Dummy2());
+    public final void test_yellow_int_Object() {
+        HLogger.yellow(0, new Object());
+        HLogger.yellow(0, new Dummy());
+        HLogger.yellow(0, new Dummy2());
+        HLogger.yellow(0, (Object) null);
+        HLogger.yellow(1, new Object());
+        HLogger.yellow(1, new Dummy());
+        HLogger.yellow(1, new Dummy2());
+        HLogger.yellow(1, (Object) null);
+        HLogger.yellow(2, new Object());
+        HLogger.yellow(2, new Dummy());
+        HLogger.yellow(2, new Dummy2());
+        HLogger.yellow(2, (Object) null);
+        HLogger.yellow(3, new Object());
+        HLogger.yellow(3, new Dummy());
+        HLogger.yellow(3, new Dummy2());
+        HLogger.yellow(3, (Object) null);
+        HLogger.yellow(4, new Object());
+        HLogger.yellow(4, new Dummy());
+        HLogger.yellow(4, new Dummy2());
     }
 
     

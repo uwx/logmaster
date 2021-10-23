@@ -34,26 +34,26 @@ public class LogTest80 {
     
     
     @Test
-    public final void test_reset_Object_long() {
-        HLogger.reset(new Object(), System.currentTimeMillis());
-        HLogger.reset(new Object(), System.nanoTime());
-        HLogger.reset(new Object(), Long.MAX_VALUE);
-        HLogger.reset(new Object(), Long.MIN_VALUE);
-        HLogger.reset(new Object(), 0);
-        HLogger.reset(new Dummy(), System.currentTimeMillis());
-        HLogger.reset(new Dummy(), System.nanoTime());
-        HLogger.reset(new Dummy(), Long.MAX_VALUE);
-        HLogger.reset(new Dummy(), Long.MIN_VALUE);
-        HLogger.reset(new Dummy(), 0);
-        HLogger.reset(new Dummy2(), System.currentTimeMillis());
-        HLogger.reset(new Dummy2(), System.nanoTime());
-        HLogger.reset(new Dummy2(), Long.MAX_VALUE);
-        HLogger.reset(new Dummy2(), Long.MIN_VALUE);
-        HLogger.reset(new Dummy2(), 0);
-        HLogger.reset((Object) null, System.currentTimeMillis());
-        HLogger.reset((Object) null, System.nanoTime());
-        HLogger.reset((Object) null, Long.MAX_VALUE);
-        HLogger.reset((Object) null, Long.MIN_VALUE);
+    public final void test_black_Object_long() {
+        HLogger.black(new Object(), System.currentTimeMillis());
+        HLogger.black(new Object(), System.nanoTime());
+        HLogger.black(new Object(), Long.MAX_VALUE);
+        HLogger.black(new Object(), Long.MIN_VALUE);
+        HLogger.black(new Object(), 0);
+        HLogger.black(new Dummy(), System.currentTimeMillis());
+        HLogger.black(new Dummy(), System.nanoTime());
+        HLogger.black(new Dummy(), Long.MAX_VALUE);
+        HLogger.black(new Dummy(), Long.MIN_VALUE);
+        HLogger.black(new Dummy(), 0);
+        HLogger.black(new Dummy2(), System.currentTimeMillis());
+        HLogger.black(new Dummy2(), System.nanoTime());
+        HLogger.black(new Dummy2(), Long.MAX_VALUE);
+        HLogger.black(new Dummy2(), Long.MIN_VALUE);
+        HLogger.black(new Dummy2(), 0);
+        HLogger.black((Object) null, System.currentTimeMillis());
+        HLogger.black((Object) null, System.nanoTime());
+        HLogger.black((Object) null, Long.MAX_VALUE);
+        HLogger.black((Object) null, Long.MIN_VALUE);
     }
 
     

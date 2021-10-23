@@ -34,16 +34,16 @@ public class LogTest107 {
     
     
     @Test
-    public final void test_dim_int_Exception() {
-        HLogger.dim(0, new Exception());
-        HLogger.dim(0, (Exception) null);
-        HLogger.dim(1, new Exception());
-        HLogger.dim(1, (Exception) null);
-        HLogger.dim(2, new Exception());
-        HLogger.dim(2, (Exception) null);
-        HLogger.dim(3, new Exception());
-        HLogger.dim(3, (Exception) null);
-        HLogger.dim(4, new Exception());
+    public final void test_green_int_Exception() {
+        HLogger.green(0, new Exception());
+        HLogger.green(0, (Exception) null);
+        HLogger.green(1, new Exception());
+        HLogger.green(1, (Exception) null);
+        HLogger.green(2, new Exception());
+        HLogger.green(2, (Exception) null);
+        HLogger.green(3, new Exception());
+        HLogger.green(3, (Exception) null);
+        HLogger.green(4, new Exception());
     }
 
     

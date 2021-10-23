@@ -34,16 +34,16 @@ public class LogTest277 {
     
     
     @Test
-    public final void test_magenta_Exception_long() {
-        HLogger.magenta(new Exception(), System.currentTimeMillis());
-        HLogger.magenta(new Exception(), System.nanoTime());
-        HLogger.magenta(new Exception(), Long.MAX_VALUE);
-        HLogger.magenta(new Exception(), Long.MIN_VALUE);
-        HLogger.magenta(new Exception(), 0);
-        HLogger.magenta((Exception) null, System.currentTimeMillis());
-        HLogger.magenta((Exception) null, System.nanoTime());
-        HLogger.magenta((Exception) null, Long.MAX_VALUE);
-        HLogger.magenta((Exception) null, Long.MIN_VALUE);
+    public final void test_brightBlue_Exception_long() {
+        HLogger.brightBlue(new Exception(), System.currentTimeMillis());
+        HLogger.brightBlue(new Exception(), System.nanoTime());
+        HLogger.brightBlue(new Exception(), Long.MAX_VALUE);
+        HLogger.brightBlue(new Exception(), Long.MIN_VALUE);
+        HLogger.brightBlue(new Exception(), 0);
+        HLogger.brightBlue((Exception) null, System.currentTimeMillis());
+        HLogger.brightBlue((Exception) null, System.nanoTime());
+        HLogger.brightBlue((Exception) null, Long.MAX_VALUE);
+        HLogger.brightBlue((Exception) null, Long.MIN_VALUE);
     }
 
     

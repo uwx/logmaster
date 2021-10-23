@@ -34,26 +34,26 @@ public class LogTest105 {
     
     
     @Test
-    public final void test_dim_int_Object() {
-        HLogger.dim(0, new Object());
-        HLogger.dim(0, new Dummy());
-        HLogger.dim(0, new Dummy2());
-        HLogger.dim(0, (Object) null);
-        HLogger.dim(1, new Object());
-        HLogger.dim(1, new Dummy());
-        HLogger.dim(1, new Dummy2());
-        HLogger.dim(1, (Object) null);
-        HLogger.dim(2, new Object());
-        HLogger.dim(2, new Dummy());
-        HLogger.dim(2, new Dummy2());
-        HLogger.dim(2, (Object) null);
-        HLogger.dim(3, new Object());
-        HLogger.dim(3, new Dummy());
-        HLogger.dim(3, new Dummy2());
-        HLogger.dim(3, (Object) null);
-        HLogger.dim(4, new Object());
-        HLogger.dim(4, new Dummy());
-        HLogger.dim(4, new Dummy2());
+    public final void test_green_int_Object() {
+        HLogger.green(0, new Object());
+        HLogger.green(0, new Dummy());
+        HLogger.green(0, new Dummy2());
+        HLogger.green(0, (Object) null);
+        HLogger.green(1, new Object());
+        HLogger.green(1, new Dummy());
+        HLogger.green(1, new Dummy2());
+        HLogger.green(1, (Object) null);
+        HLogger.green(2, new Object());
+        HLogger.green(2, new Dummy());
+        HLogger.green(2, new Dummy2());
+        HLogger.green(2, (Object) null);
+        HLogger.green(3, new Object());
+        HLogger.green(3, new Dummy());
+        HLogger.green(3, new Dummy2());
+        HLogger.green(3, (Object) null);
+        HLogger.green(4, new Object());
+        HLogger.green(4, new Dummy());
+        HLogger.green(4, new Dummy2());
     }
 
     

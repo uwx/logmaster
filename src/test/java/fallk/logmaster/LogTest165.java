@@ -34,26 +34,26 @@ public class LogTest165 {
     
     
     @Test
-    public final void test_hidden_int_Object() {
-        HLogger.hidden(0, new Object());
-        HLogger.hidden(0, new Dummy());
-        HLogger.hidden(0, new Dummy2());
-        HLogger.hidden(0, (Object) null);
-        HLogger.hidden(1, new Object());
-        HLogger.hidden(1, new Dummy());
-        HLogger.hidden(1, new Dummy2());
-        HLogger.hidden(1, (Object) null);
-        HLogger.hidden(2, new Object());
-        HLogger.hidden(2, new Dummy());
-        HLogger.hidden(2, new Dummy2());
-        HLogger.hidden(2, (Object) null);
-        HLogger.hidden(3, new Object());
-        HLogger.hidden(3, new Dummy());
-        HLogger.hidden(3, new Dummy2());
-        HLogger.hidden(3, (Object) null);
-        HLogger.hidden(4, new Object());
-        HLogger.hidden(4, new Dummy());
-        HLogger.hidden(4, new Dummy2());
+    public final void test_cyan_int_Object() {
+        HLogger.cyan(0, new Object());
+        HLogger.cyan(0, new Dummy());
+        HLogger.cyan(0, new Dummy2());
+        HLogger.cyan(0, (Object) null);
+        HLogger.cyan(1, new Object());
+        HLogger.cyan(1, new Dummy());
+        HLogger.cyan(1, new Dummy2());
+        HLogger.cyan(1, (Object) null);
+        HLogger.cyan(2, new Object());
+        HLogger.cyan(2, new Dummy());
+        HLogger.cyan(2, new Dummy2());
+        HLogger.cyan(2, (Object) null);
+        HLogger.cyan(3, new Object());
+        HLogger.cyan(3, new Dummy());
+        HLogger.cyan(3, new Dummy2());
+        HLogger.cyan(3, (Object) null);
+        HLogger.cyan(4, new Object());
+        HLogger.cyan(4, new Dummy());
+        HLogger.cyan(4, new Dummy2());
     }
 
     

@@ -34,16 +34,16 @@ public class LogTest183 {
     
     
     @Test
-    public final void test_strikethrough_String_long() {
-        HLogger.strikethrough("Test string", System.currentTimeMillis());
-        HLogger.strikethrough("Test string", System.nanoTime());
-        HLogger.strikethrough("Test string", Long.MAX_VALUE);
-        HLogger.strikethrough("Test string", Long.MIN_VALUE);
-        HLogger.strikethrough("Test string", 0);
-        HLogger.strikethrough((String) null, System.currentTimeMillis());
-        HLogger.strikethrough((String) null, System.nanoTime());
-        HLogger.strikethrough((String) null, Long.MAX_VALUE);
-        HLogger.strikethrough((String) null, Long.MIN_VALUE);
+    public final void test_white_String_long() {
+        HLogger.white("Test string", System.currentTimeMillis());
+        HLogger.white("Test string", System.nanoTime());
+        HLogger.white("Test string", Long.MAX_VALUE);
+        HLogger.white("Test string", Long.MIN_VALUE);
+        HLogger.white("Test string", 0);
+        HLogger.white((String) null, System.currentTimeMillis());
+        HLogger.white((String) null, System.nanoTime());
+        HLogger.white((String) null, Long.MAX_VALUE);
+        HLogger.white((String) null, Long.MIN_VALUE);
     }
 
     

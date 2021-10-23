@@ -34,16 +34,16 @@ public class LogTest182 {
     
     
     @Test
-    public final void test_strikethrough_int_Exception() {
-        HLogger.strikethrough(0, new Exception());
-        HLogger.strikethrough(0, (Exception) null);
-        HLogger.strikethrough(1, new Exception());
-        HLogger.strikethrough(1, (Exception) null);
-        HLogger.strikethrough(2, new Exception());
-        HLogger.strikethrough(2, (Exception) null);
-        HLogger.strikethrough(3, new Exception());
-        HLogger.strikethrough(3, (Exception) null);
-        HLogger.strikethrough(4, new Exception());
+    public final void test_white_int_Exception() {
+        HLogger.white(0, new Exception());
+        HLogger.white(0, (Exception) null);
+        HLogger.white(1, new Exception());
+        HLogger.white(1, (Exception) null);
+        HLogger.white(2, new Exception());
+        HLogger.white(2, (Exception) null);
+        HLogger.white(3, new Exception());
+        HLogger.white(3, (Exception) null);
+        HLogger.white(4, new Exception());
     }
 
     

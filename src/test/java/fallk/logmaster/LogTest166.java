@@ -34,16 +34,16 @@ public class LogTest166 {
     
     
     @Test
-    public final void test_hidden_int_String() {
-        HLogger.hidden(0, "Test string");
-        HLogger.hidden(0, (String) null);
-        HLogger.hidden(1, "Test string");
-        HLogger.hidden(1, (String) null);
-        HLogger.hidden(2, "Test string");
-        HLogger.hidden(2, (String) null);
-        HLogger.hidden(3, "Test string");
-        HLogger.hidden(3, (String) null);
-        HLogger.hidden(4, "Test string");
+    public final void test_cyan_int_String() {
+        HLogger.cyan(0, "Test string");
+        HLogger.cyan(0, (String) null);
+        HLogger.cyan(1, "Test string");
+        HLogger.cyan(1, (String) null);
+        HLogger.cyan(2, "Test string");
+        HLogger.cyan(2, (String) null);
+        HLogger.cyan(3, "Test string");
+        HLogger.cyan(3, (String) null);
+        HLogger.cyan(4, "Test string");
     }
 
     

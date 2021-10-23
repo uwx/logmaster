@@ -34,16 +34,16 @@ public class LogTest482 {
     
     
     @Test
-    public final void test_bgBlack_int_Exception() {
-        HLogger.bgBlack(0, new Exception());
-        HLogger.bgBlack(0, (Exception) null);
-        HLogger.bgBlack(1, new Exception());
-        HLogger.bgBlack(1, (Exception) null);
-        HLogger.bgBlack(2, new Exception());
-        HLogger.bgBlack(2, (Exception) null);
-        HLogger.bgBlack(3, new Exception());
-        HLogger.bgBlack(3, (Exception) null);
-        HLogger.bgBlack(4, new Exception());
+    public final void test_bgWhite_int_Exception() {
+        HLogger.bgWhite(0, new Exception());
+        HLogger.bgWhite(0, (Exception) null);
+        HLogger.bgWhite(1, new Exception());
+        HLogger.bgWhite(1, (Exception) null);
+        HLogger.bgWhite(2, new Exception());
+        HLogger.bgWhite(2, (Exception) null);
+        HLogger.bgWhite(3, new Exception());
+        HLogger.bgWhite(3, (Exception) null);
+        HLogger.bgWhite(4, new Exception());
     }
 
     

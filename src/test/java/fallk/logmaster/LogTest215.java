@@ -34,26 +34,26 @@ public class LogTest215 {
     
     
     @Test
-    public final void test_red_Object_long() {
-        HLogger.red(new Object(), System.currentTimeMillis());
-        HLogger.red(new Object(), System.nanoTime());
-        HLogger.red(new Object(), Long.MAX_VALUE);
-        HLogger.red(new Object(), Long.MIN_VALUE);
-        HLogger.red(new Object(), 0);
-        HLogger.red(new Dummy(), System.currentTimeMillis());
-        HLogger.red(new Dummy(), System.nanoTime());
-        HLogger.red(new Dummy(), Long.MAX_VALUE);
-        HLogger.red(new Dummy(), Long.MIN_VALUE);
-        HLogger.red(new Dummy(), 0);
-        HLogger.red(new Dummy2(), System.currentTimeMillis());
-        HLogger.red(new Dummy2(), System.nanoTime());
-        HLogger.red(new Dummy2(), Long.MAX_VALUE);
-        HLogger.red(new Dummy2(), Long.MIN_VALUE);
-        HLogger.red(new Dummy2(), 0);
-        HLogger.red((Object) null, System.currentTimeMillis());
-        HLogger.red((Object) null, System.nanoTime());
-        HLogger.red((Object) null, Long.MAX_VALUE);
-        HLogger.red((Object) null, Long.MIN_VALUE);
+    public final void test_grey_Object_long() {
+        HLogger.grey(new Object(), System.currentTimeMillis());
+        HLogger.grey(new Object(), System.nanoTime());
+        HLogger.grey(new Object(), Long.MAX_VALUE);
+        HLogger.grey(new Object(), Long.MIN_VALUE);
+        HLogger.grey(new Object(), 0);
+        HLogger.grey(new Dummy(), System.currentTimeMillis());
+        HLogger.grey(new Dummy(), System.nanoTime());
+        HLogger.grey(new Dummy(), Long.MAX_VALUE);
+        HLogger.grey(new Dummy(), Long.MIN_VALUE);
+        HLogger.grey(new Dummy(), 0);
+        HLogger.grey(new Dummy2(), System.currentTimeMillis());
+        HLogger.grey(new Dummy2(), System.nanoTime());
+        HLogger.grey(new Dummy2(), Long.MAX_VALUE);
+        HLogger.grey(new Dummy2(), Long.MIN_VALUE);
+        HLogger.grey(new Dummy2(), 0);
+        HLogger.grey((Object) null, System.currentTimeMillis());
+        HLogger.grey((Object) null, System.nanoTime());
+        HLogger.grey((Object) null, Long.MAX_VALUE);
+        HLogger.grey((Object) null, Long.MIN_VALUE);
     }
 
     

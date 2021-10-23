@@ -34,16 +34,16 @@ public class LogTest347 {
     
     
     @Test
-    public final void test_bright_red_int_Exception() {
-        HLogger.bright_red(0, new Exception());
-        HLogger.bright_red(0, (Exception) null);
-        HLogger.bright_red(1, new Exception());
-        HLogger.bright_red(1, (Exception) null);
-        HLogger.bright_red(2, new Exception());
-        HLogger.bright_red(2, (Exception) null);
-        HLogger.bright_red(3, new Exception());
-        HLogger.bright_red(3, (Exception) null);
-        HLogger.bright_red(4, new Exception());
+    public final void test_brightGray_int_Exception() {
+        HLogger.brightGray(0, new Exception());
+        HLogger.brightGray(0, (Exception) null);
+        HLogger.brightGray(1, new Exception());
+        HLogger.brightGray(1, (Exception) null);
+        HLogger.brightGray(2, new Exception());
+        HLogger.brightGray(2, (Exception) null);
+        HLogger.brightGray(3, new Exception());
+        HLogger.brightGray(3, (Exception) null);
+        HLogger.brightGray(4, new Exception());
     }
 
     

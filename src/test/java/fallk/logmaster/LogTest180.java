@@ -34,26 +34,26 @@ public class LogTest180 {
     
     
     @Test
-    public final void test_strikethrough_int_Object() {
-        HLogger.strikethrough(0, new Object());
-        HLogger.strikethrough(0, new Dummy());
-        HLogger.strikethrough(0, new Dummy2());
-        HLogger.strikethrough(0, (Object) null);
-        HLogger.strikethrough(1, new Object());
-        HLogger.strikethrough(1, new Dummy());
-        HLogger.strikethrough(1, new Dummy2());
-        HLogger.strikethrough(1, (Object) null);
-        HLogger.strikethrough(2, new Object());
-        HLogger.strikethrough(2, new Dummy());
-        HLogger.strikethrough(2, new Dummy2());
-        HLogger.strikethrough(2, (Object) null);
-        HLogger.strikethrough(3, new Object());
-        HLogger.strikethrough(3, new Dummy());
-        HLogger.strikethrough(3, new Dummy2());
-        HLogger.strikethrough(3, (Object) null);
-        HLogger.strikethrough(4, new Object());
-        HLogger.strikethrough(4, new Dummy());
-        HLogger.strikethrough(4, new Dummy2());
+    public final void test_white_int_Object() {
+        HLogger.white(0, new Object());
+        HLogger.white(0, new Dummy());
+        HLogger.white(0, new Dummy2());
+        HLogger.white(0, (Object) null);
+        HLogger.white(1, new Object());
+        HLogger.white(1, new Dummy());
+        HLogger.white(1, new Dummy2());
+        HLogger.white(1, (Object) null);
+        HLogger.white(2, new Object());
+        HLogger.white(2, new Dummy());
+        HLogger.white(2, new Dummy2());
+        HLogger.white(2, (Object) null);
+        HLogger.white(3, new Object());
+        HLogger.white(3, new Dummy());
+        HLogger.white(3, new Dummy2());
+        HLogger.white(3, (Object) null);
+        HLogger.white(4, new Object());
+        HLogger.white(4, new Dummy());
+        HLogger.white(4, new Dummy2());
     }
 
     

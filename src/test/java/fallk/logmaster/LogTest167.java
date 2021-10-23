@@ -34,16 +34,16 @@ public class LogTest167 {
     
     
     @Test
-    public final void test_hidden_int_Exception() {
-        HLogger.hidden(0, new Exception());
-        HLogger.hidden(0, (Exception) null);
-        HLogger.hidden(1, new Exception());
-        HLogger.hidden(1, (Exception) null);
-        HLogger.hidden(2, new Exception());
-        HLogger.hidden(2, (Exception) null);
-        HLogger.hidden(3, new Exception());
-        HLogger.hidden(3, (Exception) null);
-        HLogger.hidden(4, new Exception());
+    public final void test_cyan_int_Exception() {
+        HLogger.cyan(0, new Exception());
+        HLogger.cyan(0, (Exception) null);
+        HLogger.cyan(1, new Exception());
+        HLogger.cyan(1, (Exception) null);
+        HLogger.cyan(2, new Exception());
+        HLogger.cyan(2, (Exception) null);
+        HLogger.cyan(3, new Exception());
+        HLogger.cyan(3, (Exception) null);
+        HLogger.cyan(4, new Exception());
     }
 
     

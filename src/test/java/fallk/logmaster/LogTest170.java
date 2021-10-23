@@ -34,26 +34,26 @@ public class LogTest170 {
     
     
     @Test
-    public final void test_hidden_Object_long() {
-        HLogger.hidden(new Object(), System.currentTimeMillis());
-        HLogger.hidden(new Object(), System.nanoTime());
-        HLogger.hidden(new Object(), Long.MAX_VALUE);
-        HLogger.hidden(new Object(), Long.MIN_VALUE);
-        HLogger.hidden(new Object(), 0);
-        HLogger.hidden(new Dummy(), System.currentTimeMillis());
-        HLogger.hidden(new Dummy(), System.nanoTime());
-        HLogger.hidden(new Dummy(), Long.MAX_VALUE);
-        HLogger.hidden(new Dummy(), Long.MIN_VALUE);
-        HLogger.hidden(new Dummy(), 0);
-        HLogger.hidden(new Dummy2(), System.currentTimeMillis());
-        HLogger.hidden(new Dummy2(), System.nanoTime());
-        HLogger.hidden(new Dummy2(), Long.MAX_VALUE);
-        HLogger.hidden(new Dummy2(), Long.MIN_VALUE);
-        HLogger.hidden(new Dummy2(), 0);
-        HLogger.hidden((Object) null, System.currentTimeMillis());
-        HLogger.hidden((Object) null, System.nanoTime());
-        HLogger.hidden((Object) null, Long.MAX_VALUE);
-        HLogger.hidden((Object) null, Long.MIN_VALUE);
+    public final void test_cyan_Object_long() {
+        HLogger.cyan(new Object(), System.currentTimeMillis());
+        HLogger.cyan(new Object(), System.nanoTime());
+        HLogger.cyan(new Object(), Long.MAX_VALUE);
+        HLogger.cyan(new Object(), Long.MIN_VALUE);
+        HLogger.cyan(new Object(), 0);
+        HLogger.cyan(new Dummy(), System.currentTimeMillis());
+        HLogger.cyan(new Dummy(), System.nanoTime());
+        HLogger.cyan(new Dummy(), Long.MAX_VALUE);
+        HLogger.cyan(new Dummy(), Long.MIN_VALUE);
+        HLogger.cyan(new Dummy(), 0);
+        HLogger.cyan(new Dummy2(), System.currentTimeMillis());
+        HLogger.cyan(new Dummy2(), System.nanoTime());
+        HLogger.cyan(new Dummy2(), Long.MAX_VALUE);
+        HLogger.cyan(new Dummy2(), Long.MIN_VALUE);
+        HLogger.cyan(new Dummy2(), 0);
+        HLogger.cyan((Object) null, System.currentTimeMillis());
+        HLogger.cyan((Object) null, System.nanoTime());
+        HLogger.cyan((Object) null, Long.MAX_VALUE);
+        HLogger.cyan((Object) null, Long.MIN_VALUE);
     }
 
     

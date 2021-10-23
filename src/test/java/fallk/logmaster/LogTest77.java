@@ -34,16 +34,16 @@ public class LogTest77 {
     
     
     @Test
-    public final void test_reset_int_Exception() {
-        HLogger.reset(0, new Exception());
-        HLogger.reset(0, (Exception) null);
-        HLogger.reset(1, new Exception());
-        HLogger.reset(1, (Exception) null);
-        HLogger.reset(2, new Exception());
-        HLogger.reset(2, (Exception) null);
-        HLogger.reset(3, new Exception());
-        HLogger.reset(3, (Exception) null);
-        HLogger.reset(4, new Exception());
+    public final void test_black_int_Exception() {
+        HLogger.black(0, new Exception());
+        HLogger.black(0, (Exception) null);
+        HLogger.black(1, new Exception());
+        HLogger.black(1, (Exception) null);
+        HLogger.black(2, new Exception());
+        HLogger.black(2, (Exception) null);
+        HLogger.black(3, new Exception());
+        HLogger.black(3, (Exception) null);
+        HLogger.black(4, new Exception());
     }
 
     

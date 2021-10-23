@@ -34,16 +34,16 @@ public class LogTest142 {
     
     
     @Test
-    public final void test_underline_Exception_long() {
-        HLogger.underline(new Exception(), System.currentTimeMillis());
-        HLogger.underline(new Exception(), System.nanoTime());
-        HLogger.underline(new Exception(), Long.MAX_VALUE);
-        HLogger.underline(new Exception(), Long.MIN_VALUE);
-        HLogger.underline(new Exception(), 0);
-        HLogger.underline((Exception) null, System.currentTimeMillis());
-        HLogger.underline((Exception) null, System.nanoTime());
-        HLogger.underline((Exception) null, Long.MAX_VALUE);
-        HLogger.underline((Exception) null, Long.MIN_VALUE);
+    public final void test_blue_Exception_long() {
+        HLogger.blue(new Exception(), System.currentTimeMillis());
+        HLogger.blue(new Exception(), System.nanoTime());
+        HLogger.blue(new Exception(), Long.MAX_VALUE);
+        HLogger.blue(new Exception(), Long.MIN_VALUE);
+        HLogger.blue(new Exception(), 0);
+        HLogger.blue((Exception) null, System.currentTimeMillis());
+        HLogger.blue((Exception) null, System.nanoTime());
+        HLogger.blue((Exception) null, Long.MAX_VALUE);
+        HLogger.blue((Exception) null, Long.MIN_VALUE);
     }
 
     

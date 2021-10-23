@@ -34,26 +34,26 @@ public class LogTest405 {
     
     
     @Test
-    public final void test_bright_magenta_int_Object() {
-        HLogger.bright_magenta(0, new Object());
-        HLogger.bright_magenta(0, new Dummy());
-        HLogger.bright_magenta(0, new Dummy2());
-        HLogger.bright_magenta(0, (Object) null);
-        HLogger.bright_magenta(1, new Object());
-        HLogger.bright_magenta(1, new Dummy());
-        HLogger.bright_magenta(1, new Dummy2());
-        HLogger.bright_magenta(1, (Object) null);
-        HLogger.bright_magenta(2, new Object());
-        HLogger.bright_magenta(2, new Dummy());
-        HLogger.bright_magenta(2, new Dummy2());
-        HLogger.bright_magenta(2, (Object) null);
-        HLogger.bright_magenta(3, new Object());
-        HLogger.bright_magenta(3, new Dummy());
-        HLogger.bright_magenta(3, new Dummy2());
-        HLogger.bright_magenta(3, (Object) null);
-        HLogger.bright_magenta(4, new Object());
-        HLogger.bright_magenta(4, new Dummy());
-        HLogger.bright_magenta(4, new Dummy2());
+    public final void test_bgGreen_int_Object() {
+        HLogger.bgGreen(0, new Object());
+        HLogger.bgGreen(0, new Dummy());
+        HLogger.bgGreen(0, new Dummy2());
+        HLogger.bgGreen(0, (Object) null);
+        HLogger.bgGreen(1, new Object());
+        HLogger.bgGreen(1, new Dummy());
+        HLogger.bgGreen(1, new Dummy2());
+        HLogger.bgGreen(1, (Object) null);
+        HLogger.bgGreen(2, new Object());
+        HLogger.bgGreen(2, new Dummy());
+        HLogger.bgGreen(2, new Dummy2());
+        HLogger.bgGreen(2, (Object) null);
+        HLogger.bgGreen(3, new Object());
+        HLogger.bgGreen(3, new Dummy());
+        HLogger.bgGreen(3, new Dummy2());
+        HLogger.bgGreen(3, (Object) null);
+        HLogger.bgGreen(4, new Object());
+        HLogger.bgGreen(4, new Dummy());
+        HLogger.bgGreen(4, new Dummy2());
     }
 
     

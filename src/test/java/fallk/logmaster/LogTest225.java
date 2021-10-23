@@ -34,26 +34,26 @@ public class LogTest225 {
     
     
     @Test
-    public final void test_green_int_Object() {
-        HLogger.green(0, new Object());
-        HLogger.green(0, new Dummy());
-        HLogger.green(0, new Dummy2());
-        HLogger.green(0, (Object) null);
-        HLogger.green(1, new Object());
-        HLogger.green(1, new Dummy());
-        HLogger.green(1, new Dummy2());
-        HLogger.green(1, (Object) null);
-        HLogger.green(2, new Object());
-        HLogger.green(2, new Dummy());
-        HLogger.green(2, new Dummy2());
-        HLogger.green(2, (Object) null);
-        HLogger.green(3, new Object());
-        HLogger.green(3, new Dummy());
-        HLogger.green(3, new Dummy2());
-        HLogger.green(3, (Object) null);
-        HLogger.green(4, new Object());
-        HLogger.green(4, new Dummy());
-        HLogger.green(4, new Dummy2());
+    public final void test_brightRed_int_Object() {
+        HLogger.brightRed(0, new Object());
+        HLogger.brightRed(0, new Dummy());
+        HLogger.brightRed(0, new Dummy2());
+        HLogger.brightRed(0, (Object) null);
+        HLogger.brightRed(1, new Object());
+        HLogger.brightRed(1, new Dummy());
+        HLogger.brightRed(1, new Dummy2());
+        HLogger.brightRed(1, (Object) null);
+        HLogger.brightRed(2, new Object());
+        HLogger.brightRed(2, new Dummy());
+        HLogger.brightRed(2, new Dummy2());
+        HLogger.brightRed(2, (Object) null);
+        HLogger.brightRed(3, new Object());
+        HLogger.brightRed(3, new Dummy());
+        HLogger.brightRed(3, new Dummy2());
+        HLogger.brightRed(3, (Object) null);
+        HLogger.brightRed(4, new Object());
+        HLogger.brightRed(4, new Dummy());
+        HLogger.brightRed(4, new Dummy2());
     }
 
     

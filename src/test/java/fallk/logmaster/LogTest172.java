@@ -34,16 +34,16 @@ public class LogTest172 {
     
     
     @Test
-    public final void test_hidden_Exception_long() {
-        HLogger.hidden(new Exception(), System.currentTimeMillis());
-        HLogger.hidden(new Exception(), System.nanoTime());
-        HLogger.hidden(new Exception(), Long.MAX_VALUE);
-        HLogger.hidden(new Exception(), Long.MIN_VALUE);
-        HLogger.hidden(new Exception(), 0);
-        HLogger.hidden((Exception) null, System.currentTimeMillis());
-        HLogger.hidden((Exception) null, System.nanoTime());
-        HLogger.hidden((Exception) null, Long.MAX_VALUE);
-        HLogger.hidden((Exception) null, Long.MIN_VALUE);
+    public final void test_cyan_Exception_long() {
+        HLogger.cyan(new Exception(), System.currentTimeMillis());
+        HLogger.cyan(new Exception(), System.nanoTime());
+        HLogger.cyan(new Exception(), Long.MAX_VALUE);
+        HLogger.cyan(new Exception(), Long.MIN_VALUE);
+        HLogger.cyan(new Exception(), 0);
+        HLogger.cyan((Exception) null, System.currentTimeMillis());
+        HLogger.cyan((Exception) null, System.nanoTime());
+        HLogger.cyan((Exception) null, Long.MAX_VALUE);
+        HLogger.cyan((Exception) null, Long.MIN_VALUE);
     }
 
     

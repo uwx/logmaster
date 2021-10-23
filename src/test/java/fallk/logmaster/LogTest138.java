@@ -34,16 +34,16 @@ public class LogTest138 {
     
     
     @Test
-    public final void test_underline_String_long() {
-        HLogger.underline("Test string", System.currentTimeMillis());
-        HLogger.underline("Test string", System.nanoTime());
-        HLogger.underline("Test string", Long.MAX_VALUE);
-        HLogger.underline("Test string", Long.MIN_VALUE);
-        HLogger.underline("Test string", 0);
-        HLogger.underline((String) null, System.currentTimeMillis());
-        HLogger.underline((String) null, System.nanoTime());
-        HLogger.underline((String) null, Long.MAX_VALUE);
-        HLogger.underline((String) null, Long.MIN_VALUE);
+    public final void test_blue_String_long() {
+        HLogger.blue("Test string", System.currentTimeMillis());
+        HLogger.blue("Test string", System.nanoTime());
+        HLogger.blue("Test string", Long.MAX_VALUE);
+        HLogger.blue("Test string", Long.MIN_VALUE);
+        HLogger.blue("Test string", 0);
+        HLogger.blue((String) null, System.currentTimeMillis());
+        HLogger.blue((String) null, System.nanoTime());
+        HLogger.blue((String) null, Long.MAX_VALUE);
+        HLogger.blue((String) null, Long.MIN_VALUE);
     }
 
     

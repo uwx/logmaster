@@ -34,16 +34,16 @@ public class LogTest181 {
     
     
     @Test
-    public final void test_strikethrough_int_String() {
-        HLogger.strikethrough(0, "Test string");
-        HLogger.strikethrough(0, (String) null);
-        HLogger.strikethrough(1, "Test string");
-        HLogger.strikethrough(1, (String) null);
-        HLogger.strikethrough(2, "Test string");
-        HLogger.strikethrough(2, (String) null);
-        HLogger.strikethrough(3, "Test string");
-        HLogger.strikethrough(3, (String) null);
-        HLogger.strikethrough(4, "Test string");
+    public final void test_white_int_String() {
+        HLogger.white(0, "Test string");
+        HLogger.white(0, (String) null);
+        HLogger.white(1, "Test string");
+        HLogger.white(1, (String) null);
+        HLogger.white(2, "Test string");
+        HLogger.white(2, (String) null);
+        HLogger.white(3, "Test string");
+        HLogger.white(3, (String) null);
+        HLogger.white(4, "Test string");
     }
 
     

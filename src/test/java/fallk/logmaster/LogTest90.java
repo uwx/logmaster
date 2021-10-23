@@ -34,26 +34,26 @@ public class LogTest90 {
     
     
     @Test
-    public final void test_bold_int_Object() {
-        HLogger.bold(0, new Object());
-        HLogger.bold(0, new Dummy());
-        HLogger.bold(0, new Dummy2());
-        HLogger.bold(0, (Object) null);
-        HLogger.bold(1, new Object());
-        HLogger.bold(1, new Dummy());
-        HLogger.bold(1, new Dummy2());
-        HLogger.bold(1, (Object) null);
-        HLogger.bold(2, new Object());
-        HLogger.bold(2, new Dummy());
-        HLogger.bold(2, new Dummy2());
-        HLogger.bold(2, (Object) null);
-        HLogger.bold(3, new Object());
-        HLogger.bold(3, new Dummy());
-        HLogger.bold(3, new Dummy2());
-        HLogger.bold(3, (Object) null);
-        HLogger.bold(4, new Object());
-        HLogger.bold(4, new Dummy());
-        HLogger.bold(4, new Dummy2());
+    public final void test_red_int_Object() {
+        HLogger.red(0, new Object());
+        HLogger.red(0, new Dummy());
+        HLogger.red(0, new Dummy2());
+        HLogger.red(0, (Object) null);
+        HLogger.red(1, new Object());
+        HLogger.red(1, new Dummy());
+        HLogger.red(1, new Dummy2());
+        HLogger.red(1, (Object) null);
+        HLogger.red(2, new Object());
+        HLogger.red(2, new Dummy());
+        HLogger.red(2, new Dummy2());
+        HLogger.red(2, (Object) null);
+        HLogger.red(3, new Object());
+        HLogger.red(3, new Dummy());
+        HLogger.red(3, new Dummy2());
+        HLogger.red(3, (Object) null);
+        HLogger.red(4, new Object());
+        HLogger.red(4, new Dummy());
+        HLogger.red(4, new Dummy2());
     }
 
     

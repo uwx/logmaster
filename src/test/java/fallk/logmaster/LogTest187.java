@@ -34,16 +34,16 @@ public class LogTest187 {
     
     
     @Test
-    public final void test_strikethrough_Exception_long() {
-        HLogger.strikethrough(new Exception(), System.currentTimeMillis());
-        HLogger.strikethrough(new Exception(), System.nanoTime());
-        HLogger.strikethrough(new Exception(), Long.MAX_VALUE);
-        HLogger.strikethrough(new Exception(), Long.MIN_VALUE);
-        HLogger.strikethrough(new Exception(), 0);
-        HLogger.strikethrough((Exception) null, System.currentTimeMillis());
-        HLogger.strikethrough((Exception) null, System.nanoTime());
-        HLogger.strikethrough((Exception) null, Long.MAX_VALUE);
-        HLogger.strikethrough((Exception) null, Long.MIN_VALUE);
+    public final void test_white_Exception_long() {
+        HLogger.white(new Exception(), System.currentTimeMillis());
+        HLogger.white(new Exception(), System.nanoTime());
+        HLogger.white(new Exception(), Long.MAX_VALUE);
+        HLogger.white(new Exception(), Long.MIN_VALUE);
+        HLogger.white(new Exception(), 0);
+        HLogger.white((Exception) null, System.currentTimeMillis());
+        HLogger.white((Exception) null, System.nanoTime());
+        HLogger.white((Exception) null, Long.MAX_VALUE);
+        HLogger.white((Exception) null, Long.MIN_VALUE);
     }
 
     

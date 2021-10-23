@@ -34,16 +34,16 @@ public class LogTest451 {
     
     
     @Test
-    public final void test_bright_gray_int_String() {
-        HLogger.bright_gray(0, "Test string");
-        HLogger.bright_gray(0, (String) null);
-        HLogger.bright_gray(1, "Test string");
-        HLogger.bright_gray(1, (String) null);
-        HLogger.bright_gray(2, "Test string");
-        HLogger.bright_gray(2, (String) null);
-        HLogger.bright_gray(3, "Test string");
-        HLogger.bright_gray(3, (String) null);
-        HLogger.bright_gray(4, "Test string");
+    public final void test_bgMagenta_int_String() {
+        HLogger.bgMagenta(0, "Test string");
+        HLogger.bgMagenta(0, (String) null);
+        HLogger.bgMagenta(1, "Test string");
+        HLogger.bgMagenta(1, (String) null);
+        HLogger.bgMagenta(2, "Test string");
+        HLogger.bgMagenta(2, (String) null);
+        HLogger.bgMagenta(3, "Test string");
+        HLogger.bgMagenta(3, (String) null);
+        HLogger.bgMagenta(4, "Test string");
     }
 
     

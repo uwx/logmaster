@@ -34,16 +34,16 @@ public class LogTest112 {
     
     
     @Test
-    public final void test_dim_Exception_long() {
-        HLogger.dim(new Exception(), System.currentTimeMillis());
-        HLogger.dim(new Exception(), System.nanoTime());
-        HLogger.dim(new Exception(), Long.MAX_VALUE);
-        HLogger.dim(new Exception(), Long.MIN_VALUE);
-        HLogger.dim(new Exception(), 0);
-        HLogger.dim((Exception) null, System.currentTimeMillis());
-        HLogger.dim((Exception) null, System.nanoTime());
-        HLogger.dim((Exception) null, Long.MAX_VALUE);
-        HLogger.dim((Exception) null, Long.MIN_VALUE);
+    public final void test_green_Exception_long() {
+        HLogger.green(new Exception(), System.currentTimeMillis());
+        HLogger.green(new Exception(), System.nanoTime());
+        HLogger.green(new Exception(), Long.MAX_VALUE);
+        HLogger.green(new Exception(), Long.MIN_VALUE);
+        HLogger.green(new Exception(), 0);
+        HLogger.green((Exception) null, System.currentTimeMillis());
+        HLogger.green((Exception) null, System.nanoTime());
+        HLogger.green((Exception) null, Long.MAX_VALUE);
+        HLogger.green((Exception) null, Long.MIN_VALUE);
     }
 
     

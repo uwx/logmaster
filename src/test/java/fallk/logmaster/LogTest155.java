@@ -34,26 +34,26 @@ public class LogTest155 {
     
     
     @Test
-    public final void test_inverse_Object_long() {
-        HLogger.inverse(new Object(), System.currentTimeMillis());
-        HLogger.inverse(new Object(), System.nanoTime());
-        HLogger.inverse(new Object(), Long.MAX_VALUE);
-        HLogger.inverse(new Object(), Long.MIN_VALUE);
-        HLogger.inverse(new Object(), 0);
-        HLogger.inverse(new Dummy(), System.currentTimeMillis());
-        HLogger.inverse(new Dummy(), System.nanoTime());
-        HLogger.inverse(new Dummy(), Long.MAX_VALUE);
-        HLogger.inverse(new Dummy(), Long.MIN_VALUE);
-        HLogger.inverse(new Dummy(), 0);
-        HLogger.inverse(new Dummy2(), System.currentTimeMillis());
-        HLogger.inverse(new Dummy2(), System.nanoTime());
-        HLogger.inverse(new Dummy2(), Long.MAX_VALUE);
-        HLogger.inverse(new Dummy2(), Long.MIN_VALUE);
-        HLogger.inverse(new Dummy2(), 0);
-        HLogger.inverse((Object) null, System.currentTimeMillis());
-        HLogger.inverse((Object) null, System.nanoTime());
-        HLogger.inverse((Object) null, Long.MAX_VALUE);
-        HLogger.inverse((Object) null, Long.MIN_VALUE);
+    public final void test_magenta_Object_long() {
+        HLogger.magenta(new Object(), System.currentTimeMillis());
+        HLogger.magenta(new Object(), System.nanoTime());
+        HLogger.magenta(new Object(), Long.MAX_VALUE);
+        HLogger.magenta(new Object(), Long.MIN_VALUE);
+        HLogger.magenta(new Object(), 0);
+        HLogger.magenta(new Dummy(), System.currentTimeMillis());
+        HLogger.magenta(new Dummy(), System.nanoTime());
+        HLogger.magenta(new Dummy(), Long.MAX_VALUE);
+        HLogger.magenta(new Dummy(), Long.MIN_VALUE);
+        HLogger.magenta(new Dummy(), 0);
+        HLogger.magenta(new Dummy2(), System.currentTimeMillis());
+        HLogger.magenta(new Dummy2(), System.nanoTime());
+        HLogger.magenta(new Dummy2(), Long.MAX_VALUE);
+        HLogger.magenta(new Dummy2(), Long.MIN_VALUE);
+        HLogger.magenta(new Dummy2(), 0);
+        HLogger.magenta((Object) null, System.currentTimeMillis());
+        HLogger.magenta((Object) null, System.nanoTime());
+        HLogger.magenta((Object) null, Long.MAX_VALUE);
+        HLogger.magenta((Object) null, Long.MIN_VALUE);
     }
 
     

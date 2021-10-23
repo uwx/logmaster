@@ -34,16 +34,16 @@ public class LogTest78 {
     
     
     @Test
-    public final void test_reset_String_long() {
-        HLogger.reset("Test string", System.currentTimeMillis());
-        HLogger.reset("Test string", System.nanoTime());
-        HLogger.reset("Test string", Long.MAX_VALUE);
-        HLogger.reset("Test string", Long.MIN_VALUE);
-        HLogger.reset("Test string", 0);
-        HLogger.reset((String) null, System.currentTimeMillis());
-        HLogger.reset((String) null, System.nanoTime());
-        HLogger.reset((String) null, Long.MAX_VALUE);
-        HLogger.reset((String) null, Long.MIN_VALUE);
+    public final void test_black_String_long() {
+        HLogger.black("Test string", System.currentTimeMillis());
+        HLogger.black("Test string", System.nanoTime());
+        HLogger.black("Test string", Long.MAX_VALUE);
+        HLogger.black("Test string", Long.MIN_VALUE);
+        HLogger.black("Test string", 0);
+        HLogger.black((String) null, System.currentTimeMillis());
+        HLogger.black((String) null, System.nanoTime());
+        HLogger.black((String) null, Long.MAX_VALUE);
+        HLogger.black((String) null, Long.MIN_VALUE);
     }
 
     

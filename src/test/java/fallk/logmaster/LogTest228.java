@@ -34,16 +34,16 @@ public class LogTest228 {
     
     
     @Test
-    public final void test_green_String_long() {
-        HLogger.green("Test string", System.currentTimeMillis());
-        HLogger.green("Test string", System.nanoTime());
-        HLogger.green("Test string", Long.MAX_VALUE);
-        HLogger.green("Test string", Long.MIN_VALUE);
-        HLogger.green("Test string", 0);
-        HLogger.green((String) null, System.currentTimeMillis());
-        HLogger.green((String) null, System.nanoTime());
-        HLogger.green((String) null, Long.MAX_VALUE);
-        HLogger.green((String) null, Long.MIN_VALUE);
+    public final void test_brightRed_String_long() {
+        HLogger.brightRed("Test string", System.currentTimeMillis());
+        HLogger.brightRed("Test string", System.nanoTime());
+        HLogger.brightRed("Test string", Long.MAX_VALUE);
+        HLogger.brightRed("Test string", Long.MIN_VALUE);
+        HLogger.brightRed("Test string", 0);
+        HLogger.brightRed((String) null, System.currentTimeMillis());
+        HLogger.brightRed((String) null, System.nanoTime());
+        HLogger.brightRed((String) null, Long.MAX_VALUE);
+        HLogger.brightRed((String) null, Long.MIN_VALUE);
     }
 
     

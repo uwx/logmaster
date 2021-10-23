@@ -34,16 +34,16 @@ public class LogTest106 {
     
     
     @Test
-    public final void test_dim_int_String() {
-        HLogger.dim(0, "Test string");
-        HLogger.dim(0, (String) null);
-        HLogger.dim(1, "Test string");
-        HLogger.dim(1, (String) null);
-        HLogger.dim(2, "Test string");
-        HLogger.dim(2, (String) null);
-        HLogger.dim(3, "Test string");
-        HLogger.dim(3, (String) null);
-        HLogger.dim(4, "Test string");
+    public final void test_green_int_String() {
+        HLogger.green(0, "Test string");
+        HLogger.green(0, (String) null);
+        HLogger.green(1, "Test string");
+        HLogger.green(1, (String) null);
+        HLogger.green(2, "Test string");
+        HLogger.green(2, (String) null);
+        HLogger.green(3, "Test string");
+        HLogger.green(3, (String) null);
+        HLogger.green(4, "Test string");
     }
 
     

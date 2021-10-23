@@ -34,16 +34,16 @@ public class LogTest151 {
     
     
     @Test
-    public final void test_inverse_int_String() {
-        HLogger.inverse(0, "Test string");
-        HLogger.inverse(0, (String) null);
-        HLogger.inverse(1, "Test string");
-        HLogger.inverse(1, (String) null);
-        HLogger.inverse(2, "Test string");
-        HLogger.inverse(2, (String) null);
-        HLogger.inverse(3, "Test string");
-        HLogger.inverse(3, (String) null);
-        HLogger.inverse(4, "Test string");
+    public final void test_magenta_int_String() {
+        HLogger.magenta(0, "Test string");
+        HLogger.magenta(0, (String) null);
+        HLogger.magenta(1, "Test string");
+        HLogger.magenta(1, (String) null);
+        HLogger.magenta(2, "Test string");
+        HLogger.magenta(2, (String) null);
+        HLogger.magenta(3, "Test string");
+        HLogger.magenta(3, (String) null);
+        HLogger.magenta(4, "Test string");
     }
 
     
