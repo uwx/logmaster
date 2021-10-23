@@ -2,7 +2,6 @@
   "name": "logmaster",
   "version": "0.0.1",
   "dependencies": {
-    "deep-assign": "^2.0.0",
     "js-beautify": "^1.6.14",
     "mz": "^2.6.0",
     "vkbeautify": "^0.99.2",
