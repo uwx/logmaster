@@ -1,42 +1,59 @@
 
 'use strict';
 
+function getEscape(codes) {
+  let open = `\\u001b[${codes[0]}m`;
+  let close = `\\u001b[${codes[1]}m`;
+  return [open, close];
+}
+
 const escapes = {
-  reset: ["\\u001b[0m", "\\u001b[0m"],
-  bold: ["\\u001b[1m", "\\u001b[22m"],
-  dim: ["\\u001b[2m", "\\u001b[22m"],
-  italic: ["\\u001b[3m", "\\u001b[23m"],
-  underline: ["\\u001b[4m", "\\u001b[24m"],
-  inverse: ["\\u001b[7m", "\\u001b[27m"],
-  hidden: ["\\u001b[8m", "\\u001b[28m"],
-  strikethrough: ["\\u001b[9m", "\\u001b[29m"],
-  black: ["\\u001b[30m", "\\u001b[39m"],
-  red: ["\\u001b[31m", "\\u001b[39m"],
-  green: ["\\u001b[32m", "\\u001b[39m"],
-  yellow: ["\\u001b[33m", "\\u001b[39m"],
-  blue: ["\\u001b[34m", "\\u001b[39m"],
-  magenta: ["\\u001b[35m", "\\u001b[39m"],
-  cyan: ["\\u001b[36m", "\\u001b[39m"],
-  white: ["\\u001b[37m", "\\u001b[39m"],
-  gray: ["\\u001b[90m", "\\u001b[39m"],
-  grey: ["\\u001b[90m", "\\u001b[39m"],
-  brightBlack: ["\\u001b[30;1m", "\\u001b[0m"],
-  brightRed: ["\\u001b[31;1m", "\\u001b[0m"],
-  brightGreen: ["\\u001b[32;1m", "\\u001b[0m"],
-  brightYellow: ["\\u001b[33;1m", "\\u001b[0m"],
-  brightBlue: ["\\u001b[34;1m", "\\u001b[0m"],
-  brightMagenta: ["\\u001b[35;1m", "\\u001b[0m"],
-  brightCyan: ["\\u001b[36;1m", "\\u001b[0m"],
-  brightWhite: ["\\u001b[37;1m", "\\u001b[0m"],
-  brightGray: ["\\u001b[90;1m", "\\u001b[0m"],
-  bgBlack: ["\\u001b[40m", "\\u001b[49m"],
-  bgRed: ["\\u001b[41m", "\\u001b[49m"],
-  bgGreen: ["\\u001b[42m", "\\u001b[49m"],
-  bgYellow: ["\\u001b[43m", "\\u001b[49m"],
-  bgBlue: ["\\u001b[44m", "\\u001b[49m"],
-  bgMagenta: ["\\u001b[45m", "\\u001b[49m"],
-  bgCyan: ["\\u001b[46m", "\\u001b[49m"],
-  bgWhite: ["\\u001b[47m", "\\u001b[49m"],
+  reset: getEscape([0, 0]),
+  bold: getEscape([1, 22]),
+  dim: getEscape([2, 22]),
+  italic: getEscape([3, 23]),
+  underline: getEscape([4, 24]),
+  inverse: getEscape([7, 27]),
+  hidden: getEscape([8, 28]),
+  strikethrough: getEscape([9, 29]),
+
+  black: getEscape([30, 39]),
+  red: getEscape([31, 39]),
+  green: getEscape([32, 39]),
+  yellow: getEscape([33, 39]),
+  blue: getEscape([34, 39]),
+  magenta: getEscape([35, 39]),
+  cyan: getEscape([36, 39]),
+  white: getEscape([37, 39]),
+  gray: getEscape([90, 39]),
+  grey: getEscape([90, 39]),
+
+  bgBlack: getEscape([40, 49]),
+  bgRed: getEscape([41, 49]),
+  bgGreen: getEscape([42, 49]),
+  bgYellow: getEscape([43, 49]),
+  bgBlue: getEscape([44, 49]),
+  bgMagenta: getEscape([45, 49]),
+  bgCyan: getEscape([46, 49]),
+  bgWhite: getEscape([47, 49]),
+
+  brightBlack: getEscape([90, 39]),
+  brightRed: getEscape([91, 39]),
+  brightGreen: getEscape([92, 39]),
+  brightYellow: getEscape([93, 39]),
+  brightBlue: getEscape([94, 39]),
+  brightMagenta: getEscape([95, 39]),
+  brightCyan: getEscape([96, 39]),
+  brightWhite: getEscape([97, 39]),
+
+  bgBrightBlack: getEscape([100, 49]),
+  bgBrightRed: getEscape([101, 49]),
+  bgBrightGreen: getEscape([102, 49]),
+  bgBrightYellow: getEscape([103, 49]),
+  bgBrightBlue: getEscape([104, 49]),
+  bgBrightMagenta: getEscape([105, 49]),
+  bgBrightCyan: getEscape([106, 49]),
+  bgBrightWhite: getEscape([107, 49]),
 };
 
 const writes = {
@@ -58,7 +75,7 @@ const writes = {
   cyan: 'cyan',
   white: 'white',
   gray: 'gray',
-  grey: 'grey',
+
   bgBlack: 'bgBlack',
   bgRed: 'bgRed',
   bgGreen: 'bgGreen',
@@ -76,7 +93,15 @@ const writes = {
   brightMagenta: 'brightMagenta',
   brightCyan: 'brightCyan',
   brightWhite: 'brightWhite',
-  brightGray: 'brightGray',
+
+  bgBrightBlack: 'bgBrightBlack',
+  bgBrightRed: 'bgBrightRed',
+  bgBrightGreen: 'bgBrightGreen',
+  bgBrightYellow: 'bgBrightYellow',
+  bgBrightBlue: 'bgBrightBlue',
+  bgBrightMagenta: 'bgBrightMagenta',
+  bgBrightCyan: 'bgBrightCyan',
+  bgBrightWhite: 'bgBrightWhite',
 
   log: ['', 'Level.INFO'],
   error: ['', 'Level.SEVERE'],
@@ -103,6 +128,7 @@ Object.keys(writes).forEach(k => {
   const colorClose = colorCode ? `Chalk.${colorCode}_close` : 'null';
 
   output.push(`
+    // region ${k}
     // 1-arg methods
     public static void ${k}(final int level, final Object message) {
         write(level, System.currentTimeMillis(), true, message == null ? "null" : message.toString(), ${colorOpen}, ${colorClose});
@@ -145,6 +171,7 @@ Object.keys(writes).forEach(k => {
     public static void ${k}(final Object... msgs) {
         write(${forcedLevel || 'Level.INFO'}, System.currentTimeMillis(), true, Arrays.toString(msgs), ${colorOpen}, ${colorClose});
     }
+    // endregion ${k}
 `);
 });
 
