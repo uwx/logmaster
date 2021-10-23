@@ -18,17 +18,17 @@ public class LogmasterUtils {
         int secs = (int) (ms / milisecondsInSecond);
 
         int mins = (int) (secs / secondsInMinute);
-        if (mins == 0) return FormatSecs(secs, ms);
+        if (mins == 0) return FormatSecs(secs, ms % 1000);
 
         int hours = (int) (mins / minutesInHour);
-        if (hours == 0) return FormatMins(mins, secs);
+        if (hours == 0) return FormatMins(mins, secs % 60);
 
         int days = (int) (hours / hoursInDay);
         // ReSharper disable once ConvertIfStatementToReturnStatement
-        if (days == 0) return FormatHours(hours, mins, secs);
+        if (days == 0) return FormatHours(hours, mins % 60, secs % 60);
 
         // else
-        return FormatDays(days, hours, mins, secs);
+        return FormatDays(days, hours % 24, mins % 60, secs % 60);
     }
 
     private static String FormatSecs(int secs, int ms) {
