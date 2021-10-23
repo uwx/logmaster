@@ -10,9 +10,6 @@
       </list>
     </option>
   </component>
-  <component name="ProjectDictionaryState">
-    <dictionary name="Rafael" />
-  </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -293,7 +290,6 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/classes" />
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="6" BundledDictionary0="css.dic" BundledDictionary1="struts2.dic" BundledDictionary2="less.dic" BundledDictionary3="/resources/dictionaries/spring.dic" BundledDictionary4="jetbrains.dic" BundledDictionary5="english.dic" Folders="0" Dictionaries="0" />
   <component name="masterDetails">
     <states>
       <state key="GlobalLibrariesConfigurable.UI">
